@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Infinite Rāga Swara‑Sthāna Song Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 20px;
+      background: #fafafa;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #225;
+      margin-top: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 10px 0;
+    }
+    .form-label {
+      display: block;
+      margin: 4px 0;
+      font-weight: 500;
+    }
+    input, select, button {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #225;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #114;
+    }
+    .lang-check {
+      margin: 3px 0;
+    }
+    .song-panel {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    .song-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #225;
+    }
+    .notation {
+      white-space: pre;
+      font-family: monospace;
+      font-size: 13px;
+      background: #f0f0f0;
+      padding: 6px;
+      border-radius: 4px;
+      margin: 4px 0;
+    }
+    .lang-tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 2px 6px;
+      font-size: 12px;
+      background: #e0f7fa;
+      border-radius: 4px;
+    }
+    .lang-text {
+      margin: 4px 0;
+    }
+    #error {
+      color: #c33;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Infinite Rāga Swara‑Sthāna Song Explorer</h1>
+
+<div class="card">
+  <h2>1. Choose Music System & Style</h2>
+  <div class="form-row">
+    <div>
+      <label class="form-label">Style:</label>
+      <select id="musicStyle">
+        <option value="karnatic">Karnatic</option>
+        <option value="hindustani">Hindustani</option>
+        <option value="western">Western</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>2. Swara‑Sthāna / 22‑Śruti Input</h2>
+
+  <div class="form-row">
+    <div>
+      <label class="form-label">Swara Set (e.g., S R2 G3 M1 P D2 N3):</label>
+      <input type="text" id="swaraSet"
+             style="width: 100%;"
+             placeholder="S R2 G3 M1 P D2 N3" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label class="form-label">Śruti Lattice (22‑śruti indices, e.g., 2-4-7-9-12-14-17):</label>
+      <input type="text" id="shrutiLattice"
+             style="width: 100%;"
+             placeholder="2-4-7-9-12-14-17" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label class="form-label">Target Languages for Lyrics:</label>
+      <div>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="en" checked /> English
+        </label>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="hindi" /> Hindi
+        </label>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="kannada" /> Kannada
+        </label>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="tamil" /> Tamil
+        </label>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="tulu" /> Tulu
+        </label>
+        <label class="lang-check">
+          <input type="checkbox" name="lang" value="marathi" /> Marathi
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>3. Generate Songs</h2>
+  <button id="btnSearch">Generate Songs for This Combination</button>
+  <div id="error"></div>
+</div>
+
+<div class="card">
+  <h2>4. Songs Matching Your Swara‑Sthāna</h2>
+  <div id="songsContainer">
+    <p>Select your combinations and click “Generate Songs”.</p>
+  </div>
+</div>
+
+<script>
+document.getElementById("btnSearch").addEventListener("click", function () {
+  const style = document.getElementById("musicStyle").value;
+  const swaraSet = document.getElementById("swaraSet").value.trim();
+  const shrutiLattice = document.getElementById("shrutiLattice").value.trim();
+
+  const langBoxes = document.querySelectorAll("[name='lang']:checked");
+  const targetLangs = Array.from(langBoxes).map(el => el.value);
+
+  if (!swaraSet) {
+    document.getElementById("error").textContent = "Please enter a Swara Set.";
+    return;
+  }
+
+  const payload = {
+    swara_set: swaraSet,
+    shruti_lattice: shrutiLattice,
+    style: style,
+    target_languages: targetLangs,
+  };
+
+  document.getElementById("error").textContent = "";
+  document.getElementById("songsContainer").innerHTML = "<p>Fetching songs...</p>";
+
+  fetch("http://localhost:5000/api/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
+    .then((data) => {
+      renderSongs(data);
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+      document.getElementById("error").textContent =
+        "Failed to fetch songs. Please check the server.";
+      document.getElementById("songsContainer").innerHTML = "";
+    });
+});
+
+function renderSongs(data) {
+  const container = document.getElementById("songsContainer");
+  container.innerHTML = "";
+
+  if (!data.krithis || data.krithis.length === 0) {
+    container.innerHTML = "<p>No songs found for this combination.</p>";
+    return;
+  }
+
+  data.krithis.forEach((k) => {
+    const songDiv = document.createElement("div");
+    songDiv.classList.add("song-panel");
+
+    const langs = data.target_languages || ["en"];
+
+    let langHtml = "";
+    langs.forEach((lang) => {
+      const field = "lyrics_" + lang;
+      if (k[field]) {
+        langHtml += `
+          <div class="lang-tag">${lang.toUpperCase()}</div>
+          <div class="lang-text">${k[field]}</div>
+        `;
+      }
+    });
+
+    songDiv.innerHTML = `
+      <div class="song-title">${k.title_en || "Untitled Krithi"}</div>
+      <div class="notation">
+        <b>Swara notation:</b><br />
+        ${k.swara_notation || "Not available"}
+      </div>
+      <div class="notation">
+        <b>Western notation:</b><br />
+        ${k.western_notation || "Not available"}
+      </div>
+      ${langHtml}
+    `;
+
+    container.appendChild(songDiv);
+  });
+}
+</script>
+
+</body>
+</html>
+File 2: server.py (Flask backend stub)
+Create this in the same folder as server.py. Run with python server.py and open http://localhost:5000 to serve the static file, or host index.html separately.
+
+python
+from flask import Flask, request, jsonify, send_from_directory
+
+app = Flask(__name__, static_folder=".", template_folder=".")
+
+@app.route("/")
+def index():
+    return send_from_directory(".", "index.html")
+
+@app.route("/api/generate", methods=["POST"])
+def generate():
+    data = request.json
+    style = data.get("style", "karnatic")
+    swara_set = data.get("swara_set", "")
+    shruti_lattice = data.get("shruti_lattice", "")
+    target_langs = data.get("target_languages", ["en"])
+
+    # In real code: use swara_set + shruti_lattice to:
+    # - match or generate a rāga‑class
+    # - link/generate krithis with multi‑lang lyrics
+    # Here we return a fixed example to match the front‑end.
+
+    return jsonify({
+        "matched_ragas": [
+            {
+                "rāga_id": 123,
+                "name_en": "Generated‑Raga‑ABCD12",
+                "name_hindi": "जनरेटेड‑राग‑ABCD12",
+                "name_kannada": "ಜನರೇಟೆಡ್‑ರಾಗ‑ABCD12",
+                "name_tamil": "ஜெனரேட்டட்‑ராகா‑ABCD12",
+                "name_tulu": "Gen‑Raga‑ABCD12",
+                "name_marathi": "उत्पन्न‑राग‑ABCD12",
+                "style": style,
+                "aarooha": "S R2 G3 M1 P D2 N3 S",
+                "avaroha": "S N3 D2 P M1 G3 R2 S",
+                "notes_en": "A raga created from your chosen swara‑sthanas and 22‑śruti lattice.",
+                "notes_hindi": "यह राग आपके चुने हुए स्वर‑स्थानों से बनाया गया है।",
+                "notes_kannada": "ನೀವು ಆಯ್ಕೆ ಮಾಡಿದ ಸ್ವರ‑ಸ್ಥಾನಗಳಿಂದ ಸೃಷ್ಟಿಸಿದ ರಾಗ.",
+                "notes_tamil": "நீங்கள் தேர்ந்தெடுத்த சுவரா-ஸ்தானங்களால் உருவாக்கப்பட்ட ராகா.",
+                "notes_tulu": "ನಿಮ್ಮ ಆಯ್ಕೆಯ ಸ್ವರ‑ಸ್ಥಾನಗಳಿಂದ ಸೃಷ್ಟಿಸಲಾದ ರಾಗ.",
+                "notes_marathi": "आपण निवडलेल्या स्वर‑स्थानांवर आधारित राग."
+            }
+        ],
+        "krithis": [
+            {
+                "krithi_id": 1001,
+                "title_en": "Infinite‑Raga‑Song‑1",
+                "lyrics_en": "Sādhanā rāga vibhāti, bhakti madhura kīrtaṇa...\nLine‑2\nLine‑3",
+                "lyrics_hindi": "साधना राग विभाति, भक्ति मधुर कीर्तन...\nपंक्ति‑2\nपंक्ति‑3",
+                "lyrics_kannada": "ಸಾಧನಾ ರಾಗ ವಿಭಾತಿ, ಭಕ್ತಿ ಮಧುರ ಕೀರ್ತನ...\nಸಾಲ‑2\nಸಾಲ‑3",
+                "lyrics_tamil": "சாதனா ராக விபாதி, பக்தி மதுர கீர்தன...\nவரி‑2\nவரி‑3",
+                "lyrics_tulu": "ಸಾಧನಾ ರಾಗ ವಿಭಾತಿ, ಭಕ್ತಿ ಮಧುರ ಕೀರ್ತನ...\nಸಾಲಿ‑2\nಸಾಲಿ‑3",
+                "lyrics_marathi": "साधना राग विभाति, भक्ति मधुर कीर्तन...\nओळ‑2\nओळ‑3",
+                "swara_notation": "S R2 G3 M1 P D2 N3 S\nP N3 D2 P M1 G3 R2 S\nS R2 G3 M1 P D2 N3 S",
+                "western_notation": "C D E F G A B C\nG B A G F E D C\nC D E F G A B C"
+            }
+        ],
+        "target_languages": target_langs
+    })
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
