@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎵 Cultural Musings - Complete User Guide & Navigator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500&display=swap" rel="stylesheet">
+  <title>🎵 Classical & Contemporary Krithi / Rāga Reference (for Flashes / Folk / Western)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body { 
@@ -13,280 +13,325 @@
       color: #f9fafb;
     }
     .container {
-      max-width: 1400px; margin: 0 auto;
-      background: #111827; padding: 32px; border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 1000px; margin: 0 auto;
+      background: #111827; padding: 24px; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-    h1 { 
-      text-align: center; margin-bottom: 12px; color: #ec4899; 
-      font-size: 2.5rem; font-weight: 700;
+    h1 { text-align: center; margin-bottom: 20px; color: #ec4899; }
+    .form { 
+      background: #1f2937; padding: 20px; border-radius: 12px; margin-bottom: 24px;
     }
-    .subtitle { 
-      text-align: center; color: #9ca3af; font-size: 1.2rem; 
-      margin-bottom: 40px;
+    .form h2 { 
+      margin-bottom: 16px; color: #e5e7eb; 
     }
-    
-    /* Navigation Cards */
-    .nav-grid { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-      gap: 24px; margin-bottom: 40px;
+    .form p { 
+      margin: 4px 0 8px; font-size: 0.9rem; 
     }
-    .nav-card { 
-      background: linear-gradient(135deg, #1f2937, #374151); 
-      padding: 28px; border-radius: 16px; cursor: pointer; 
-      border: 2px solid transparent; transition: all 0.3s;
-      position: relative; overflow: hidden;
+    label { 
+      display: block; margin: 8px 0 4px; color: #d1d5db; font-weight: 500; 
     }
-    .nav-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(236,72,153,0.1), rgba(139,92,246,0.1));
-      opacity: 0; transition: opacity 0.3s;
+    input, select, textarea, button { 
+      width: 100%; padding: 10px; border-radius: 8px; border: none; 
+      margin: 4px 0; 
     }
-    .nav-card:hover { 
-      border-color: #ec4899; transform: translateY(-8px); 
-      box-shadow: 0 20px 40px rgba(236,72,153,0.3);
+    input, select, textarea { 
+      background: #374151; color: #f9fafb; 
     }
-    .nav-card:hover::before { opacity: 1; }
-    .nav-card h3 { 
-      color: #fcd34d; font-size: 1.4rem; margin-bottom: 16px; 
-      font-weight: 600; position: relative; z-index: 1;
+    button { 
+      background: linear-gradient(135deg, #ec4899, #db2777);
+      color: white; font-weight: 600; cursor: pointer; 
     }
-    .nav-icon { 
-      font-size: 2.5rem; float: left; margin-right: 16px; 
-      margin-bottom: 12px; position: relative; z-index: 1;
+    button:hover { 
+      transform: translateY(-1px); 
     }
-    .nav-card p { 
-      color: #d1d5db; line-height: 1.6; margin-bottom: 20px; 
-      position: relative; z-index: 1;
+    .results { 
+      margin-top: 20px; 
     }
-    .nav-btn { 
-      background: linear-gradient(135deg, #ec4899, #db2777); 
-      color: white; padding: 12px 24px; border: none; 
-      border-radius: 25px; font-weight: 600; cursor: pointer;
-      position: relative; z-index: 1; transition: all 0.3s;
+    .raga-box { 
+      background: #1e293b; padding: 16px; margin: 10px 0; 
+      border-radius: 10px; border-left: 4px solid #ec4899;
     }
-    .nav-btn:hover { transform: scale(1.05); }
-    
-    /* Quick Start */
-    .quick-start {
-      background: linear-gradient(135deg, #10b981, #059669); 
-      padding: 32px; border-radius: 16px; margin: 40px 0;
-      text-align: center;
+    .raga-box h3 { margin-bottom: 8px; color: #fcd34d; }
+    .raga-box p { margin: 6px 0; font-size: 0.95rem; }
+    .raga-box strong { color: #60a5fa; }
+    .lyrics { 
+      white-space: pre-line; font-family: monospace; font-size: 0.95rem;
+      background: #0c111c; padding: 12px; border-radius: 6px; margin: 10px 0 0 0;
+      border: 1px solid #27272a;
     }
-    .quick-start h2 { color: white; margin-bottom: 20px; }
-    
-    /* Features Table */
-    .features-table {
-      background: #1e293b; border-radius: 12px; overflow: hidden;
-      margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .features-table h3 { 
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed); 
-      color: white; padding: 20px; margin: 0; font-size: 1.3rem;
-    }
-    .feature-row { display: flex; border-bottom: 1px solid #374151; }
-    .feature-col { padding: 20px; flex: 1; }
-    .feature-icon { font-size: 1.5rem; margin-right: 12px; }
-    
-    /* Voice Section */
-    .voice-section {
-      background: linear-gradient(135deg, #f59e0b, #d97706); 
-      padding: 24px; border-radius: 16px; margin: 24px 0;
-      text-align: center;
-    }
-    
-    @media (max-width: 768px) {
-      .nav-grid { grid-template-columns: 1fr; }
-      .feature-row { flex-direction: column; }
+    .notation { 
+      font-family: monospace; font-size: 0.9rem; 
+      background: #0f172a; padding: 10px; border-radius: 6px; margin: 8px 0 0 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🎵 Cultural Musings - Complete Navigator</h1>
-    <p class="subtitle">Your Gateway to Carnatic Music Research, Therapy & Creation</p>
-    
-    <!-- QUICK START -->
-    <div class="quick-start">
-      <h2>🚀 Quick Start - 3 Clicks to Begin</h2>
-      <ol style="text-align: left; max-width: 600px; margin: 0 auto; color: #ecfdf5; font-size: 1.1rem;">
-        <li>🎤 <strong>Enable Voice</strong> - Click microphone button (top-right)</li>
-        <li>📱 <strong>Pick Module</strong> - Choose from 6 tabs</li>
-        <li>✨ <strong>Start Exploring</strong> - Search, create, or listen</li>
-      </ol>
-      <button class="nav-btn" onclick="startVoiceTour()" style="margin-top: 20px; padding: 16px 32px; font-size: 1.1rem;">
-        🎤 Start Voice Tour
-      </button>
+    <h1>🎵 Classical & Contemporary Krithi / Rāga Reference<br>
+    (Karnatic • Hindustani • Folk • Western • Semiclassical)</h1>
+
+    <!-- 1. Auto‑generated rāgas (any style, any number) -->
+    <div class="form">
+      <h2>Rāga Parameters (for reference)</h2>
+
+      <label>Music Style</label>
+      <select id="style" style="margin-bottom: 12px;">
+        <option value="karnatic">Classical (Karnatic)</option>
+        <option value="hindustani">Classical (Hindustani)</option>
+        <option value="semi_classical">Semiclassical / Light</option>
+        <option value="folklore">Folklore / Regional</option>
+        <option value="western">Western / Tonal</option>
+      </select>
+
+      <label>Swara Set (any number of swaras, comma‑separated)</label>
+      <input 
+        type="text" 
+        id="swara_set" 
+        value="S,R2,G3,M1,P,D2,N3,S" 
+        placeholder="S,R2,G3,M1,P,D2,N3,S (any length, 5–7 notes for Karnatic/Hindustani; 5–6 for folk)"
+      >
+
+      <label>Śruti / Note Lattice (any size, comma‑separated)</label>
+      <input 
+        type="text" 
+        id="shruti_lattice" 
+        value="C,C#,D,D#,E,F,F#,G,G#,A,A#,B,C" 
+        placeholder="C,C#,D,D#,E,F,F#,G,G#,A,A#,B,C (Western 12‑tone; use 22‑śruti for Indian classical)"
+      >
+
+      <label>Languages (any combination)</label>
+      <input 
+        type="text" 
+        id="target_languages" 
+        value="en,hi,ka,ta,tl,mr" 
+        placeholder="en,hi,ka,ta,tl,mr (any mix)"
+      >
+
+      <button type="button" onclick="generateRaga()">Generate Reference Rāgas</button>
     </div>
 
-    <!-- MAIN NAVIGATION -->
-    <div class="nav-grid">
-      <div class="nav-card" onclick="goToTab('therapy')">
-        <div class="nav-icon">🧘</div>
-        <h3>Raga Therapy</h3>
-        <p>
-          <strong>Health Benefits:</strong> Anxiety relief, sleep induction, 
-          dosha balancing (Vata/Pitta/Kapha). 21-min recitation protocols 
-          with exact timings and meditation instructions.
-        </p>
-        <button class="nav-btn">Open Therapy →</button>
-      </div>
+    <!-- 2. Create your own rāga / krithi -->
+    <div class="form">
+      <h2>Create Your Own Rāga / Krithi</h2>
 
-      <div class="nav-card" onclick="goToTab('raga-creator')">
-        <div class="nav-icon">🎼</div>
-        <h3>Raga Creator</h3>
-        <p>
-          <strong>Build Custom Ragas:</strong> Click swaras for arohana/avarohana, 
-          generate 72 Melakarta + 1000+ Janya combinations. Instant naming 
-          and voice playback.
-        </p>
-        <button class="nav-btn">Create Raga →</button>
-      </div>
+      <label>Your Rāga / Song Name (English)</label>
+      <input type="text" id="custom_raga_name_en" value="" placeholder="e.g., My‑Folk‑Raga‑1, Western‑Modal‑Song" required>
 
-      <div class="nav-card" onclick="goToTab('shyama')">
-        <div class="nav-icon">🔮</div>
-        <h3>Shyama Shastri + Beejakshara</h3>
-        <p>
-          <strong>Research Tool:</strong> 75+ krithis with hrIM, klIM, aim 
-          cross-referencing. Type any beejakshara → get all matches instantly.
-        </p>
-        <button class="nav-btn">Research Shyama →</button>
-      </div>
+      <label>Aaroha / Scale (any number of notes)</label>
+      <input type="text" id="custom_aarooha" value="S R2 G3 M1 P D2 N3 S" required>
 
-      <div class="nav-card" onclick="goToTab('dikshitar')">
-        <div class="nav-icon">🔮</div>
-        <h3>Dikshitar + Beejakshara</h3>
-        <p>
-          <strong>500+ Compositions:</strong> sauh, hroum, shrIM analysis. 
-          Global search finds matches across all composers.
-        </p>
-        <button class="nav-btn">Research Dikshitar →</button>
-      </div>
+      <label>Avaroha / Scale (any number of notes)</label>
+      <input type="text" id="custom_avaroha" value="S N3 D2 P M1 G3 R2 S" required>
 
-      <div class="nav-card" onclick="searchAllBeejaksharas()">
-        <div class="nav-icon">🔍</div>
-        <h3>Global Beejakshara Search</h3>
-        <p>
-          <strong>Cross-Composer:</strong> Type "hrIM" → see all Shyama+Dikshitar 
-          matches. Live highlighting + match counter.
-        </p>
-        <button class="nav-btn">🔍 Global Search</button>
-      </div>
+      <label>Notes / Description (English)</label>
+      <textarea id="custom_notes_en" rows="3" placeholder="A Karnatic‑style rāga, a Hindustani‑based thaat, or a Western modal / folk piece."></textarea>
 
-      <div class="nav-card" onclick="showKeyboardShortcuts()">
-        <div class="nav-icon">⌨️</div>
-        <h3>Keyboard Shortcuts</h3>
-        <p>
-          <strong>Productivity:</strong> SPACE=Play, ESC=Close, Tab navigation, 
-          Quick search with /, Voice commands.
-        </p>
-        <button class="nav-btn">⌨️ Shortcuts</button>
-      </div>
+      <hr style="border: 1px solid #374151; margin: 12px 0;">
+
+      <label>Krithi / Song Title (English)</label>
+      <input type="text" id="custom_krithi_title_en" value="" placeholder="Song for My‑Own‑Rāga" required>
+
+      <label>Lyrics (English)</label>
+      <textarea id="custom_lyrics_en" rows="5" placeholder="Sādhanā rāga vibhāti, bhakti madhura kīrtaṇa...\nLine 2\nLine 3" required></textarea>
+
+      <label>Swara / Chord Notation</label>
+      <textarea id="custom_swara_notation" rows="4" placeholder="S R2 G3 M1 P D2 N3 S\nP N3 D2 P M1 G3 R2 S" required></textarea>
+
+      <label>Western / Staff Notation</label>
+      <textarea id="custom_western_notation" rows="4" placeholder="C D E F G A B C\nG B A G F E D C" required></textarea>
+
+      <button type="button" onclick="generateCustomRaga()">Create Custom Rāga / Krithi</button>
     </div>
 
-    <!-- FEATURES OVERVIEW -->
-    <div class="features-table">
-      <h3>✨ All Features at a Glance</h3>
-      <div class="feature-row">
-        <div class="feature-col">
-          <div style="display: flex; align-items: center; margin-bottom: 12px;">
-            <span class="feature-icon">🎤</span>
-            <strong>FREE Voice Synthesis</strong>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <span class="feature-icon">📱</span>
-            <strong>Fully Responsive</strong> - Mobile/Desktop
-          </div>
-        </div>
-        <div class="feature-col">
-          <div style="display: flex; align-items: center; margin-bottom: 12px;">
-            <span class="feature-icon">🔮</span>
-            <strong>Beejakshara Matrix</strong>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <span class="feature-icon">🎼</span>
-            <strong>252 Swarasthana System</strong>
-          </div>
-        </div>
-        <div class="feature-col">
-          <div style="display: flex; align-items: center; margin-bottom: 12px;">
-            <span class="feature-icon">🧘</span>
-            <strong>Ayurvedic Dosha Therapy</strong>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <span class="feature-icon">📚</span>
-            <strong>1500+ Krithis Catalog</strong>
-          </div>
-        </div>
-        <div class="feature-col">
-          <div style="display: flex; align-items: center;">
-            <span class="feature-icon">🌐</span>
-            <strong>www.culturalmusings.com Ready</strong>
-          </div>
-        </div>
+    <!-- 3. Classical Krithi Library (for reference) -->
+    <div class="form">
+      <h2>Classical Krithi Library (References from Syama Śāstry, Tyāgarāja, Dīkṣitar, Annamācārya)</h2>
+      <p style="margin-bottom: 12px; font-size: 0.9rem;">
+        These are metadata‑style entries for study and inspiration only.  
+        Full lyrics and recordings are available on platforms such as Google, YouTube, and Carnatic music archives.
+      </p>
+
+      <div id="krithiLibrary" style="max-height: 300px; overflow-y: auto; border: 1px solid #374151; border-radius: 8px; padding: 10px;">
+        <p>Loading krithi library...</p>
       </div>
     </div>
 
-    <!-- VOICE INSTRUCTIONS -->
-    <div class="voice-section">
-      <h3 style="color: white; margin-bottom: 16px;">🎤 Voice Controls (100% Free)</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-        <div><strong>🔊 Play</strong> - Preview & Full Lyrics</div>
-        <div><strong>🎤 Slow Play</strong> - Therapy Recitation</div>
-        <div><strong>⏹️ Stop</strong> - Any Time</div>
-        <div><strong>SPACEBAR</strong> - Quick Play</div>
-      </div>
-    </div>
-
-    <!-- SUPPORT -->
-    <div style="text-align: center; margin-top: 40px; padding: 24px; background: #1f2937; border-radius: 12px;">
-      <h3 style="color: #60a5fa;">💡 Need Help?</h3>
-      <p style="color: #9ca3af;">This navigator auto-redirects to features. 
-      Bookmark for quick access. <strong>No login required.</strong></p>
-      <button class="nav-btn" onclick="launchFullApp()" style="margin-top: 16px;">
-        🚀 Launch Full App
-      </button>
-    </div>
+    <div class="results" id="ragaResults"></div>
   </div>
 
   <script>
-    // Navigation Functions
-    function goToTab(tab) {
-      // Simulate tab navigation (in full app)
-      console.log(`Navigating to ${tab}`);
-      alert(`🎵 Opening ${tab.replace('-', ' ').toUpperCase()}...\n\nSave this index.html as your homepage!`);
+    // 1. Auto‑generated rāgas (reference, any style, any number)
+    function generateRaga() {
+      const style  = document.getElementById('style').value;
+      const swaraSet = document.getElementById('swara_set').value.trim();
+      const shrutiLattice = document.getElementById('shruti_lattice').value.trim();
+      const langsStr = document.getElementById('target_languages').value.trim();
+
+      const targetLangs = langsStr
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      const out = document.getElementById('ragaResults');
+      out.innerHTML = '<p>Loading reference rāgas and krithis (no limit on number)...</p>';
+
+      fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          style,
+          swara_set: swaraSet,
+          shruti_lattice: shrutiLattice,
+          target_languages: targetLangs
+        })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        return res.json();
+      })
+      .then(data => {
+        out.innerHTML = '';
+
+        const lang = 'en'; // English as default language
+
+        // Render all matched rāgas
+        data.matched_ragas.forEach(raga => {
+          const ragaBox = document.createElement('div');
+          ragaBox.className = 'raga-box';
+
+          ragaBox.innerHTML = `
+            <h3>${raga[`name_${lang}`] || raga.name_en}</h3>
+            <p><strong>Style:</strong> ${raga.style}</p>
+            <p><strong>Aaroha:</strong> <span class="lyrics">${raga.aarooha}</span></p>
+            <p><strong>Avaroha:</strong> <span class="lyrics">${raga.avaroha}</span></p>
+            <p><strong>Notes (${lang}):</strong> ${raga[`notes_${lang}`] || raga.notes_en}</p>
+            <button onclick='copyToCustomRaga("${(raga[`name_${lang}`] || raga.name_en).replace(/"/g, '\\"')}", 
+                                         "${raga.aarooha.replace(/"/g, '\\"')}", 
+                                         "${raga.avaroha.replace(/"/g, '\\"')}", 
+                                         "${(raga[`notes_${lang}`] || raga.notes_en).replace(/"/g, '\\"')}")'>
+              Use for custom rāga
+            </button>
+          `;
+
+          out.appendChild(ragaBox);
+
+          // Render krithis for this rāga (if present)
+          (data.krithis || []).forEach(krithi => {
+            const kbox = document.createElement('div');
+            kbox.className = 'raga-box';
+
+            kbox.innerHTML = `
+              <h3>${krithi[`title_${lang}`] || krithi.title_en || "Song / Krithi"}</h3>
+
+              <p><strong>Lyrics (${lang}) – English:</strong></p>
+              <div class="lyrics">${krithi.lyrics_en}</div>
+
+              ${krithi.lyrics_hindi ? `
+                <p><strong>Lyrics (hi) – हिंदी:</strong></p>
+                <div class="lyrics">${krithi.lyrics_hindi}</div>
+              ` : ''}
+
+              ${krithi.lyrics_kannada ? `
+                <p><strong>Lyrics (ka) – ಕನ್ನಡ:</strong></p>
+                <div class="lyrics">${krithi.lyrics_kannada}</div>
+              ` : ''}
+
+              ${krithi.lyrics_tamil ? `
+                <p><strong>Lyrics (ta) – தமிழ்:</strong></p>
+                <div class="lyrics">${krithi.lyrics_tamil}</div>
+              ` : ''}
+
+              ${krithi.lyrics_tulu ? `
+                <p><strong>Lyrics (tl) – Tulu:</strong></p>
+                <div class="lyrics">${krithi.lyrics_tulu}</div>
+              ` : ''}
+
+              ${krithi.lyrics_marathi ? `
+                <p><strong>Lyrics (mr) – मराठी:</strong></p>
+                <div class="lyrics">${krithi.lyrics_marathi}</div>
+              ` : ''}
+
+              <p><strong>Swara / Chord Notation:</strong></p>
+              <div class="notation"><pre>${krithi.swara_notation}</pre></div>
+
+              <p><strong>Western / Staff Notation:</strong></p>
+              <div class="notation"><pre>${krithi.western_notation}</pre></div>
+
+              <button onclick='copyToCustomKrithi("${(krithi[`title_${lang}`] || krithi.title_en).replace(/"/g, '\\"')}",
+                                            "${(krithi.lyrics_en || "").replace(/"/g, '\\"')}",
+                                            "${(raga[`name_${lang}`] || raga.name_en || "").replace(/"/g, '\\"')}")'>
+                Use as custom krithi
+              </button>
+            `;
+
+            out.appendChild(kbox);
+          });
+        });
+      })
+      .catch(err => {
+        console.error('Raga API error:', err);
+        out.innerHTML = `
+          <div class="raga-box" style="border-left-color: #ef4444;">
+            <p style="color: #f87171;"><strong>Error:</strong> ${err.message}</p>
+            <p>Make sure your Flask app is running at <code>http://localhost:5000</code> and that <code>/api/generate</code> is reachable.</p>
+          </div>
+        `;
+      });
     }
-    
-    function startVoiceTour() {
-      const tour = `Welcome to Cultural Musings. 
-      Click Raga Therapy for health benefits. 
-      Use Raga Creator to build custom scales. 
-      Search Beejaksharas with hrIM or klIM. 
-      All voice features work offline. Enjoy!`;
-      
-      const utterance = new SpeechSynthesisUtterance(tour);
-      utterance.rate = 0.9;
-      speechSynthesis.speak(utterance);
+
+    // 2. Helper to copy a reference rāga into custom form
+    function copyToCustomRaga(name, aarooha, avaroha, notes) {
+      document.getElementById('custom_raga_name_en').value = name;
+      document.getElementById('custom_aarooha').value = aarooha;
+      document.getElementById('custom_avaroha').value = avaroha;
+      document.getElementById('custom_notes_en').value = notes;
     }
-    
-    function searchAllBeejaksharas() {
-      alert('🔍 Global Beejakshara Search\nType: hrIM, klIM, aim → See ALL matches across composers!');
+
+    // 3. Helper to copy a reference krithi into custom form
+    function copyToCustomKrithi(title, lyrics, ragaName) {
+      document.getElementById('custom_krithi_title_en').value = title;
+      document.getElementById('custom_lyrics_en').value = lyrics;
+      document.getElementById('custom_raga_name_en').value = ragaName || document.getElementById('custom_raga_name_en').value;
     }
-    
-    function showKeyboardShortcuts() {
-      alert('⌨️ Keyboard Shortcuts\nSPACE = Play/Pause\nESC = Close Modals\n/ = Quick Search\nTAB = Navigate Tabs');
-    }
-    
-    function launchFullApp() {
-      alert('🚀 Full App Ready!\n\nSave ALL code blocks as separate index.html files:\n• index.html (this navigator)\n• therapy.html\n• raga-creator.html\n• shyama.html\n• dikshitar.html\n\nAll features 100% FREE - No APIs needed!');
-    }
-    
-    // Auto-start voice demo after 2 seconds
-    setTimeout(() => {
-      if (confirm('🎤 Enable voice features? (Recommended)')) {
-        startVoiceTour();
-      }
-    }, 2000);
-  </script>
-</body>
-</html>
+
+    // 4. Classical Krithi Library (for reference only)
+    const classicalKrithis = [
+      // Tyāgarāja
+      {
+        "composer": "Tyāgarāja",
+        "title_en": "Jagadananda Karaka",
+        "name_raga_en": "Nāṭa Rāga",
+        "tala": "Ādi",
+        "lyrics_en_hint": "O Lord, source of universal joy, protect all beings.",
+        "notes_en": "One of Tyāgarāja's most famous kritis, in the majestic rāga Nāṭa."
+      },
+      {
+        "composer": "Tyāgarāja",
+        "title_en": "Sri Rama Jayati",
+        "name_raga_en": "Anandabhairavi",
+        "tala": "Rupakam",
+        "lyrics_en_hint": "O Rāma, may your victory and protection cover the world.",
+        "notes_en": "A devotional krithi set to the beautiful rāga Anandabhairavi."
+      },
+
+      // Syama Śāstry
+      {
+        "composer": "Syama Śāstry",
+        "title_en": "Kanakānubhava",
+        "name_raga_en": "Todi Rāga",
+        "tala": "Ādi",
+        "lyrics_en_hint": "O Kanakā..., your divine grace is beyond human measure.",
+        "notes_en": "A profound, poetic krithi by Syama Śāstry in the powerful rāga Todi."
+      },
+      {
+        "composer": "Syama Śāstry",
+        "title_en": "Brochevarevarura",
+        "name_raga_en": "Shankarabharanam",
+        "tala": "Ādi",
+        "lyrics_en_hint": "Brochevarevarura... will any one truly protect us?",
+        "notes_en": "One of the most celebrated krithis of Syama Śāstry, in Shankarabharanam rāga."
+      },
+
+      // Dīkṣitar (Muttusvāmi Dīkṣitar)
+      {
+        "composer": "D
