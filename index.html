@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔄 Rāga & Krithi Generator</title>
+  <title>🔄 Rāga & Krithi Generator (with English Lyrics)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -61,7 +61,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>🔄 Rāga & Krithi Generator</h1>
+    <h1>🔄 Rāga & Krithi Generator (with English Lyrics)</h1>
 
     <div class="form">
       <h2 style="margin-bottom: 16px; color: #e5e7eb;">Rāga Parameters</h2>
@@ -138,9 +138,9 @@
       .then(data => {
         out.innerHTML = '';
 
-        // Process each raga
+        // Render each matched rāga
         data.matched_ragas.forEach(raga => {
-          const lang = 'en';  // You can make this configurable later
+          const lang = 'en';  // English as default display language
 
           const ragaBox = document.createElement('div');
           ragaBox.className = 'raga-box';
@@ -150,26 +150,55 @@
             <p><strong>Style:</strong> ${raga.style}</p>
             <p><strong>Aaroha:</strong> <span class="lyrics">${raga.aarooha}</span></p>
             <p><strong>Avaroha:</strong> <span class="lyrics">${raga.avaroha}</span></p>
-            <p><strong>Notes:</strong> ${raga[`notes_${lang}`] || raga.notes_en}</p>
+            <p><strong>Notes (${lang}):</strong> ${raga[`notes_${lang}`] || raga.notes_en}</p>
           `;
 
           out.appendChild(ragaBox);
 
-          // Render krithis for this raga
+          // Render each krithi for this rāga
           (data.krithis || []).forEach(krithi => {
             const kbox = document.createElement('div');
             kbox.className = 'raga-box';
 
             kbox.innerHTML = `
-              <h3>${krithi[`title_${lang}`] || krithi.title_en}</h3>
-              <p><strong>Lyrics (${lang}):</strong></p>
-              <div class="lyrics">${krithi[`lyrics_${lang}`] || krithi.lyrics_en}</div>
-              
+              <h3>${krithi[`title_${lang}`] || krithi.title_en || "Unknown Krithi"}</h3>
+
+              <!-- English lyrics -->
+              <p><strong>Lyrics (${lang}) – English:</strong></p>
+              <div class="lyrics">${krithi.lyrics_en}</div>
+
+              <!-- Other languages if needed; you can add a toggle/selector later -->
+              ${krithi.lyrics_hindi ? `
+                <p><strong>Lyrics (hi) – हिंदी:</strong></p>
+                <div class="lyrics">${krithi.lyrics_hindi}</div>
+              ` : ''}
+
+              ${krithi.lyrics_kannada ? `
+                <p><strong>Lyrics (ka) – ಕನ್ನಡ:</strong></p>
+                <div class="lyrics">${krithi.lyrics_kannada}</div>
+              ` : ''}
+
+              ${krithi.lyrics_tamil ? `
+                <p><strong>Lyrics (ta) – தமிழ்:</strong></p>
+                <div class="lyrics">${krithi.lyrics_tamil}</div>
+              ` : ''}
+
+              ${krithi.lyrics_tulu ? `
+                <p><strong>Lyrics (tl) – Tulu:</strong></p>
+                <div class="lyrics">${krithi.lyrics_tulu}</div>
+              ` : ''}
+
+              ${krithi.lyrics_marathi ? `
+                <p><strong>Lyrics (mr) – मराठी:</strong></p>
+                <div class="lyrics">${krithi.lyrics_marathi}</div>
+              ` : ''}
+
+              <!-- Swara and Western notation -->
               <p><strong>Swara Notation:</strong></p>
               <div class="notation">
                 <pre>${krithi.swara_notation}</pre>
               </div>
-              
+
               <p><strong>Western Notation:</strong></p>
               <div class="notation">
                 <pre>${krithi.western_notation}</pre>
