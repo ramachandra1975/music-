@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify, send_from_directory
+rom flask import Flask, request, jsonify, send_from_directory
 
-app = Flask(__name__, static_folder=".", template_folder=".")
+app = Flask(__name__, static_folder=".")
 
 @app.route("/")
 def index():
@@ -14,11 +14,7 @@ def generate():
     shruti_lattice = data.get("shruti_lattice", "")
     target_langs = data.get("target_languages", ["en"])
 
-    # In real code: use swara_set + shruti_lattice to:
-    # - match or generate a rāga‑class
-    # - link/generate krithis with multi‑lang lyrics
-    # Here we return a fixed example to match the front‑end.
-
+    # Example JSON that matches your front‑end
     return jsonify({
         "matched_ragas": [
             {
