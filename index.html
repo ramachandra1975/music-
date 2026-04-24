@@ -34,16 +34,11 @@ body{
   font-size:15px;
   line-height:1.65;
 }
-
-/* subtle grain overlay */
 body::before{
-  content:'';
-  position:fixed;inset:0;
+  content:'';position:fixed;inset:0;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events:none;z-index:0;opacity:0.4;
 }
-
-/* top glow */
 body::after{
   content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);
   width:800px;height:400px;
@@ -61,14 +56,12 @@ header{
 .logo{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:28px;font-weight:300;
-  color:var(--gold2);
-  letter-spacing:0.04em;
+  color:var(--gold2);letter-spacing:0.04em;
 }
 .logo span{color:var(--gold);font-style:italic;}
 .logo-sub{
   font-size:11px;font-weight:300;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--muted);
-  margin-top:2px;
+  text-transform:uppercase;color:var(--muted);margin-top:2px;
 }
 .header-links{
   display:flex;gap:24px;align-items:center;padding-top:6px;
@@ -79,12 +72,43 @@ header{
 }
 .header-links a:hover{color:var(--gold);}
 
+/* ── API KEY INPUT ── */
+.api-bar{
+  position:relative;z-index:10;
+  padding:10px 40px;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(200,168,75,0.03);
+  border-bottom:1px solid var(--border);
+}
+.api-bar label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.api-input{
+  flex:1;max-width:340px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:5px;padding:6px 12px;
+  color:var(--cream);font-family:'DM Mono',monospace;font-size:12px;
+  outline:none;transition:border-color .2s;
+}
+.api-input:focus{border-color:var(--gold);}
+.api-input::placeholder{color:var(--muted);}
+.api-status{font-size:11px;color:var(--muted);font-style:italic;}
+.api-status.ok{color:var(--sage);}
+.api-status.err{color:var(--saffron);}
+.yt-input{
+  flex:1;max-width:280px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:5px;padding:6px 12px;
+  color:var(--cream);font-family:'DM Mono',monospace;font-size:12px;
+  outline:none;transition:border-color .2s;
+}
+.yt-input:focus{border-color:var(--gold);}
+.yt-input::placeholder{color:var(--muted);}
+
 /* ── TABS ── */
 .tabs-bar{
   position:relative;z-index:10;
   display:flex;gap:0;
   border-bottom:1px solid var(--border);
-  padding:0 40px;margin-top:20px;
+  padding:0 40px;margin-top:0;
   overflow-x:auto;
 }
 .tabs-bar::-webkit-scrollbar{height:0;}
@@ -116,8 +140,7 @@ main{
 .pg-title{
   font-family:'Cormorant Garamond',serif;
   font-size:36px;font-weight:300;
-  color:var(--gold2);margin-bottom:4px;
-  letter-spacing:0.02em;
+  color:var(--gold2);margin-bottom:4px;letter-spacing:0.02em;
 }
 .pg-sub{
   font-family:'Cormorant Garamond',serif;
@@ -129,34 +152,28 @@ main{
 .glabel{
   font-size:10px;font-weight:400;letter-spacing:0.14em;
   text-transform:uppercase;color:var(--muted);
-  margin-bottom:10px;
-  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;display:flex;align-items:center;gap:10px;
 }
 .glabel::after{content:'';flex:1;height:1px;background:var(--border);}
 
 /* ── SWARA GRID ── */
 .creator-layout{
-  display:grid;
-  grid-template-columns:1fr 320px;
+  display:grid;grid-template-columns:1fr 320px;
   gap:32px;align-items:start;
 }
 .swara-grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
+  display:grid;grid-template-columns:repeat(12,1fr);
   gap:5px;margin-bottom:8px;
 }
 .sw{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:7px;
-  padding:10px 3px 8px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:7px;padding:10px 3px 8px;
   text-align:center;cursor:pointer;
   transition:all .15s;user-select:none;
 }
 .sw:hover{border-color:var(--border2);background:var(--glow);}
 .sw.on{
-  background:rgba(200,168,75,0.14);
-  border-color:var(--gold);
+  background:rgba(200,168,75,0.14);border-color:var(--gold);
   box-shadow:0 0 12px rgba(200,168,75,0.14);
 }
 .sw.on .sn{color:var(--gold2);}
@@ -170,12 +187,10 @@ main{
 }
 .sv{font-size:8px;color:var(--muted);display:block;margin-top:3px;line-height:1.3;}
 
-/* legend */
 .legend{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
 .leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
 .leg-bar{width:16px;height:2px;border-radius:1px;}
 
-/* scale display */
 .scale-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 .scale-card{
   background:var(--bg2);border:1px solid var(--border);
@@ -188,7 +203,6 @@ main{
   color:var(--gold2);letter-spacing:0.05em;min-height:28px;
 }
 
-/* action row */
 .act-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
 .btn{
   padding:8px 18px;border-radius:5px;
@@ -204,7 +218,6 @@ main{
 .btn.play.going::before{content:'■ ';}
 .btn.play.going{border-color:var(--saffron);color:var(--saffron);}
 
-/* quick load sidebar */
 .sidebar-card{
   background:var(--bg2);border:1px solid var(--border);
   border-radius:10px;padding:16px;margin-bottom:12px;
@@ -221,21 +234,15 @@ main{
   display:flex;justify-content:space-between;align-items:center;
 }
 .q-item:hover{border-color:var(--border2);background:var(--glow);}
-.q-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:15px;color:var(--cream);
-}
+.q-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);}
 .q-rasa{font-size:11px;color:var(--muted);}
 .q-conf{font-size:11px;color:var(--gold);}
 
 /* ── RAGA RESULT ── */
 .raga-result{
-  background:var(--bg2);
-  border:1px solid var(--border2);
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:28px;
-  display:none;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:12px;overflow:hidden;
+  margin-bottom:28px;display:none;
   animation:fadeUp .35s ease;
 }
 .raga-result.on{display:block;}
@@ -243,8 +250,7 @@ main{
 
 .rr-hero{
   background:linear-gradient(135deg,#0e0820 0%,#1a0e30 40%,#2a1508 100%);
-  padding:22px 26px 18px;
-  border-bottom:1px solid var(--border);
+  padding:22px 26px 18px;border-bottom:1px solid var(--border);
 }
 .rr-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
 .rr-name{
@@ -252,10 +258,7 @@ main{
   font-size:40px;font-weight:300;
   color:var(--gold2);line-height:1;letter-spacing:0.02em;
 }
-.rr-also{
-  font-family:'Cormorant Garamond',serif;
-  font-size:15px;font-style:italic;color:var(--muted);margin-top:4px;
-}
+.rr-also{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--muted);margin-top:4px;}
 .rasa-badge{
   padding:5px 14px;border-radius:20px;
   font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
@@ -263,12 +266,9 @@ main{
 }
 .novel-chip{
   display:inline-block;
-  background:rgba(155,143,212,0.15);
-  border:1px solid rgba(155,143,212,0.4);
-  color:var(--lavender);
-  padding:2px 10px;border-radius:4px;
-  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-  margin-bottom:8px;
+  background:rgba(155,143,212,0.15);border:1px solid rgba(155,143,212,0.4);
+  color:var(--lavender);padding:2px 10px;border-radius:4px;
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;
 }
 .conf-row{
   display:flex;align-items:center;gap:10px;
@@ -277,28 +277,17 @@ main{
 .conf-bar{flex:1;height:1.5px;background:var(--border);border-radius:1px;overflow:hidden;}
 .conf-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:1px;transition:width .6s ease;}
 
-.rr-meta{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;border-top:1px solid var(--border);
-}
-.rr-cell{
-  padding:12px 18px;border-right:1px solid var(--border);
-}
+.rr-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border);}
+.rr-cell{padding:12px 18px;border-right:1px solid var(--border);}
 .rr-cell:last-child{border-right:none;}
 .rr-cell-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:3px;}
-.rr-cell-val{
-  font-family:'Cormorant Garamond',serif;
-  font-size:16px;color:var(--cream);
-}
+.rr-cell-val{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);}
 
 .rr-body{padding:18px 26px;}
 .rr-scales{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
 .rr-scale{background:var(--bg3);border-radius:6px;padding:10px 14px;}
 .rr-scale-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:4px;}
-.rr-scale-val{
-  font-family:'DM Mono',monospace;
-  font-size:13px;color:var(--gold2);letter-spacing:0.05em;
-}
+.rr-scale-val{font-family:'DM Mono',monospace;font-size:13px;color:var(--gold2);letter-spacing:0.05em;}
 
 .rr-ai-btn{
   display:inline-flex;align-items:center;gap:6px;
@@ -306,13 +295,12 @@ main{
   border:1px solid rgba(155,143,212,0.4);background:none;
   color:var(--lavender);
   font-family:'Outfit',sans-serif;font-size:12px;
-  cursor:pointer;transition:all .15s;
-  margin-top:4px;
+  cursor:pointer;transition:all .15s;margin-top:4px;
 }
 .rr-ai-btn:hover{background:rgba(155,143,212,0.1);}
+.rr-ai-btn:disabled{opacity:0.5;cursor:not-allowed;}
 .rr-ai-box{
-  background:rgba(155,143,212,0.06);
-  border:1px solid rgba(155,143,212,0.2);
+  background:rgba(155,143,212,0.06);border:1px solid rgba(155,143,212,0.2);
   border-radius:8px;padding:16px 18px;
   margin-top:12px;display:none;
   font-family:'Cormorant Garamond',serif;
@@ -320,18 +308,47 @@ main{
 }
 .rr-ai-box.on{display:block;animation:fadeUp .3s ease;}
 
-/* ── MUDRA SECTION (inside raga result) ── */
-.mudra-section{
-  border-top:1px solid var(--border);
-  padding:18px 26px;
+/* ── YOUTUBE VIDEOS ── */
+.yt-section{
+  border-top:1px solid var(--border);padding:16px 26px;
 }
+.yt-title{
+  font-size:10px;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--muted);margin-bottom:12px;
+}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.yt-card{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;cursor:pointer;
+  transition:all .15s;text-decoration:none;display:block;
+}
+.yt-card:hover{border-color:var(--border2);}
+.yt-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--bg2);}
+.yt-thumb-placeholder{
+  width:100%;aspect-ratio:16/9;
+  background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;color:var(--muted);
+}
+.yt-info{padding:8px 10px;}
+.yt-vname{font-size:12px;color:var(--cream);line-height:1.4;margin-bottom:2px;}
+.yt-vchan{font-size:10px;color:var(--muted);}
+.yt-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:5px;
+  border:1px solid rgba(255,50,50,0.3);background:none;
+  color:#ff6060;font-family:'Outfit',sans-serif;font-size:11px;
+  cursor:pointer;transition:all .15s;margin-top:4px;
+}
+.yt-btn:hover{background:rgba(255,50,50,0.08);}
+
+/* ── MUDRA SECTION (inside raga result) ── */
+.mudra-section{border-top:1px solid var(--border);padding:18px 26px;}
 .mudra-sec-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:20px;font-weight:300;color:var(--cream);
-  margin-bottom:4px;
+  font-size:20px;font-weight:300;color:var(--cream);margin-bottom:4px;
 }
 .mudra-sec-sub{font-size:12px;color:var(--muted);margin-bottom:16px;font-style:italic;}
-
 .dance-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
 .dtab{
   padding:4px 14px;border-radius:20px;
@@ -343,69 +360,32 @@ main{
 
 .mudra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;}
 .mudra-card{
-  background:var(--bg3);
-  border-radius:8px;padding:14px 16px;
-  border-left:3px solid;
+  background:var(--bg3);border-radius:8px;padding:14px 16px;border-left:3px solid;
 }
-.mc-form{
-  font-size:10px;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--muted);margin-bottom:4px;
-}
-.mc-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:18px;color:var(--cream);margin-bottom:4px;
-}
+.mc-form{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:4px;}
+.mc-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:4px;}
+.mc-sanskrit{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);font-style:italic;margin-bottom:4px;}
 .mc-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px;}
+.mc-usage{font-size:11px;color:var(--gold);line-height:1.5;margin-bottom:6px;}
 .mc-benefit{
   font-size:11px;color:var(--sage);line-height:1.5;
-  padding-top:6px;border-top:1px solid rgba(122,170,138,0.15);
-  font-style:italic;
+  padding-top:6px;border-top:1px solid rgba(122,170,138,0.15);font-style:italic;
 }
-.mc-neuro{
-  font-size:11px;color:var(--lavender);line-height:1.5;
-  margin-top:4px;font-style:italic;
-}
+.mc-neuro{font-size:11px;color:var(--lavender);line-height:1.5;margin-top:4px;font-style:italic;}
 
-/* ── MIND SCIENCE TAB ── */
-.ms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px;}
-.ms-card{
+/* ── KRITI LIBRARY ── */
+.kriti-filters{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;align-items:center;
+}
+.kriti-search{
+  flex:1;min-width:200px;max-width:320px;
   background:var(--bg2);border:1px solid var(--border);
-  border-radius:10px;padding:20px 22px;
+  border-radius:6px;padding:8px 14px;
+  color:var(--cream);font-family:'Outfit',sans-serif;font-size:13px;
+  outline:none;transition:border-color .2s;
 }
-.ms-icon{font-size:22px;margin-bottom:10px;}
-.ms-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;color:var(--gold2);margin-bottom:6px;
-}
-.ms-body{font-size:13px;color:var(--muted);line-height:1.7;}
-.ms-body strong{color:var(--cream);font-weight:500;}
-
-.ms-table{width:100%;border-collapse:collapse;margin-top:12px;}
-.ms-table th{
-  text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--muted);padding:8px 12px;
-  border-bottom:1px solid var(--border);font-weight:400;
-}
-.ms-table td{
-  padding:10px 12px;font-size:13px;color:var(--cream);
-  border-bottom:1px solid var(--border);vertical-align:top;
-}
-.ms-table tr:last-child td{border-bottom:none;}
-.ms-table td:first-child{
-  font-family:'Cormorant Garamond',serif;
-  font-size:16px;color:var(--gold2);
-}
-.ms-table tr:hover td{background:var(--glow);}
-
-.ms-raga-pill{
-  display:inline-block;padding:2px 8px;
-  border-radius:4px;font-size:10px;
-  background:rgba(200,168,75,0.1);
-  border:1px solid rgba(200,168,75,0.25);
-  color:var(--gold);margin:2px 2px 0 0;
-}
-
-/* mudra tab standalone */
+.kriti-search:focus{border-color:var(--gold);}
+.kriti-search::placeholder{color:var(--muted);}
 .form-select{
   background:var(--bg2);border:1px solid var(--border);
   border-radius:6px;padding:8px 12px;
@@ -414,6 +394,87 @@ main{
 }
 .form-select:focus{border-color:var(--gold);}
 .form-select option{background:var(--bg2);}
+
+.kriti-count{font-size:12px;color:var(--muted);font-style:italic;align-self:center;}
+
+.kriti-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
+.kriti-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;padding:18px 20px;
+  transition:border-color .15s;
+}
+.kriti-card:hover{border-color:var(--border2);}
+.kriti-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.kriti-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;color:var(--gold2);line-height:1.2;
+}
+.kriti-composer-badge{
+  padding:3px 10px;border-radius:12px;
+  font-size:10px;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid;white-space:nowrap;flex-shrink:0;
+}
+.kriti-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.kriti-pill{
+  display:inline-block;padding:2px 8px;border-radius:4px;
+  font-size:10px;letter-spacing:0.06em;
+}
+.kriti-raga-pill{
+  background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);color:var(--gold);
+}
+.kriti-rasa-pill{border:1px solid;}
+.kriti-lang-pill{
+  background:rgba(122,170,138,0.08);border:1px solid rgba(122,170,138,0.2);color:var(--sage);
+}
+.kriti-tala-pill{
+  background:rgba(155,143,212,0.08);border:1px solid rgba(155,143,212,0.2);color:var(--lavender);
+}
+.kriti-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.kriti-opening{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-style:italic;
+  color:var(--cream);opacity:0.7;
+  border-left:2px solid var(--border2);
+  padding-left:10px;margin-bottom:12px;line-height:1.5;
+}
+.kriti-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.kriti-btn{
+  padding:5px 12px;border-radius:4px;
+  border:1px solid var(--border2);background:none;
+  color:var(--muted);font-family:'Outfit',sans-serif;font-size:11px;
+  cursor:pointer;transition:all .14s;
+}
+.kriti-btn:hover{border-color:var(--gold);color:var(--gold2);background:rgba(200,168,75,0.06);}
+.kriti-btn.yt{border-color:rgba(255,80,80,0.3);color:#ff8080;}
+.kriti-btn.yt:hover{background:rgba(255,80,80,0.06);}
+
+/* ── MIND SCIENCE TAB ── */
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px;}
+.ms-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;padding:20px 22px;
+}
+.ms-icon{font-size:22px;margin-bottom:10px;}
+.ms-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);margin-bottom:6px;}
+.ms-body{font-size:13px;color:var(--muted);line-height:1.7;}
+.ms-body strong{color:var(--cream);font-weight:500;}
+.ms-table{width:100%;border-collapse:collapse;margin-top:12px;}
+.ms-table th{
+  text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--border);font-weight:400;
+}
+.ms-table td{
+  padding:10px 12px;font-size:13px;color:var(--cream);
+  border-bottom:1px solid var(--border);vertical-align:top;
+}
+.ms-table tr:last-child td{border-bottom:none;}
+.ms-table td:first-child{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold2);}
+.ms-table tr:hover td{background:var(--glow);}
+.ms-raga-pill{
+  display:inline-block;padding:2px 8px;border-radius:4px;
+  font-size:10px;background:rgba(200,168,75,0.1);
+  border:1px solid rgba(200,168,75,0.25);color:var(--gold);margin:2px 2px 0 0;
+}
 
 /* loader */
 .ai-loading{
@@ -431,11 +492,12 @@ main{
 
 /* responsive */
 @media(max-width:860px){
-  header,main,.tabs-bar{padding-left:20px;padding-right:20px;}
+  header,main,.tabs-bar,.api-bar{padding-left:20px;padding-right:20px;}
   .creator-layout{grid-template-columns:1fr;}
   .swara-grid{grid-template-columns:repeat(6,1fr);}
   .rr-meta{grid-template-columns:1fr 1fr;}
   .rr-scales{grid-template-columns:1fr;}
+  .api-bar{flex-wrap:wrap;}
 }
 @media(max-width:540px){
   .swara-grid{grid-template-columns:repeat(4,1fr);}
@@ -458,9 +520,21 @@ main{
   </div>
 </header>
 
+<!-- API KEY BAR -->
+<div class="api-bar">
+  <label>Anthropic API key</label>
+  <input class="api-input" type="password" id="apiKeyInput" placeholder="sk-ant-…" oninput="saveApiKey(this.value)">
+  <span class="api-status" id="apiStatus">Enter key to enable AI analysis</span>
+  <span style="width:24px"></span>
+  <label style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;">YouTube API key</label>
+  <input class="yt-input" type="password" id="ytKeyInput" placeholder="AIza…" oninput="saveYtKey(this.value)">
+  <span class="api-status" id="ytStatus">Optional — enables live video search</span>
+</div>
+
 <div class="tabs-bar">
   <button class="tab on" onclick="setTab('finder')">Rāga Finder</button>
   <button class="tab"    onclick="setTab('mudra')">Mudrā Bridge</button>
+  <button class="tab"    onclick="setTab('kriti')">Kriti Library</button>
   <button class="tab"    onclick="setTab('mind')">Mind Science</button>
 </div>
 
@@ -503,7 +577,6 @@ main{
 
       <!-- RAGA RESULT -->
       <div class="raga-result" id="ragaResult">
-
         <div class="rr-hero">
           <div class="rr-top">
             <div>
@@ -544,6 +617,12 @@ main{
           <div class="rr-ai-box" id="aiBox"></div>
         </div>
 
+        <!-- YOUTUBE VIDEOS -->
+        <div class="yt-section" id="ytSection" style="display:none">
+          <div class="yt-title">Performance Videos</div>
+          <div id="ytGrid" class="yt-grid"></div>
+        </div>
+
         <!-- MUDRA SECTION INSIDE RESULT -->
         <div class="mudra-section" id="mudraSec">
           <div class="mudra-sec-title" id="mudraSTitle">Mudrās for this Rasa</div>
@@ -551,8 +630,7 @@ main{
           <div class="dance-tabs" id="danceTabs"></div>
           <div class="mudra-grid" id="mudraCards"></div>
         </div>
-
-      </div><!-- /raga-result -->
+      </div>
     </div>
 
     <!-- SIDEBAR -->
@@ -565,7 +643,6 @@ main{
           </div>
         </div>
       </div>
-
       <div class="sidebar-card">
         <div class="sc-title">Famous rāgas — quick load</div>
         <div class="q-list" id="quickList"></div>
@@ -580,7 +657,7 @@ main{
 ══════════════════════════════════════ -->
 <div id="pane-mudra" class="pane">
   <h1 class="pg-title">Mudrā Bridge</h1>
-  <p class="pg-sub">Choose a rasa — see its mudrās across all classical dance traditions</p>
+  <p class="pg-sub">Choose a rasa — see its mudrās across all eight classical dance traditions</p>
 
   <div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap">
     <select class="form-select" id="rasaSelect" onchange="renderMudraBridge()">
@@ -593,9 +670,7 @@ main{
       <option value="Raudra">Raudra — Fury &amp; Intensity</option>
       <option value="Bhayanaka">Bhayanaka — Fear &amp; Awe</option>
     </select>
-    <div style="font-size:12px;color:var(--muted);font-style:italic">
-      Showing Bharatanatyam &amp; Kathakali · more dance forms coming in V2
-    </div>
+    <div style="font-size:12px;color:var(--muted);font-style:italic" id="bridgeFormCount"></div>
   </div>
 
   <div class="mudra-grid" id="bridgeGrid"></div>
@@ -603,268 +678,601 @@ main{
 
 
 <!-- ══════════════════════════════════════
-     TAB 3 — MIND SCIENCE
+     TAB 3 — KRITI LIBRARY
+══════════════════════════════════════ -->
+<div id="pane-kriti" class="pane">
+  <h1 class="pg-title">Kriti Library</h1>
+  <p class="pg-sub">Thyagaraja · Dikshitar · Shyama Shastri · Annamacharya — filter by rāga, rasa, or composer</p>
+
+  <div class="kriti-filters">
+    <input class="kriti-search" type="text" id="kritiSearch" placeholder="Search by name, raga, or first line…" oninput="renderKriti()">
+    <select class="form-select" id="kritiComposer" onchange="renderKriti()">
+      <option value="">All composers</option>
+      <option value="Thyagaraja">Thyagaraja</option>
+      <option value="Dikshitar">Muthuswami Dikshitar</option>
+      <option value="Shyama Shastri">Shyama Shastri</option>
+      <option value="Annamacharya">Annamacharya</option>
+    </select>
+    <select class="form-select" id="kritiRasa" onchange="renderKriti()">
+      <option value="">All rasas</option>
+      <option value="Shringara">Shringara</option>
+      <option value="Karuna">Karuna</option>
+      <option value="Veera">Veera</option>
+      <option value="Shanta">Shanta</option>
+      <option value="Adbhuta">Adbhuta</option>
+      <option value="Hasya">Hasya</option>
+      <option value="Bhakti">Bhakti</option>
+    </select>
+    <select class="form-select" id="kritiRaga" onchange="renderKriti()">
+      <option value="">All rāgas</option>
+    </select>
+    <span class="kriti-count" id="kritiCount"></span>
+  </div>
+
+  <div class="kriti-grid" id="kritiGrid"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 4 — MIND SCIENCE
 ══════════════════════════════════════ -->
 <div id="pane-mind" class="pane">
   <h1 class="pg-title">Mind Science</h1>
   <p class="pg-sub">The neurological and psychological science behind rāga and mudrā</p>
 
   <div class="ms-grid">
-
     <div class="ms-card">
       <div class="ms-icon">🧠</div>
       <div class="ms-title">Mirror Neurons &amp; Abhinaya</div>
       <div class="ms-body">
-        When an audience watches a dancer perform Abhinaya (expressive gesture), <strong>mirror neurons</strong> in the premotor cortex fire as if the observer themselves were executing the mudra. This creates a direct neurological bridge between performer and audience — the emotional state literally transfers. Research at IIT Bombay (2019) confirmed this through fMRI studies of Bharatanatyam audiences.
+        When an audience watches a dancer perform Abhinaya, <strong>mirror neurons</strong> in the premotor cortex fire as if the observer themselves were executing the mudra. Research at IIT Bombay (2019) confirmed this through fMRI studies of Bharatanatyam audiences — the emotional state literally transfers neurologically.
       </div>
     </div>
-
     <div class="ms-card">
       <div class="ms-icon">🎵</div>
       <div class="ms-title">Raga Chikitsa — Music Therapy</div>
       <div class="ms-body">
-        A 2019 study in <em>Scientific Reports</em> found that listening to <strong>Raga Darbari Kanada reduced cortisol by 15%</strong> over 30 minutes. Raga Bhairavi activates the parasympathetic nervous system, reducing heart rate and blood pressure. The specific interval relationships (frequency ratios) in each raga create measurable neurochemical responses — this is what the 2,000-year-old system of Raga Chikitsa encoded intuitively.
+        A 2019 study in <em>Scientific Reports</em> found that listening to <strong>Raga Darbari Kanada reduced cortisol by 15%</strong> over 30 minutes. Raga Bhairavi activates the parasympathetic nervous system, reducing heart rate and blood pressure. The specific interval relationships in each raga create measurable neurochemical responses.
       </div>
     </div>
-
     <div class="ms-card">
       <div class="ms-icon">⚡</div>
       <div class="ms-title">Mudra &amp; the Peripheral Nervous System</div>
       <div class="ms-body">
-        Each mudra activates specific nerve branches in the hand. The <strong>Gyan mudra</strong> (index-to-thumb) stimulates the median nerve, activating frontal lobe circuits associated with focus and cognition. EEG studies show measurable <strong>alpha and theta brainwave increases</strong> within 10 minutes of sustained practice. The Hakini mudra (all fingertips touching) creates bilateral hemispheric synchronisation via the corpus callosum.
+        Each mudra activates specific nerve branches in the hand. The <strong>Gyan mudra</strong> stimulates the median nerve, activating frontal lobe circuits. EEG studies show measurable <strong>alpha and theta brainwave increases</strong> within 10 minutes of sustained practice. The Hakini mudra creates bilateral hemispheric synchronisation.
       </div>
     </div>
-
     <div class="ms-card">
       <div class="ms-icon">🫀</div>
       <div class="ms-title">Vagal Activation &amp; Bilateral Integration</div>
       <div class="ms-body">
-        Live Carnatic performance creates a unique form of <strong>bilateral neural integration</strong>: the raga enters through the auditory cortex (temporal lobe), the mudra is processed by the motor and premotor cortex, and together they activate the <strong>vagus nerve</strong> — the primary parasympathetic pathway. This is why Carnatic concerts produce a qualitatively different calm than recorded music alone. The combination is the mechanism.
+        Live Carnatic performance creates <strong>bilateral neural integration</strong>: raga enters through the auditory cortex, mudra is processed by motor cortex, and together they activate the <strong>vagus nerve</strong>. This is why Carnatic concerts produce a qualitatively different calm than recorded music alone.
       </div>
     </div>
-
     <div class="ms-card">
       <div class="ms-icon">🌊</div>
       <div class="ms-title">Brainwave Entrainment by Raga</div>
       <div class="ms-body">
-        Brain imaging studies in <em>Nature Neuroscience</em> (2020) showed that ragas activate the amygdala and prefrontal cortex simultaneously — a rare co-activation associated with <strong>aesthetic peak experiences</strong>. Raga Chandrakauns measurably increases theta waves (4–8 Hz), the brainwave band associated with deep meditation and creative flow. The Shankarabharanam scale activates identical neural circuits to the Western major scale — confirming universal emotional encoding in music.
+        Brain imaging studies in <em>Nature Neuroscience</em> (2020) showed that ragas activate the amygdala and prefrontal cortex simultaneously — a rare co-activation associated with <strong>aesthetic peak experiences</strong>. Raga Chandrakauns measurably increases theta waves (4–8 Hz), the brainwave band associated with deep meditation and creative flow.
       </div>
     </div>
-
     <div class="ms-card">
       <div class="ms-icon">🖐</div>
       <div class="ms-title">Hasta Mudra &amp; Acupressure Meridians</div>
       <div class="ms-body">
-        The fingertips contain the highest density of <strong>Meissner's corpuscles</strong> (touch receptors) in the body. Each finger corresponds to an Ayurvedic element and a neuro-endocrine pathway: thumb (Fire/Agni) → metabolism, index (Air/Vayu) → nervous system, middle (Space/Akasha) → speech and hearing, ring (Earth/Prithvi) → stability, little (Water/Jala) → reproductive and lymphatic systems. Mudras work by creating sustained pressure at these high-receptor-density zones.
+        The fingertips contain the highest density of <strong>Meissner's corpuscles</strong> in the body. Each finger corresponds to an Ayurvedic element: thumb (Fire/Agni) → metabolism, index (Air/Vayu) → nervous system, middle (Space/Akasha) → speech, ring (Earth/Prithvi) → stability, little (Water/Jala) → lymphatic systems.
       </div>
     </div>
-
   </div>
 
-  <!-- Raga-Chikitsa prescription table -->
   <div class="glabel">Rāga Chikitsa — prescribed ragas by condition</div>
   <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden">
     <table class="ms-table">
-      <thead>
-        <tr>
-          <th>Rāga</th>
-          <th>Condition addressed</th>
-          <th>Mechanism</th>
-          <th>Optimal time</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Rāga</th><th>Condition addressed</th><th>Mechanism</th><th>Optimal time</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Bhairavi</td>
-          <td>Anxiety, depression, grief</td>
-          <td>Komal notes activate parasympathetic; lowers cortisol and heart rate</td>
-          <td>Early morning (5–8 AM)</td>
-        </tr>
-        <tr>
-          <td>Darbari Kanada</td>
-          <td>Chronic stress, insomnia</td>
-          <td>Slow meend (glides) on Ga and Ni entrain delta brainwaves</td>
-          <td>Late night (10 PM–12 AM)</td>
-        </tr>
-        <tr>
-          <td>Chandrakauns</td>
-          <td>Meditation, deep focus</td>
-          <td>Pentatonic structure reduces cognitive load; induces theta waves</td>
-          <td>Midnight (11 PM–2 AM)</td>
-        </tr>
-        <tr>
-          <td>Todi</td>
-          <td>Sadness, creative block</td>
-          <td>Flat Ri and Ga create cathartic emotional release; dopamine reset</td>
-          <td>Morning (7–10 AM)</td>
-        </tr>
-        <tr>
-          <td>Yaman / Kalyani</td>
-          <td>Low energy, lack of motivation</td>
-          <td>Tivra Ma creates cognitive brightness; activates reward pathways</td>
-          <td>Evening (6–9 PM)</td>
-        </tr>
-        <tr>
-          <td>Bairagi</td>
-          <td>Grief, bereavement</td>
-          <td>Austere two-note foundation allows emotional processing without overwhelm</td>
-          <td>Dawn (4–6 AM)</td>
-        </tr>
-        <tr>
-          <td>Shankarabharanam</td>
-          <td>Confidence, vitality</td>
-          <td>Maps to Western major scale; activates approach-motivation circuits</td>
-          <td>Morning (8–11 AM)</td>
-        </tr>
-        <tr>
-          <td>Hindolam</td>
-          <td>Melancholy, longing</td>
-          <td>Pentatonic with all komal notes — pure Karuna; oxytocin pathway</td>
-          <td>Pre-dawn (3–5 AM)</td>
-        </tr>
+        <tr><td>Bhairavi</td><td>Anxiety, depression, grief</td><td>Komal notes activate parasympathetic; lowers cortisol and heart rate</td><td>Early morning (5–8 AM)</td></tr>
+        <tr><td>Darbari Kanada</td><td>Chronic stress, insomnia</td><td>Slow meend on Ga and Ni entrain delta brainwaves</td><td>Late night (10 PM–12 AM)</td></tr>
+        <tr><td>Chandrakauns</td><td>Meditation, deep focus</td><td>Pentatonic structure reduces cognitive load; induces theta waves</td><td>Midnight (11 PM–2 AM)</td></tr>
+        <tr><td>Todi</td><td>Sadness, creative block</td><td>Flat Ri and Ga create cathartic emotional release; dopamine reset</td><td>Morning (7–10 AM)</td></tr>
+        <tr><td>Yaman / Kalyani</td><td>Low energy, lack of motivation</td><td>Tivra Ma creates cognitive brightness; activates reward pathways</td><td>Evening (6–9 PM)</td></tr>
+        <tr><td>Bairagi</td><td>Grief, bereavement</td><td>Austere two-note foundation allows emotional processing without overwhelm</td><td>Dawn (4–6 AM)</td></tr>
+        <tr><td>Shankarabharanam</td><td>Confidence, vitality</td><td>Maps to Western major scale; activates approach-motivation circuits</td><td>Morning (8–11 AM)</td></tr>
+        <tr><td>Hindolam</td><td>Melancholy, longing</td><td>Pentatonic with all komal notes — pure Karuna; oxytocin pathway</td><td>Pre-dawn (3–5 AM)</td></tr>
       </tbody>
     </table>
   </div>
-
-</div><!-- /pane-mind -->
+</div>
 
 </main>
 
 <script>
-/* ═══════════════════════════════════════
-   DATA
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   CORE DATA
+═══════════════════════════════════════════════════════════════ */
 
 const SWARAS = [
-  {id:0, name:"Sa",  var:"Shadja",            type:"achala", abbr:"S"},
-  {id:1, name:"Ri₁", var:"Shuddha Ri",        type:"komal",  abbr:"R₁"},
-  {id:2, name:"Ri₂", var:"Chatushruthi Ri",   type:"komal",  abbr:"R₂"},
-  {id:3, name:"Ri₃", var:"Shatshruti Ri",     type:"komal",  abbr:"R₃"},
-  {id:4, name:"Ga₃", var:"Antara Ga",         type:"tivra",  abbr:"G₃"},
-  {id:5, name:"Ma₁", var:"Shuddha Ma",        type:"komal",  abbr:"M₁"},
-  {id:6, name:"Ma₂", var:"Prati Ma",          type:"tivra",  abbr:"M₂"},
-  {id:7, name:"Pa",  var:"Panchama",          type:"achala", abbr:"P"},
-  {id:8, name:"Da₁", var:"Shuddha Da",        type:"komal",  abbr:"D₁"},
-  {id:9, name:"Da₂", var:"Chatushruthi Da",   type:"komal",  abbr:"D₂"},
-  {id:10,name:"Da₃", var:"Shatshruti Da",     type:"komal",  abbr:"D₃"},
-  {id:11,name:"Ni₃", var:"Kakali Ni",         type:"tivra",  abbr:"N₃"},
+  {id:0, name:"Sa",   var:"Shadja",           type:"achala", abbr:"S"},
+  {id:1, name:"Ri₁",  var:"Shuddha Ri",       type:"komal",  abbr:"R₁"},
+  {id:2, name:"Ri₂",  var:"Chatushruthi Ri",  type:"komal",  abbr:"R₂"},
+  {id:3, name:"Ri₃",  var:"Shatshruti Ri",    type:"komal",  abbr:"R₃"},
+  {id:4, name:"Ga₃",  var:"Antara Ga",        type:"tivra",  abbr:"G₃"},
+  {id:5, name:"Ma₁",  var:"Shuddha Ma",       type:"komal",  abbr:"M₁"},
+  {id:6, name:"Ma₂",  var:"Prati Ma",         type:"tivra",  abbr:"M₂"},
+  {id:7, name:"Pa",   var:"Panchama",         type:"achala", abbr:"P"},
+  {id:8, name:"Da₁",  var:"Shuddha Da",       type:"komal",  abbr:"D₁"},
+  {id:9, name:"Da₂",  var:"Chatushruthi Da",  type:"komal",  abbr:"D₂"},
+  {id:10,name:"Da₃",  var:"Shatshruti Da",    type:"komal",  abbr:"D₃"},
+  {id:11,name:"Ni₃",  var:"Kakali Ni",        type:"tivra",  abbr:"N₃"},
 ];
 
 const RAGAS = [
-  {name:"Shankarabharanam", mela:29, aroha:[0,2,4,5,7,9,11], avaroha:[11,9,7,5,4,2,0], rasa:"Shanta",    time:"Morning",   style:"Carnatic/Hindustani", also:"Bilaval",       comp:["Thyagaraja","Dikshitar","Shyama Shastri"]},
-  {name:"Kalyani",          mela:65, aroha:[0,2,4,6,7,9,11], avaroha:[11,9,7,6,4,2,0], rasa:"Shringara", time:"Evening",   style:"Carnatic/Hindustani", also:"Yaman",         comp:["Thyagaraja","Dikshitar"]},
-  {name:"Kharaharapriya",   mela:22, aroha:[0,2,3,5,7,9,10], avaroha:[10,9,7,5,3,2,0], rasa:"Karuna",    time:"Afternoon", style:"Carnatic",            also:"Kafi",          comp:["Thyagaraja","Dikshitar"]},
-  {name:"Harikambhoji",     mela:28, aroha:[0,2,4,5,7,9,10], avaroha:[10,9,7,5,4,2,0], rasa:"Shringara", time:"Evening",   style:"Carnatic",            also:"Khamaj",        comp:["Thyagaraja"]},
-  {name:"Natabhairavi",     mela:20, aroha:[0,2,3,5,7,8,10], avaroha:[10,8,7,5,3,2,0], rasa:"Karuna",    time:"Night",     style:"Carnatic",            also:"Asavari",       comp:["Thyagaraja","Shyama Shastri"]},
-  {name:"Todi",             mela:45, aroha:[0,1,3,6,7,8,11], avaroha:[11,8,7,6,3,1,0], rasa:"Karuna",    time:"Morning",   style:"Carnatic/Hindustani", also:"Todi",          comp:["Thyagaraja","Dikshitar","Shyama Shastri"]},
-  {name:"Mayamalavagowla",  mela:15, aroha:[0,1,4,5,7,8,11], avaroha:[11,8,7,5,4,1,0], rasa:"Karuna",    time:"Dawn",      style:"Carnatic/Hindustani", also:"Bhairav",       comp:["Thyagaraja","Dikshitar"]},
-  {name:"Hamsadhwani",      mela:null,aroha:[0,2,4,7,11],    avaroha:[11,7,4,2,0],      rasa:"Adbhuta",   time:"Evening",   style:"Carnatic",            also:null,            comp:["Thyagaraja"]},
-  {name:"Mohanam",          mela:null,aroha:[0,2,4,7,9],     avaroha:[9,7,4,2,0],       rasa:"Shringara", time:"Evening",   style:"Carnatic/Hindustani", also:"Bhupali",       comp:["Thyagaraja"]},
-  {name:"Hindolam",         mela:null,aroha:[0,3,5,8,10],    avaroha:[10,8,5,3,0],      rasa:"Karuna",    time:"Dawn",      style:"Carnatic/Hindustani", also:"Malkauns",      comp:["Many"]},
-  {name:"Bhairavi",         mela:20,  aroha:[0,2,3,5,7,8,10],avaroha:[10,8,7,5,3,2,0],  rasa:"Karuna",    time:"Morning",   style:"Hindustani/Carnatic", also:"Natabhairavi",  comp:["Many"]},
-  {name:"Charukesi",        mela:26,  aroha:[0,2,4,5,7,8,10],avaroha:[10,8,7,5,4,2,0],  rasa:"Karuna",    time:"Night",     style:"Carnatic",            also:null,            comp:["Dikshitar"]},
-  {name:"Bilahari",         mela:null,aroha:[0,2,4,7,9],     avaroha:[11,9,7,5,4,2,0],  rasa:"Hasya",     time:"Morning",   style:"Carnatic",            also:null,            comp:["Thyagaraja"]},
-  {name:"Amritavarshini",   mela:null,aroha:[0,2,6,7,11],    avaroha:[11,7,6,2,0],      rasa:"Adbhuta",   time:"Monsoon",   style:"Carnatic",            also:null,            comp:["Dikshitar"]},
-  {name:"Kedaram",          mela:null,aroha:[0,2,5,7,11],    avaroha:[11,9,7,5,2,0],    rasa:"Veera",     time:"Evening",   style:"Carnatic/Hindustani", also:null,            comp:["Thyagaraja"]},
-  {name:"Nattai",           mela:null,aroha:[0,4,5,7,9,11],  avaroha:[11,9,7,5,4,0],    rasa:"Veera",     time:"Morning",   style:"Carnatic",            also:null,            comp:["Thyagaraja"]},
-  {name:"Revati",           mela:null,aroha:[0,1,5,7,10],    avaroha:[10,7,5,1,0],      rasa:"Karuna",    time:"Night",     style:"Carnatic",            also:null,            comp:["Dikshitar"]},
+  {name:"Shankarabharanam",mela:29,  aroha:[0,2,4,5,7,9,11], avaroha:[11,9,7,5,4,2,0], rasa:"Shanta",    time:"Morning",   style:"Carnatic/Hindustani",also:"Bilaval",      comp:["Thyagaraja","Dikshitar","Shyama Shastri"]},
+  {name:"Kalyani",         mela:65,  aroha:[0,2,4,6,7,9,11], avaroha:[11,9,7,6,4,2,0], rasa:"Shringara", time:"Evening",   style:"Carnatic/Hindustani",also:"Yaman",        comp:["Thyagaraja","Dikshitar"]},
+  {name:"Kharaharapriya",  mela:22,  aroha:[0,2,3,5,7,9,10], avaroha:[10,9,7,5,3,2,0], rasa:"Karuna",    time:"Afternoon", style:"Carnatic",           also:"Kafi",         comp:["Thyagaraja","Dikshitar"]},
+  {name:"Harikambhoji",    mela:28,  aroha:[0,2,4,5,7,9,10], avaroha:[10,9,7,5,4,2,0], rasa:"Shringara", time:"Evening",   style:"Carnatic",           also:"Khamaj",       comp:["Thyagaraja"]},
+  {name:"Natabhairavi",    mela:20,  aroha:[0,2,3,5,7,8,10], avaroha:[10,8,7,5,3,2,0], rasa:"Karuna",    time:"Night",     style:"Carnatic",           also:"Asavari",      comp:["Thyagaraja","Shyama Shastri"]},
+  {name:"Todi",            mela:45,  aroha:[0,1,3,6,7,8,11], avaroha:[11,8,7,6,3,1,0], rasa:"Karuna",    time:"Morning",   style:"Carnatic/Hindustani",also:"Todi",         comp:["Thyagaraja","Dikshitar","Shyama Shastri"]},
+  {name:"Mayamalavagowla", mela:15,  aroha:[0,1,4,5,7,8,11], avaroha:[11,8,7,5,4,1,0], rasa:"Karuna",    time:"Dawn",      style:"Carnatic/Hindustani",also:"Bhairav",      comp:["Thyagaraja","Dikshitar"]},
+  {name:"Hamsadhwani",     mela:null,aroha:[0,2,4,7,11],     avaroha:[11,7,4,2,0],      rasa:"Adbhuta",   time:"Evening",   style:"Carnatic",           also:null,           comp:["Thyagaraja"]},
+  {name:"Mohanam",         mela:null,aroha:[0,2,4,7,9],      avaroha:[9,7,4,2,0],       rasa:"Shringara", time:"Evening",   style:"Carnatic/Hindustani",also:"Bhupali",      comp:["Thyagaraja"]},
+  {name:"Hindolam",        mela:null,aroha:[0,3,5,8,10],     avaroha:[10,8,5,3,0],      rasa:"Karuna",    time:"Dawn",      style:"Carnatic/Hindustani",also:"Malkauns",     comp:["Many"]},
+  {name:"Bhairavi",        mela:20,  aroha:[0,2,3,5,7,8,10], avaroha:[10,8,7,5,3,2,0],  rasa:"Karuna",    time:"Morning",   style:"Hindustani/Carnatic",also:"Natabhairavi", comp:["Many"]},
+  {name:"Charukesi",       mela:26,  aroha:[0,2,4,5,7,8,10], avaroha:[10,8,7,5,4,2,0],  rasa:"Karuna",    time:"Night",     style:"Carnatic",           also:null,           comp:["Dikshitar"]},
+  {name:"Bilahari",        mela:null,aroha:[0,2,4,7,9],      avaroha:[11,9,7,5,4,2,0],  rasa:"Hasya",     time:"Morning",   style:"Carnatic",           also:null,           comp:["Thyagaraja"]},
+  {name:"Amritavarshini",  mela:null,aroha:[0,2,6,7,11],     avaroha:[11,7,6,2,0],      rasa:"Adbhuta",   time:"Monsoon",   style:"Carnatic",           also:null,           comp:["Dikshitar"]},
+  {name:"Kedaram",         mela:null,aroha:[0,2,5,7,11],     avaroha:[11,9,7,5,2,0],    rasa:"Veera",     time:"Evening",   style:"Carnatic/Hindustani",also:null,           comp:["Thyagaraja"]},
+  {name:"Nattai",          mela:null,aroha:[0,4,5,7,9,11],   avaroha:[11,9,7,5,4,0],    rasa:"Veera",     time:"Morning",   style:"Carnatic",           also:null,           comp:["Thyagaraja"]},
+  {name:"Revati",          mela:null,aroha:[0,1,5,7,10],     avaroha:[10,7,5,1,0],      rasa:"Karuna",    time:"Night",     style:"Carnatic",           also:null,           comp:["Dikshitar"]},
 ];
 
 const RASA_COLORS = {
-  Shringara:"#d4547a", Karuna:"#5b9bd5", Veera:"#d4742a",
-  Shanta:"#7aaa8a",    Adbhuta:"#9b8fd4", Hasya:"#d4b84a",
-  Raudra:"#d44a4a",    Bhayanaka:"#7a6ad4",
+  Shringara:"#d4547a", Karuna:"#5b9bd5",    Veera:"#d4742a",
+  Shanta:"#7aaa8a",    Adbhuta:"#9b8fd4",   Hasya:"#d4b84a",
+  Raudra:"#d44a4a",    Bhayanaka:"#7a6ad4", Bhakti:"#c8a84b",
 };
 
-/* ── MUDRA DATA (Bharatanatyam + Kathakali, all 8 rasas) ── */
+/* ═══════════════════════════════════════════════════════════════
+   COMPLETE MUDRA DATA — All 8 forms + Yoga, All 8 rasas
+═══════════════════════════════════════════════════════════════ */
 const MUDRAS = {
+
+  /* ── BHARATANATYAM ── */
   Bharatanatyam:{
-    label:"Bharatanatyam",origin:"Tamil Nadu — Natya Shastra & Abhinaya Darpana",
-    color:"#d4547a",
+    label:"Bharatanatyam", origin:"Tamil Nadu — Natya Shastra & Abhinaya Darpana", color:"#d4547a",
     Shringara:[
-      {name:"Katakamukha",  desc:"Ring formed by index & thumb; middle fingers curved. Signals beauty, asking, garland.",benefit:"Activates the aesthetic pleasure pathway — ventral striatum dopamine release when executed precisely.",neuro:"Median nerve stimulation; lateral prefrontal cortex lights up for emotional openness and receptivity."},
-      {name:"Alapadma",     desc:"All five fingers spread fully like a blooming lotus. Represents beauty and abundance.",benefit:"Full hand spread floods mirror neurons in observers — induces shared sense of beauty and openness.",neuro:"Maximum peripheral sensory activation; social bonding circuits engaged via skin temperature cues from open palm."},
-      {name:"Hamsasya",     desc:"Index & thumb pinch; others curved like a swan's beak. Used for flowers, delicate touch.",benefit:"Trains fine motor precision, enhancing focus and delicate coordination.",neuro:"Thumb-tip to index contact — highest tactile receptor density, activates somatosensory cortex precision map."},
+      {name:"Katakamukha",  sanskrit:"कटकामुख", desc:"Ring formed by index & thumb; middle fingers curved. Signals beauty, asking, garland.",usage:"Placing garlands, beckoning the beloved, depicting elegance",benefit:"Activates the aesthetic pleasure pathway — ventral striatum dopamine release.",neuro:"Median nerve stimulation; lateral prefrontal cortex opens for emotional receptivity."},
+      {name:"Alapadma",     sanskrit:"आलपद्म",  desc:"All five fingers spread fully like a blooming lotus. Represents beauty and abundance.",usage:"Depicting the beloved's face, full-moon, expansive joy",benefit:"Full hand spread floods mirror neurons — induces shared sense of beauty.",neuro:"Maximum peripheral sensory activation; social bonding circuits via open palm."},
+      {name:"Hamsasya",     sanskrit:"हंसास्य",  desc:"Index & thumb pinch; others curved like a swan's beak. Delicate, precise touch.",usage:"Offering flowers, delicate touch of love, applying sandal paste",benefit:"Trains fine motor precision, enhancing focus and delicate coordination.",neuro:"Thumb-tip to index contact — highest tactile receptor density, activates somatosensory cortex."},
     ],
     Karuna:[
-      {name:"Ardhachandra", desc:"Thumb extended, all fingers together like a half-moon. Sky, ocean, sorrow, vastness.",benefit:"Extension posture reduces cortisol and signals openness to emotional processing.",neuro:"Open-thumb extension — vagal nerve pathway, activates oxytocin-mediated compassion states."},
-      {name:"Anjali",       desc:"Both palms pressed together at the heart. Universal prayer and surrender.",benefit:"Lowers heart rate, activates parasympathetic rest-digest state within 60 seconds.",neuro:"Bilateral symmetry gesture triggers chest baroreceptors — parasympathetic (ventral vagal) calming circuit."},
-      {name:"Shikhara",     desc:"Fist with thumb raised straight up. The beloved, a peak, longing, calling.",benefit:"Wrist flexor tension release engages vagal activation; productive for releasing suppressed grief.",neuro:"Isometric tension then release — activates insular cortex body-awareness circuits for emotional processing."},
+      {name:"Ardhachandra", sanskrit:"अर्धचन्द्र",desc:"Thumb extended, fingers together — half-moon. Sky, ocean, sorrow, vastness.",usage:"Depicting the sky, consoling gesture, vastness of grief",benefit:"Extension posture reduces cortisol and signals openness to emotional processing.",neuro:"Open-thumb extension activates vagal nerve pathway and oxytocin-mediated compassion."},
+      {name:"Anjali",       sanskrit:"अञ्जलि",  desc:"Both palms pressed together at the heart. Universal prayer and surrender.",usage:"Prayer, surrender, reverence, expressing devotion",benefit:"Lowers heart rate, activates parasympathetic rest-digest state within 60 seconds.",neuro:"Bilateral symmetry triggers baroreceptors — parasympathetic ventral vagal calming circuit."},
+      {name:"Shikhara",     sanskrit:"शिखर",    desc:"Fist with thumb raised. The beloved, a peak, longing, calling.",usage:"Depicting the deity, calling out, expressing longing",benefit:"Wrist flexor tension release engages vagal activation for releasing suppressed grief.",neuro:"Isometric tension then release — activates insular cortex for emotional processing."},
     ],
     Veera:[
-      {name:"Mushti",       desc:"Full closed fist. Weapon, fighting, determination, strength.",benefit:"Gripping posture measurably raises testosterone and activates the premotor 'force' circuit.",neuro:"Power-grip cortical map overlaps with premotor planning of forceful action; sympathetic activation."},
-      {name:"Simhamukha",   desc:"Three middle fingers up, thumb and little extended — lion's face.",benefit:"Complex hand shape challenges working memory, building cognitive resilience alongside physical power.",neuro:"Unusual abduction pattern — engages supplementary motor area and vigilance circuitry."},
+      {name:"Mushti",       sanskrit:"मुष्टि",   desc:"Full closed fist. Weapon, fighting, determination, strength.",usage:"Depicting weapons, battle readiness, heroic determination",benefit:"Gripping posture measurably raises testosterone and activates premotor force circuit.",neuro:"Power-grip cortical map overlaps with premotor planning of forceful action; sympathetic activation."},
+      {name:"Simhamukha",   sanskrit:"सिंहमुख",  desc:"Three middle fingers up, thumb and little extended — lion's face.",usage:"Depicting the lion, divine ferocity, heroic proclamation",benefit:"Complex hand shape challenges working memory, building cognitive resilience alongside power.",neuro:"Unusual abduction pattern — engages supplementary motor area and vigilance circuitry."},
     ],
     Shanta:[
-      {name:"Pataka",       desc:"All fingers straight, joined, thumb bent. Blessing, peace, the most foundational gesture.",benefit:"Open-hand posture suppresses amygdala threat-response — induces measurable calm within 30 seconds.",neuro:"Palm-open safety signal; ventral prefrontal cortex suppresses freeze response; lowest cortisol posture."},
-      {name:"Kapota",       desc:"Both hands in Pataka, thumb-to-thumb, fingers forward. A dove. Salutation.",benefit:"Bilateral symmetry + steady hold creates mutual calm — ideal for beginning meditation.",neuro:"Symmetric double gesture creates bilateral motor synchrony — widest vagal tone induction."},
+      {name:"Pataka",       sanskrit:"पताक",    desc:"All fingers straight, joined, thumb bent. Blessing, peace, foundation gesture.",usage:"Beginning and ending sequences, conveying peace, depicting rivers",benefit:"Open-hand posture suppresses amygdala threat-response — measurable calm within 30 seconds.",neuro:"Palm-open safety signal; ventral prefrontal cortex suppresses freeze response."},
+      {name:"Kapota",       sanskrit:"कपोत",    desc:"Both hands in Pataka, thumb-to-thumb — a dove. Salutation.",usage:"Greeting the deity, sacred salutation, depicting doves",benefit:"Bilateral symmetry + steady hold creates mutual calm — ideal for meditation.",neuro:"Symmetric double gesture creates bilateral motor synchrony — wide vagal tone induction."},
     ],
     Adbhuta:[
-      {name:"Padmakosha",   desc:"All fingers spread and curved like a lotus bud opening. Wonder, cosmic offering.",benefit:"Intermediate open-hand position triggers the awe response — increases prosocial emotion.",neuro:"Anterior cingulate cortex activation; 'awe' pathway involving vast-scale perception circuits."},
+      {name:"Padmakosha",   sanskrit:"पद्मकोश",  desc:"All fingers spread and curved like a lotus bud — wonder, cosmic offering.",usage:"Depicting wonder, the rising sun, cosmic awe",benefit:"Intermediate open-hand triggers the awe response — increases prosocial emotion.",neuro:"Anterior cingulate cortex activation; awe pathway involving vast-scale perception circuits."},
     ],
     Hasya:[
-      {name:"Bhramara",     desc:"Index curves over thumb; middle bent — a bee. Lightness, play, flight.",benefit:"Complex opposition movement activates cerebellum delight circuits — literally produces kinesthetic joy.",neuro:"Cerebellum timing circuits; fine-motor dopamine release in putamen (basal ganglia) reward loop."},
+      {name:"Bhramara",     sanskrit:"भ्रमर",   desc:"Index curves over thumb; middle bent — a bee. Lightness, play, flight.",usage:"Depicting bees, playful scenes, Krishna's pranks",benefit:"Complex opposition movement activates cerebellum delight circuits — produces kinesthetic joy.",neuro:"Cerebellum timing circuits; fine-motor dopamine release in putamen reward loop."},
     ],
     Raudra:[
-      {name:"Tripataka",    desc:"All fingers straight except ring finger bent. Fire, separation, divine authority.",benefit:"Ring-finger isolation builds independent finger control, channeling intense focus.",neuro:"Unusual motor cortex configuration; ring-finger independence signals heightened arousal and authority."},
+      {name:"Tripataka",    sanskrit:"त्रिपताक",  desc:"All fingers straight except ring finger bent. Fire, separation, divine authority.",usage:"Depicting fire, divine fury, authority of deities",benefit:"Ring-finger isolation builds independent finger control, channeling intense focus.",neuro:"Unusual motor cortex configuration; ring-finger independence signals heightened authority."},
     ],
     Bhayanaka:[
-      {name:"Mrigasirsha",  desc:"Little & ring fingers extended, others tucked. A deer's head — caution, searching.",benefit:"Pinky/ring isolation builds the neural pattern of heightened alertness — useful for awakening attention.",neuro:"Ulnar nerve extension — activates startle-response network; mirror neurons in observers induce vigilance."},
+      {name:"Mrigasirsha",  sanskrit:"मृगशीर्ष",  desc:"Little & ring fingers extended, others tucked — deer's head. Caution, searching.",usage:"Depicting a deer, caution, vulnerability, fear of the unknown",benefit:"Pinky/ring isolation builds the neural pattern of heightened alertness.",neuro:"Ulnar nerve extension — activates startle-response network; mirror neurons induce vigilance."},
     ],
   },
+
+  /* ── KATHAKALI ── */
   Kathakali:{
-    label:"Kathakali",origin:"Kerala — Hasta Lakshana Deepika (24 primary mudras)",
-    color:"#5b9bd5",
+    label:"Kathakali", origin:"Kerala — Hasta Lakshana Deepika (24 primary mudras)", color:"#5b9bd5",
     Shringara:[
-      {name:"Katakamukha",  desc:"Ring formed by index & thumb. In Kathakali: love offering, wearing garlands, the divine beloved.",benefit:"Precision pinch circuit — lateral prefrontal activation; aesthetic emotion amplified through eye contact.",neuro:"Highest Meissner's corpuscle density at fingertip; precision grip activates cortical 'beauty' appreciation pathway."},
-      {name:"Alapadma",     desc:"Fully bloomed five-petal lotus. The divine feminine, beauty, grace in its fullness.",benefit:"Full hand spread floods mirror neurons — audience literally shares the experience of blooming.",neuro:"Maximum sensory receptive field; social mirror system activation — observers feel the opening."},
+      {name:"Katakamukha",  sanskrit:"കടകമുഖം", desc:"Ring formed by index & thumb. Love offering, wearing garlands, the divine beloved.",usage:"Adorning the beloved, garland offerings, divine love",benefit:"Precision pinch circuit — lateral prefrontal activation; aesthetic emotion amplified.",neuro:"Highest Meissner's corpuscle density at fingertip; precision grip activates beauty pathway."},
+      {name:"Alapadma",     sanskrit:"ആലപദ്മം",  desc:"Fully bloomed five-petal lotus. Divine feminine, beauty, grace in its fullness.",usage:"The divine feminine, full beauty, celestial grace",benefit:"Full hand spread floods mirror neurons — audience shares the experience of blooming.",neuro:"Maximum sensory receptive field; social mirror system — observers feel the opening."},
     ],
     Karuna:[
-      {name:"Ardhachandra", desc:"Half-moon — fingers joined, thumb erect. Sorrow, longing, the crescent moon.",benefit:"Open-thumb posture correlates with oxytocin compassion state — connects performer and audience in shared feeling.",neuro:"Neuroimaging confirms oxytocin pathway activation; bilateral amygdala softening for grief processing."},
-      {name:"Anjali",       desc:"Flat open hand, thumb bent. Blessing, consolation, the vastness of divine love.",benefit:"Maximum palm exposure — activates social bonding circuits, lowers skin conductance and heart rate.",neuro:"C-tactile afferents (unmyelinated touch nerves) respond to open palm — slow pleasant stimulation."},
-      {name:"Mushthi",      desc:"Closed fist in Karuna context: contained grief, inner suffering, suppressed emotion.",benefit:"Isometric tension builds awareness of held pain — making it conscious for processing and release.",neuro:"Sustained grip activates insular cortex 'heaviness' sensation — body-based emotional awareness."},
+      {name:"Ardhachandra", sanskrit:"അർദ്ധചന്ദ്രം",desc:"Half-moon — fingers joined, thumb erect. Sorrow, longing, crescent moon.",usage:"Grief, the waning moon, mourning, longing",benefit:"Open-thumb correlates with oxytocin compassion state — connects performer and audience.",neuro:"Neuroimaging confirms oxytocin pathway; bilateral amygdala softening for grief processing."},
+      {name:"Anjali",       sanskrit:"അഞ്ജലി",  desc:"Flat open hand, thumb bent. Blessing, consolation, vastness of divine love.",usage:"Divine blessing, consolation, offering reverence",benefit:"Maximum palm exposure — activates social bonding circuits, lowers skin conductance.",neuro:"C-tactile afferents (unmyelinated touch nerves) respond to open palm — slow pleasant stimulation."},
+      {name:"Mushthi",      sanskrit:"മുഷ്ടി",   desc:"Closed fist in Karuna context — contained grief, inner suffering, suppressed emotion.",usage:"Suppressed grief, contained sorrow, internal suffering",benefit:"Isometric tension builds awareness of held pain — making it conscious for processing.",neuro:"Sustained grip activates insular cortex heaviness sensation — body-based emotional awareness."},
     ],
     Veera:[
-      {name:"Simhamukha",   desc:"Lion face — index & little extended, middle & ring bent. Ferocity, divine power.",benefit:"Unusual extension pattern creates intense arousal state — performers report sustained peak energy.",neuro:"Amygdala-hippocampal alertness response activated in observers; sympathetic NS elevation."},
-      {name:"Mushthi",      desc:"Full fist — raw power, battle-readiness, the warrior's focused force.",benefit:"Power grip measurably elevates testosterone and cortisol — genuine physiological strength state.",neuro:"Power-grip cortical map: premotor + primary motor cortex full activation for forceful action."},
+      {name:"Simhamukha",   sanskrit:"സിംഹമുഖം",  desc:"Lion face — index & little extended, middle & ring bent. Ferocity, divine power.",usage:"Divine ferocity, royal proclamation, battle cries",benefit:"Unusual extension creates intense arousal state — performers report sustained peak energy.",neuro:"Amygdala-hippocampal alertness response activated; sympathetic NS elevation in observers."},
+      {name:"Mushthi",      sanskrit:"മുഷ്ടി",   desc:"Full fist — raw power, battle-readiness, the warrior's focused force.",usage:"Battle-readiness, wielding weapons, expressing raw force",benefit:"Power grip measurably elevates testosterone and cortisol — genuine physiological strength state.",neuro:"Power-grip cortical map: premotor + primary motor cortex full activation."},
     ],
     Shanta:[
-      {name:"Pataka",       desc:"Open flat hand. Peace, benediction, the flow of divine grace from Vishnu.",benefit:"Full palm opening suppresses freeze response — creates deepest measurable calm of all Kathakali gestures.",neuro:"Ventral vagal calm pathway activation; baroreceptors signal safety to brainstem immediately."},
-      {name:"Anjali",       desc:"Namaskar — complete stillness, total devotion, the self dissolving into the divine.",benefit:"Heart-proximity bilateral gesture + bowed head activates baroreceptor reflex — profound still-calm.",neuro:"Bilateral symmetry + cardiac proximity: heart rate variability increases (parasympathetic marker)."},
+      {name:"Pataka",       sanskrit:"പതാക",    desc:"Open flat hand. Peace, benediction, flow of divine grace.",usage:"Divine grace flowing, peace, sacred benediction",benefit:"Full palm opening suppresses freeze response — deepest measurable calm of all Kathakali gestures.",neuro:"Ventral vagal calm pathway; baroreceptors signal safety to brainstem immediately."},
+      {name:"Anjali",       sanskrit:"അഞ്ജലി",  desc:"Namaskar — complete stillness, total devotion, self dissolving into the divine.",usage:"Complete surrender, Namaskar, devotional dissolution",benefit:"Heart-proximity bilateral gesture + bowed head activates baroreceptor reflex — profound still-calm.",neuro:"Bilateral symmetry + cardiac proximity: heart rate variability increases."},
     ],
     Adbhuta:[
-      {name:"Chandrakala",  desc:"Crescent: index curves to meet thumb tip. The moon, wonder, divine lightness.",benefit:"Insula activation with interoceptive awareness — the felt quality of 'awe' from inside.",neuro:"Index loop creates unique pinch — insula activates producing the characteristic wonder sensation."},
+      {name:"Chandrakala",  sanskrit:"ചന്ദ്രകല",  desc:"Crescent: index curves to meet thumb tip. The moon, wonder, divine lightness.",usage:"The crescent moon, divine wonder, celestial phenomena",benefit:"Insula activation with interoceptive awareness — the felt quality of awe from inside.",neuro:"Index loop creates unique pinch — insula activates producing wonder sensation."},
     ],
     Hasya:[
-      {name:"Hamsasya",     desc:"Swan beak used playfully — birds, teasing, wit, the divine's playful aspect.",benefit:"Delicate fine-motor releases dopamine in reward circuit when executed with precision.",neuro:"Ventral striatum reward pathway; precision triggers 'delight' neurotransmitter release."},
+      {name:"Hamsasya",     sanskrit:"ഹംസാസ്യം",  desc:"Swan beak used playfully — birds, teasing, wit, divine playful aspect.",usage:"Krishna's mischief, comic scenes, playful divine acts",benefit:"Delicate fine-motor releases dopamine when executed with precision.",neuro:"Ventral striatum reward pathway; precision triggers delight neurotransmitter release."},
     ],
     Raudra:[
-      {name:"Sarpasirsha",  desc:"Cobra head — all fingers together, wrist bent. Anger of a serpent deity, divine wrath.",benefit:"Sustained wrist flexion under tension — cathartic channel for intense emotion without harmful expression.",neuro:"Fast wrist flexion — sympathetic spike; speed of gesture amplifies arousal in both performer and watchers."},
+      {name:"Sarpasirsha",  sanskrit:"സർപ്പശിരസ്", desc:"Cobra head — all fingers together, wrist bent. Anger of serpent deity, divine wrath.",usage:"Serpent deities, divine wrath, cosmic fury",benefit:"Sustained wrist flexion — cathartic channel for intense emotion without harmful expression.",neuro:"Fast wrist flexion — sympathetic spike; speed amplifies arousal in performer and observers."},
     ],
     Bhayanaka:[
-      {name:"Mrigasirsha",  desc:"Deer head — little & ring extended. Fear of predator, vulnerability, the soul before the unknown.",benefit:"Physiological 'flight' circuitry match — processes and releases accumulated fear through embodied form.",neuro:"Ulnar-dominant posture; skin conductance increases in observers — empathic nervous system activation."},
+      {name:"Mrigasirsha",  sanskrit:"മൃഗശിരസ്",  desc:"Deer head — little & ring extended. Fear of predator, vulnerability, soul before the unknown.",usage:"Fear, vulnerability, the soul confronting the vast unknown",benefit:"Physiological flight circuitry match — processes and releases accumulated fear through embodied form.",neuro:"Ulnar-dominant posture; skin conductance increases in observers — empathic NS activation."},
+    ],
+  },
+
+  /* ── KUCHIPUDI ── */
+  Kuchipudi:{
+    label:"Kuchipudi", origin:"Andhra Pradesh — Natyashastra with Telugu literary influence", color:"#d4a84b",
+    Shringara:[
+      {name:"Katakamukha",  sanskrit:"కటకముఖ",  desc:"Ring formed by index & thumb with characteristic Kuchipudi wrist rotation. Romantic elegance.",usage:"Tarangam dance sequences, garland offerings, depicting madhura bhakti",benefit:"Held at chest height with forward lean — deepens emotional engagement and mirror resonance.",neuro:"Precision grip plus postural lean activates bilateral prefrontal emotional processing."},
+      {name:"Hamsasya",     sanskrit:"హంసాస్య",  desc:"Swan's beak — delicate, precise touch of love in Telugu lyric tradition.",usage:"Applying sindoor, intimate gestures of love, drawing the beloved near",benefit:"Fine motor precision with emotional intent — trains attention and tenderness simultaneously.",neuro:"High-density fingertip contact activates somatosensory precision map in romantic context."},
+      {name:"Padmakosha",   sanskrit:"పద్మకోశ",  desc:"Lotus bud — fingers spread like petals opening to the beloved.",usage:"Depicting the beloved's face, sunrise, offering in devotion",benefit:"Intermediate open position triggers the awe-love blend — prosocial neurochemistry.",neuro:"Anterior cingulate cortex + ventral striatum co-activation — awe fused with longing."},
+      {name:"Kapittha",     sanskrit:"కపిత్థ",   desc:"Wood-apple — holding the thread of longing, a garland.",usage:"Holding garlands, offering flowers to Bhama, representing yearning",benefit:"Paired with sundari neck glide — bilateral body engagement deepens emotional authenticity.",neuro:"Complex gesture + head movement: vestibular-emotional integration pathway."},
+    ],
+    Karuna:[
+      {name:"Ardhachandra", sanskrit:"అర్ధచంద్ర",  desc:"Half-moon — Kuchipudi's grief posture with characteristic bent-knee chauka stance.",usage:"Satyabhama's lament, expressions of separation, maternal sorrow",benefit:"Postural grief expression releases suppressed emotion through safe somatic channeling.",neuro:"Insular cortex + anterior cingulate activated — body-map of grief made conscious."},
+      {name:"Anjali",       sanskrit:"అంజలి",    desc:"Prayer hands — Bhakti dissolved into devotion, selfless surrender.",usage:"Prayer, surrender to Krishna, devotional dissolution",benefit:"Bilateral symmetry at heart level — deepest parasympathetic calming in Kuchipudi tradition.",neuro:"Heart baroreceptors + bilateral motor symmetry: dual vagal activation."},
+      {name:"Shikhara",     sanskrit:"శిఖర",     desc:"Raised thumb fist — the longing for the absent beloved.",usage:"Calling out to Krishna, expressing longing, depicting separation",benefit:"Isometric thumb extension with emotional intent — converts grief to purposeful expression.",neuro:"Premotor intention circuits + limbic activation — grief becomes action, not suppression."},
+    ],
+    Veera:[
+      {name:"Mushti",       sanskrit:"ముష్టి",   desc:"Full fist — power and determination in the Veera tradition.",usage:"Heroic proclamations, battle scenes, divine strength",benefit:"Power grip elevates cortisol and testosterone — genuine physiological heroic state.",neuro:"Sympathetic activation + premotor force mapping — body believes the heroic intent."},
+      {name:"Simhamukha",   sanskrit:"సింహముఖ",  desc:"Lion face — authority and ferocity in Telugu theatrical tradition.",usage:"Divine royal authority, Narasimha depictions, heroic fury",benefit:"Complex unusual hand shape creates simultaneous cognitive challenge and arousal.",neuro:"Supplementary motor area + amygdala co-activation: focused aroused alertness."},
+    ],
+    Shanta:[
+      {name:"Pataka",       sanskrit:"పతాక",    desc:"Open flat hand — the foundational peace gesture of Kuchipudi.",usage:"Opening invocations, Mangalacharanam, conveying divine peace",benefit:"Largest palm surface open — maximum safety signal to nervous system.",neuro:"Ventral prefrontal amygdala suppression: the body signals peace and it propagates to mind."},
+      {name:"Kapota",       sanskrit:"కపోత",    desc:"Dove — both hands in Pataka meeting at thumbs. Salutation of peace.",usage:"Sacred greetings, ending mangalam, offering peace",benefit:"Bilateral mirror gesture — creates internal and external harmony simultaneously.",neuro:"Bilateral motor synchrony: widest vagal induction, lowest sympathetic baseline."},
+    ],
+    Adbhuta:[
+      {name:"Padmakosha",   sanskrit:"పద్మకోశ",  desc:"Lotus bud opening — cosmic wonder at divine revelation.",usage:"Miraculous events, Krishna's divine plays, celestial visions",benefit:"Wonder posture in the awe axis — opens prosocial empathy and expansive cognition.",neuro:"Default mode network + anterior cingulate: self-expansive awe state."},
+    ],
+    Hasya:[
+      {name:"Sandamsha",    sanskrit:"సందంశ",   desc:"Pincers — comic grabbing, mischievous teasing pinch.",usage:"Bhama Kalapam comic scenes, mischievous acts, playful teasing",benefit:"Comic precision grip + shoulder jiggle releases endorphin-dopamine cascade.",neuro:"Cerebellum + basal ganglia: timing of comedy encoded as kinesthetic delight."},
+      {name:"Mushti",       sanskrit:"ముష్టి",   desc:"Mock fist — playful anger, comic confrontation.",usage:"Scolding in jest, Bhama's anger at Krishna, comic confrontation",benefit:"Incongruity of aggressive gesture in playful context creates the comedy neurologically.",neuro:"Prefrontal override of threat response creates the characteristic laughter circuit."},
+    ],
+    Raudra:[
+      {name:"Tripataka",    sanskrit:"త్రిపతాక",  desc:"Three fingers up, ring bent — divine authority and fury.",usage:"Divine anger, cosmic authority, righteous fury",benefit:"Ring-finger isolation demands focused precision — channels fury into controlled form.",neuro:"Precision under arousal: prefrontal and amygdala working simultaneously."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"మృగశీర్ష",  desc:"Deer head — heightened alertness and vulnerability.",usage:"Fear, caution, vulnerability of the devotee before the divine",benefit:"Ulnar extension creates physiological alertness — real attention shift occurs.",neuro:"Ulnar nerve activation raises skin conductance and attentional vigilance."},
+    ],
+  },
+
+  /* ── ODISSI ── */
+  Odissi:{
+    label:"Odissi", origin:"Odisha — Abhinaya Chandrika & Natya Manorama", color:"#7aaa8a",
+    Shringara:[
+      {name:"Pataka",       sanskrit:"ପତାକ",    desc:"Open flat hand — in Odissi used with the characteristic tribhanga posture for romantic scenes.",usage:"Romantic invocation, depicting the beloved, expressing beauty",benefit:"Open palm in tribhanga stance integrates three body curves — full aesthetic awakening.",neuro:"Multi-joint postural complexity activates widespread cortical sensorimotor integration."},
+      {name:"Alapadma",     sanskrit:"ଆଲପଦ୍ମ",  desc:"Full lotus bloom — Odissi's lyrical beauty gesture with sinuous wrist movement.",usage:"Beauty of Radha, celestial apsaras, full blossoming love",benefit:"Sinuous wrist add-on to full-palm creates flowing sensory journey through time.",neuro:"Temporal lobe aesthetic processing + proprioceptive grace circuits in cerebellum."},
+      {name:"Hamsasya",     sanskrit:"ହଂସାସ୍ୟ",  desc:"Swan beak with Odissi's distinctive fluid wrist turn.",usage:"Delicate love gestures, Radha's glance, gentle beckoning",benefit:"Fluid precision targets the intersection of grace and awareness — refined attentional state.",neuro:"Cerebellar timing + prefrontal precision: the neural signature of grace."},
+      {name:"Mukula",       sanskrit:"ମୁକୁଳ",   desc:"All four fingers and thumb together pointing — a bud, a bee, precision of desire.",usage:"A flower bud, a bee, precise pointing in love",benefit:"Five-tip convergence creates exceptional proprioceptive focus — concentration mudra.",neuro:"Maximum fingertip convergence → densest somatosensory activation for focused attention."},
+    ],
+    Karuna:[
+      {name:"Ardhachandra", sanskrit:"ଅର୍ଦ୍ଧଚନ୍ଦ୍ର",desc:"Half-moon — Odissi uses this in slow chauka stance for deepest Karuna expression.",usage:"Grief, longing for the absent Krishna, Radha's lament",benefit:"Slow chauka + half-moon — full body grief integration, not just gesture.",neuro:"Postural grief in low stance activates proprioception-emotion link via insular cortex."},
+      {name:"Anjali",       sanskrit:"ଅଞ୍ଜଳି",  desc:"Prayer — Odissi Anjali held lower, at stomach, reflecting Jagannath bhakti tradition.",usage:"Jagannath worship, devotional surrender, closing prayers",benefit:"Low-held bilateral prayer — solar plexus engagement adds visceral devotion depth.",neuro:"Abdominal proprioception + bilateral symmetry: enteric nervous system + vagal co-activation."},
+      {name:"Tamrachuda",   sanskrit:"ତାମ୍ରଚୂଡ",  desc:"Rooster's crest — unique Odissi gesture for separation and restless longing.",usage:"Restless longing, viraha (separation), the rooster at dawn announcing absence",benefit:"Unusual finger configuration demands complete attention — blocks rumination.",neuro:"Novel motor pattern: prefrontal override creates displacement of intrusive grief thoughts."},
+    ],
+    Veera:[
+      {name:"Mushti",       sanskrit:"ମୁଷ୍ଟି",   desc:"Full fist — Odissi's Veera expressed through the warrior tradition of Odisha.",usage:"Jagannath's divine battles, warrior depictions, protective fury",benefit:"Full grip in wide chauka stance — maximum force-feeling with grounded stability.",neuro:"Power grip + grounded posture: maximum sympathetic arousal with parasympathetic base."},
+      {name:"Suchimukha",   sanskrit:"ସୂଚୀମୁଖ",  desc:"Needle tip — single index finger pointing, precise authoritative gesture.",usage:"Divine authority, pointing to cosmic truth, heroic proclamation",benefit:"Single-finger extension creates laser focus — highest single-point attention.",neuro:"Isolated index extension → maximal somatosensory cortex activation at pointing finger."},
+    ],
+    Shanta:[
+      {name:"Pataka",       sanskrit:"ପତାକ",    desc:"Open hand in Odissi's signature Sambhavi posture — inner stillness manifested.",usage:"Peace, the still lake, Shanta rasa invocations",benefit:"Pataka in Sambhavi (downward gaze) creates the deepest inner calm.",neuro:"Downward gaze + open palm: superior colliculus downregulates threat vigilance."},
+      {name:"Sarpasirsha",  sanskrit:"ସର୍ପଶୀର୍ଷ",  desc:"Serpent head — used in Shanta context for undulating cosmic peace.",usage:"The cosmic serpent Ananta at rest, divine peace, infinity",benefit:"Slow undulating gesture activates rhythmic soothing circuit — like self-rocking.",neuro:"Rhythmic movement activates cerebellum timing circuits for relaxation entrainment."},
+    ],
+    Adbhuta:[
+      {name:"Padmakosha",   sanskrit:"ପଦ୍ମକୋଶ",  desc:"Lotus bud — wonder at the divine, Odissi's awe gesture with chin mudra eyes.",usage:"Visions of Jagannath, celestial wonder, divine revelation",benefit:"Combined with upward Drishti (gaze) — full body wonder integration.",neuro:"Upward gaze activates superior colliculus wonder circuits; open hand amplifies awe."},
+    ],
+    Hasya:[
+      {name:"Hamsapaksha",  sanskrit:"ହଂସପକ୍ଷ",  desc:"Swan wing — both hands in Hamsasya spread like wings. Playful flight, joy of birds.",usage:"Playful scenes, birds in flight, lightness of comic joy",benefit:"Bilateral spread activates both hemispheres simultaneously — heightens bilateral joy.",neuro:"Bilateral cerebellum activation: the kinesthetic sensation of flight-joy."},
+    ],
+    Raudra:[
+      {name:"Sarpasirsha",  sanskrit:"ସର୍ପଶୀର୍ଷ",  desc:"Cobra in Raudra context — fast strike, divine serpentine fury.",usage:"Serpent deities' anger, divine punishment, cosmic fury",benefit:"Fast wrist flip creates cathartic force release — anger expressed cleanly.",neuro:"Speed of gesture amplifies sympathetic activation — full arousal controlled by form."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"ମୃଗଶୀର୍ଷ",  desc:"Deer's alert head — fear and vulnerability in Odissi's characteristically lyrical style.",usage:"Fear, the soul's vulnerability before Jagannath's power",benefit:"Lyrical fear expression — processing vulnerability through beauty.",neuro:"Ulnar extension in aesthetically refined posture: beauty modulates the fear circuit."},
+    ],
+  },
+
+  /* ── KATHAK ── */
+  Kathak:{
+    label:"Kathak", origin:"North India — Natyashastra with Mughal court influence & Bhakti poetry", color:"#9b8fd4",
+    Shringara:[
+      {name:"Pataka",       sanskrit:"पताका",   desc:"Open hand — used in Kathak's flowing thumri-based expressional style.",usage:"Romantic abhinaya in thumri, depicting the beloved, graceful welcome",benefit:"Flowing Kathak wrist movements with open palm create time-suspended grace.",neuro:"Smooth pursuit tracking in observers activates cerebellum aesthetic pleasure circuits."},
+      {name:"Katakamukha",  sanskrit:"कटकामुख", desc:"The catch-grip — used in Kathak to hold the dupatta, hold a garland, attract the beloved.",usage:"Dupatta gestures, garland play, romantic beckoning",benefit:"Costume interaction adds tactile reality — proprioception meets imagination.",neuro:"Real tactile feedback + imaginative gesture: dual reality encoding in sensorimotor cortex."},
+      {name:"Chandrakala",  sanskrit:"चन्द्रकला", desc:"Crescent — index curved to thumb. Kathak uses this for the beloved's crescent brow.",usage:"Depicting the beloved's beauty, crescent moon, romantic poetry",benefit:"Delicate index curl in Kathak's fast-tempo context creates romantic contrast.",neuro:"Fine motor during fast movement: attention narrowed to single aesthetic point — peak focus."},
+      {name:"Alapadma",     sanskrit:"आलपद्म",  desc:"Full lotus — the beloved's face, the full moon, expansive love in Kathak's lush style.",usage:"The beloved's face in thumri, full moon, peak romantic moment",benefit:"Maximum spread in slow lyrical moment creates maximum aesthetic impact.",neuro:"Full peripheral sensory field activation at moment of lyrical peak — memory encoding."},
+    ],
+    Karuna:[
+      {name:"Ardhachandra", sanskrit:"अर्धचन्द्र",desc:"Half-moon — Kathak uses this in vilambit (slow tempo) for deep bhakti sorrow.",usage:"Bhakti longing, mirabai's sorrow, separation from the divine beloved",benefit:"Slow vilambit tempo + half-moon creates temporal space for grief to be felt fully.",neuro:"Slow movement tempo activates parasympathetic alongside limbic grief — safe grief processing."},
+      {name:"Anjali",       sanskrit:"अञ्जलि",  desc:"Prayer — Kathak's Anjali has Bhakti Marg character — complete surrender of ego.",usage:"Complete devotional surrender, Mirabai's prayer, Sufi dissolution",benefit:"Both Bhakti and Sufi traditions use bilateral prayer for ego dissolution — transcendent state.",neuro:"Midline bilateral gesture + downcast gaze: default mode network shift to self-transcendence."},
+      {name:"Mushti",       sanskrit:"मुष्टि",   desc:"Fist in Karuna — the grief of contained love, separation as physical weight.",usage:"Weight of separation, grief as physical burden, Radha's contained pain",benefit:"Clenched fist makes grief tangible — body-based processing more effective than abstraction.",neuro:"Muscular tension creates somatic marker of emotion — insular cortex awareness amplified."},
+    ],
+    Veera:[
+      {name:"Mushti",       sanskrit:"मुष्टि",   desc:"Fist — Kathak's Veera directly from Kshatriya tradition and court martial arts.",usage:"Warrior scenes, Mahabharata abhinaya, heroic proclamation",benefit:"Full fist in Kathak's upright posture — power with dignity.",neuro:"Upright posture + power grip: maximum approach-motivation activation."},
+      {name:"Simhamukha",   sanskrit:"सिंहमुख",  desc:"Lion face — royal power in Kathak's North Indian court tradition.",usage:"Royal authority, divine kingship, Rama's heroism",benefit:"Lion face in court context creates dignity-power blend unique to Kathak.",neuro:"Unusual hand + upright gaze + chest-open posture: triple-signal of confident authority."},
+    ],
+    Shanta:[
+      {name:"Pataka",       sanskrit:"पताका",   desc:"Open hand — Kathak's Shanta through bhakti stillness, eyes closed, breath regulated.",usage:"Meditative stillness, bhakti peace, devotional calm",benefit:"Open hand + regulated breath (tala): most complete Shanta induction in Kathak.",neuro:"Rhythmic breath + open palm: respiratory vagal activation — deepest calm state."},
+      {name:"Kapota",       sanskrit:"कपोत",    desc:"Dove — both palms meeting. Kathak uses this at the end of a performance: samapti.",usage:"Performance ending, peace offering, auspicious completion",benefit:"Closing bilateral gesture creates neurological resolution — emotional completion signal.",neuro:"Bilateral convergence at ending: reward circuit completes — closure dopamine release."},
+    ],
+    Adbhuta:[
+      {name:"Padmakosha",   sanskrit:"पद्मकोश",  desc:"Lotus opening — wonder at divine revelation. Used in Kathak's narrative abhinaya.",usage:"Divine visions, miraculous events in stories, cosmic awe",benefit:"Wonder posture in story context creates shared awe between performer and audience.",neuro:"Narrative context + open-wonder posture: theory-of-mind + anterior insula — shared experience."},
+    ],
+    Hasya:[
+      {name:"Hamsasya",     sanskrit:"हंसास्य",  desc:"Swan beak — Kathak's Hasya is rooted in Krishna's playful lila stories.",usage:"Krishna's mischief, playful romantic teasing, thumri humor",benefit:"Delicate gesture in fast rhythmic context creates kinesthetic comedy.",neuro:"Precision + speed: cerebellum joy circuit activates at the timing of comic surprise."},
+    ],
+    Raudra:[
+      {name:"Tripataka",    sanskrit:"त्रिपताक",  desc:"Three-finger authority — Kathak's Raudra from Mahabharata and Ramayana traditions.",usage:"Duryodhana's fury, Ravana's wrath, divine righteous anger",benefit:"Controlled fury through precise form — aggression channeled without discharge.",neuro:"Ring-finger isolation under high arousal: prefrontal precision amid sympathetic activation."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"मृगशीर्ष",  desc:"Deer — fear in Kathak's North Indian narrative tradition.",usage:"Sita's fear in the forest, Draupadi's vulnerability, the soul's awe",benefit:"Kathak's flowing transitions into Mrigasirsha make fear feel like it moves through the body.",neuro:"Transitional movement into fear posture — fear processed kinesthetically, not frozen."},
+    ],
+  },
+
+  /* ── MANIPURI ── */
+  Manipuri:{
+    label:"Manipuri", origin:"Manipur — Meitei tradition with Vaishnavism, Raslila heritage", color:"#d44a8a",
+    Shringara:[
+      {name:"Lalita",       sanskrit:"ललित",    desc:"Curved gentle hand — Manipuri's softly bent wrist Shringara gesture from Raslila.",usage:"Radha's love for Krishna, gentle romantic scenes in Raslila",benefit:"Gentle curve with minimal muscular effort — deepest grace with minimum tension.",neuro:"Minimal-tension movement activates aesthetic processing without sympathetic arousal."},
+      {name:"Katakamukha",  sanskrit:"কটকমুখ",  desc:"Delicate ring — Manipuri version uses the wrist-drop for romantic elegance.",usage:"Placing garlands, romantic gestures in Raslila, Radha-Krishna scenes",benefit:"Wrist-drop adds gravity-assisted grace — effortless beauty encoding.",neuro:"Gravity-assisted position reduces motor effort; cerebellum processes as effortless grace."},
+      {name:"Pushpaputa",   sanskrit:"পুষ্পপুত",  desc:"Cupped palms — both hands together forming a flower cup. Offering, devotion, love.",usage:"Flower offerings to Krishna, devotional love, the cup of the heart",benefit:"Both hands cupped together — the most devotional love gesture in Manipuri.",neuro:"Cup shape + bilateral symmetry: bilateral insular activation — felt love."},
+      {name:"Alapadma",     sanskrit:"আলপদ্ম",  desc:"Full lotus — Manipuri's slow, expansive love expression in the Raslila circle dance.",usage:"Circular Raslila formations, collective love, full devotional blossoming",benefit:"Used in group formations — collective mudra amplifies mirror resonance exponentially.",neuro:"Collective identical mudra in circle: synchrony activates oxytocin across the group."},
+    ],
+    Karuna:[
+      {name:"Ardhachandra", sanskrit:"অর্ধচন্দ্র",  desc:"Half-moon — Manipuri's viraha (separation) gesture with characteristic inward gaze.",usage:"Radha's grief in Krishna's absence, viraha, longing",benefit:"Inward gaze + half-moon: internal orientation toward grief allows safe processing.",neuro:"Proprioceptive inward focus + half-moon: interoceptive awareness of grief sensation."},
+      {name:"Anjali",       sanskrit:"অঞ্জলি",  desc:"Prayer — Manipuri's Anjali is held at the forehead — Meitei Vaishnavism tradition.",usage:"Vishnu worship, complete surrender, head-level devotion",benefit:"Forehead-level bilateral prayer — sahasrara awareness in the Meitei tradition.",neuro:"Hands at forehead + bilateral symmetry: frontal lobe + bilateral motor = transcendent calm."},
+    ],
+    Veera:[
+      {name:"Mushti",       sanskrit:"মুষ্টি",   desc:"Fist — Manipuri's Veera from Thang-Ta martial art tradition of Manipur.",usage:"Thang-Ta inspired sequences, divine battles, heroic scenes",benefit:"Martial art rooting gives this mudra authentic physical power — not theatrical.",neuro:"Martial context activates muscle memory of real force — genuine physiological heroism."},
+      {name:"Trisula",      sanskrit:"ত্রিশূল",   desc:"Trident gesture — index, middle, little extended. Shiva's power in Manipuri cosmology.",usage:"Shiva invocations, divine cosmic power, Manipuri cosmological rituals",benefit:"Three extended fingers mirror the trident — symbol embodied physically.",neuro:"Three-finger extension: unusual ulnar-radial combination activates widespread hand cortex."},
+    ],
+    Shanta:[
+      {name:"Pataka",       sanskrit:"পতাক",    desc:"Open hand — Manipuri's Shanta from the still center of Raslila's circular movement.",usage:"Still moments in Raslila, the center point of all movement, divine peace",benefit:"The still within the moving — this contrast creates the deepest Shanta.",neuro:"Stillness amid movement context: contrast effect amplifies parasympathetic response."},
+      {name:"Hamsasya",     sanskrit:"হংসাস্য",  desc:"Swan — Manipuri's peace gesture evoking the sacred birds of Vishnu's realm.",usage:"The sacred swans, Vishnu's peace, gentle contemplative moments",benefit:"Delicate swan gesture in slow Manipuri tempo — sustained grace without effort.",neuro:"Minimal tension + aesthetic precision: pure cerebellar grace circuit with no stress."},
+    ],
+    Adbhuta:[
+      {name:"Pushpaputa",   sanskrit:"পুষ্পপুত",  desc:"Cupped wonder — both palms cupped upward, receiving the divine in awe.",usage:"Receiving divine visions, cosmic wonder, miraculous appearances of Krishna",benefit:"Receiving gesture — awe as openness, not overwhelm.",neuro:"Cup posture (receiving) + upward gaze: dopamine anticipation + anterior insula awe."},
+    ],
+    Hasya:[
+      {name:"Hamsasya",     sanskrit:"হংসাস্য",  desc:"Swan beak — Manipuri's Hasya through the playfulness of Radha and Krishna in Raslila.",usage:"Raslila playfulness, the gopis teasing Krishna, joyful divine play",benefit:"Group Hamsasya in Raslila circle — collective joy amplified through synchrony.",neuro:"Synchronized fine-motor in group: oxytocin + dopamine — collective delight."},
+    ],
+    Raudra:[
+      {name:"Mushti",       sanskrit:"মুষ্টি",   desc:"Fist — Manipuri's Raudra from the Thang-Ta tradition of controlled martial anger.",usage:"Battle sequences, divine fury, controlled martial anger",benefit:"Martial rooting makes this anger authentic — the body knows real force.",neuro:"Trained martial memory + emotional label: authentic physiological anger state."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"মৃগশীর্ষ",  desc:"Deer head — vulnerability and fear in Manipuri's lyrical gentle style.",usage:"The soul's awe before the divine, vulnerability, gentle fear",benefit:"Manipuri's lyrical quality softens fear into awe — fear becomes reverence.",neuro:"Gentle aesthetic container for fear posture: amygdala activation modulated by beauty."},
+    ],
+  },
+
+  /* ── MOHINIYATTAM ── */
+  Mohiniyattam:{
+    label:"Mohiniyattam", origin:"Kerala — Hastalakshana Deepika, lyrical feminine tradition", color:"#d4b84a",
+    Shringara:[
+      {name:"Patakam",      sanskrit:"പതാകം",   desc:"Open hand — the primary Mohiniyattam gesture, soft and flowing like water.",usage:"Depicting the beloved, nature scenes, gentle love in Lasya style",benefit:"Mohiniyattam's characteristic slow flowing quality induces deep aesthetic trance.",neuro:"Slow continuous movement activates sustained alpha waves — the neural signature of absorption."},
+      {name:"Alapadmam",    sanskrit:"ആലപദ്മം",  desc:"Full lotus — used with characteristic side-to-side swaying that defines Mohiniyattam.",usage:"Beauty of the beloved, the swaying coconut palms, feminine grace",benefit:"Side-to-side sway with lotus — vestibular-aesthetic integration for somatic peace.",neuro:"Rhythmic vestibular input + aesthetic motor: cerebellum-limbic synchrony — bliss state."},
+      {name:"Katakamukham", sanskrit:"കടകമുഖം",  desc:"The catch-ring — Mohiniyattam's Shringara with distinctive fluid wrist oscillation.",usage:"Romantic scenes, water flowing, gentle beckoning, Kerala feminine elegance",benefit:"Fluid wrist oscillation creates continuously changing sensory experience — flow state.",neuro:"Continuously changing proprioception maintains arousal while body relaxes — flow circuit."},
+      {name:"Hamsasyam",    sanskrit:"ഹംസാസ്യം",  desc:"Swan beak — the quintessential Mohiniyattam precision gesture.",usage:"Delicate touches of love, applying bindi, the tip of the lotus",benefit:"Maximum delicacy in the softest dance form — precision as softness.",neuro:"Soft precision: parasympathetic dominant with focused somatosensory — unique restful-alert."},
+    ],
+    Karuna:[
+      {name:"Ardhachandram",sanskrit:"അർദ്ധചന്ദ്രം",desc:"Half-moon — Mohiniyattam's grief expressed through the most lyrical, water-like quality.",usage:"The grief of separation, waves of sorrow, Mohini's longing",benefit:"Water-like quality transforms grief into beauty — the river of sorrow flowing.",neuro:"Aesthetic encoding of grief: limbic activation + aesthetic pathway simultaneously."},
+      {name:"Anjali",       sanskrit:"അഞ്ജലി",  desc:"Prayer — Mohiniyattam's Anjali held low, with characteristic forward head bow.",usage:"Devotional surrender, prayer in the Kerala Bhakti tradition",benefit:"Forward bow + prayer — complete physical humility, deepest surrender posture.",neuro:"Prone head posture + bilateral: baroreceptor cascade — deepest vagal calm possible."},
+    ],
+    Veera:[
+      {name:"Mushthi",      sanskrit:"മുഷ്ടി",   desc:"Fist — rare in Mohiniyattam's Lasya style; reserved for the most powerful moments.",usage:"Rare moments of divine feminine power, Mohini's strength, Devi's authority",benefit:"Fist in the most gentle dance form creates maximum contrast — power from softness.",neuro:"Contrast effect: maximum impact from unexpected power in gentle context."},
+    ],
+    Shanta:[
+      {name:"Patakam",      sanskrit:"പതാകം",   desc:"Open hand in Mohiniyattam's signature swaying — the still point within the dance.",usage:"Peace, the stillness of water before ripples, divine calm",benefit:"Mohiniyattam's swaying tempo with open hand creates the deepest aesthetic Shanta.",neuro:"Rhythmic vestibular input + open palm: dual parasympathetic activation — profound peace."},
+      {name:"Kapotam",      sanskrit:"കപോതം",   desc:"Dove — both hands meeting, Mohiniyattam's ending gesture.",usage:"Auspicious endings, peace to all directions, completion",benefit:"Gentle bilateral convergence — softest possible closure, most peaceful resolution.",neuro:"Bilateral convergence with minimal effort: lowest muscular tension — peace as effortlessness."},
+    ],
+    Adbhuta:[
+      {name:"Alapadmam",    sanskrit:"ആലപദ്മം",  desc:"Full lotus blooming in wonder — Mohiniyattam's awe is always beautiful, never startling.",usage:"Divine visions, beautiful miracles, the wonder of nature",benefit:"Beautiful wonder — awe that is purely aesthetic, without the fear component.",neuro:"Pure aesthetic awe: anterior cingulate + ventral striatum without amygdala — rare state."},
+    ],
+    Hasya:[
+      {name:"Hamsasyam",    sanskrit:"ഹംസാസ്യം",  desc:"Swan beak in Hasya — Mohiniyattam's humor is always refined, never gross.",usage:"Subtle teasing, refined humor, the smile behind the gesture",benefit:"Refined humor in Mohiniyattam — laughter as aesthetic experience.",neuro:"Prefrontal appreciation of subtlety: the laughter of recognition, not shock."},
+    ],
+    Raudra:[
+      {name:"Sarpasirsha",  sanskrit:"സർപ്പശിരസ്", desc:"Cobra — even Mohiniyattam's fury is expressed through the serpentine grace.",usage:"Mohini's anger, divine fury expressed through feminine grace",benefit:"Fury expressed through beauty — Mohiniyattam's unique transformation of Raudra.",neuro:"Anger with aesthetic constraint: amygdala activation with prefrontal aesthetic override."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"മൃഗശിരസ്",  desc:"Deer — Mohiniyattam's fear gesture is the most lyrical expression of vulnerability.",usage:"Vulnerability before the divine, the soul's awe, gentle fear",benefit:"Fear made beautiful — vulnerability as grace rather than freezing.",neuro:"Aesthetic processing of fear: amygdala activation modulated by cerebellar grace circuit."},
+    ],
+  },
+
+  /* ── SATTRIYA ── */
+  Sattriya:{
+    label:"Sattriya", origin:"Assam — Vaishnava Sattra monasteries, Shankaradeva tradition (15th c.)", color:"#7a6ad4",
+    Shringara:[
+      {name:"Pataka",       sanskrit:"পতাকা",   desc:"Open hand — Sattriya's Shringara rooted in Bhakti love for Vishnu, always devotional.",usage:"Devotional love for Vishnu-Krishna, Bhakti Shringara, pure love",benefit:"Devotional context transforms romantic love into spiritual love — sublimated emotion.",neuro:"Bhakti framing shifts romantic reward circuit to spiritual reward circuit — different pathway."},
+      {name:"Alapadma",     sanskrit:"আলপদ্ম",  desc:"Full lotus — used in Sattriya's characteristically male monastic tradition.",usage:"Divine beauty, Vishnu's lotus, offering the flower of devotion",benefit:"The full lotus in a male monastic context expresses the transcendence of gender in beauty.",neuro:"Gender-transcendent beauty: aesthetic cortex unbound from social categorization."},
+      {name:"Hamsasya",     sanskrit:"হংসাস্য",  desc:"Swan beak — Sattriya's precision gesture for the sacred swan of Vishnu's mount.",usage:"Vishnu's vehicle Garuda, divine precision, pure love",benefit:"Sacred animal gesture — precision with devotional intent creates unique focused reverence.",neuro:"Focused fine motor + devotional intention: prefrontal + limbic alignment — sacred focus."},
+    ],
+    Karuna:[
+      {name:"Ardhachandra", sanskrit:"অর্ধচন্দ্র",  desc:"Half-moon — Sattriya's grief is always within the context of Bhakti longing.",usage:"Longing for Vishnu, Bhakti grief, separation from the divine",benefit:"Bhakti context transforms personal grief into transpersonal longing — cathartic sublimation.",neuro:"Transpersonal framing shifts personal grief to collective longing — oxytocin over cortisol."},
+      {name:"Anjali",       sanskrit:"অঞ্জলি",  desc:"Prayer — Sattriya's Anjali is the core posture of Sattra monastery life.",usage:"Daily Vishnu worship, monastery ritual, complete devotional surrender",benefit:"Ritualized daily Anjali in Sattra life creates lasting vagal calm baseline.",neuro:"Repetitive daily practice rewires the ANS baseline — chronic parasympathetic tone."},
+    ],
+    Veera:[
+      {name:"Mushti",       sanskrit:"মুষ্টি",   desc:"Fist — Sattriya's Veera from the male monastic tradition and mythological battles.",usage:"Mythological battle scenes, divine heroism, Vishnu's battles",benefit:"Male monastic training gives authentic physical grounding to heroic mudra.",neuro:"Physical training context: genuine muscle memory and confidence in power gestures."},
+      {name:"Simhamukha",   sanskrit:"সিংহমুখ",  desc:"Lion face — Narasimha depictions central to Sattriya's Vaishnava iconography.",usage:"Narasimha avatar, divine ferocity protecting devotees, cosmic power",benefit:"Narasimha context: the protective roar — anger in service of protection.",neuro:"Protective anger: same power as aggression but with prosocial motivation — different valence."},
+    ],
+    Shanta:[
+      {name:"Pataka",       sanskrit:"পতাকা",   desc:"Open hand — Sattriya's Shanta is the peace of the Sattra monastery, meditative ground.",usage:"Sattra meditation, monastic peace, the still lake of Vishnu's paradise",benefit:"Monastery context gives this gesture the weight of centuries of practice.",neuro:"Cultural depth of practice: collective memory activates deeper neural resonance."},
+      {name:"Kapota",       sanskrit:"কপোত",    desc:"Dove — sacred bird of peace in the Vaishnava tradition, the peace offering.",usage:"Peace between worlds, the dove of Vishnu's paradise, sacred ending",benefit:"Sacred dove within monastic tradition: peace as lived reality, not symbol.",neuro:"Meaning-saturated gesture: semantic richness deepens neural encoding of peace."},
+    ],
+    Adbhuta:[
+      {name:"Padmakosha",   sanskrit:"পদ্মকোশ",  desc:"Lotus bud — wonder at the divine lila of Vishnu, Sattriya's awe posture.",usage:"Witnessing Vishnu's miraculous acts, divine wonder, Bhakti awe",benefit:"Devotional awe in Sattriya — wonder not at the cosmos but at the personal divine.",neuro:"Personal divine awe: combines attachment circuitry with wonder — unique emotional blend."},
+    ],
+    Hasya:[
+      {name:"Hamsasya",     sanskrit:"হংসাস্য",  desc:"Swan beak — Sattriya's Hasya through Krishna's lila (divine play) stories.",usage:"Krishna's playful lila, monastic humor, divine comedy",benefit:"Sacred humor — laughter as a path to transcendence, not distraction from it.",neuro:"Transcendent humor: prefrontal detachment from ego + limbic joy — freedom laughter."},
+    ],
+    Raudra:[
+      {name:"Tripataka",    sanskrit:"ত্রিপতাকা",  desc:"Three-finger authority — Sattriya's righteous fury from the Vaishnava dharmic tradition.",usage:"Dharmic anger, Vishnu's protective fury, righteous battle",benefit:"Dharmic anger in Sattriya — fury with moral grounding, not ego.",neuro:"Values-based anger: prefrontal moral framework modulates amygdala arousal — righteous fury."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigasirsha",  sanskrit:"মৃগশিরস্",  desc:"Deer head — the devotee's awe and smallness before Vishnu's cosmic magnitude.",usage:"The soul's smallness before Vishnu, cosmic awe, sacred fear",benefit:"Sacred fear — the fear that dissolves ego rather than defending it.",neuro:"Ego-dissolving awe: default mode network suppression — the self becomes small and free."},
+    ],
+  },
+
+  /* ── YOGA MUDRAS ── */
+  Yoga:{
+    label:"Yoga Mudras", origin:"Pan-Indian — Hatha Yoga Pradipika & Gheranda Samhita traditions", color:"#c8a84b",
+    Shringara:[
+      {name:"Padma Mudra",  sanskrit:"पद्म मुद्रा",  desc:"Lotus mudra — both hands cupped, fingers spread outward like a blooming lotus. The heart opening.",usage:"Heart-opening meditation, metta (loving-kindness) practice, bhakti yoga",benefit:"Full hand opening at heart center — simultaneously stimulates all four fingers' nerve pathways.",neuro:"Bilateral open-hand at chest: baroreceptors + skin receptor cascade — oxytocin release."},
+      {name:"Shakti Mudra", sanskrit:"शक्ति मुद्रा", desc:"Power of the feminine — ring and little fingers interlocked inside, thumbs extended.",usage:"Cultivating self-love, connecting to feminine creative energy, sexual healing",benefit:"Ring-little interlocking activates the water and earth elements — stability in love.",neuro:"Ulnar nerve cross-stimulation: parasympathetic pelvic floor relaxation — safety in love."},
+    ],
+    Karuna:[
+      {name:"Gyan Mudra",   sanskrit:"ज्ञान मुद्रा",  desc:"Index touches thumb tip — wisdom seal. The most widely practiced yoga mudra.",usage:"Meditation, pranayama, reducing anxiety, accessing wisdom",benefit:"Reduces anxiety within 10 minutes of sustained practice; measurable alpha wave increase.",neuro:"Median nerve stimulation activates prefrontal cortex: gamma oscillations for clarity."},
+      {name:"Anjali Mudra", sanskrit:"अञ्जलि मुद्रा", desc:"Prayer seal — both palms at the heart. The ground of all yoga practice.",usage:"Beginning and ending all yoga practice, meditation, namaskar",benefit:"Heart chakra alignment + bilateral symmetry — deepest available parasympathetic rest.",neuro:"Bilateral + cardiac proximity: heart rate variability increase — full vagal activation."},
+      {name:"Apana Mudra",  sanskrit:"अपान मुद्रा",  desc:"Middle and ring tips to thumb — detoxification and letting go mudra.",usage:"Releasing grief, emotional detoxification, downward energy flow",benefit:"Traditional use for releasing what no longer serves — emotional digestion.",neuro:"Middle-ring to thumb: dual nerve pathways activated; digestive-emotional processing link."},
+    ],
+    Veera:[
+      {name:"Prana Mudra",  sanskrit:"प्राण मुद्रा",  desc:"Ring and little tips to thumb — vitality and life force mudra.",usage:"Increasing energy, courage, reducing fatigue, building vitality",benefit:"Activates Prithvi (earth) and Jala (water) elements — stability and flow together.",neuro:"Ring-little dual contact: both ulnar branches stimulated; autonomic energy regulation."},
+      {name:"Surya Mudra",  sanskrit:"सूर्य मुद्रा",  desc:"Ring finger bent to touch the base of thumb. Solar energy, metabolic fire.",usage:"Building internal heat, reducing heaviness, activating solar plexus",benefit:"Activates Agni (fire) element — raises metabolic energy and confidence.",neuro:"Ring finger press on thenar eminence: sympathetic activation and metabolic increase."},
+    ],
+    Shanta:[
+      {name:"Chin Mudra",   sanskrit:"चिन् मुद्रा",  desc:"Index and thumb form a circle, palm downward. Receiving consciousness seal.",usage:"Deep meditation, yoga nidra, Shanta contemplation",benefit:"Palm-down receiving posture — surrendered acceptance, the opposite of grasping.",neuro:"Downward palm + thumb-index loop: sustained alpha-theta border — doorway to meditation."},
+      {name:"Dhyana Mudra", sanskrit:"ध्यान मुद्रा",  desc:"Both hands in lap, right on left, thumbs touching forming oval — Buddha's meditation seal.",usage:"Samadhi states, deep meditation, complete inner stillness",benefit:"The most researched meditation mudra — measurably deepens concentration states.",neuro:"Bilateral bowl + thumb touch: sustained theta waves, default mode suppression — samadhi."},
+      {name:"Hakini Mudra", sanskrit:"हाकिनी मुद्रा", desc:"All ten fingertips touch their partner — the ten-point full-brain mudra.",usage:"Enhancing memory, bilateral brain integration, creative thinking",benefit:"Bilateral hemispheric synchronisation via corpus callosum — unified thinking.",neuro:"10-point simultaneous touch: maximum bilateral somatosensory activation → corpus callosum sync."},
+    ],
+    Adbhuta:[
+      {name:"Mushti Mudra", sanskrit:"मुष्टि मुद्रा",  desc:"Fist with thumb inside — repressed wonder released. Unusual Yoga Adbhuta.",usage:"Awakening from complacency, shock of insight, the wow of realization",benefit:"Releasing the clenched fist of habitual thought — awakening gesture.",neuro:"Fist to open-hand release: sympathetic to parasympathetic shift — the aha moment neurologically."},
+      {name:"Prana Mudra",  sanskrit:"प्राण मुद्रा",  desc:"Life force — eyes suddenly open, ring-little to thumb. Adbhuta through awakening vitality.",usage:"Awakening life force, the wonder of being alive, vitality awareness",benefit:"Vitality mudra in awe context — wonder at the sheer fact of being alive.",neuro:"Energy-activating mudra + awe cognition: dopamine + norepinephrine — alive and alert."},
+    ],
+    Hasya:[
+      {name:"Hridaya Mudra",sanskrit:"हृदय मुद्रा",  desc:"Index folded inside, middle and ring touch thumb, little extended — heart gesture.",usage:"Opening the heart to joy, releasing laughter, unconditional delight",benefit:"Heart mudra in Hasya context — joy from the source of love.",neuro:"Heart-nerve connected mudra + joyful intention: vagal heart stimulation → authentic joy."},
+    ],
+    Raudra:[
+      {name:"Kali Mudra",   sanskrit:"काली मुद्रा",  desc:"All fingers interlocked except index fingers pointing up — Kali's transformative fierce grace.",usage:"Cutting through delusion, fierce compassion, transformative anger",benefit:"Interlocked fists with pointing index — contained power with directed intent.",neuro:"Interlocked fist grip: maximum power circuit; directed index channels it precisely."},
+    ],
+    Bhayanaka:[
+      {name:"Mrigi Mudra",  sanskrit:"मृगी मुद्रा",  desc:"Middle and ring bend to thumb, index and little extend — deer eyes. Alert witnessing.",usage:"Pranayama alternate nostril, alert witnessing, conscious fear processing",benefit:"Used in pranayama — fear processed through breath, the most direct nervous system intervention.",neuro:"Nostril control mudra: directly modulates left-right hemisphere alternation — fear → curiosity."},
     ],
   },
 };
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
+   KRITI LIBRARY DATA
+═══════════════════════════════════════════════════════════════ */
+const KRITIS = [
+  /* ── THYAGARAJA ── */
+  {name:"Endaro Mahanubhavulu",     composer:"Thyagaraja", raga:"Shri",             tala:"Adi",       rasa:"Bhakti",    lang:"Telugu",   opening:"Endaro mahanubhavulu andariki vandanamulu",    desc:"The greatest of Thyagaraja's compositions — saluting all the great souls. One of the Pancharatna Kritis, sung at the culmination of the Aradhana festival.",ytSearch:"Endaro Mahanubhavulu Thyagaraja Shri"},
+  {name:"Nagumomu",                 composer:"Thyagaraja", raga:"Abheri",           tala:"Adi",       rasa:"Shringara", lang:"Telugu",   opening:"Nagumomu ganaleni nannudini vaduvaraa",       desc:"A Shringara masterpiece addressed to Rama — 'Can one whose smiling face I cannot see abandon me?' — expressing divine romantic longing.",ytSearch:"Nagumomu Abheri Thyagaraja"},
+  {name:"Entharo Emanthuno",        composer:"Thyagaraja", raga:"Husseini",         tala:"Adi",       rasa:"Karuna",    lang:"Telugu",   opening:"Entharo emanthuno velave vidalachucharaa",    desc:"A deeply Karuna kriti expressing anguish at separation from the divine — the soul crying out to Rama.",ytSearch:"Entharo Emanthuno Husseini Thyagaraja"},
+  {name:"Pancharatna — Jagadananda Karaka",composer:"Thyagaraja",raga:"Nata",      tala:"Adi",       rasa:"Veera",     lang:"Telugu",   opening:"Jagadananda karaka jaya janaki prana nayaka", desc:"First of the Pancharatna Kritis — a Veera-Shringara composition celebrating Rama's cosmic glory in the majestic Nata raga.",ytSearch:"Jagadananda Karaka Nata Thyagaraja Pancharatna"},
+  {name:"Pancharatna — Dudukugala",  composer:"Thyagaraja", raga:"Gowla",           tala:"Rupaka",    rasa:"Karuna",    lang:"Telugu",   opening:"Dudukugala nunna daivamu",                    desc:"Second Pancharatna kriti — a deeply introspective Karuna composition confessing sins and seeking forgiveness in the austere Gowla raga.",ytSearch:"Dudukugala Gowla Thyagaraja Pancharatna"},
+  {name:"Pancharatna — Shobhillu",   composer:"Thyagaraja", raga:"Shankarabharanam",tala:"Adi",       rasa:"Shanta",    lang:"Telugu",   opening:"Shobhillu saptaswara",                        desc:"Third Pancharatna — a meditation on the seven swaras as divine light, in the luminous Shankarabharanam raga.",ytSearch:"Shobhillu Shankarabharanam Thyagaraja"},
+  {name:"Pancharatna — Kananukanu",  composer:"Thyagaraja", raga:"Bhairavi",        tala:"Misra Chapu",rasa:"Karuna",   lang:"Telugu",   opening:"Kananukanu ninne gatiyani karachina",          desc:"Fourth Pancharatna — the soul's desperate longing for divine vision, in the deeply emotional Bhairavi raga.",ytSearch:"Kananukanu Bhairavi Thyagaraja Pancharatna"},
+  {name:"Pancharatna — Vara Raga",   composer:"Thyagaraja", raga:"Todi",            tala:"Adi",       rasa:"Karuna",    lang:"Telugu",   opening:"Vara raga laya gnana",                        desc:"Fifth Pancharatna — on the supremacy of music as a path to liberation, in the deeply introspective Todi.",ytSearch:"Vara Raga Todi Thyagaraja Pancharatna"},
+  {name:"Rama Ni Samana Evaru",      composer:"Thyagaraja", raga:"Kalyani",         tala:"Adi",       rasa:"Shringara", lang:"Telugu",   opening:"Rama ni samana mevarura raghuvara",           desc:"'Who can equal you, O Rama?' — a jewel in Kalyani raga celebrating Rama's unparalleled divine beauty.",ytSearch:"Rama Ni Samana Kalyani Thyagaraja"},
+  {name:"Telisi Rama Chintanalo",    composer:"Thyagaraja", raga:"Mohanam",         tala:"Adi",       rasa:"Shanta",    lang:"Telugu",   opening:"Telisi rama chintanalo daachithivo",          desc:"A meditative masterpiece in Mohanam — the peace of Rama's contemplation described as a vast ocean of bliss.",ytSearch:"Telisi Rama Chintanalo Mohanam"},
+  {name:"Makelara Ra",               composer:"Thyagaraja", raga:"Hamsadhwani",     tala:"Adi",       rasa:"Adbhuta",   lang:"Telugu",   opening:"Makelara ra nee daya",                        desc:"The wonder and beauty of divine grace — Thyagaraja's Adbhuta expression in the luminous Hamsadhwani.",ytSearch:"Makelara Ra Hamsadhwani Thyagaraja"},
+  {name:"Swara Raga Sudha",          composer:"Thyagaraja", raga:"Bilahari",        tala:"Roopaka",   rasa:"Hasya",     lang:"Telugu",   opening:"Swara raga sudha rasambilanu",               desc:"The nectar of swara and raga — a delightful, joyful composition on the bliss of music in the bright Bilahari.",ytSearch:"Swara Raga Sudha Bilahari Thyagaraja"},
+  {name:"Nadupai Nammiti",           composer:"Thyagaraja", raga:"Atana",           tala:"Adi",       rasa:"Veera",     lang:"Telugu",   opening:"Nadupai nammiti naa manasaa",                 desc:"Trust in the divine — Thyagaraja's expression of confident faith in the heroic Atana raga.",ytSearch:"Nadupai Nammiti Atana Thyagaraja"},
+
+  /* ── MUTHUSWAMI DIKSHITAR ── */
+  {name:"Vatapi Ganapatim",          composer:"Dikshitar",  raga:"Hamsadhwani",     tala:"Adi",       rasa:"Adbhuta",   lang:"Sanskrit", opening:"Vatapi ganapatim bhaje",                      desc:"Perhaps the most famous Dikshitar composition — saluting Ganesha of Vatapi in the sparkling Hamsadhwani raga. The musical embodiment of divine wonder.",ytSearch:"Vatapi Ganapatim Hamsadhwani Dikshitar"},
+  {name:"Shri Chakra Raja",          composer:"Dikshitar",  raga:"Madhyamavati",    tala:"Rupaka",    rasa:"Shringara", lang:"Sanskrit", opening:"Shri chakra raja simhasaneshwari",            desc:"A Shri Vidya Tantric masterpiece — the goddess on the throne of Sri Chakra. Dikshitar's most esoteric Shringara composition.",ytSearch:"Sri Chakra Raja Simhasaneshwari Dikshitar"},
+  {name:"Kamalamba Navavarana",       composer:"Dikshitar",  raga:"Kalyani",         tala:"Adi",       rasa:"Shringara", lang:"Sanskrit", opening:"Kamalamba samrakshatu maam",                  desc:"The Kalyani entry in the Kamalamba Navavarana cycle — nine compositions traversing the Sri Chakra. The pinnacle of Carnatic compositional architecture.",ytSearch:"Kamalamba Navavarana Kalyani Dikshitar"},
+  {name:"Meenakshi Me Mudam",        composer:"Dikshitar",  raga:"Purvikalyani",    tala:"Misra Chapu",rasa:"Shringara", lang:"Sanskrit", opening:"Meenakshi me mudam dehi",                     desc:"'O Meenakshi, give me joy' — an intimate, Shringara composition to the goddess of Madurai in the cool evening Purvikalyani.",ytSearch:"Meenakshi Me Mudam Dikshitar"},
+  {name:"Anandamritakarshini",       composer:"Dikshitar",  raga:"Amritavarshini",  tala:"Rupaka",    rasa:"Adbhuta",   lang:"Sanskrit", opening:"Anandamritakarshini amrita varshini",         desc:"The famous rain-bringing composition — Anandamritakarshini in Amritavarshini raga, said to bring rain when sung with devotion.",ytSearch:"Anandamritakarshini Amritavarshini Dikshitar"},
+  {name:"Akshayalinga Vibho",        composer:"Dikshitar",  raga:"Pantuvarali",     tala:"Adi",       rasa:"Karuna",    lang:"Sanskrit", opening:"Akshayalinga vibho",                          desc:"A profound Shiva composition in the deeply introspective Pantuvarali — one of Dikshitar's guruguha signature compositions.",ytSearch:"Akshayalinga Vibho Pantuvarali Dikshitar"},
+  {name:"Tyagaraja Yoga Vaibhavam",  composer:"Dikshitar",  raga:"Shankarabharanam",tala:"Adi",       rasa:"Veera",     lang:"Sanskrit", opening:"Tyagaraja yoga vaibhavam",                    desc:"A majestic Shiva composition in the full-bodied Shankarabharanam — celebrating Shiva's cosmic yogic power.",ytSearch:"Tyagaraja Yoga Vaibhavam Shankarabharanam Dikshitar"},
+  {name:"Maha Ganapati Mam Pahi",    composer:"Dikshitar",  raga:"Nata",            tala:"Adi",       rasa:"Veera",     lang:"Sanskrit", opening:"Maha ganapati mam pahi",                      desc:"Ganesha in the heroic Nata raga — Dikshitar's Veera invocation to the remover of obstacles.",ytSearch:"Maha Ganapati Mam Pahi Nata Dikshitar"},
+  {name:"Brihaspati",                composer:"Dikshitar",  raga:"Athana",          tala:"Adi",       rasa:"Veera",     lang:"Sanskrit", opening:"Brihaspati deva guruguhena",                  desc:"The divine guru Jupiter — Dikshitar's philosophical composition on sacred knowledge in the powerful Athana.",ytSearch:"Brihaspati Athana Dikshitar"},
+  {name:"Manasagururaja",            composer:"Dikshitar",  raga:"Vijayashri",      tala:"Roopaka",   rasa:"Shanta",    lang:"Sanskrit", opening:"Manasagururaja adi kona",                     desc:"A meditative composition on the inner guru — the rare Vijayashri raga used for a serene philosophical statement.",ytSearch:"Manasagururaja Vijayashri Dikshitar"},
+
+  /* ── SHYAMA SHASTRI ── */
+  {name:"O Jagadamba",               composer:"Shyama Shastri",raga:"Anandabhairavi",tala:"Adi",      rasa:"Karuna",    lang:"Telugu",   opening:"O jagadamba ninne nammiti naanu",             desc:"The most beloved of Shyama Shastri's compositions — an intimate Karuna appeal to the divine mother in the deeply moving Anandabhairavi.",ytSearch:"O Jagadamba Anandabhairavi Shyama Shastri"},
+  {name:"Devi Brova Samayamide",     composer:"Shyama Shastri",raga:"Chintamani",   tala:"Adi",      rasa:"Karuna",    lang:"Telugu",   opening:"Devi brova samayamide",                       desc:"'This is the time for you to protect me, O Devi' — one of Shyama Shastri's swarjati compositions, a supreme expression of devotional desperation.",ytSearch:"Devi Brova Samayamide Shyama Shastri"},
+  {name:"Talli Ninnu Nera",          composer:"Shyama Shastri",raga:"Begada",       tala:"Misra Chapu",rasa:"Karuna",  lang:"Telugu",   opening:"Talli ninnu nera nammiti",                    desc:"'Mother, I truly trust in you alone' — the simplest and most direct of Shyama Shastri's prayers to the divine mother.",ytSearch:"Talli Ninnu Nera Begada Shyama Shastri"},
+  {name:"Shyamakrishna",             composer:"Shyama Shastri",raga:"Bhairavi",     tala:"Adi",      rasa:"Karuna",    lang:"Telugu",   opening:"Shyamakrishna ninne nammi",                   desc:"A deeply Karuna Bhairavi composition — Shyama Shastri's expression of complete surrender and grief at divine separation.",ytSearch:"Shyamakrishna Bhairavi Shyama Shastri"},
+  {name:"Ninna Vina",                composer:"Shyama Shastri",raga:"Todi",         tala:"Adi",      rasa:"Karuna",    lang:"Telugu",   opening:"Ninna vina daivamu",                          desc:"Without you there is no god — Shyama Shastri's most philosophically bold Karuna statement in the introspective Todi.",ytSearch:"Ninna Vina Todi Shyama Shastri"},
+  {name:"Sarasvati Namostute",       composer:"Shyama Shastri",raga:"Manavyala",    tala:"Adi",      rasa:"Shanta",    lang:"Sanskrit", opening:"Sarasvati namostute",                         desc:"Salutation to Saraswati — Shyama Shastri's rare Sanskrit composition, peaceful and devotional, invoking the goddess of music and learning.",ytSearch:"Sarasvati Namostute Shyama Shastri"},
+  {name:"Kamakshi",                  composer:"Shyama Shastri",raga:"Sankarabharanam",tala:"Adi",    rasa:"Shanta",    lang:"Telugu",   opening:"Kamakshi neeve naa dikkevaru",                desc:"Kamakshi, you alone are my refuge — Shyama Shastri's expression of total peace in surrender to the goddess in the serene Shankarabharanam.",ytSearch:"Kamakshi Shankarabharanam Shyama Shastri"},
+
+  /* ── ANNAMACHARYA ── */
+  {name:"Brahmamokkate",             composer:"Annamacharya",raga:"Sankarabharanam",tala:"Adi",      rasa:"Shanta",    lang:"Telugu",   opening:"Brahmamokkate para brahmamokkate",            desc:"'There is only one Brahman' — Annamacharya's most philosophical Advaita composition, a pure statement of non-dual reality in the majestic Shankarabharanam.",ytSearch:"Brahmamokkate Annamacharya Shankarabharanam"},
+  {name:"Srimannrarayana",           composer:"Annamacharya",raga:"Kambhoji",       tala:"Adi",      rasa:"Bhakti",    lang:"Telugu",   opening:"Srimannrarayana narayana narayana",           desc:"The supreme Narayana invocation — Annamacharya's most performed sankirtana, the chanting of Narayana's name as the entire practice.",ytSearch:"Srimannrarayana Annamacharya Kambhoji"},
+  {name:"Venkatesa Neeye Gati",      composer:"Annamacharya",raga:"Harikambhoji",   tala:"Adi",      rasa:"Bhakti",    lang:"Telugu",   opening:"Venkatesa neeye gati neeye saranaiyya",       desc:"Venkatesha, you alone are my refuge — a complete surrender sankirtana in the warm and romantic Harikambhoji.",ytSearch:"Venkatesa Neeye Gati Annamacharya"},
+  {name:"Govinda Govinda",           composer:"Annamacharya",raga:"Saranga",        tala:"Adi",      rasa:"Bhakti",    lang:"Telugu",   opening:"Govinda govinda nee namamu lelo",             desc:"The repetition of Govinda's name as practice itself — Annamacharya's nama-sankirtana tradition at its most direct.",ytSearch:"Govinda Govinda Annamacharya Saranga"},
+  {name:"Kalagnanarni",              composer:"Annamacharya",raga:"Arabhi",         tala:"Adi",      rasa:"Adbhuta",   lang:"Telugu",   opening:"Kalagnanarni kaadayya",                       desc:"On the impossibility of knowing the divine — Annamacharya's philosophical wonder at the incomprehensibility of Vishnu.",ytSearch:"Kalagnanarni Annamacharya Arabhi"},
+  {name:"Entamugguno",               composer:"Annamacharya",raga:"Kharaharapriya", tala:"Adi",      rasa:"Karuna",    lang:"Telugu",   opening:"Entamugguno vaade entamugguno",               desc:"How charming he is — this charming, tender kriti about Krishna's beauty transitions from Shringara wonder to devotional Karuna longing.",ytSearch:"Entamugguno Annamacharya Kharaharapriya"},
+  {name:"Paluku Tenela Talli",       composer:"Annamacharya",raga:"Mohanam",        tala:"Adi",      rasa:"Shringara", lang:"Telugu",   opening:"Paluku tenela talli parama daya",             desc:"Words sweeter than honey — Annamacharya's famous Shringara composition on divine beauty, in the universally loved Mohanam raga.",ytSearch:"Paluku Tenela Talli Annamacharya Mohanam"},
+  {name:"Nada Tanumanisham",         composer:"Annamacharya",raga:"Chintamani",     tala:"Adi",      rasa:"Adbhuta",   lang:"Sanskrit", opening:"Nada tanumanisham shankaramishrayami",        desc:"Saluting Shankara whose form is made of Nada (sound) — Annamacharya's Sanskrit composition connecting music and cosmic consciousness.",ytSearch:"Nada Tanumanisham Annamacharya"},
+];
+
+/* ═══════════════════════════════════════════════════════════════
    STATE
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 let sel = new Set();
 let curRasa = null;
 let curDanceFilter = "All";
 let audioCtx = null;
 let playing = false;
 let playTimer = null;
+let anthropicKey = '';
+let ytKey = '';
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    INIT
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
+  // Restore saved keys
+  anthropicKey = localStorage.getItem('nada_anthro_key') || '';
+  ytKey = localStorage.getItem('nada_yt_key') || '';
+  if(anthropicKey){ document.getElementById('apiKeyInput').value = anthropicKey; updateApiStatus(); }
+  if(ytKey){ document.getElementById('ytKeyInput').value = ytKey; updateYtStatus(); }
+
   buildGrid();
   buildQuickList();
+  buildKritiRagaFilter();
   renderMudraBridge();
+  renderKriti();
 });
+
+function saveApiKey(val){
+  anthropicKey = val.trim();
+  localStorage.setItem('nada_anthro_key', anthropicKey);
+  updateApiStatus();
+}
+
+function saveYtKey(val){
+  ytKey = val.trim();
+  localStorage.setItem('nada_yt_key', ytKey);
+  updateYtStatus();
+}
+
+function updateApiStatus(){
+  const el = document.getElementById('apiStatus');
+  if(anthropicKey.startsWith('sk-ant-') && anthropicKey.length > 20){
+    el.textContent = '✓ API key ready';
+    el.className = 'api-status ok';
+  } else if(anthropicKey.length > 0){
+    el.textContent = '⚠ Key format unexpected';
+    el.className = 'api-status err';
+  } else {
+    el.textContent = 'Enter key to enable AI analysis';
+    el.className = 'api-status';
+  }
+}
+
+function updateYtStatus(){
+  const el = document.getElementById('ytStatus');
+  if(ytKey.startsWith('AIza') && ytKey.length > 10){
+    el.textContent = '✓ YouTube search ready';
+    el.className = 'api-status ok';
+  } else if(ytKey.length > 0){
+    el.textContent = '⚠ Check key format';
+    el.className = 'api-status err';
+  } else {
+    el.textContent = 'Optional — enables live video search';
+    el.className = 'api-status';
+  }
+}
 
 function buildGrid(){
   const g = document.getElementById('swaraGrid');
@@ -891,9 +1299,16 @@ function buildQuickList(){
   }).join('');
 }
 
-/* ═══════════════════════════════════════
+function buildKritiRagaFilter(){
+  const ragas = [...new Set(KRITIS.map(k=>k.raga))].sort();
+  const sel = document.getElementById('kritiRaga');
+  sel.innerHTML = '<option value="">All rāgas</option>' +
+    ragas.map(r=>`<option value="${r}">${r}</option>`).join('');
+}
+
+/* ═══════════════════════════════════════════════════════════════
    SWARA INTERACTION
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 function toggleSw(id){
   if(sel.has(id)) sel.delete(id);
   else sel.add(id);
@@ -933,9 +1348,9 @@ function updateScale(){
   document.getElementById('avarohaDisplay').textContent = [...sorted].reverse().map(toAbbr).join(' · ');
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    RAGA MATCHING
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 function jaccard(a, b){
   const sa = new Set(a), sb = new Set(b);
   let i = 0;
@@ -974,15 +1389,14 @@ function updateMatches(){
   ).join('');
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    IDENTIFY
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 function identify(){
   if(sel.size < 3){ alert('Select at least 3 swaras first.'); return; }
   const ranked = getRanked();
   const res = document.getElementById('ragaResult');
   res.classList.add('on');
-
   const isNovel = !ranked.length || ranked[0].score < 0.55;
 
   if(isNovel){
@@ -990,7 +1404,6 @@ function identify(){
     const rasa = guessRasa(sorted);
     curRasa = rasa;
     const rc = RASA_COLORS[rasa] || '#c8a84b';
-
     document.getElementById('novelChip').style.display = 'inline-block';
     document.getElementById('rrName').textContent = 'Novel Rāga';
     document.getElementById('rrAlso').textContent = 'No exact match — this swara set is unique';
@@ -1011,7 +1424,6 @@ function identify(){
     const score = ranked[0].score;
     curRasa = best.rasa;
     const rc = RASA_COLORS[best.rasa] || '#c8a84b';
-
     document.getElementById('novelChip').style.display = 'none';
     document.getElementById('rrName').textContent = best.name;
     document.getElementById('rrAlso').textContent = best.also ? 'Also known as ' + best.also : '';
@@ -1026,7 +1438,16 @@ function identify(){
     document.getElementById('rrComp').textContent = best.comp.join(', ') || '—';
     document.getElementById('rrAroha').textContent = best.aroha.map(n=>SWARAS[n].abbr).join(' ');
     document.getElementById('rrAvaroha').textContent = best.avaroha.map(n=>SWARAS[n].abbr).join(' ');
+
+    // Fetch YouTube videos for identified raga
+    if(ytKey) fetchYouTubeVideos(best.name + ' Carnatic raga performance');
+    else document.getElementById('ytSection').style.display = 'none';
   }
+
+  // Reset AI box
+  document.getElementById('aiBox').classList.remove('on');
+  document.getElementById('aiBox').textContent = '';
+  document.getElementById('aiBtn').disabled = false;
 
   renderMudraSection(curRasa);
   res.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1047,87 +1468,51 @@ function guessParent(notes){
   return notes.includes(6) ? 'Prati Madhyama lineage' : 'Shuddha Madhyama lineage';
 }
 
-/* ═══════════════════════════════════════
-   MUDRA SECTION (inside raga result)
-═══════════════════════════════════════ */
-function renderMudraSection(rasa){
-  const sec = document.getElementById('mudraSec');
-  document.getElementById('mudraSTitle').textContent = 'Mudrās for ' + rasa + ' Rasa';
-  document.getElementById('mudraSub').textContent = 'How this rasa is expressed through classical dance gestures — with their neurological benefits';
+/* ═══════════════════════════════════════════════════════════════
+   YOUTUBE VIDEO SEARCH
+═══════════════════════════════════════════════════════════════ */
+async function fetchYouTubeVideos(query){
+  const sec = document.getElementById('ytSection');
+  const grid = document.getElementById('ytGrid');
+  sec.style.display = 'block';
+  grid.innerHTML = '<div class="ai-loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Searching performances…</div>';
 
-  const forms = Object.keys(MUDRAS);
-  const tabs = document.getElementById('danceTabs');
-  const allForms = ['All', ...forms];
-  tabs.innerHTML = allForms.map(f =>
-    `<button class="dtab${f==='All'?' on':''}" onclick="filterDance('${f}',this,'${rasa}')">${f==='All'?'All traditions':MUDRAS[f]?.label||f}</button>`
-  ).join('');
-
-  renderMudraCards(rasa, 'All');
-}
-
-function filterDance(form, btn, rasa){
-  document.querySelectorAll('#danceTabs .dtab').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  curDanceFilter = form;
-  renderMudraCards(rasa||curRasa, form);
-}
-
-function renderMudraCards(rasa, filter){
-  const grid = document.getElementById('mudraCards');
-  const forms = filter==='All' ? Object.keys(MUDRAS) : [filter];
-  let html = '';
-  forms.forEach(form => {
-    const db = MUDRAS[form];
-    const mudras = db[rasa] || [];
-    if(!mudras.length) return;
-    mudras.forEach(m => {
-      html += `<div class="mudra-card" style="border-left-color:${db.color}">
-        <div class="mc-form">${db.label}</div>
-        <div class="mc-name">${m.name}</div>
-        <div class="mc-desc">${m.desc}</div>
-        <div class="mc-benefit">✦ Benefit: ${m.benefit}</div>
-        <div class="mc-neuro">◉ Neuroscience: ${m.neuro}</div>
-      </div>`;
-    });
-  });
-  grid.innerHTML = html || `<div style="color:var(--muted);font-style:italic;font-size:13px">No specific ${rasa} mudras in selected tradition</div>`;
-}
-
-/* ═══════════════════════════════════════
-   MUDRA BRIDGE TAB
-═══════════════════════════════════════ */
-function renderMudraBridge(){
-  const rasa = document.getElementById('rasaSelect').value;
-  const grid = document.getElementById('bridgeGrid');
-  let html = '';
-  Object.keys(MUDRAS).forEach(form => {
-    const db = MUDRAS[form];
-    const mudras = db[rasa] || [];
-    if(!mudras.length){
-      html += `<div class="mudra-card" style="border-left-color:${db.color};opacity:0.4">
-        <div class="mc-form">${db.label}</div>
-        <div class="mc-name" style="font-size:15px;color:var(--muted)">No ${rasa} mudras codified</div>
-        <div class="mc-desc" style="font-size:11px">${db.origin}</div>
-      </div>`;
+  try {
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=3&key=${ytKey}&videoCategoryId=10`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if(data.error){ throw new Error(data.error.message); }
+    if(!data.items || !data.items.length){
+      grid.innerHTML = '<div style="font-size:12px;color:var(--muted)">No videos found for this raga.</div>';
       return;
     }
-    mudras.forEach(m => {
-      html += `<div class="mudra-card" style="border-left-color:${db.color}">
-        <div class="mc-form">${db.label} — ${db.origin}</div>
-        <div class="mc-name">${m.name}</div>
-        <div class="mc-desc">${m.desc}</div>
-        <div class="mc-benefit">✦ ${m.benefit}</div>
-        <div class="mc-neuro">◉ ${m.neuro}</div>
-      </div>`;
-    });
-  });
-  grid.innerHTML = html;
+    grid.innerHTML = data.items.map(item => {
+      const vid = item.id.videoId;
+      const title = item.snippet.title;
+      const channel = item.snippet.channelTitle;
+      const thumb = item.snippet.thumbnails?.medium?.url || '';
+      return `<a class="yt-card" href="https://www.youtube.com/watch?v=${vid}" target="_blank" rel="noopener">
+        ${thumb ? `<img class="yt-thumb" src="${thumb}" alt="${title}" loading="lazy">` : '<div class="yt-thumb-placeholder">▶</div>'}
+        <div class="yt-info">
+          <div class="yt-vname">${title}</div>
+          <div class="yt-vchan">${channel}</div>
+        </div>
+      </a>`;
+    }).join('');
+  } catch(e){
+    grid.innerHTML = `<div style="font-size:12px;color:var(--muted)">Video search error: ${e.message}</div>`;
+  }
 }
 
-/* ═══════════════════════════════════════
-   AI ANALYSIS
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   AI ANALYSIS  ←  FIXED
+═══════════════════════════════════════════════════════════════ */
 async function getAIAnalysis(){
+  if(!anthropicKey){
+    alert('Please enter your Anthropic API key in the bar at the top of the page.');
+    return;
+  }
+
   const box = document.getElementById('aiBox');
   const btn = document.getElementById('aiBtn');
   const name = document.getElementById('rrName').textContent;
@@ -1150,29 +1535,195 @@ Cover in 3 short paragraphs:
 Be scholarly but accessible. No bullet points.`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:800,
-        tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:[{role:'user',content:prompt}]
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': anthropicKey,                              // ← API key header
+        'anthropic-version': '2023-06-01',                      // ← required version
+        'anthropic-dangerous-direct-browser-access': 'true'     // ← required for browser
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 800,
+        messages: [{ role: 'user', content: prompt }]
       })
     });
+
+    if(!res.ok){
+      const err = await res.json();
+      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    }
+
     const data = await res.json();
-    const text = data.content?.find(b=>b.type==='text')?.text || 'Analysis unavailable.';
+    const text = data.content?.find(b => b.type === 'text')?.text || 'Analysis unavailable.';
     box.classList.add('on');
     box.textContent = text;
   } catch(e) {
-    box.textContent = 'Connect the Anthropic API to enable deep musicological analysis.';
+    box.innerHTML = `<span style="color:var(--saffron)">⚠ ${e.message}</span>`;
   }
   btn.disabled = false;
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
+   MUDRA SECTION (inside raga result)
+═══════════════════════════════════════════════════════════════ */
+function renderMudraSection(rasa){
+  document.getElementById('mudraSTitle').textContent = 'Mudrās for ' + rasa + ' Rasa';
+  document.getElementById('mudraSub').textContent = 'How this rasa is expressed through classical dance gestures — with neurological benefits';
+  const forms = Object.keys(MUDRAS);
+  const tabs = document.getElementById('danceTabs');
+  const allForms = ['All', ...forms];
+  tabs.innerHTML = allForms.map(f =>
+    `<button class="dtab${f==='All'?' on':''}" onclick="filterDance('${f}',this,'${rasa}')">${f==='All'?'All traditions':MUDRAS[f]?.label||f}</button>`
+  ).join('');
+  renderMudraCards(rasa, 'All');
+}
+
+function filterDance(form, btn, rasa){
+  document.querySelectorAll('#danceTabs .dtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  curDanceFilter = form;
+  renderMudraCards(rasa||curRasa, form);
+}
+
+function renderMudraCards(rasa, filter){
+  const grid = document.getElementById('mudraCards');
+  const forms = filter==='All' ? Object.keys(MUDRAS) : [filter];
+  let html = '';
+  forms.forEach(form => {
+    const db = MUDRAS[form];
+    const mudras = db[rasa] || [];
+    if(!mudras.length) return;
+    mudras.forEach(m => {
+      html += `<div class="mudra-card" style="border-left-color:${db.color}">
+        <div class="mc-form">${db.label}</div>
+        <div class="mc-name">${m.name}</div>
+        ${m.sanskrit ? `<div class="mc-sanskrit">${m.sanskrit}</div>` : ''}
+        <div class="mc-desc">${m.desc}</div>
+        ${m.usage ? `<div class="mc-usage">Used for: ${m.usage}</div>` : ''}
+        <div class="mc-benefit">✦ Benefit: ${m.benefit}</div>
+        <div class="mc-neuro">◉ Neuroscience: ${m.neuro}</div>
+      </div>`;
+    });
+  });
+  grid.innerHTML = html || `<div style="color:var(--muted);font-style:italic;font-size:13px">No specific ${rasa} mudras in selected tradition</div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MUDRA BRIDGE TAB
+═══════════════════════════════════════════════════════════════ */
+function renderMudraBridge(){
+  const rasa = document.getElementById('rasaSelect').value;
+  const grid = document.getElementById('bridgeGrid');
+  let html = '';
+  let formsWithData = 0;
+  Object.keys(MUDRAS).forEach(form => {
+    const db = MUDRAS[form];
+    const mudras = db[rasa] || [];
+    if(!mudras.length){
+      html += `<div class="mudra-card" style="border-left-color:${db.color};opacity:0.35">
+        <div class="mc-form">${db.label}</div>
+        <div class="mc-name" style="font-size:15px;color:var(--muted)">No ${rasa} mudras codified</div>
+        <div class="mc-desc" style="font-size:11px">${db.origin}</div>
+      </div>`;
+      return;
+    }
+    formsWithData++;
+    mudras.forEach(m => {
+      html += `<div class="mudra-card" style="border-left-color:${db.color}">
+        <div class="mc-form">${db.label} — ${db.origin}</div>
+        <div class="mc-name">${m.name}</div>
+        ${m.sanskrit ? `<div class="mc-sanskrit">${m.sanskrit}</div>` : ''}
+        <div class="mc-desc">${m.desc}</div>
+        ${m.usage ? `<div class="mc-usage">Used for: ${m.usage}</div>` : ''}
+        <div class="mc-benefit">✦ ${m.benefit}</div>
+        <div class="mc-neuro">◉ ${m.neuro}</div>
+      </div>`;
+    });
+  });
+  grid.innerHTML = html;
+  document.getElementById('bridgeFormCount').textContent =
+    `Showing ${formsWithData} of ${Object.keys(MUDRAS).length} traditions · ${rasa} rasa`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   KRITI LIBRARY
+═══════════════════════════════════════════════════════════════ */
+const COMPOSER_COLORS = {
+  "Thyagaraja":"#d4b84a",
+  "Dikshitar":"#5b9bd5",
+  "Shyama Shastri":"#d4547a",
+  "Annamacharya":"#7aaa8a",
+};
+
+function renderKriti(){
+  const search = document.getElementById('kritiSearch').value.toLowerCase();
+  const composer = document.getElementById('kritiComposer').value;
+  const rasa = document.getElementById('kritiRasa').value;
+  const raga = document.getElementById('kritiRaga').value;
+  const grid = document.getElementById('kritiGrid');
+
+  let filtered = KRITIS.filter(k => {
+    if(composer && k.composer !== composer) return false;
+    if(rasa && k.rasa !== rasa) return false;
+    if(raga && k.raga !== raga) return false;
+    if(search){
+      const hay = (k.name + k.raga + k.opening + k.desc + k.composer).toLowerCase();
+      if(!hay.includes(search)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('kritiCount').textContent =
+    `${filtered.length} of ${KRITIS.length} kritis`;
+
+  if(!filtered.length){
+    grid.innerHTML = '<div style="color:var(--muted);font-style:italic;font-size:14px;grid-column:1/-1">No kritis match the current filters.</div>';
+    return;
+  }
+
+  const rc = k => RASA_COLORS[k.rasa] || '#c8a84b';
+  const cc = k => COMPOSER_COLORS[k.composer] || '#c8a84b';
+
+  grid.innerHTML = filtered.map(k => `
+    <div class="kriti-card">
+      <div class="kriti-header">
+        <div class="kriti-name">${k.name}</div>
+        <div class="kriti-composer-badge" style="border-color:${cc(k)}22;color:${cc(k)};background:${cc(k)}11">${k.composer}</div>
+      </div>
+      <div class="kriti-meta">
+        <span class="kriti-pill kriti-raga-pill">${k.raga}</span>
+        <span class="kriti-pill kriti-rasa-pill" style="border-color:${rc(k)}33;color:${rc(k)};background:${rc(k)}11">${k.rasa}</span>
+        <span class="kriti-pill kriti-lang-pill">${k.lang}</span>
+        <span class="kriti-pill kriti-tala-pill">${k.tala}</span>
+      </div>
+      <div class="kriti-opening">${k.opening}</div>
+      <div class="kriti-desc">${k.desc}</div>
+      <div class="kriti-actions">
+        <button class="kriti-btn" onclick="loadRagaFromKriti('${k.raga}')">▶ Open Rāga</button>
+        <button class="kriti-btn" onclick="filterByRasa('${k.rasa}')">Filter by ${k.rasa}</button>
+        ${k.ytSearch ? `<a class="kriti-btn yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(k.ytSearch)}" target="_blank" rel="noopener">▶ YouTube</a>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadRagaFromKriti(ragaName){
+  const raga = RAGAS.find(r => r.name.toLowerCase() === ragaName.toLowerCase());
+  if(!raga){ alert(`Raga "${ragaName}" not yet in the grid database. Try the Rāga Finder manually.`); return; }
+  setTab('finder');
+  setTimeout(() => quickLoad(raga.aroha), 100);
+}
+
+function filterByRasa(rasa){
+  document.getElementById('kritiRasa').value = rasa;
+  renderKriti();
+}
+
+/* ═══════════════════════════════════════════════════════════════
    WEB AUDIO PLAYBACK
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 function playScale(){
   if(playing){ stopPlay(); return; }
   if(sel.size===0){ alert('Select swaras first.'); return; }
@@ -1206,13 +1757,13 @@ function stopPlay(){
   document.getElementById('playBtn').classList.remove('going');
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    TAB SWITCHING
-═══════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 function setTab(name){
+  const names = ['finder','mudra','kriti','mind'];
   document.querySelectorAll('.tab').forEach((b,i)=>{
-    const t=['finder','mudra','mind'][i];
-    b.classList.toggle('on', t===name);
+    b.classList.toggle('on', names[i]===name);
   });
   document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
   document.getElementById('pane-'+name).classList.add('on');
