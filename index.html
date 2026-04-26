@@ -842,65 +842,6 @@ body.light-theme .piano-key-black{fill:#2a2030;stroke:#000;}
     </div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════ PANE 12 — HERITAGE & ARCHIVES ══════════════════════════════════ -->
-<div class="pane" id="pane-heritage">
-  <div class="pg-title">Heritage &amp; Archives</div>
-  <div class="pg-sub">Sirivennela · Rabindra Sangeet · Carnatic Trinity · Annamacharya — search &amp; explore</div>
-  <div class="glabel">Carnatic Archive</div>
-  <div class="archive-panel">
-    <div class="archive-panel-header">
-      <span class="aph-icon">🕉️</span>
-      <span class="aph-title">Carnatic Archive — Annamacharya &amp; Trinity</span>
-      <span class="aph-count" id="carnaticCount">— compositions</span>
-    </div>
-    <div class="archive-panel-body">
-      <div class="arch-search-row">
-        <input class="arch-search-input" id="carnaticSearch" type="text" placeholder="Search by title, composer, raga, or benefit…" oninput="searchCarnatic()">
-        <select class="arch-filter-select" id="carnaticComposerFilter" onchange="searchCarnatic()">
-          <option value="">All composers</option>
-          <option>Annamacharya</option><option>Tyagaraja</option>
-          <option>Dikshitar</option><option>Shyama Sastry</option>
-        </select>
-        <select class="arch-filter-select" id="carnaticLangFilter" onchange="searchCarnatic()">
-          <option value="">All languages</option>
-          <option>Telugu</option><option>Sanskrit</option>
-        </select>
-      </div>
-      <div class="arch-grid" id="carnaticGrid"></div>
-    </div>
-  </div>
-  <div class="glabel" style="margin-top:28px;">Sirivennela &amp; Rabindra Sangeet</div>
-  <div class="archive-panel">
-    <div class="archive-panel-header">
-      <span class="aph-icon">🎵</span>
-      <span class="aph-title">Sirivennela · Rabindra Sangeet</span>
-      <span class="aph-count" id="siriTotalCount">— songs</span>
-    </div>
-    <div class="archive-panel-body">
-      <div class="arch-search-row">
-        <input class="arch-search-input" id="siriSearch" type="text" placeholder="Search title, film, meaning, or benefit…" oninput="searchSirivennela()">
-        <select class="arch-filter-select" id="siriTypeFilter" onchange="searchSirivennela()">
-          <option value="">All types</option>
-          <option value="Sirivennela">Sirivennela</option>
-          <option value="Rabindra">Rabindra Sangeet</option>
-        </select>
-        <span class="arch-count-label" id="siriCountLabel"></span>
-      </div>
-      <div class="arch-grid" id="siriGrid"></div>
-    </div>
-  </div>
-  <div class="glabel" style="margin-top:28px;">Global Heritage Repository</div>
-  <div class="heritage-links-grid">
-    <a href="https://www.ttdsevaonline.com" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">🏛️</div><div class="hlc-title">Annamacharya Archive</div><div class="hlc-count">32,000+ compositions</div><div class="hlc-desc">Official TTD Copper Plate Archive — the complete digitised repository of Annamacharya's sankeertanas.</div><div class="hlc-url">ttdsevaonline.com</div></a>
-    <a href="https://www.karnatik.com" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">🎼</div><div class="hlc-title">Carnatic Trinity Repository</div><div class="hlc-count">1,500+ lyrics &amp; notations</div><div class="hlc-desc">Karnatik.com — the most comprehensive online repository of Carnatic lyrics, notations, and raga information.</div><div class="hlc-url">karnatik.com</div></a>
-    <a href="https://www.sangeethapriya.org" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">🎧</div><div class="hlc-title">Sangeetha Priya</div><div class="hlc-count">Audio archive</div><div class="hlc-desc">Extensive audio recordings of Carnatic compositions — a living library of performances by celebrated artists.</div><div class="hlc-url">sangeethapriya.org</div></a>
-    <a href="https://www.rabindra-rachanabali.nltr.org" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">📖</div><div class="hlc-title">Rabindra Rachanabali</div><div class="hlc-count">2,232 Rabindra Sangeet</div><div class="hlc-desc">Official digital archive of Rabindranath Tagore's complete works with original Bengali text and notation.</div><div class="hlc-url">rabindra-rachanabali.nltr.org</div></a>
-    <a href="https://www.sirivennela.net" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">✍️</div><div class="hlc-title">Sirivennela Archive</div><div class="hlc-count">3,000+ songs</div><div class="hlc-desc">Dedicated archive of Sirivennela Seetharama Sastry's Telugu film lyrics — searchable by film, year, raga, and theme.</div><div class="hlc-url">sirivennela.net</div></a>
-    <a href="https://www.musicindiaonline.com" class="heritage-link-card" target="_blank" rel="noopener"><div class="hlc-icon">🌏</div><div class="hlc-title">Music India Online</div><div class="hlc-count">Multi-tradition archive</div><div class="hlc-desc">Broad Indian classical music repository spanning Carnatic, Hindustani, folk, and regional traditions.</div><div class="hlc-url">musicindiaonline.com</div></a>
-  </div>
-</div>
-
 <!-- ══════════════════════════════════ PANE 13 — RĀGA CREATOR ══════════════════════════════════ -->
 <div class="pane" id="pane-creator">
   <div class="pg-title">✦ Rāga Creator</div>
