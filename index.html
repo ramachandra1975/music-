@@ -919,6 +919,115 @@ body.light-theme .piano-key-black{fill:#2a2030;}
     </div>
   </div>
 </div>
+  <!-- ══ PANE: BĪJĀKSHARA & MĀTRIKĀ NYĀSA SEARCH ══ -->
+<div class="pane" id="pane-beejakshara">
+  <div class="pg-title">Bījākshara & Mātrikā Nyāsa Search</div>
+  <div class="pg-sub">Instant search for seed syllables and the 52 Mātrikā Nyāsas by sound, deity, chakra, nyāsa point, scripture, and purpose</div>
+
+  <div class="arch-panel">
+    <div class="arch-panel-header">
+      <span class="aph-icon">🔱</span>
+      <span class="aph-title">Search Bījāksharas & Nyāsas</span>
+      <span class="aph-count" id="beejaSearchCount">0 results</span>
+    </div>
+
+    <div class="arch-panel-body">
+      <div class="arch-search-row">
+        <input
+          class="arch-search-input"
+          id="beejaSearchInput"
+          placeholder="Start typing a bījākshara, mātrikā, nyāsa point, deity, chakra, source, or purpose..."
+          oninput="filterBeejaSearch()"
+          autocomplete="off"
+        >
+
+        <select class="arch-filter-select" id="beejaTypeFilter" onchange="filterBeejaSearch()">
+          <option value="">All Types</option>
+          <option value="Beejakshara">Bījākshara</option>
+          <option value="MatrikaNyasa">Mātrikā Nyāsa</option>
+        </select>
+
+        <select class="arch-filter-select" id="beejaDeityFilter" onchange="filterBeejaSearch()">
+          <option value="">All Deities</option>
+          <option value="Shiva">Shiva</option>
+          <option value="Devi">Devi</option>
+          <option value="Lakshmi">Lakshmi</option>
+          <option value="Saraswati">Saraswati</option>
+          <option value="Ganesha">Ganesha</option>
+          <option value="Subrahmanya">Subrahmanya</option>
+          <option value="Vishnu">Vishnu</option>
+        </select>
+
+        <select class="arch-filter-select" id="beejaChakraFilter" onchange="filterBeejaSearch()">
+          <option value="">All Chakras</option>
+          <option value="Muladhara">Muladhara</option>
+          <option value="Svadhishthana">Svadhishthana</option>
+          <option value="Manipura">Manipura</option>
+          <option value="Anahata">Anahata</option>
+          <option value="Vishuddha">Vishuddha</option>
+          <option value="Ajna">Ajna</option>
+          <option value="Sahasrara">Sahasrara</option>
+        </select>
+
+        <select class="arch-filter-select" id="beejaSourceFilter" onchange="filterBeejaSearch()">
+          <option value="">All Sources</option>
+          <option value="Lalitha Sahasranama">Lalitha Sahasranama</option>
+          <option value="Devi Khadgamala">Devi Khadgamala</option>
+          <option value="Rudram Namakam">Rudram Namakam</option>
+          <option value="Rudram Chamakam">Rudram Chamakam</option>
+          <option value="Matrika Nyasa">Mātrikā Nyāsa</option>
+          <option value="Tantra">Tantra</option>
+          <option value="Upasana">Upasana</option>
+        </select>
+
+        <select class="arch-filter-select" id="beejaPurposeFilter" onchange="filterBeejaSearch()">
+          <option value="">All Purposes</option>
+          <option value="Protection">Protection</option>
+          <option value="Purification">Purification</option>
+          <option value="Focus">Focus</option>
+          <option value="Healing">Healing</option>
+          <option value="Energy">Energy</option>
+          <option value="Prosperity">Prosperity</option>
+          <option value="Wisdom">Wisdom</option>
+          <option value="Devotion">Devotion</option>
+        </select>
+      </div>
+
+      <div class="arch-grid" id="beejaSearchGrid"></div>
+    </div>
+  </div>
+
+  <!-- ══ RESULT PANEL ══ -->
+  <div class="arch-panel" id="beejaResultPanel" style="margin-top:18px; display:none;">
+    <div class="arch-panel-header">
+      <span class="aph-icon">✨</span>
+      <span class="aph-title" id="brTitle">Selected Entry</span>
+      <span class="aph-count" id="brType">Bījākshara</span>
+    </div>
+
+    <div class="arch-panel-body">
+      <div class="arch-card" style="margin-bottom:14px;">
+        <div class="arch-card-title">Sound / Nyāsa</div>
+        <div class="arch-card-script" id="brText">Text will appear here.</div>
+        <div class="arch-card-meta">
+          <span class="arch-pill ap-type" id="brSource">Source</span>
+          <span class="arch-pill ap-lang" id="brDeity">Deity</span>
+          <span class="arch-pill ap-raga" id="brPurpose">Purpose</span>
+        </div>
+      </div>
+
+      <div class="arch-grid" style="grid-template-columns:1fr; gap:12px;">
+        <div class="arch-card"><div class="arch-card-title">1. Meaning</div><div class="arch-card-meaning" id="brPara1"></div></div>
+        <div class="arch-card"><div class="arch-card-title">2. Scriptural Context</div><div class="arch-card-meaning" id="brPara2"></div></div>
+        <div class="arch-card"><div class="arch-card-title">3. Why It Is Used in Composition</div><div class="arch-card-meaning" id="brPara3"></div></div>
+        <div class="arch-card"><div class="arch-card-title">4. Spiritual Significance</div><div class="arch-card-meaning" id="brPara4"></div></div>
+        <div class="arch-card"><div class="arch-card-title">5. Neurological Significance</div><div class="arch-card-meaning" id="brPara5"></div></div>
+        <div class="arch-card"><div class="arch-card-title">6. Scientific View</div><div class="arch-card-meaning" id="brPara6"></div></div>
+        <div class="arch-card"><div class="arch-card-title">7. Practical Use</div><div class="arch-card-meaning" id="brPara7"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ══ PANE: HISTORY ══ -->
 <div class="pane" id="pane-history">
@@ -926,51 +1035,148 @@ body.light-theme .piano-key-black{fill:#2a2030;}
   <div class="pg-sub">From Gandharva-Veda to the digital age — a 3,000-year musical journey</div>
   <div id="historyContent"></div>
 </div>
-
-<!-- ══ PANE: HERITAGE ══ -->
+<!-- ══ PANE: RAGA SEARCH ══ -->
 <div class="pane" id="pane-heritage">
-  <div class="pg-title">Heritage & Archives</div>
-  <div class="pg-sub">Sirivennela · Rabindra Sangeet · Carnatic Trinity · Annamacharya</div>
-  <div class="glabel">Carnatic Archive</div>
+  <div class="pg-title">Rāga Search</div>
+  <div class="pg-sub">Search all rāgas by name, rasa, time, system, or parent scale</div>
+
   <div class="arch-panel">
-    <div class="arch-panel-header"><span class="aph-icon">🕉</span><span class="aph-title">Carnatic Archive — Annamacharya & Trinity</span><span class="aph-count" id="carnaticCount"></span></div>
+    <div class="arch-panel-header">
+      <span class="aph-icon">🔎</span>
+      <span class="aph-title">Search Rāgas</span>
+      <span class="aph-count" id="ragaSearchCount"></span>
+    </div>
+
     <div class="arch-panel-body">
       <div class="arch-search-row">
-        <input class="arch-search-input" id="carnaticSearch" placeholder="Search by title, composer, raga, benefit…" oninput="searchCarnatic()">
-        <select class="arch-filter-select" id="carnaticCompFilter" onchange="searchCarnatic()">
-          <option value="">All Composers</option>
-          <option>Annamacharya</option><option>Tyagaraja</option><option>Dikshitar</option><option>Shyama Sastry</option>
+        <input
+          class="arch-search-input"
+          id="ragaSearchInput"
+          placeholder="Search by rāga name, rasa, time, melakarta, thaat..."
+          oninput="filterRagaSearch()"
+        >
+
+        <select class="arch-filter-select" id="ragaSystemFilter" onchange="filterRagaSearch()">
+          <option value="">All Systems</option>
+          <option value="Carnatic">Carnatic</option>
+          <option value="Hindustani">Hindustani</option>
+          <option value="Folk">Folk / Regional</option>
+          <option value="Fusion">Fusion</option>
+        </select>
+
+        <select class="arch-filter-select" id="ragaRasaFilter" onchange="filterRagaSearch()">
+          <option value="">All Rasas</option>
+          <option value="Bhakti">Bhakti</option>
+          <option value="Karuna">Karuna</option>
+          <option value="Shringara">Shringara</option>
+          <option value="Veera">Veera</option>
+          <option value="Shanta">Shanta</option>
+          <option value="Hasya">Hasya</option>
+          <option value="Raudra">Raudra</option>
+          <option value="Adbhuta">Adbhuta</option>
+        </select>
+
+        <select class="arch-filter-select" id="ragaTimeFilter" onchange="filterRagaSearch()">
+          <option value="">All Times</option>
+          <option value="Dawn">Dawn</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Evening">Evening</option>
+          <option value="Night">Night</option>
+          <option value="Any Time">Any Time</option>
         </select>
       </div>
-      <div class="arch-grid" id="carnaticGrid"></div>
+
+      <div class="arch-grid" id="ragaSearchGrid"></div>
     </div>
-  </div>
-  <div class="glabel" style="margin-top:24px;">Sirivennela & Rabindra Sangeet</div>
-  <div class="arch-panel">
-    <div class="arch-panel-header"><span class="aph-icon">🎵</span><span class="aph-title">Sirivennela · Rabindra Sangeet</span><span class="aph-count" id="siriCount"></span></div>
-    <div class="arch-panel-body">
-      <div class="arch-search-row">
-        <input class="arch-search-input" id="siriSearch" placeholder="Search title, film, meaning, benefit…" oninput="searchSiri()">
-        <select class="arch-filter-select" id="siriTypeFilter" onchange="searchSiri()">
-          <option value="">All Types</option>
-          <option value="Sirivennela">Sirivennela</option>
-          <option value="Rabindra">Rabindra Sangeet</option>
-        </select>
-      </div>
-      <div class="arch-grid" id="siriGrid"></div>
-    </div>
-  </div>
-  <div class="glabel" style="margin-top:24px;">Global Heritage Repository</div>
-  <div class="heritage-links-grid">
-    <a href="https://www.ttdsevaonline.com" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">🏛</div><div class="hlc-title">Annamacharya Archive</div><div class="hlc-count">32,000+ compositions</div><div class="hlc-desc">TTD Copper Plate Archive — complete digitised repository of Annamacharya's sankeertanas.</div></a>
-    <a href="https://www.karnatik.com" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">🎼</div><div class="hlc-title">Carnatic Trinity</div><div class="hlc-count">1,500+ lyrics & notations</div><div class="hlc-desc">Karnatik.com — comprehensive repository of Carnatic lyrics, notations, and raga information.</div></a>
-    <a href="https://www.sangeethapriya.org" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">🎧</div><div class="hlc-title">Sangeetha Priya</div><div class="hlc-count">Audio archive</div><div class="hlc-desc">Extensive audio recordings of Carnatic compositions — a living library of performances.</div></a>
-    <a href="https://rabindra-rachanabali.nltr.org" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">📖</div><div class="hlc-title">Rabindra Rachanabali</div><div class="hlc-count">2,232 Rabindra Sangeet</div><div class="hlc-desc">Official digital archive of Rabindranath Tagore's complete works with notation.</div></a>
-    <a href="https://www.sirivennela.net" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">✍</div><div class="hlc-title">Sirivennela Archive</div><div class="hlc-count">3,000+ songs</div><div class="hlc-desc">Sirivennela Seetharama Sastry's Telugu film lyrics — searchable by film, year, raga and theme.</div></a>
-    <a href="https://www.musicindiaonline.com" class="hlc" target="_blank" rel="noopener"><div class="hlc-icon">🌏</div><div class="hlc-title">Music India Online</div><div class="hlc-count">Multi-tradition archive</div><div class="hlc-desc">Broad Indian classical music repository spanning Carnatic, Hindustani, folk and regional traditions.</div></a>
   </div>
 </div>
+  <!-- ══ PANE: MANTRA / SHLOKA SEARCH ══ -->
+<div class="pane" id="pane-mantra">
+  <div class="pg-title">Mantra, Shloka & Bījākshara Search</div>
+  <div class="pg-sub">Instant search across shlokas, nāmas, sahasranāmāvali, bījāksharas, Namakam, and Chamakam</div>
 
+  <div class="arch-panel">
+    <div class="arch-panel-header">
+      <span class="aph-icon">🕉</span>
+      <span class="aph-title">Search Sacred Texts</span>
+      <span class="aph-count" id="mantraSearchCount">0 results</span>
+    </div>
+
+    <div class="arch-panel-body">
+      <div class="arch-search-row">
+        <input
+          class="arch-search-input"
+          id="mantraSearchInput"
+          placeholder="Start typing a shloka, nāma, bījākshara, source, or sahasranāmāvali entry..."
+          oninput="filterMantraSearch()"
+          autocomplete="off"
+        >
+
+        <select class="arch-filter-select" id="mantraTypeFilter" onchange="filterMantraSearch()">
+          <option value="">All Types</option>
+          <option value="Shloka">Shloka</option>
+          <option value="Mantra">Mantra</option>
+          <option value="Beejakshara">Bījākshara</option>
+          <option value="Nama">Nāma</option>
+        </select>
+
+        <select class="arch-filter-select" id="mantraSourceFilter" onchange="filterMantraSearch()">
+          <option value="">All Sources</option>
+          <option value="Lalitha Sahasranama">Lalitha Sahasranama</option>
+          <option value="Khadgamala">Devi Khadgamala</option>
+          <option value="Rudram Namakam">Rudram Namakam</option>
+          <option value="Rudram Chamakam">Rudram Chamakam</option>
+        </select>
+
+        <select class="arch-filter-select" id="mantraPurposeFilter" onchange="filterMantraSearch()">
+          <option value="">All Purposes</option>
+          <option value="Devotion">Devotion</option>
+          <option value="Protection">Protection</option>
+          <option value="Purification">Purification</option>
+          <option value="Wisdom">Wisdom</option>
+          <option value="Energy">Energy</option>
+          <option value="Focus">Focus</option>
+          <option value="Healing">Healing</option>
+        </select>
+      </div>
+
+      <div class="arch-grid" id="mantraSearchGrid"></div>
+    </div>
+  </div>
+
+  <!-- ══ AUTO-SHOW RESULT PANEL ══ -->
+  <div class="arch-panel" id="mantraResultPanel" style="margin-top:18px; display:none;">
+    <div class="arch-panel-header">
+      <span class="aph-icon">✨</span>
+      <span class="aph-title" id="mrTitle">Selected Text</span>
+      <span class="aph-count" id="mrType">Shloka</span>
+    </div>
+
+    <div class="arch-panel-body">
+      <div class="arch-card" style="margin-bottom:14px;">
+        <div class="arch-card-title">Text</div>
+        <div class="arch-card-script" id="mrText">Sacred text will appear here.</div>
+        <div class="arch-card-meta">
+          <span class="arch-pill ap-type" id="mrSource">Source</span>
+          <span class="arch-pill ap-lang" id="mrDeity">Deity</span>
+          <span class="arch-pill ap-raga" id="mrPurpose">Purpose</span>
+        </div>
+      </div>
+
+      <div class="arch-grid" style="grid-template-columns:1fr; gap:12px;">
+        <div class="arch-card"><div class="arch-card-title">1. Meaning</div><div class="arch-card-meaning" id="mrPara1"></div></div>
+        <div class="arch-card"><div class="arch-card-title">2. Scriptural Context</div><div class="arch-card-meaning" id="mrPara2"></div></div>
+        <div class="arch-card"><div class="arch-card-title">3. Why It Is Used in Composition</div><div class="arch-card-meaning" id="mrPara3"></div></div>
+        <div class="arch-card"><div class="arch-card-title">4. Spiritual Significance</div><div class="arch-card-meaning" id="mrPara4"></div></div>
+        <div class="arch-card"><div class="arch-card-title">5. Neurological Significance</div><div class="arch-card-meaning" id="mrPara5"></div></div>
+        <div class="arch-card"><div class="arch-card-title">6. Scientific View</div><div class="arch-card-meaning" id="mrPara6"></div></div>
+        <div class="arch-card"><div class="arch-card-title">7. Practical Use</div><div class="arch-card-meaning" id="mrPara7"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="pg-sub">Instant search across bījāksharas, Mātrikā Nyāsas, sacred sounds, scripture sources, and seed syllables with meaning, compositional use, spiritual significance, neurological significance, scientific view, and practical use</div>
 <!-- ══ PANE: CREATOR ══ -->
 <div class="pane" id="pane-creator">
   <div class="pg-title">✦ Rāga Creator</div>
