@@ -69,6 +69,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 body::after{content:'';position:fixed;top:-180px;left:50%;transform:translateX(-50%);width:1000px;height:600px;pointer-events:none;z-index:0;background:radial-gradient(ellipse,rgba(200,168,75,.07) 0%,transparent 70%);}
 .deco-clef{position:fixed;right:-40px;top:40%;transform:translateY(-50%);font-size:480px;color:rgba(200,168,75,.016);font-family:'Cormorant Garamond',serif;pointer-events:none;z-index:0;user-select:none;line-height:1;font-style:italic;}
 .deco-om{position:fixed;left:6px;bottom:60px;font-size:160px;color:rgba(155,143,212,.04);pointer-events:none;z-index:0;user-select:none;}
+  /*========search bar-----------*/
+  .global-search-wrap{
+  padding:12px 40px 0;
+  background:rgba(13,11,28,.97);
+  border-bottom:1px solid var(--border);
+}
+
+body.light-theme .global-search-wrap{
+  background:rgba(236,230,216,.97);
+}
+.global-search-wrap .search-inp{
+  width:100%;
+}
 
 /* ── HEADER ── */
 header{position:sticky;top:0;z-index:200;padding:14px 40px 0;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;background:rgba(6,6,14,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);}
@@ -646,6 +659,18 @@ body.light-theme .piano-key-black{fill:#2a2030;}
     <div class="nl-item"><div class="nl-bar" style="background:rgba(122,170,138,.8)"></div>Achala</div>
     <div class="nl-item"><div class="nl-bar" style="background:rgba(91,155,213,.8)"></div>Komal</div>
     <div class="nl-item"><div class="nl-bar" style="background:rgba(212,116,42,.8)"></div>Tivra</div>
+  </div>
+</div>
+  
+<div class="global-search-wrap">
+  <div class="search-wrap" style="margin-top:12px; margin-bottom:0;">
+    <span class="search-ico">🔍</span>
+    <input
+      class="search-inp"
+      id="globalSiteSearch"
+      placeholder="Search anything in the app..."
+      onkeydown="if(event.key==='Enter') runGlobalSiteSearch()"
+    >
   </div>
 </div>
 
@@ -1641,7 +1666,7 @@ Understood — here is a more complete from-scratch version for the pane.
         
   
 
-      <strong>Input methods used here:</strong> text search, dropdown filters, and clickable results.
+  In this way, the application supports a full journey from <strong>basic lookup</strong> to <strong>deep study</strong>, <strong>cross-reference</strong>, <strong>visual understanding</strong>, and <strong>creative experimentation</strong>.
     </div>
   </div>
 
@@ -1706,13 +1731,10 @@ Understood — here is a more complete from-scratch version for the pane.
   
 
       After that, the user can connect musical knowledge with compositions in the Kriti Library, symbolic expression in Mudrās, and sacred sound reference in the Mantra and Bījākshara sections. Advanced users can compare rāgas, study time associations, review parent systems, and finally use the Rāga Creator to generate new concepts.
-        
-  
-
       In this way, the application supports a full journey from <strong>basic lookup</strong> to <strong>deep study</strong>, <strong>cross-reference</strong>, <strong>visual understanding</strong>, and <strong>creative experimentation</strong>.
     </div>
-  </div>
-
+  </div> 
+  
   <div class="ms-card">
     <div class="ms-title">Conclusion</div>
     <div class="ms-body">
@@ -1731,7 +1753,13 @@ function setTab(tabName){
   const activeTab = document.querySelector(`.tab[onclick="setTab('${tabName}')"]`);
   if (activeTab) activeTab.classList.add('on');
 }
-</script>
 
+function runGlobalSiteSearch(){
+  const q = document.getElementById('globalSiteSearch').value.trim();
+  if(!q) return;
+  const url = 'https://www.google.com/search?q=site:culturalmusings.com+' + encodeURIComponent(q);
+  window.open(url, '_blank');
+}
+</script>
 </body>
-</html> 
+</html>
