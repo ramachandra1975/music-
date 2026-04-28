@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nāda Mudrā V9 — Complete Rāga Universe</title>
+<title>Nāda Mudrā V10 — Sacred Arts Research Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -66,7 +66,9 @@ body.light-theme .notation-bar{background:rgba(236,230,216,.97);}
 /* ── TABS BAR ── */
 .tabs-bar{position:sticky;top:148px;z-index:180;display:flex;border-bottom:1px solid var(--border);padding:0 40px;overflow-x:auto;background:rgba(10,9,20,.97);backdrop-filter:blur(10px);}
 body.light-theme .tabs-bar{background:rgba(224,217,200,.97);}
-.tabs-bar::-webkit-scrollbar{height:0;}
+.tabs-bar::-webkit-scrollbar{height:3px;}
+.tabs-bar::-webkit-scrollbar-track{background:transparent;}
+.tabs-bar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 .tab{padding:12px 18px;background:none;border:none;color:var(--muted);font-family:'Outfit',sans-serif;font-size:11px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;white-space:nowrap;}
 .tab:hover{color:var(--cream);}
 .tab.on{color:var(--gold2);border-bottom-color:var(--gold);}
@@ -76,6 +78,10 @@ body.light-theme .tabs-bar{background:rgba(224,217,200,.97);}
 .tab.t-saffron.on{color:var(--saffron);border-bottom-color:var(--saffron);}
 .tab.t-lav{color:var(--lav);}
 .tab.t-lav.on{color:var(--lav);border-bottom-color:var(--lav);}
+.tab.t-teal{color:var(--teal);}
+.tab.t-teal.on{color:var(--teal);border-bottom-color:var(--teal);}
+.tab.t-rose{color:var(--rose);}
+.tab.t-rose.on{color:var(--rose);border-bottom-color:var(--rose);}
 
 /* ── MAIN ── */
 main{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:34px 40px 100px;}
@@ -194,7 +200,7 @@ body.light-theme .rr-hero{background:linear-gradient(135deg,#f0e8d0,#e8e0f0 40%,
 .gamaka-pills{display:flex;flex-wrap:wrap;gap:5px;}
 .gk-pill{padding:3px 10px;border-radius:12px;font-size:11px;border:1px solid rgba(155,143,212,.3);color:var(--lav);background:rgba(155,143,212,.07);}
 .rr-action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-.rr-ai-btn,.rr-fav-btn,.rr-share-btn,.rr-compare-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:5px;background:none;font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;}
+.rr-ai-btn,.rr-fav-btn,.rr-share-btn,.rr-compare-btn,.rr-src-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:5px;background:none;font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;}
 .rr-ai-btn{border:1px solid rgba(155,143,212,.4);color:var(--lav);}
 .rr-ai-btn:hover{background:rgba(155,143,212,.1);}
 .rr-fav-btn{border:1px solid rgba(200,168,75,.3);color:var(--gold);}
@@ -203,8 +209,34 @@ body.light-theme .rr-hero{background:linear-gradient(135deg,#f0e8d0,#e8e0f0 40%,
 .rr-share-btn:hover{background:rgba(122,170,138,.08);}
 .rr-compare-btn{border:1px solid rgba(212,116,42,.3);color:var(--saffron);}
 .rr-compare-btn:hover{background:rgba(212,116,42,.08);}
+.rr-src-btn{border:1px solid rgba(61,188,170,.3);color:var(--teal);text-decoration:none;}
+.rr-src-btn:hover{background:rgba(61,188,170,.08);}
 .rr-ai-box{background:rgba(155,143,212,.06);border:1px solid rgba(155,143,212,.2);border-radius:8px;padding:16px 18px;margin-top:10px;display:none;font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.85;color:var(--cream);white-space:pre-wrap;}
 .rr-ai-box.on{display:block;animation:fadeUp .3s ease;}
+
+/* ── SIX VIEWPOINTS ── */
+.viewpoints-panel{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-top:10px;display:none;}
+.viewpoints-panel.on{display:block;animation:fadeUp .3s ease;}
+.vp-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
+.vp-tab{padding:4px 12px;border-radius:12px;border:1px solid var(--border);background:none;font-family:'Outfit',sans-serif;font-size:11px;cursor:pointer;transition:all .13s;}
+.vp-tab:hover{border-color:var(--border2);color:var(--cream);}
+.vp-tab.on{background:rgba(200,168,75,.12);border-color:var(--gold);color:var(--gold2);}
+.vp-tab.philosophical.on{background:rgba(155,143,212,.12);border-color:var(--lav);color:var(--lav);}
+.vp-tab.yogic.on{background:rgba(122,170,138,.12);border-color:var(--sage);color:var(--sage);}
+.vp-tab.spiritual.on{background:rgba(200,168,75,.12);border-color:var(--gold);color:var(--gold2);}
+.vp-tab.neurological.on{background:rgba(91,155,213,.12);border-color:var(--sky);color:var(--sky);}
+.vp-tab.scientific.on{background:rgba(212,116,42,.12);border-color:var(--saffron);color:var(--saffron);}
+.vp-tab.astrophysics.on{background:rgba(61,188,170,.12);border-color:var(--teal);color:var(--teal);}
+.vp-content{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.9;color:var(--cream);display:none;}
+.vp-content.on{display:block;animation:fadeUp .25s ease;}
+.vp-content p{margin-bottom:12px;}
+.vp-loading{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px;padding:10px 0;}
+.vp-spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vp-source-note{margin-top:10px;padding:8px 12px;background:rgba(61,188,170,.05);border:1px solid rgba(61,188,170,.15);border-radius:6px;font-size:12px;color:var(--teal);}
+.vp-source-note a{color:var(--teal);text-decoration:underline;}
+
+/* ── FAVOURITE LIST ── */
 .fav-list{display:flex;flex-direction:column;gap:4px;}
 .fav-item{padding:6px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .14s;}
 .fav-item:hover{border-color:var(--gold);background:var(--glow);}
@@ -257,6 +289,8 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 .mc-dance-tag{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid rgba(122,170,138,.3);color:var(--sage);}
 .mc-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:5px;}
 .mc-usage{font-size:12px;color:var(--gold);line-height:1.5;margin-bottom:5px;}
+.mc-karana-link{font-size:11px;color:var(--teal);font-style:italic;margin-bottom:4px;}
+.mc-karana-link a{color:var(--teal);text-decoration:underline;}
 .mc-therapeutic{font-size:12px;color:var(--sage);line-height:1.5;border-top:1px solid rgba(122,170,138,.15);padding-top:5px;margin-top:4px;font-style:italic;}
 
 /* ── SWARA ENGINE ── */
@@ -529,10 +563,55 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 .hlc-count{font-size:12px;color:var(--saffron);margin-bottom:5px;font-family:'DM Mono',monospace;}
 .hlc-desc{font-size:12px;color:var(--muted);line-height:1.6;}
 
+/* ── CULTURAL SITES (NEW TAB) ── */
+.sites-section-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold2);margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.sites-section-title:first-child{margin-top:0;}
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:10px;}
+.site-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 17px;text-decoration:none;display:block;transition:all .2s;position:relative;overflow:hidden;}
+.site-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.35);}
+.site-card::after{content:'↗';position:absolute;top:12px;right:14px;font-size:12px;color:var(--muted);transition:color .2s;}
+.site-card:hover::after{color:var(--gold);}
+.site-card-emoji{font-size:18px;margin-bottom:7px;}
+.site-card-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold2);margin-bottom:3px;line-height:1.3;}
+.site-card-url{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px;word-break:break-all;}
+.site-card-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* ── CHATBOT / ENQUIRY ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px;}
+.contact-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.contact-section-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.cs-icon{font-size:16px;}
+.cs-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);}
+.cs-live-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);margin-left:auto;animation:pulse 2s infinite;}
+.contact-section-body{padding:0;}
+.contact-section-body iframe{width:100%;border:none;display:block;}
+.contact-info-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:16px;}
+.contact-info-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.contact-info-row:last-child{border-bottom:none;}
+.ci-icon{font-size:16px;width:24px;text-align:center;}
+.ci-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);width:70px;}
+.ci-val{font-size:14px;color:var(--cream);}
+.ci-val a{color:var(--teal);text-decoration:none;}
+.ci-val a:hover{text-decoration:underline;}
+.chatbot-note{background:rgba(122,170,138,.06);border:1px solid rgba(122,170,138,.2);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--sage);font-style:italic;margin-bottom:16px;}
+
+/* ── KARANAS ── */
+.karana-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+.karana-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:15px 17px;transition:all .2s;}
+.karana-card:hover{border-color:var(--border2);transform:translateY(-1px);}
+.karana-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
+.karana-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold2);margin-bottom:3px;}
+.karana-sanskrit{font-size:13px;color:var(--lav);margin-bottom:7px;}
+.karana-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:7px;}
+.karana-mudras{font-size:12px;color:var(--sage);margin-bottom:5px;}
+.karana-xref{font-size:11px;color:var(--teal);}
+.karana-xref a{color:var(--teal);text-decoration:underline;}
+.karana-filter-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   header,main,.tabs-bar,.notation-bar{padding-left:20px;padding-right:20px;}
-  .creator-layout,.creator-main,.time-wheel-wrap,.xref-layout{grid-template-columns:1fr;}
+  .creator-layout,.creator-main,.time-wheel-wrap,.xref-layout,.contact-grid{grid-template-columns:1fr;}
   .swara-grid{grid-template-columns:repeat(6,1fr);}
   .rr-meta{grid-template-columns:1fr 1fr;}
   .dual-grid-wrap,.compare-layout{grid-template-columns:1fr;}
@@ -544,6 +623,7 @@ body.light-theme .piano-key-black{fill:#2a2030;}
   .rr-meta{grid-template-columns:1fr;}
   .rr-cell{border-right:none;border-bottom:1px solid var(--border);}
   .rc-result-grid{grid-template-columns:1fr;}
+  .sites-grid{grid-template-columns:1fr;}
 }
 @media print{
   body{background:#fff!important;color:#000!important;}
@@ -563,8 +643,8 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 
 <header>
   <div>
-    <div class="logo">Nāda <em>Mudrā</em> <span class="logo-ver">V9</span></div>
-    <div class="logo-sub">Rāga · Tāla · Mudrā · Manas · Virasat</div>
+    <div class="logo">Nāda <em>Mudrā</em> <span class="logo-ver">V10</span></div>
+    <div class="logo-sub">Rāga · Tāla · Mudrā · Karana · Manas · Virasat · Cultural Sites</div>
   </div>
   <div class="header-right">
     <select class="lang-select" id="langSelect" onchange="updateLangDisplay()">
@@ -620,22 +700,25 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 </div>
 
 <div class="tabs-bar">
-  <button class="tab on"           onclick="setTab('library')">📚 Rāga Library</button>
-  <button class="tab"              onclick="setTab('finder')">🔍 Rāga Finder</button>
-  <button class="tab"              onclick="setTab('swara')">🎵 Swara Engine</button>
-  <button class="tab"              onclick="setTab('mudra')">🤚 Hasta Mudrās</button>
-  <button class="tab"              onclick="setTab('kriti')">📖 Kriti Library</button>
-  <button class="tab"              onclick="setTab('xref')">🔗 Cross-Reference</button>
-  <button class="tab"              onclick="setTab('mind')">🧠 Mind Science</button>
-  <button class="tab t-sage"       onclick="setTab('tala')">🥁 Tāla</button>
-  <button class="tab t-sage"       onclick="setTab('timewheel')">⏲ Time Wheel</button>
-  <button class="tab t-sage"       onclick="setTab('melakarta')">📊 72 Melakarta</button>
-  <button class="tab t-lav"        onclick="setTab('thaat')">🎶 10 Thaats</button>
-  <button class="tab t-lav"        onclick="setTab('constellation')">✨ Constellation</button>
-  <button class="tab t-lav"        onclick="setTab('compare')">⚖ Compare</button>
-  <button class="tab t-saffron"    onclick="setTab('history')">🏛 History</button>
-  <button class="tab t-saffron"    onclick="setTab('heritage')">🪔 Heritage</button>
-  <button class="tab t-gold"       onclick="setTab('creator')" style="color:var(--gold)">✦ Creator</button>
+  <button class="tab on"        onclick="setTab('library')">📚 Rāga Library</button>
+  <button class="tab"           onclick="setTab('finder')">🔍 Rāga Finder</button>
+  <button class="tab"           onclick="setTab('swara')">🎵 Swara Engine</button>
+  <button class="tab"           onclick="setTab('mudra')">🤚 Hasta Mudrās</button>
+  <button class="tab"           onclick="setTab('karanas')">💃 108 Karanas</button>
+  <button class="tab"           onclick="setTab('kriti')">📖 Kriti Library</button>
+  <button class="tab"           onclick="setTab('xref')">🔗 Cross-Reference</button>
+  <button class="tab"           onclick="setTab('mind')">🧠 Mind Science</button>
+  <button class="tab t-sage"    onclick="setTab('tala')">🥁 Tāla</button>
+  <button class="tab t-sage"    onclick="setTab('timewheel')">⏲ Time Wheel</button>
+  <button class="tab t-sage"    onclick="setTab('melakarta')">📊 72 Melakarta</button>
+  <button class="tab t-lav"     onclick="setTab('thaat')">🎶 10 Thaats</button>
+  <button class="tab t-lav"     onclick="setTab('constellation')">✨ Constellation</button>
+  <button class="tab t-lav"     onclick="setTab('compare')">⚖ Compare</button>
+  <button class="tab t-saffron" onclick="setTab('history')">🏛 History</button>
+  <button class="tab t-saffron" onclick="setTab('heritage')">🪔 Heritage</button>
+  <button class="tab t-teal"    onclick="setTab('sites')">🌐 Cultural Sites</button>
+  <button class="tab t-rose"    onclick="setTab('contact')">💬 Contact & Chat</button>
+  <button class="tab"           onclick="setTab('creator')" style="color:var(--gold)">✦ Creator</button>
 </div>
 
 <main>
@@ -728,10 +811,27 @@ body.light-theme .piano-key-black{fill:#2a2030;}
           </div>
           <div class="gamaka-row"><div class="gamaka-lbl">Gamakas</div><div class="gamaka-pills" id="rrGamakas"></div></div>
           <div class="rr-action-row">
-            <button class="rr-ai-btn" onclick="loadAIInsight()">✦ Deep Insight</button>
+            <button class="rr-ai-btn" onclick="toggleViewpoints()">✦ 6 Viewpoints</button>
             <button class="rr-fav-btn" id="favBtn" onclick="toggleFavourite()">♡ Favourite</button>
             <button class="rr-share-btn" onclick="shareRaga()">⤴ Share</button>
             <button class="rr-compare-btn" onclick="addToCompare()">⚖ Compare</button>
+            <a class="rr-src-btn" id="rrSrcLink" href="#" target="_blank">🔗 Source</a>
+          </div>
+          <div class="viewpoints-panel" id="viewpointsPanel">
+            <div class="vp-tabs">
+              <button class="vp-tab philosophical on" onclick="showViewpoint('philosophical',this)">Philosophical</button>
+              <button class="vp-tab yogic" onclick="showViewpoint('yogic',this)">Yogic</button>
+              <button class="vp-tab spiritual" onclick="showViewpoint('spiritual',this)">Spiritual</button>
+              <button class="vp-tab neurological" onclick="showViewpoint('neurological',this)">Neurological</button>
+              <button class="vp-tab scientific" onclick="showViewpoint('scientific',this)">Scientific</button>
+              <button class="vp-tab astrophysics" onclick="showViewpoint('astrophysics',this)">Astrophysics</button>
+            </div>
+            <div id="vp-philosophical" class="vp-content on"></div>
+            <div id="vp-yogic" class="vp-content"></div>
+            <div id="vp-spiritual" class="vp-content"></div>
+            <div id="vp-neurological" class="vp-content"></div>
+            <div id="vp-scientific" class="vp-content"></div>
+            <div id="vp-astrophysics" class="vp-content"></div>
           </div>
           <div class="rr-ai-box" id="aiBox"></div>
         </div>
@@ -758,6 +858,16 @@ body.light-theme .piano-key-black{fill:#2a2030;}
       <div class="sidebar-card">
         <div class="sc-title">Quick Load</div>
         <div class="q-list" id="quickRagaList"></div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sc-title">Source Databases</div>
+        <div class="q-list">
+          <div class="q-item" onclick="window.open('https://ragajunglism.org/ragas/masterlist','_blank')"><span class="q-name" style="font-size:13px;">Raga Junglism</span><span class="q-rasa">1000+ ragas</span></div>
+          <div class="q-item" onclick="window.open('https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide','_blank')"><span class="q-name" style="font-size:13px;">84 Ragas Guide</span><span class="q-rasa">Amit Ray</span></div>
+          <div class="q-item" onclick="window.open('https://melakarta.com','_blank')"><span class="q-name" style="font-size:13px;">Melakarta.com</span><span class="q-rasa">72 parent ragas</span></div>
+          <div class="q-item" onclick="window.open('https://ragamath.com','_blank')"><span class="q-name" style="font-size:13px;">RagaMath</span><span class="q-rasa">Mathematical analysis</span></div>
+          <div class="q-item" onclick="window.open('https://chromatone.center/theory/scales/raga','_blank')"><span class="q-name" style="font-size:13px;">Chromatone Ragas</span><span class="q-rasa">Interactive scales</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -790,7 +900,33 @@ body.light-theme .piano-key-black{fill:#2a2030;}
     <button class="dtab" onclick="filterMudra('mohiniyattam',this)">Mohiniyattam</button>
     <button class="dtab" onclick="filterMudra('therapeutic',this)">Therapeutic</button>
   </div>
+  <div style="margin-bottom:12px;">
+    <a href="https://en-wikipedia--on--ipfs-org.ipns.dweb.link/wiki/List_of_mudras_%28dance%29" target="_blank" class="rr-src-btn" style="display:inline-flex;font-size:12px;">🔗 Full Mudra Reference (Wikipedia / IPFS)</a>
+    <a href="https://www.exoticindiaart.com/article/the-108-poses-of-shiva-tandava-in-natya-shastra" target="_blank" class="rr-src-btn" style="display:inline-flex;font-size:12px;margin-left:8px;">🔗 108 Tandava Poses</a>
+  </div>
   <div class="mudra-grid" id="mudraGrid"></div>
+</div>
+
+<!-- ══ PANE: 108 KARANAS ══ -->
+<div class="pane" id="pane-karanas">
+  <div class="pg-title">108 Karanas</div>
+  <div class="pg-sub">Sacred movement units of the Natya Shastra — body postures with mudra cross-reference</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+    <a href="https://cdn.angkordatabase.asia/libs/docs/publications/dance-imagery-in-south-indian-temples-study-of-the-108-karana-sculptures/108-karanas.pdf" target="_blank" class="rr-src-btn">📄 108 Karanas PDF (Angkor Database)</a>
+    <a href="https://www.exoticindiaart.com/article/the-108-poses-of-shiva-tandava-in-natya-shastra" target="_blank" class="rr-src-btn">🔗 Shiva Tandava — 108 Poses</a>
+    <a href="https://natyashastra.culturalmusings.com" target="_blank" class="rr-src-btn">🌐 Natya Shastra Portal</a>
+    <a href="https://natyashastraclassical-dance.culturalmusings.com" target="_blank" class="rr-src-btn">🌐 Classical Dance Portal</a>
+  </div>
+  <div class="karana-filter-bar">
+    <input class="search-inp" id="karanaSearch" placeholder="Search karana name or description…" oninput="filterKaranas()" style="max-width:340px;padding-left:14px;">
+    <select class="flt-sel" id="karanaGroupFilter" onchange="filterKaranas()">
+      <option value="">All Groups</option>
+      <option>Opening</option><option>Standing</option><option>Seated</option>
+      <option>Jumping</option><option>Turning</option><option>Closing</option>
+    </select>
+    <span class="results-count" id="karanaCount"></span>
+  </div>
+  <div class="karana-grid" id="karanaGrid"></div>
 </div>
 
 <!-- ══ PANE: KRITI LIBRARY ══ -->
@@ -799,12 +935,8 @@ body.light-theme .piano-key-black{fill:#2a2030;}
   <div class="pg-sub">Sacred compositions — Trinity, Annamacharya, Swati Tirunal & more</div>
   <div class="kriti-filters">
     <input class="kriti-search" id="kritiSearch" placeholder="Search compositions…" oninput="filterKriti()" style="width:200px">
-    <select class="flt-kriti-sel" id="kritiRagaFilter" onchange="filterKriti()">
-      <option value="">All Ragas</option>
-    </select>
-    <select class="flt-kriti-sel" id="kritiCompFilter" onchange="filterKriti()">
-      <option value="">All Composers</option>
-    </select>
+    <select class="flt-kriti-sel" id="kritiRagaFilter" onchange="filterKriti()"><option value="">All Ragas</option></select>
+    <select class="flt-kriti-sel" id="kritiCompFilter" onchange="filterKriti()"><option value="">All Composers</option></select>
     <select class="flt-kriti-sel" id="kritiGenreFilter" onchange="filterKriti()">
       <option value="">All Genres</option>
       <option>Classical</option><option>Devotional</option><option>Semi-Classical</option>
@@ -818,7 +950,7 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 <!-- ══ PANE: CROSS-REFERENCE ══ -->
 <div class="pane" id="pane-xref">
   <div class="pg-title">Cross-Reference</div>
-  <div class="pg-sub">Map swaras → ragas → compositions → mudras</div>
+  <div class="pg-sub">Map swaras → ragas → compositions → mudras → karanas</div>
   <div class="xref-layout">
     <div><div class="xref-panel"><div class="xref-panel-title">Select Swara</div><div class="xref-swara-pills" id="xrefSwaraPills"></div></div></div>
     <div class="xref-results-area" id="xrefResults">
@@ -855,6 +987,12 @@ body.light-theme .piano-key-black{fill:#2a2030;}
       </tbody>
     </table>
   </div>
+  <div class="glabel" style="margin-top:20px;">Nāda Chikitsa Resources</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <a href="https://nada-chikitsa.culturalmusings.com" target="_blank" class="rr-src-btn">🌐 Nāda Chikitsa Portal</a>
+    <a href="https://bioresonancemusings.culturalmusings.com" target="_blank" class="rr-src-btn">🌐 Bioresonance Musings</a>
+    <a href="https://spandanashodha.culturalmusings.com" target="_blank" class="rr-src-btn">🌐 Spandana Shodha</a>
+  </div>
 </div>
 
 <!-- ══ PANE: TĀLA ══ -->
@@ -880,6 +1018,10 @@ body.light-theme .piano-key-black{fill:#2a2030;}
 <div class="pane" id="pane-melakarta">
   <div class="pg-title">72 Melakarta Chart</div>
   <div class="pg-sub">Complete parent raga system — 12 Chakras of 6 Melakartas each</div>
+  <div style="margin-bottom:14px;">
+    <a href="https://melakarta.com" target="_blank" class="rr-src-btn">🌐 Melakarta.com — Full Reference</a>
+    <a href="https://ragamath.com" target="_blank" class="rr-src-btn" style="margin-left:8px;">🔢 RagaMath</a>
+  </div>
   <div class="mela-layout" id="melaLayout"></div>
 </div>
 
@@ -972,6 +1114,107 @@ body.light-theme .piano-key-black{fill:#2a2030;}
   </div>
 </div>
 
+<!-- ══ PANE: CULTURAL SITES (NEW) ══ -->
+<div class="pane" id="pane-sites">
+  <div class="pg-title">Cultural Sites Network</div>
+  <div class="pg-sub">A curated portal to all Cultural Musings domains & research repositories</div>
+
+  <div class="sites-section-title">Cultural Musings Main Network</div>
+  <div class="sites-grid">
+    <a href="https://www.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🏛</div><div class="site-card-title">Cultural Musings</div><div class="site-card-url">culturalmusings.com</div><div class="site-card-desc">The central hub for all cultural, sacred arts, music & philosophy research.</div></a>
+    <a href="https://nada-chikitsa.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🎶</div><div class="site-card-title">Nāda Chikitsa</div><div class="site-card-url">nada-chikitsa.culturalmusings.com</div><div class="site-card-desc">Sound healing, nāda therapy, raga-based healing protocols & clinical research.</div></a>
+    <a href="https://natyashastra.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">💃</div><div class="site-card-title">Natya Shastra</div><div class="site-card-url">natyashastra.culturalmusings.com</div><div class="site-card-desc">Bharata Muni's treatise — rasa, bhaava, abhinaya, tāla and nritta explored in depth.</div></a>
+    <a href="https://karanasrootmap.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🗺</div><div class="site-card-title">Karanas Root Map</div><div class="site-card-url">karanasrootmap.culturalmusings.com</div><div class="site-card-desc">Structural map of the 108 Karanas — their root positions, transitions & genealogy.</div></a>
+    <a href="https://bioresonancemusings.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🔬</div><div class="site-card-title">Bioresonance Musings</div><div class="site-card-url">bioresonancemusings.culturalmusings.com</div><div class="site-card-desc">Biofield science, frequency healing, cymatics & vibrational medicine research.</div></a>
+    <a href="https://spiritualphilosophical.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🕉</div><div class="site-card-title">Spiritual Philosophical</div><div class="site-card-url">spiritualphilosophical.culturalmusings.com</div><div class="site-card-desc">Advaita, Kashmir Shaivism, Tantra, Vedantic philosophy & comparative mysticism.</div></a>
+  </div>
+
+  <div class="sites-section-title">Consciousness & Advanced Research</div>
+  <div class="sites-grid">
+    <a href="https://masterconsciousprotocol.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🧠</div><div class="site-card-title">Master Conscious Protocol</div><div class="site-card-url">masterconsciousprotocol.culturalmusings.com</div><div class="site-card-desc">Advanced consciousness protocols integrating sound, movement, breath & intention.</div></a>
+    <a href="https://spandanashodha.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🌊</div><div class="site-card-title">Spandana Shodha</div><div class="site-card-url">spandanashodha.culturalmusings.com</div><div class="site-card-desc">Research into spanda (divine vibration) — Kashmir Shaivism meets modern physics.</div></a>
+    <a href="https://vedicmathematicsgeometry.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">📐</div><div class="site-card-title">Vedic Mathematics & Geometry</div><div class="site-card-url">vedicmathematicsgeometry.culturalmusings.com</div><div class="site-card-desc">Vedic sutras, sacred geometry, yantra mathematics & cosmic numerical patterns.</div></a>
+    <a href="https://unifiedtheory.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🌌</div><div class="site-card-title">Unified Theory</div><div class="site-card-url">unifiedtheory.culturalmusings.com</div><div class="site-card-desc">Unified framework linking Vedic science, quantum physics, consciousness & cosmology.</div></a>
+    <a href="https://completecelestialsynthesis.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">✨</div><div class="site-card-title">Complete Celestial Synthesis</div><div class="site-card-url">completecelestialsynthesis.culturalmusings.com</div><div class="site-card-desc">Synthesis of celestial cycles, nakshatras, planetary ragas & cosmic timing.</div></a>
+  </div>
+
+  <div class="sites-section-title">Dance & Synthesis</div>
+  <div class="sites-grid">
+    <a href="https://natyashastraclassical-dance.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🩰</div><div class="site-card-title">Classical Dance</div><div class="site-card-url">natyashastraclassical-dance.culturalmusings.com</div><div class="site-card-desc">Bharatanatyam, Kuchipudi, Odissi — classical forms with karana & mudra cross-reference.</div></a>
+    <a href="https://karanassacredsynthesis.culturalmusings.com" target="_blank" class="site-card"><div class="site-card-emoji">🌀</div><div class="site-card-title">Karanas Sacred Synthesis</div><div class="site-card-url">karanassacredsynthesis.culturalmusings.com</div><div class="site-card-desc">Sacred synthesis of karanas with mantras, chakras & therapeutic movement science.</div></a>
+  </div>
+
+  <div class="sites-section-title">Raga & Music Research Databases</div>
+  <div class="sites-grid">
+    <a href="https://ragajunglism.org/ragas/masterlist" target="_blank" class="site-card"><div class="site-card-emoji">🎼</div><div class="site-card-title">Raga Junglism Masterlist</div><div class="site-card-url">ragajunglism.org/ragas/masterlist</div><div class="site-card-desc">1000+ ragas indexed — the most comprehensive free raga reference online.</div></a>
+    <a href="https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide" target="_blank" class="site-card"><div class="site-card-emoji">📗</div><div class="site-card-title">84 Ragas Complete Guide</div><div class="site-card-url">amitray.com</div><div class="site-card-desc">Amit Ray's authoritative guide to the 84 principal ragas with swaras & rasa.</div></a>
+    <a href="https://melakarta.com" target="_blank" class="site-card"><div class="site-card-emoji">📊</div><div class="site-card-title">Melakarta Chart</div><div class="site-card-url">melakarta.com</div><div class="site-card-desc">72 parent ragas of Carnatic music — interactive melakarta chart & janya lookup.</div></a>
+    <a href="https://ragamath.com" target="_blank" class="site-card"><div class="site-card-emoji">🔢</div><div class="site-card-title">RagaMath</div><div class="site-card-url">ragamath.com</div><div class="site-card-desc">Mathematical analysis of raga structures — intervals, symmetry & combinatorics.</div></a>
+    <a href="https://chromatone.center/theory/scales/raga" target="_blank" class="site-card"><div class="site-card-emoji">🎹</div><div class="site-card-title">Chromatone Ragas</div><div class="site-card-url">chromatone.center/theory/scales/raga</div><div class="site-card-desc">Interactive scale visualizer for Indian ragas with chromatic mapping.</div></a>
+    <a href="https://computationalmusic.com/raga-classification-system.html" target="_blank" class="site-card"><div class="site-card-emoji">💻</div><div class="site-card-title">Raga Classification System</div><div class="site-card-url">computationalmusic.com</div><div class="site-card-desc">Computational musicology approach to raga classification & AI analysis.</div></a>
+    <a href="https://web-harmonium.com/harmonium-notes" target="_blank" class="site-card"><div class="site-card-emoji">🪗</div><div class="site-card-title">Harmonium Notes Guide</div><div class="site-card-url">web-harmonium.com</div><div class="site-card-desc">Sargam guide for harmonium — notation, swaras & scale reference for beginners.</div></a>
+  </div>
+
+  <div class="sites-section-title">Vedic, Mantra & Spiritual Sources</div>
+  <div class="sites-grid">
+    <a href="https://www.vedadhara.com" target="_blank" class="site-card"><div class="site-card-emoji">🪔</div><div class="site-card-title">Vedadhara</div><div class="site-card-url">vedadhara.com</div><div class="site-card-desc">Vedic mantras, stotras, rituals — with audio, meaning & mantra-shastra reference.</div></a>
+    <a href="https://sanskritdocuments.org" target="_blank" class="site-card"><div class="site-card-emoji">📜</div><div class="site-card-title">Sanskrit Documents</div><div class="site-card-url">sanskritdocuments.org</div><div class="site-card-desc">Largest free repository of Sanskrit texts, stotras, Upanishads & granthams.</div></a>
+    <a href="https://www.wisdomlib.org" target="_blank" class="site-card"><div class="site-card-emoji">📚</div><div class="site-card-title">WisdomLib</div><div class="site-card-url">wisdomlib.org</div><div class="site-card-desc">Encyclopaedic Indological resource — texts, translations & contextual commentary.</div></a>
+    <a href="https://vedapurana.org" target="_blank" class="site-card"><div class="site-card-emoji">🌿</div><div class="site-card-title">Veda Purana</div><div class="site-card-url">vedapurana.org</div><div class="site-card-desc">Puranas, Upanishads, Itihasa — searchable texts with translations.</div></a>
+    <a href="https://mahakatha.com" target="_blank" class="site-card"><div class="site-card-emoji">🌺</div><div class="site-card-title">Mahakatha</div><div class="site-card-url">mahakatha.com</div><div class="site-card-desc">Mantras for meditation — authentic chanting with pronunciation guides.</div></a>
+    <a href="https://www.opensadhaka.com" target="_blank" class="site-card"><div class="site-card-emoji">🙏</div><div class="site-card-title">Open Sadhaka</div><div class="site-card-url">opensadhaka.com</div><div class="site-card-desc">Open-source spiritual practice resources — sadhana guides, mantras & traditions.</div></a>
+    <a href="https://manblunder.com" target="_blank" class="site-card"><div class="site-card-emoji">🔯</div><div class="site-card-title">ManBlunder</div><div class="site-card-url">manblunder.com</div><div class="site-card-desc">In-depth Tantra, Shakta worship, Soundarya Lahari & Sri Vidya commentary.</div></a>
+    <a href="https://parasakthifamily.org" target="_blank" class="site-card"><div class="site-card-emoji">🌟</div><div class="site-card-title">Parasakti Family</div><div class="site-card-url">parasakthifamily.org</div><div class="site-card-desc">Shakti worship, Devi mantras & Khadgamala stotra with complete explanations.</div></a>
+    <a href="https://en.wikipedia.org/wiki/Khadgamala" target="_blank" class="site-card"><div class="site-card-emoji">⚔</div><div class="site-card-title">Khadgamala Reference</div><div class="site-card-url">wikipedia.org/wiki/Khadgamala</div><div class="site-card-desc">Khadgamala Stotra — the sword-garland of Devi, encyclopaedic overview.</div></a>
+    <a href="https://github.com/Ishanoshada/Soundarya-Lahari-Mantra-Finder" target="_blank" class="site-card"><div class="site-card-emoji">💻</div><div class="site-card-title">Soundarya Lahari Finder</div><div class="site-card-url">github.com/Ishanoshada</div><div class="site-card-desc">Open-source tool to search & match Soundarya Lahari slokas to intentions.</div></a>
+    <a href="https://vedyog.net" target="_blank" class="site-card"><div class="site-card-emoji">🧘</div><div class="site-card-title">VedYog</div><div class="site-card-url">vedyog.net</div><div class="site-card-desc">Vedic Yoga philosophy, pranayama, mantra yoga & ancient wellness integration.</div></a>
+  </div>
+
+  <div class="sites-section-title">Natya Shastra & Dance References</div>
+  <div class="sites-grid">
+    <a href="https://www.exoticindiaart.com/article/the-108-poses-of-shiva-tandava-in-natya-shastra" target="_blank" class="site-card"><div class="site-card-emoji">💃</div><div class="site-card-title">108 Poses of Shiva Tandava</div><div class="site-card-url">exoticindiaart.com</div><div class="site-card-desc">Illustrated essay on the 108 karanas in Natya Shastra with temple sculpture references.</div></a>
+    <a href="https://cdn.angkordatabase.asia/libs/docs/publications/dance-imagery-in-south-indian-temples-study-of-the-108-karana-sculptures/108-karanas.pdf" target="_blank" class="site-card"><div class="site-card-emoji">📄</div><div class="site-card-title">108 Karana Sculptures PDF</div><div class="site-card-url">Angkor Database PDF</div><div class="site-card-desc">Academic study of dance imagery in South Indian temples — 108 karana sculptures.</div></a>
+    <a href="https://en-wikipedia--on--ipfs-org.ipns.dweb.link/wiki/List_of_mudras_%28dance%29" target="_blank" class="site-card"><div class="site-card-emoji">🤚</div><div class="site-card-title">List of Dance Mudras</div><div class="site-card-url">Wikipedia via IPFS</div><div class="site-card-desc">Comprehensive list of classical Indian dance mudras — asamyutha & samyutha hastas.</div></a>
+  </div>
+</div>
+
+<!-- ══ PANE: CONTACT & CHAT (NEW) ══ -->
+<div class="pane" id="pane-contact">
+  <div class="pg-title">Contact & Chat</div>
+  <div class="pg-sub">Reach our team — live chatbot, enquiry form & direct contact</div>
+
+  <div class="contact-info-card">
+    <div class="contact-info-row"><span class="ci-icon">📧</span><span class="ci-label">Email</span><span class="ci-val"><a href="mailto:smith123846@gmail.com">smith123846@gmail.com</a></span></div>
+    <div class="contact-info-row"><span class="ci-icon">📱</span><span class="ci-label">Phone</span><span class="ci-val">+91 9121379100</span></div>
+    <div class="contact-info-row"><span class="ci-icon">🌐</span><span class="ci-label">Website</span><span class="ci-val"><a href="https://www.culturalmusings.com" target="_blank">culturalmusings.com</a></span></div>
+    <div class="contact-info-row"><span class="ci-icon">⏰</span><span class="ci-label">Response</span><span class="ci-val">We respond within 24–48 hours of your submission</span></div>
+  </div>
+
+  <div class="chatbot-note">💬 Leave your message in the chatbot below — our team will get back to you with your requirements as soon as possible. For detailed queries, please use the enquiry form.</div>
+
+  <div class="contact-grid">
+    <div class="contact-section">
+      <div class="contact-section-header">
+        <span class="cs-icon">🤖</span>
+        <span class="cs-title">Live Chat Assistant</span>
+        <span class="cs-live-dot"></span>
+      </div>
+      <div class="contact-section-body">
+        <iframe class="chatbot-frame" src="https://www.jotform.com/agent/019d8f3727af73cab8f1024b3df3ef1f84b6" height="560" title="Live Chat Agent" allow="microphone; camera" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
+      </div>
+    </div>
+    <div class="contact-section">
+      <div class="contact-section-header">
+        <span class="cs-icon">📋</span>
+        <span class="cs-title">Enquiry Form</span>
+      </div>
+      <div class="contact-section-body">
+        <iframe src="https://form.jotform.com/261042208142039" height="560" title="Enquiry Form" sandbox="allow-scripts allow-forms allow-same-origin allow-popups" style="width:100%;border:none;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ PANE: CREATOR ══ -->
 <div class="pane" id="pane-creator">
   <div class="pg-title">✦ Rāga Creator</div>
@@ -1034,7 +1277,7 @@ body.light-theme .piano-key-black{fill:#2a2030;}
       </div>
       <div class="act-row">
         <button class="btn prime" onclick="generateRaga()">✦ Generate Rāga</button>
-        <button class="btn play" id="creatorPlayBtn" onclick="playCreatorRaga()">Play Scale</button>
+        <button class="btn play" id="creatorPlayBtn" onclick="playCreatorRaga()">▶ Play Scale</button>
         <button class="btn" onclick="clearCreator()">Clear</button>
         <button class="btn sage-btn" onclick="saveRaga()">💾 Save</button>
       </div>
@@ -1071,6 +1314,14 @@ body.light-theme .piano-key-black{fill:#2a2030;}
           <p style="margin-bottom:7px;"><strong style="color:var(--cream)">10 Thaats × 300 ≈ 3,000</strong> active Hindustani ragas</p>
           <p><strong style="color:var(--cream)">Raga-Ragini system:</strong> 36–132 traditional</p>
           <p style="margin-top:9px;color:var(--lav);font-style:italic;">"As many ragas as species of life" — Sangīta-sāra</p>
+        </div>
+      </div>
+      <div class="rc-section">
+        <div class="rc-section-title">Composition Resources</div>
+        <div class="q-list">
+          <div class="q-item" onclick="window.open('https://web-harmonium.com/harmonium-notes','_blank')"><span class="q-name" style="font-size:13px;">Harmonium Notes</span><span class="q-rasa">Sargam guide</span></div>
+          <div class="q-item" onclick="window.open('https://ragamath.com','_blank')"><span class="q-name" style="font-size:13px;">RagaMath</span><span class="q-rasa">Scale math</span></div>
+          <div class="q-item" onclick="setTab('contact')"><span class="q-name" style="font-size:13px;">Need Help?</span><span class="q-rasa">Contact us</span></div>
         </div>
       </div>
     </div>
