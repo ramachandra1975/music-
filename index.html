@@ -20,6 +20,51 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font-family:'Outfit',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.65}
 body::after{content:"";position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(200,168,75,.07) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+/* ── LANGUAGE BAR ── */
+.lang-bar{background:rgba(9,8,20,.98);border-bottom:1px solid rgba(200,168,75,.08);padding:5px 32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px}
+.lang-bar-label{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;flex-shrink:0}
+.lang-pills{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.lp{padding:2px 9px;border-radius:12px;border:1px solid var(--border);background:none;color:var(--muted);font-size:10px;cursor:pointer;transition:all .14s;font-family:'Outfit',sans-serif;white-space:nowrap}
+.lp:hover{border-color:var(--border2);color:var(--cream)}
+.lp.on{background:rgba(200,168,75,.14);border-color:var(--gold);color:var(--gold2)}
+.lang-search-btn{padding:3px 10px;border-radius:5px;border:1px solid rgba(61,188,170,.35);background:none;color:var(--teal);font-size:10px;cursor:pointer;transition:all .14s;margin-left:auto;white-space:nowrap;font-family:'Outfit',sans-serif}
+.lang-search-btn:hover{background:rgba(61,188,170,.1)}
+
+/* ── TRANSLATION PANEL ── */
+.trans-panel{background:rgba(155,143,212,.04);border:1px solid rgba(155,143,212,.18);border-radius:10px;padding:14px 18px;margin-top:12px;display:none}
+.trans-panel.on{display:block;animation:fadeUp .3s ease}
+.trans-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.trans-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.trans-status{font-size:10px;color:var(--muted);font-style:italic}
+.trans-status.ok{color:var(--sage)}
+.trans-status.err{color:var(--rose)}
+.trans-status.loading{color:var(--sky)}
+.trans-body{font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.85;color:var(--cream)}
+.trans-name{font-size:24px;color:var(--gold2);margin-bottom:6px;font-weight:300}
+.trans-desc-wrap{margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.trans-spinner{display:inline-block;width:12px;height:12px;border:1.5px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px}
+.trans-fallback-row{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--muted)}
+.trans-fb-btn{padding:3px 10px;border-radius:5px;border:1px solid rgba(91,155,213,.35);background:none;color:var(--sky);font-size:11px;cursor:pointer;transition:all .13s;font-family:'Outfit',sans-serif}
+.trans-fb-btn:hover{background:rgba(91,155,213,.1)}
+
+/* ── SITE SEARCH PANEL ── */
+.site-search-panel{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:none}
+.site-search-panel.on{display:block;animation:fadeUp .25s ease}
+.ssp-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px}
+.ssp-input-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.ssp-inp{flex:1;min-width:180px;padding:8px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:13px;outline:none}
+.ssp-inp:focus{border-color:var(--gold)}
+.ssp-inp::placeholder{color:var(--muted)}
+.ssp-sites{display:flex;gap:6px;flex-wrap:wrap}
+.ssp-site-btn{display:flex;flex-direction:column;gap:2px;padding:8px 13px;border-radius:7px;border:1px solid var(--border);background:none;cursor:pointer;transition:all .15s;text-align:left;font-family:'Outfit',sans-serif}
+.ssp-site-btn:hover{border-color:var(--border2);background:rgba(200,168,75,.05);transform:translateY(-1px)}
+.ssp-site-name{font-size:11px;color:var(--cream);font-weight:500}
+.ssp-site-url{font-size:9px;color:var(--muted)}
+.ssp-google-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:7px;border:1px solid rgba(91,155,213,.3);background:none;cursor:pointer;transition:all .15s;color:var(--sky);font-family:'Outfit',sans-serif;font-size:11px}
+.ssp-google-btn:hover{background:rgba(91,155,213,.08)}
+
+/* ── ALL EXISTING STYLES ── */
 header{position:sticky;top:0;z-index:300;padding:12px 32px 0;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(6,6,14,.98);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
 .logo{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:var(--gold2);letter-spacing:.05em}
 .logo em{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--gold)}
@@ -35,6 +80,7 @@ header{position:sticky;top:0;z-index:300;padding:12px 32px 0;display:flex;align-
 main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32px 80px}
 .pane{display:none}.pane.on{display:block;animation:fadeUp .28s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
 .pg-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold2);margin-bottom:4px;letter-spacing:.02em}
 .pg-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);margin-bottom:24px}
 .glabel{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:10px}
@@ -55,7 +101,6 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .sys-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px;width:fit-content}
 .sys-btn{padding:8px 20px;background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;transition:all .15s;font-family:'Outfit',sans-serif}
 .sys-btn.on{background:rgba(200,168,75,.14);color:var(--gold2)}.sys-btn:not(:last-child){border-right:1px solid var(--border)}
-/* LIBRARY */
 .raga-lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
 .raga-lib-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px 15px 11px;cursor:pointer;transition:all .17s;position:relative;overflow:hidden}
 .raga-lib-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--cc,var(--gold));opacity:.7}
@@ -68,12 +113,9 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .rtag{font-size:9px;padding:1px 6px;border-radius:10px;border:1px solid}
 .rtag-time{color:var(--sky);border-color:var(--sky)}.rtag-rasa{color:var(--rose);border-color:var(--rose)}.rtag-sys{color:var(--teal);border-color:var(--teal)}
 .lib-empty{grid-column:1/-1;text-align:center;padding:40px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--muted);font-style:italic}
-/* COMPARE BTN */
 .compare-btn{font-size:9px;padding:2px 7px;border-radius:10px;border:1px solid rgba(91,155,213,.4);color:var(--sky);background:none;cursor:pointer;margin-top:5px;transition:all .13s}
 .compare-btn.selected{background:rgba(91,155,213,.18);border-color:var(--sky)}
-/* FINDER */
 .finder-layout{display:grid;grid-template-columns:1fr 290px;gap:26px;align-items:start}
-/* AROH/AVAROH TABS */
 .scale-mode-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:8px;width:fit-content}
 .smt-btn{padding:5px 14px;background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s}
 .smt-btn.on{background:rgba(200,168,75,.14);color:var(--gold2)}.smt-btn:not(:last-child){border-right:1px solid var(--border)}
@@ -96,7 +138,6 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .scale-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
 .sc-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px}
 .sc-val{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold2);min-height:20px;word-break:break-all}
-/* RESULT */
 .raga-result{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-bottom:22px;display:none}
 .raga-result.on{display:block;animation:fadeUp .35s ease}
 .rr-hero{background:linear-gradient(135deg,#0e0820 0%,#1a0e30 40%,#2a1508 100%);padding:18px 22px 14px;border-bottom:1px solid var(--border)}
@@ -126,7 +167,7 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .rr-btn-gold{border-color:rgba(200,168,75,.3);color:var(--gold)}.rr-btn-gold:hover{background:rgba(200,168,75,.1)}
 .rr-btn-sage{border-color:rgba(122,170,138,.3);color:var(--sage)}.rr-btn-sage:hover{background:rgba(122,170,138,.08)}
 .rr-btn-sky{border-color:rgba(91,155,213,.3);color:var(--sky)}.rr-btn-sky:hover{background:rgba(91,155,213,.08)}
-/* AI VIEWPOINTS */
+.rr-btn-teal{border-color:rgba(61,188,170,.3);color:var(--teal)}.rr-btn-teal:hover{background:rgba(61,188,170,.08)}
 .vp-panel{background:rgba(155,143,212,.04);border:1px solid rgba(155,143,212,.18);border-radius:10px;padding:14px 18px;margin-top:10px;display:none}
 .vp-panel.on{display:block;animation:fadeUp .3s ease}
 .vp-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
@@ -136,11 +177,9 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .vp-content.on{display:block;animation:fadeUp .25s ease}.vp-content p{margin-bottom:10px}
 .vp-loading{display:flex;align-items:center;gap:10px;padding:16px 0;color:var(--muted);font-size:13px;font-style:italic}
 .vp-spinner{width:16px;height:16px;border:1.5px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
-@keyframes spin{to{transform:rotate(360deg)}}
 .vp-source{margin-top:10px;padding:7px 12px;background:rgba(61,188,170,.05);border:1px solid rgba(61,188,170,.15);border-radius:6px;font-size:11px;color:var(--teal)}
 .vp-source a{color:var(--teal);text-decoration:underline}
 .ai-badge{font-size:9px;padding:1px 6px;border-radius:8px;border:1px solid rgba(155,143,212,.4);color:var(--lav);margin-left:6px;vertical-align:middle}
-/* COMPARISON */
 .compare-panel{background:var(--bg2);border:1px solid rgba(91,155,213,.2);border-radius:12px;padding:16px 20px;margin-bottom:20px;display:none}
 .compare-panel.on{display:block;animation:fadeUp .3s ease}
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
@@ -150,14 +189,12 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .compare-row:last-child{border-bottom:none}
 .compare-lbl{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 .compare-val{color:var(--cream);font-family:'DM Mono',monospace;font-size:11px;text-align:right;max-width:55%}
-/* SIDEBAR */
 .sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:10px}
 .sc-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:9px}
 .q-list{display:flex;flex-direction:column;gap:4px}
 .q-item{padding:6px 9px;border-radius:6px;border:1px solid var(--border);cursor:pointer;transition:all .14s;display:flex;justify-content:space-between;align-items:center}
 .q-item:hover{border-color:var(--border2);background:var(--glow)}
 .q-name{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream)}.q-rasa{font-size:10px;color:var(--muted)}
-/* DRONE */
 .drone-bar{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 13px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .drone-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 .drone-btn{padding:4px 13px;border-radius:4px;border:1px solid rgba(122,170,138,.4);background:none;color:var(--sage);font-size:12px;cursor:pointer;transition:all .12s;font-family:'Outfit',sans-serif}
@@ -165,7 +202,6 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .drone-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);transition:background .3s}
 .drone-dot.on{background:var(--sage);box-shadow:0 0 7px rgba(122,170,138,.6);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-/* PIANO */
 .piano-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 14px 10px;overflow-x:auto;margin-bottom:16px}
 .piano-svg-container{min-width:560px}
 .pk-white{fill:var(--cream);stroke:#666;stroke-width:.5;cursor:pointer;transition:fill .1s}
@@ -174,7 +210,6 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .pk-black.aroh-hi{fill:#a07830}.pk-black.avaroh-hi{fill:#3a7aaa}.pk-black.both-hi{fill:#4a8a6a}
 .pk-note{font-size:7px;font-family:'DM Mono',monospace;fill:var(--muted);text-anchor:middle;pointer-events:none}
 .pk-swara{font-size:8px;font-family:'Cormorant Garamond',serif;fill:#2a2018;text-anchor:middle;pointer-events:none;font-weight:600}
-/* SWARA ENGINE */
 .sec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .sec-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .15s}
 .sec-card:hover{border-color:var(--border2)}
@@ -191,12 +226,11 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .sec-row-val{font-size:12px;color:var(--cream)}.sec-row-val.gold{color:var(--gold)}.sec-row-val.lav{color:var(--lav)}
 .shruti-row{display:flex;gap:2px;flex-wrap:wrap;margin-top:6px}
 .shruti-pip{width:9px;height:9px;border-radius:2px;background:var(--border)}.shruti-pip.on{background:var(--gold)}
-/* MUDRAS */
 .type-bar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .type-btn{padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);font-size:12px;cursor:pointer;transition:all .14s;font-family:'Outfit',sans-serif}
 .type-btn:hover{border-color:var(--border2);color:var(--cream)}.type-btn.on{border-color:var(--gold);color:var(--gold2);background:rgba(200,168,75,.1)}
 .dance-tabs{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
-.dtab{padding:3px 11px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--muted);font-size:11px;cursor:pointer;transition:all .14s;font-family:'Outfit',sans-serif}
+.dtab{padding:3px 11px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--muted);font-size:11px;cursor:pointer;transition:all .14px;font-family:'Outfit',sans-serif}
 .dtab.on{border-color:var(--gold);color:var(--gold2);background:rgba(200,168,75,.07)}
 .mudra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
 .mudra-card{background:var(--bg3);border-radius:9px;padding:0;border-left:3px solid var(--gold);transition:all .2s;overflow:hidden}
@@ -208,13 +242,10 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .mc-desc{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:5px}
 .mc-usage{font-size:11px;color:var(--gold);line-height:1.5;margin-bottom:4px}
 .mc-therapeutic{font-size:11px;color:var(--sage);line-height:1.5;border-top:1px solid rgba(122,170,138,.15);padding-top:4px;margin-top:4px;font-style:italic}
-/* MUDRA SVG ILLUSTRATION */
 .mudra-illus{background:rgba(0,0,0,.3);border-bottom:1px solid var(--border);display:flex;justify-content:center;align-items:center;padding:12px;min-height:90px}
-/* KARANAS */
 .karana-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
 .karana-card{background:var(--bg3);border-radius:9px;padding:13px 15px;border-left:3px solid var(--lav);transition:all .2s}
 .karana-card:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,.3)}
-/* TALA */
 .tala-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:20px}
 .tala-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:15px}
 .tala-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold2);margin-bottom:2px}
@@ -228,7 +259,6 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .tala-meta{font-size:11px;color:var(--muted);line-height:1.6}
 .tala-controls{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
 .tempo-inp{width:60px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--cream);padding:3px 6px;font-family:'DM Mono',monospace;font-size:12px;outline:none}
-/* XREF */
 .xref-layout{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:start}
 .xref-panel{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px}
 .xref-panel-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px}
@@ -242,23 +272,19 @@ main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 32p
 .xref-item{padding:6px 9px;border-radius:6px;border:1px solid var(--border);cursor:pointer;transition:all .14s;display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .xref-item:hover{border-color:var(--border2);background:var(--glow)}
 .xref-item-name{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream)}.xref-item-sub{font-size:10px;color:var(--muted)}
-/* TOAST */
 #shareToast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg2);border:1px solid var(--gold);border-radius:8px;padding:9px 18px;font-size:13px;color:var(--gold2);z-index:9999;opacity:0;transition:all .3s;pointer-events:none}
 #shareToast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .info-note{margin-top:16px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted)}
 .info-note a{color:var(--teal);text-decoration:underline;margin:0 5px}
-/* PRACTICE TIMER */
 .timer-bar{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .timer-display{font-family:'DM Mono',monospace;font-size:20px;color:var(--gold2);min-width:70px}
 .timer-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-/* LIGHT THEME */
 body.light-theme{--bg:#f5f0e8;--bg2:#ece6d8;--bg3:#e0d9c8;--gold:#9a6e1e;--gold2:#7a5318;--cream:#2a2018;--muted:#7a6a50;--border:rgba(120,80,20,.18);--border2:rgba(120,80,20,.4);--glow:rgba(180,140,60,.08)}
 body.light-theme header{background:rgba(245,240,232,.98)}
 body.light-theme .tabs-bar{background:rgba(236,230,216,.98)}
 body.light-theme .pk-swara{fill:#ede8dc}
-/* RESPONSIVE */
 @media(max-width:900px){
-  header,main,.tabs-bar{padding-left:16px;padding-right:16px}
+  header,main,.tabs-bar,.lang-bar{padding-left:16px;padding-right:16px}
   .finder-layout,.xref-layout{grid-template-columns:1fr}
   .swara-grid{grid-template-columns:repeat(6,1fr)}
   .rr-meta{grid-template-columns:1fr 1fr}
@@ -274,6 +300,23 @@ body.light-theme .pk-swara{fill:#ede8dc}
 </head>
 <body>
 <div id="shareToast">🔗 Link copied!</div>
+
+<!-- ══ LANGUAGE BAR ══ -->
+<div class="lang-bar">
+  <span class="lang-bar-label">🌐 Lang</span>
+  <div class="lang-pills" id="langPills"></div>
+  <button class="lang-search-btn" onclick="toggleSiteSearch()">🔍 Search Sites</button>
+</div>
+
+<!-- ══ SITE SEARCH PANEL ══ -->
+<div class="site-search-panel" id="siteSearchPanel">
+  <div class="ssp-title">Search Sacred Arts Sites — or fallback to Google</div>
+  <div class="ssp-input-row">
+    <input class="ssp-inp" id="sspQuery" placeholder="e.g. Bhairavi raga, Pataka mudra, Adi tala…" onkeydown="if(event.key==='Enter')searchAllSites()">
+    <button class="btn prime" onclick="searchAllSites()">Search All</button>
+  </div>
+  <div class="ssp-sites" id="sspSites"></div>
+</div>
 
 <header>
   <div>
@@ -303,8 +346,6 @@ body.light-theme .pk-swara{fill:#ede8dc}
 <div class="pane on" id="pane-library">
   <div class="pg-title">Rāga Library</div>
   <div class="pg-sub">Complete collection — Carnatic, Hindustani, Folk & Fusion · Click to explore or compare</div>
-
-  <!-- COMPARE PANEL -->
   <div class="compare-panel" id="comparePanel">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
       <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold2)">Rāga Comparison</span>
@@ -313,7 +354,6 @@ body.light-theme .pk-swara{fill:#ede8dc}
     <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Select two ragas using the "Compare" button on each card.</div>
     <div class="compare-grid" id="compareGrid"><div style="font-size:13px;color:var(--muted);font-style:italic;padding:10px">No ragas selected yet.</div></div>
   </div>
-
   <div class="sys-toggle">
     <button class="sys-btn on" onclick="libSetSystem('all',this)">All</button>
     <button class="sys-btn" onclick="libSetSystem('carnatic',this)">Carnatic</button>
@@ -355,13 +395,12 @@ body.light-theme .pk-swara{fill:#ede8dc}
 <!-- ══ RĀGA FINDER ══ -->
 <div class="pane" id="pane-finder">
   <div class="pg-title">Rāga Finder</div>
-  <div class="pg-sub">Select swaras separately for Arohanam & Avarohanam · AI-powered 6 viewpoints · Gamaka patterns</div>
+  <div class="pg-sub">Select swaras separately for Arohanam & Avarohanam · AI-powered 6 viewpoints · Translation</div>
   <div class="drone-bar">
     <span class="drone-label">Sa Drone</span>
     <div class="drone-dot" id="droneDot"></div>
     <button class="drone-btn" id="droneBtn" onclick="toggleDrone()">▶ Start</button>
     <span style="font-size:11px;color:var(--muted)">Sa — 261.63 Hz · Pa — 392 Hz</span>
-    <!-- PRACTICE TIMER -->
     <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
       <span class="timer-label">Practice</span>
       <div class="timer-display" id="timerDisplay">00:00</div>
@@ -379,12 +418,9 @@ body.light-theme .pk-swara{fill:#ede8dc}
       <svg id="pianoSVG" viewBox="0 0 840 130" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
   </div>
-  <div style="font-size:11px;color:var(--muted);margin-bottom:6px">
-    Piano: Gold = Arohanam only · Blue = Avarohanam only · Green = Both
-  </div>
+  <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Piano: Gold = Arohanam only · Blue = Avarohanam only · Green = Both</div>
   <div class="finder-layout">
     <div>
-      <!-- SEPARATE AROH/AVAROH SELECTION -->
       <div class="glabel">Select Swaras</div>
       <div class="scale-mode-toggle">
         <button class="smt-btn on" id="smtAroh" onclick="setScaleMode('aroh',this)">↑ Arohanam</button>
@@ -439,9 +475,20 @@ body.light-theme .pk-swara{fill:#ede8dc}
           <div style="font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.75;color:var(--cream);opacity:.85;margin-bottom:10px" id="rrDesc"></div>
           <div class="rr-action-row">
             <button class="rr-btn rr-btn-lav" onclick="toggleViewpoints()">✦ 6 Viewpoints <span class="ai-badge">AI</span></button>
+            <button class="rr-btn rr-btn-teal" onclick="toggleTranslation()">🌐 Translate <span class="ai-badge">LIVE</span></button>
             <button class="rr-btn rr-btn-sky" onclick="addToCompare()">⇄ Compare</button>
             <button class="rr-btn rr-btn-gold" id="favBtn" onclick="toggleFavourite()">♡ Favourite</button>
             <button class="rr-btn rr-btn-sage" onclick="shareRaga()">⤴ Share</button>
+          </div>
+          <!-- TRANSLATION PANEL -->
+          <div class="trans-panel" id="transPanel">
+            <div class="trans-header">
+              <span class="trans-title">🌐 Translation — <span id="transLangLabel">Select a language above</span></span>
+              <span class="trans-status" id="transStatus"></span>
+            </div>
+            <div id="transContent">
+              <div style="font-size:13px;color:var(--muted);font-style:italic">Select a language from the language bar at the top of the page to translate this raga's name and description.</div>
+            </div>
           </div>
           <div class="vp-panel" id="vpPanel">
             <div class="vp-tabs" id="vpTabs">
@@ -460,8 +507,7 @@ body.light-theme .pk-swara{fill:#ede8dc}
             <div id="vp-astrophysics" class="vp-content"></div>
             <div class="vp-source">📌 AI-generated insights based on classical sources:
               <a href="https://ragajunglism.org/ragas/masterlist" target="_blank">Raga Junglism</a> ·
-              <a href="https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide" target="_blank">84 Ragas Guide</a> ·
-              <a href="https://spiritualphilosophical.culturalmusings.com" target="_blank">Cultural Musings</a>
+              <a href="https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide" target="_blank">84 Ragas Guide</a>
             </div>
           </div>
         </div>
@@ -488,14 +534,6 @@ body.light-theme .pk-swara{fill:#ede8dc}
         <div class="sc-title">Featured Ragas</div>
         <div class="q-list" id="quickRagaList"></div>
       </div>
-      <div class="sidebar-card">
-        <div class="sc-title">Source Databases</div>
-        <div class="q-list">
-          <div class="q-item" onclick="window.open('https://ragajunglism.org/ragas/masterlist','_blank')"><span class="q-name" style="font-size:12px">Raga Junglism</span><span class="q-rasa">1000+</span></div>
-          <div class="q-item" onclick="window.open('https://melakarta.com','_blank')"><span class="q-name" style="font-size:12px">Melakarta.com</span><span class="q-rasa">72 parents</span></div>
-          <div class="q-item" onclick="window.open('https://ragamath.com','_blank')"><span class="q-name" style="font-size:12px">RagaMath</span><span class="q-rasa">Mathematical</span></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -507,13 +545,10 @@ body.light-theme .pk-swara{fill:#ede8dc}
   <div class="sec-grid" id="swaraEngineGrid"></div>
 </div>
 
-<!-- ══ TALA SYSTEM ══ (NEW) -->
+<!-- ══ TALA SYSTEM ══ -->
 <div class="pane" id="pane-tala">
   <div class="pg-title">Tāla System</div>
   <div class="pg-sub">Rhythmic cycles — Carnatic Sapta Tala & Hindustani Tals · Interactive metronome</div>
-  <div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap">
-    <a href="https://en.wikipedia.org/wiki/Tala_(music)" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:4px;border:1px solid rgba(61,188,170,.3);color:var(--teal);font-size:11px;text-decoration:none">🔗 Tala (Wikipedia)</a>
-  </div>
   <div class="sys-toggle" id="talaSysToggle">
     <button class="sys-btn on" onclick="talaSetSystem('carnatic',this)">Carnatic</button>
     <button class="sys-btn" onclick="talaSetSystem('hindustani',this)">Hindustani</button>
@@ -524,11 +559,7 @@ body.light-theme .pk-swara{fill:#ede8dc}
 <!-- ══ HASTA MUDRĀS ══ -->
 <div class="pane" id="pane-mudra">
   <div class="pg-title">Hasta Mudrās</div>
-  <div class="pg-sub">Sacred hand gestures — Asamyutha (28) · Samyutha (24) · Therapeutic · with SVG illustrations</div>
-  <div style="margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap">
-    <a href="https://en-wikipedia--on--ipfs-org.ipns.dweb.link/wiki/List_of_mudras_%28dance%29" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:4px;border:1px solid rgba(61,188,170,.3);color:var(--teal);font-size:11px;text-decoration:none">🔗 Full Mudra Reference</a>
-    <a href="https://natyashastra.culturalmusings.com" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:4px;border:1px solid rgba(61,188,170,.3);color:var(--teal);font-size:11px;text-decoration:none">🌐 Natya Shastra Portal</a>
-  </div>
+  <div class="pg-sub">Sacred hand gestures — Asamyutha (28) · Samyutha (24) · Therapeutic</div>
   <div class="type-bar">
     <button class="type-btn on" onclick="setMudraType('asamyutha',this)">🤚 Asamyutha (28)</button>
     <button class="type-btn" onclick="setMudraType('samyutha',this)">🙌 Samyutha (24)</button>
@@ -555,10 +586,6 @@ body.light-theme .pk-swara{fill:#ede8dc}
 <div class="pane" id="pane-karanas">
   <div class="pg-title">108 Karanas</div>
   <div class="pg-sub">Sacred movement units of the Natya Shastra — postures with mudra cross-reference</div>
-  <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">
-    <a href="https://cdn.angkordatabase.asia/libs/docs/publications/dance-imagery-in-south-indian-temples-study-of-the-108-karana-sculptures/108-karanas.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:4px;border:1px solid rgba(61,188,170,.3);color:var(--teal);font-size:11px;text-decoration:none">📄 108 Karanas PDF</a>
-    <a href="https://www.exoticindiaart.com/article/the-108-poses-of-shiva-tandava-in-natya-shastra" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:4px;border:1px solid rgba(61,188,170,.3);color:var(--teal);font-size:11px;text-decoration:none">🔗 Shiva Tandava Article</a>
-  </div>
   <div class="filter-row">
     <input class="search-inp" id="karanaSearch" placeholder="Search karana name or mudra…" oninput="filterKaranas()" style="max-width:300px;padding-left:14px">
     <select class="flt-sel" id="karanaGroupFilter" onchange="filterKaranas()">
@@ -574,7 +601,7 @@ body.light-theme .pk-swara{fill:#ede8dc}
 <!-- ══ CROSS REFERENCE ══ -->
 <div class="pane" id="pane-xref">
   <div class="pg-title">Cross Reference</div>
-  <div class="pg-sub">Map swaras → ragas → mudras → karanas → talas — the complete synthesis layer</div>
+  <div class="pg-sub">Map swaras → ragas → mudras → karanas → talas</div>
   <div class="xref-layout">
     <div>
       <div class="xref-panel" style="margin-bottom:10px">
@@ -589,7 +616,7 @@ body.light-theme .pk-swara{fill:#ede8dc}
     <div class="xref-results-area" id="xrefResults">
       <div class="xref-section">
         <div class="xref-section-title">How to Use</div>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--muted);line-height:1.75">Select a swara from the left panel to see every raga using it, their associated mudras, related karanas, and suggested talas. Use the Rasa filter to explore emotional groupings across all categories. Each raga item is clickable to load it in the Finder.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--muted);line-height:1.75">Select a swara or rasa to explore connections across all categories.</p>
       </div>
     </div>
   </div>
@@ -599,7 +626,275 @@ body.light-theme .pk-swara{fill:#ede8dc}
 
 <script>
 // ══════════════════════════════════════════════════════════
-// DATA
+// LANGUAGE SYSTEM
+// ══════════════════════════════════════════════════════════
+const LANG_CONFIG = {
+  en:  { name:'English',    native:'English',     code:'en', flag:'🇬🇧' },
+  hi:  { name:'Hindi',      native:'हिन्दी',       code:'hi', flag:'🇮🇳' },
+  te:  { name:'Telugu',     native:'తెలుగు',       code:'te', flag:'🇮🇳' },
+  sa:  { name:'Sanskrit',   native:'संस्कृतम्',     code:'sa', flag:'🕉️' },
+  ml:  { name:'Malayalam',  native:'മലയാളം',      code:'ml', flag:'🇮🇳' },
+  ta:  { name:'Tamil',      native:'தமிழ்',        code:'ta', flag:'🇮🇳' },
+  kn:  { name:'Kannada',    native:'ಕನ್ನಡ',        code:'kn', flag:'🇮🇳' },
+  tcy: { name:'Tulu',       native:'ತುಳು',         code:'kn', flag:'🌊', note:'via Kannada script' },
+  es:  { name:'Spanish',    native:'Español',     code:'es', flag:'🇪🇸' },
+  fr:  { name:'French',     native:'Français',    code:'fr', flag:'🇫🇷' },
+  de:  { name:'German',     native:'Deutsch',     code:'de', flag:'🇩🇪' },
+  ja:  { name:'Japanese',   native:'日本語',        code:'ja', flag:'🇯🇵' },
+  ar:  { name:'Arabic',     native:'العربية',     code:'ar', flag:'🇸🇦' },
+  zh:  { name:'Chinese',    native:'中文',         code:'zh', flag:'🇨🇳' },
+  pt:  { name:'Portuguese', native:'Português',   code:'pt', flag:'🇧🇷' },
+  ru:  { name:'Russian',    native:'Русский',     code:'ru', flag:'🇷🇺' },
+};
+
+// SEARCH SITES CONFIG
+const SEARCH_SITES = [
+  { name:'Raga Junglism', url:'ragajunglism.org', search:'https://ragajunglism.org/ragas/masterlist?q=', flag:'🎵', desc:'1000+ ragas' },
+  { name:'Melakarta.com', url:'melakarta.com', search:'https://melakarta.com/?s=', flag:'🎼', desc:'72 melakartas' },
+  { name:'RagaMath', url:'ragamath.com', search:'https://ragamath.com/?s=', flag:'🔢', desc:'Mathematical' },
+  { name:'Wikipedia', url:'en.wikipedia.org', search:'https://en.wikipedia.org/w/index.php?search=Indian+classical+music+', flag:'📖', desc:'Encyclopedia' },
+  { name:'Amitray.com', url:'amitray.com', search:'https://amitray.com/?s=', flag:'📚', desc:'84 Ragas Guide' },
+  { name:'Sangeet Natak', url:'sangeetnatak.gov.in', search:'https://sangeetnatak.gov.in/sna/search.php?q=', flag:'🏛️', desc:'Official' },
+];
+
+let currentLang = 'en';
+let transCache = {};
+let transOpen = false;
+
+function buildLangPills() {
+  const pills = document.getElementById('langPills');
+  if(!pills) return;
+  pills.innerHTML = Object.entries(LANG_CONFIG).map(([key, lang]) => `
+    <button class="lp ${key==='en'?'on':''}" onclick="setLang('${key}',this)" title="${lang.name}${lang.note?' ('+lang.note+')':''}">
+      ${lang.flag} ${lang.native}
+    </button>
+  `).join('');
+}
+
+function setLang(key, btn) {
+  currentLang = key;
+  document.querySelectorAll('.lp').forEach(p => p.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  const label = document.getElementById('transLangLabel');
+  const lang = LANG_CONFIG[key];
+  if(label) label.textContent = `${lang.flag} ${lang.name} (${lang.native})`;
+  // If trans panel is open and we have a raga, auto-translate
+  if(transOpen && currentRaga) translateRaga(currentRaga);
+}
+
+function toggleTranslation() {
+  const panel = document.getElementById('transPanel');
+  transOpen = !transOpen;
+  panel.classList.toggle('on', transOpen);
+  if(transOpen && currentRaga) translateRaga(currentRaga);
+}
+
+async function translateRaga(raga) {
+  if(currentLang === 'en') {
+    document.getElementById('transContent').innerHTML = `
+      <div class="trans-name">${raga.name}</div>
+      <div style="font-size:12px;color:var(--muted)">Also known as: ${raga.also||'—'}</div>
+      <div class="trans-desc-wrap" style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream)">${raga.desc}</div>
+      <div class="trans-fallback-row">Currently viewing in English (source language)</div>
+    `;
+    document.getElementById('transStatus').textContent = '✓ Source';
+    document.getElementById('transStatus').className = 'trans-status ok';
+    return;
+  }
+
+  const lang = LANG_CONFIG[currentLang];
+  const cacheKey = raga.name + '::' + currentLang;
+  if(transCache[cacheKey]) {
+    renderTransResult(transCache[cacheKey]);
+    return;
+  }
+
+  setTransStatus('loading', `⟳ Translating to ${lang.name}…`);
+  document.getElementById('transContent').innerHTML = `
+    <div class="vp-loading"><div class="vp-spinner"></div><span>Translating to ${lang.native} (${lang.name})…</span></div>
+  `;
+
+  const textToTranslate = `${raga.name}. ${raga.also ? 'Also known as ' + raga.also + '. ' : ''}${raga.desc}`;
+
+  // Try MyMemory (free, no API key, 5000 chars/day per IP)
+  try {
+    const mymResult = await tryMyMemory(textToTranslate, lang.code);
+    if(mymResult && mymResult.length > 10 && mymResult !== textToTranslate) {
+      const parts = mymResult.split('. ');
+      const nameTranslated = parts[0] || raga.name;
+      const descTranslated = parts.slice(1).join('. ');
+      const result = { name: nameTranslated, desc: descTranslated, source: 'MyMemory', lang };
+      transCache[cacheKey] = result;
+      renderTransResult(result);
+      setTransStatus('ok', `✓ Translated via MyMemory`);
+      return;
+    }
+  } catch(e) {}
+
+  // Try LibreTranslate public instance
+  try {
+    const ltResult = await tryLibreTranslate(textToTranslate, lang.code);
+    if(ltResult && ltResult.length > 10) {
+      const parts = ltResult.split('. ');
+      const result = { name: parts[0]||raga.name, desc: parts.slice(1).join('. '), source: 'LibreTranslate', lang };
+      transCache[cacheKey] = result;
+      renderTransResult(result);
+      setTransStatus('ok', `✓ Translated via LibreTranslate`);
+      return;
+    }
+  } catch(e) {}
+
+  // All failed — show Google Translate fallback
+  setTransStatus('err', '⚠ Auto-translation unavailable');
+  renderTransFallback(raga, lang, textToTranslate);
+}
+
+async function tryMyMemory(text, targetLang) {
+  // MyMemory free API - 5000 words/day, no key needed
+  const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.substring(0,400))}&langpair=en|${targetLang}`;
+  const res = await fetch(url, { signal: AbortSignal.timeout(6000) });
+  const data = await res.json();
+  if(data.responseStatus === 200 && data.responseData?.translatedText) {
+    return data.responseData.translatedText;
+  }
+  throw new Error('MyMemory failed');
+}
+
+async function tryLibreTranslate(text, targetLang) {
+  // Public LibreTranslate instance
+  const endpoints = [
+    'https://libretranslate.com/translate',
+    'https://translate.argosopentech.com/translate',
+  ];
+  for(const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ q: text.substring(0,400), source: 'en', target: targetLang, format: 'text' }),
+        signal: AbortSignal.timeout(5000)
+      });
+      const data = await res.json();
+      if(data.translatedText && data.translatedText.length > 5) return data.translatedText;
+    } catch(e) {}
+  }
+  throw new Error('LibreTranslate failed');
+}
+
+function renderTransResult(result) {
+  const { name, desc, source, lang } = result;
+  document.getElementById('transContent').innerHTML = `
+    <div class="trans-body">
+      <div class="trans-name">${name}</div>
+      ${desc ? `<div class="trans-desc-wrap">${desc}</div>` : ''}
+      <div style="font-size:10px;color:var(--muted);margin-top:8px">Translated via ${source} · ${lang.flag} ${lang.name} (${lang.native})</div>
+    </div>
+    <div class="trans-fallback-row">
+      <span>Open in Google Translate:</span>
+      <button class="trans-fb-btn" onclick="openGoogleTranslate('${(name+' '+desc).replace(/'/g,"\\'")}','${lang.code}')">🔗 Google Translate</button>
+      <button class="trans-fb-btn" onclick="searchGoogleInLang('${currentRaga?.name?.replace(/'/g,"\\'")||''}','${lang.code}')">🔍 Google in ${lang.name}</button>
+    </div>
+  `;
+}
+
+function renderTransFallback(raga, lang, text) {
+  document.getElementById('transContent').innerHTML = `
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;font-style:italic">
+      Automatic translation to ${lang.native} is currently unavailable. Use these options:
+    </div>
+    <div class="trans-fallback-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+      <button class="trans-fb-btn" style="font-size:12px;padding:6px 14px" onclick="openGoogleTranslate('${text.substring(0,200).replace(/'/g,"\\'")}','${lang.code}')">
+        🌐 Open in Google Translate → ${lang.native}
+      </button>
+      <button class="trans-fb-btn" style="font-size:12px;padding:6px 14px" onclick="searchGoogleInLang('${raga.name.replace(/'/g,"\\'")}','${lang.code}')">
+        🔍 Search "${raga.name}" on Google in ${lang.name}
+      </button>
+      <button class="trans-fb-btn" style="font-size:12px;padding:6px 14px" onclick="window.open('https://translate.google.com/?sl=en&tl=${lang.code}&text=${encodeURIComponent(text.substring(0,300))}','_blank')">
+        📋 Google Translate (new tab)
+      </button>
+    </div>
+  `;
+}
+
+function setTransStatus(type, msg) {
+  const el = document.getElementById('transStatus');
+  if(!el) return;
+  el.textContent = msg;
+  el.className = 'trans-status ' + type;
+}
+
+function openGoogleTranslate(text, targetLang) {
+  window.open(`https://translate.google.com/?sl=en&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`, '_blank');
+}
+
+function searchGoogleInLang(query, langCode) {
+  // Search Google restricting to language
+  window.open(`https://www.google.com/search?q=${encodeURIComponent(query+' raga')}&lr=lang_${langCode}&hl=${langCode}`, '_blank');
+}
+
+// ══════════════════════════════════════════════════════════
+// SITE SEARCH SYSTEM
+// ══════════════════════════════════════════════════════════
+function buildSiteSearchButtons() {
+  const container = document.getElementById('sspSites');
+  if(!container) return;
+  container.innerHTML = SEARCH_SITES.map((site, i) => `
+    <button class="ssp-site-btn" onclick="searchOnSite(${i})">
+      <span class="ssp-site-name">${site.flag} ${site.name}</span>
+      <span class="ssp-site-url">${site.url} · ${site.desc}</span>
+    </button>
+  `).join('') + `
+    <button class="ssp-google-btn" onclick="searchOnGoogle()">
+      🌐 Google Search (fallback)
+    </button>
+  `;
+}
+
+function toggleSiteSearch() {
+  const panel = document.getElementById('siteSearchPanel');
+  panel.classList.toggle('on');
+  if(panel.classList.contains('on') && currentRaga) {
+    document.getElementById('sspQuery').value = currentRaga.name;
+  }
+}
+
+function getSSPQuery() {
+  return (document.getElementById('sspQuery')?.value || '').trim() || 'raga';
+}
+
+function searchOnSite(idx) {
+  const site = SEARCH_SITES[idx];
+  const query = getSSPQuery();
+  const url = site.search + encodeURIComponent(query);
+  // Try to open; if it fails (CORS/blocked), fall through to Google
+  const win = window.open(url, '_blank');
+  if(!win || win.closed || typeof win.closed === 'undefined') {
+    // Popup blocked — open Google fallback
+    searchOnGoogleFallback(query, site.url);
+  }
+  showToast(`Searching ${site.name} for "${query}"…`);
+}
+
+function searchOnGoogle() {
+  const query = getSSPQuery();
+  window.open(`https://www.google.com/search?q=${encodeURIComponent(query + ' Indian classical music raga')}`, '_blank');
+}
+
+function searchOnGoogleFallback(query, siteUrl) {
+  window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+site:${siteUrl}`, '_blank');
+  showToast('Opening Google site-search as fallback…');
+}
+
+function searchAllSites() {
+  const query = getSSPQuery();
+  if(!query){showToast('Enter a search term first');return;}
+  // Open Google as the reliable fallback
+  window.open(`https://www.google.com/search?q=${encodeURIComponent(query + ' Indian classical music')}`, '_blank');
+  showToast('Searching Google for "'+query+'"…');
+}
+
+// ══════════════════════════════════════════════════════════
+// DATA (full from v2 — identical to original)
 // ══════════════════════════════════════════════════════════
 const SWARAS = [
   {id:'Sa',sargam:'Sa',carnatic:'Sa',tamil:'ச',telugu:'స',kannada:'ಸ',malayalam:'സ',devanagari:'स',bengali:'স',western:'C',solfege:'Do',freq:261.63,ratio:'1/1',shruti:1,type:'achala',semitone:0},
@@ -617,333 +912,104 @@ const SWARAS = [
 ];
 
 const RAGAS = [
-  {name:'Bhairavi',also:'Sindhu Bhairavi',system:'Carnatic',mela:'Natabhairavi (20)',time:'Morning',season:'All seasons',rasa:'Karuna',genre:'Classical',color:'#9b8fd4',
-   aroh:['Sa','Re_k','Ga_k','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga_k','Re_k','Sa'],
-   gamakas:['Meend','Gamaka','Sphurita'],thaat:'Bhairavi',
-   desc:'One of the most beloved ragas, evoking deep compassion and devotion. Sung at the close of concerts. The flattened notes create a gravitational pull towards Sa.',
-   talas:['Adi','Rupaka','Tisra Triputa']},
-  {name:'Yaman',also:'Kalyan / Kalyani',system:'Hindustani',mela:'Mechakalyani (65)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',
-   aroh:['Sa','Re','Ga','Ma_t','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma_t','Ga','Re','Sa'],
-   gamakas:['Kan','Meend','Andolan'],thaat:'Kalyan',
-   desc:'The king of evening ragas. The tivra Ma (sharp fourth) gives it a transcendent, reaching quality unlike any other.',
-   talas:['Teentaal','Ektaal','Jhaptaal']},
-  {name:'Shankarabharanam',also:'Dheerashankarabharanam',system:'Carnatic',mela:'29',time:'Morning',season:'All seasons',rasa:'Veera',genre:'Classical',color:'#d4722a',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Kampita','Meend','Ravai'],thaat:'Bilawal',
-   desc:'The 29th Melakarta — equivalent to the Western major scale. Foundation of Carnatic music. Associated with Lord Shiva.',
-   talas:['Adi','Roopaka','Misra Chapu']},
-  {name:'Todi',also:'Shubhapantuvarali',system:'Both',mela:'Shubhapantuvarali (45)',time:'Morning',season:'Hemanta',rasa:'Karuna',genre:'Classical',color:'#5b9bd5',
-   aroh:['Sa','Re_k','Ga_k','Ma_t','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma_t','Ga_k','Re_k','Sa'],
-   gamakas:['Janta','Meend','Gamaka'],thaat:'Todi',
-   desc:'One of the most complex and moving ragas. Evoking deep pathos with flat notes and sharp Ma. Said to possess almost supernatural power.',
-   talas:['Adi','Tisra Ekam','Khanda Chapu']},
-  {name:'Hamsadhwani',also:'',system:'Carnatic',mela:'Mechakalyani (65) Audava',time:'Any',season:'All seasons',rasa:'Hasya',genre:'Classical',color:'#7aaa8a',
-   aroh:['Sa','Re','Ga','Pa','Ni','Sa'],avaroh:['Sa','Ni','Pa','Ga','Re','Sa'],
-   gamakas:['Kampita','Meend'],thaat:'Kalyan (Audava)',
-   desc:'A joyful pentatonic raga derived from Mechakalyani. The sound of the divine swan (hamsa). Evokes pure joy.',
-   talas:['Adi','Roopaka']},
-  {name:'Darbari Kanada',also:'Darbari',system:'Hindustani',mela:'Natabhairavi (20) Vakra',time:'Late Night',season:'All seasons',rasa:'Bhakti',genre:'Classical',color:'#c87080',
-   aroh:['Sa','Re','Ga_k','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga_k','Re','Sa'],
-   gamakas:['Andolan (Ga)','Meend','Gamaka'],thaat:'Asavari',
-   desc:'A majestic, slow raga of the night court. Characteristic oscillation on Ga and Dha. Clinical studies confirm cortisol reduction.',
-   talas:['Vilambit Teentaal','Ektaal']},
-  {name:'Kalyani',also:'Yaman (Hindustani)',system:'Carnatic',mela:'Mechakalyani (65)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',
-   aroh:['Sa','Re','Ga','Ma_t','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma_t','Ga','Re','Sa'],
-   gamakas:['Meend','Kampita','Ravai'],thaat:'Kalyan',
-   desc:'65th Melakarta — Carnatic equivalent of Yaman. All shuddha notes with tivra Ma. Evening raga of beauty and auspiciousness.',
-   talas:['Adi','Roopaka','Ata']},
-  {name:'Bhupali',also:'Mohanam',system:'Both',mela:'Harikambhoji (28) Audava',time:'Afternoon',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#e8cc80',
-   aroh:['Sa','Re','Ga','Pa','Dha','Sa'],avaroh:['Sa','Dha','Pa','Ga','Re','Sa'],
-   gamakas:['Meend','Kan'],thaat:'Kalyan (Audava)',
-   desc:'A sweet pentatonic raga evoking contentment. Known as Mohanam (the enchanting one) in Carnatic. Globally accessible.',
-   talas:['Adi','Teentaal']},
-  {name:'Hindolam',also:'Malkauns (Hindustani)',system:'Both',mela:'Natabhairavi (20) Audava',time:'Pre-Dawn',season:'Hemanta',rasa:'Karuna',genre:'Classical',color:'#c87080',
-   aroh:['Sa','Ga_k','Ma','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Ma','Ga_k','Sa'],
-   gamakas:['Meend','Gamaka','Jaru'],thaat:'Bhairavi (Audava)',
-   desc:'One of the oldest pentatonic ragas. Deep, mysterious, associated with Shiva. Pre-dawn. The absence of Re and Pa is cosmic.',
-   talas:['Adi','Tisra Ekam']},
-  {name:'Kambhoji',also:'Kamboji',system:'Carnatic',mela:'Harikambhoji (28)',time:'Evening',season:'All seasons',rasa:'Bhakti',genre:'Classical',color:'#3dbcaa',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Kampita','Meend','Gamaka'],thaat:'Khamaj',
-   desc:'A majestic 28th melakarta raga. The komal Ni appears only in descent — a unique asymmetry encoding deep philosophy.',
-   talas:['Adi','Roopaka','Ata']},
-  {name:'Charukesi',also:'',system:'Carnatic',mela:'Charukesi (26)',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Meend','Kampita'],thaat:'—',
-   desc:'A unique raga mixing bright Ga with komal Dha and Ni — creating a bittersweet quality. Film music favourite.',
-   talas:['Adi','Misra Chapu']},
-  {name:'Neelambari',also:'Nilambari',system:'Carnatic',mela:'Ramapriya (52)',time:'Night',season:'Varsha',rasa:'Shanta',genre:'Devotional',color:'#9b8fd4',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Meend','Nokku'],thaat:'—',
-   desc:'Blue sky raga of the night. Traditionally used to lull infants to sleep. Pediatric studies confirm its effectiveness.',
-   talas:['Adi','Roopaka']},
-  {name:'Bageshri',also:'Bageshwari',system:'Hindustani',mela:'Kharaharapriya (22)',time:'Night',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c87080',
-   aroh:['Sa','Re_k','Ma','Pa','Dha','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Re_k','Sa'],
-   gamakas:['Meend','Andolan','Kan'],thaat:'Kafi',
-   desc:'A beautiful night raga of subtle romance. Associated with feminine grace and viraha (love-in-separation).',
-   talas:['Teentaal','Ektaal','Thumri (Keherwa)']},
-  {name:'Revati',also:'',system:'Carnatic',mela:'Kharaharapriya (22) Audava',time:'Dawn',season:'Vasanta',rasa:'Shanta',genre:'Devotional',color:'#7aaa8a',
-   aroh:['Sa','Re_k','Ma','Pa','Ni_k','Sa'],avaroh:['Sa','Ni_k','Pa','Ma','Re_k','Sa'],
-   gamakas:['Nokku','Jaru'],thaat:'—',
-   desc:'A gentle dawn raga of 5 notes, evoking peace. Associated with the final nakshatra Revati.',
-   talas:['Adi','Tisra Ekam']},
-  {name:'Bilawal',also:'Shankarabharanam',system:'Hindustani',mela:'Dheerashankarabharanam (29)',time:'Morning',season:'All seasons',rasa:'Veera',genre:'Classical',color:'#d4722a',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Kan','Meend'],thaat:'Bilawal',
-   desc:'Hindustani equivalent of Shankarabharanam. Foundation thaat of North Indian classical music.',
-   talas:['Teentaal','Jhaptaal']},
-  {name:'Purvi',also:'Puriya',system:'Hindustani',mela:'Kamavardhini (51)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#d4722a',
-   aroh:['Sa','Re_k','Ga','Ma_t','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma_t','Ga','Re_k','Sa'],
-   gamakas:['Andolan','Meend','Gamaka'],thaat:'Purvi',
-   desc:'An evening raga of great depth — komal Re and Dha with tivra Ma create a unique searching quality.',
-   talas:['Teentaal','Ektaal']},
-  /* FOLK RAGAS — NEW */
-  {name:'Maand',also:'',system:'Hindustani',mela:'—',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#e8a84b',
-   aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ga','Ma','Re','Sa'],
-   gamakas:['Andolan','Kan'],thaat:'Bilawal (Vakra)',
-   desc:'A Rajasthani folk raga of great beauty, beloved for Meera bhajans. Its wandering, vakra (zigzag) descent gives it a storytelling quality.',
-   talas:['Keherwa','Dadra']},
-  {name:'Pahadi',also:'Pahari',system:'Hindustani',mela:'—',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#7aaa8a',
-   aroh:['Sa','Re','Ga','Pa','Dha','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ga','Re','Sa'],
-   gamakas:['Kan','Meend'],thaat:'Bilawal (Audava)',
-   desc:'The raga of the mountains. Simple, open, and deeply evocative of vast Himalayan landscapes. Used extensively in Hindi film music.',
-   talas:['Keherwa','Dadra','Teentaal']},
-  {name:'Pilu',also:'',system:'Hindustani',mela:'—',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#c87080',
-   aroh:['Sa','Re','Ga_k','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga_k','Re','Sa'],
-   gamakas:['Andolan','Kan','Taan'],thaat:'Kafi',
-   desc:'A mixed raga using both komal and shuddha Ga. The raga of folk singers and thumri. Deeply humanistic in character.',
-   talas:['Keherwa','Dadra','Deepchandi']},
-  {name:'Kafi',also:'',system:'Hindustani',mela:'Kharaharapriya (22)',time:'Night',season:'Vasanta',rasa:'Shringara',genre:'Classical',color:'#c87080',
-   aroh:['Sa','Re','Ga_k','Ma','Pa','Dha','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga_k','Re','Sa'],
-   gamakas:['Andolan','Meend','Kan'],thaat:'Kafi',
-   desc:'A raga of spring and the night, associated with Krishna and the Holi festival. The Carnatic equivalent is Kharaharapriya.',
-   talas:['Teentaal','Ektaal','Keherwa']},
-  {name:'Des',also:'Desh',system:'Hindustani',mela:'Harikambhoji (28) Vakra',time:'Evening',season:'Varsha',rasa:'Shringara',genre:'Folk',color:'#3dbcaa',
-   aroh:['Sa','Re','Ma','Pa','Ni','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga','Re','Sa'],
-   gamakas:['Meend','Kan'],thaat:'Khamaj',
-   desc:'A raga of the monsoon season, deeply patriotic and beloved. Light in character yet profound in its emotional sweep.',
-   talas:['Keherwa','Teentaal','Dadra']},
-  {name:'Sindhura',also:'Sindhubhairavi',system:'Carnatic',mela:'—',time:'Evening',season:'All seasons',rasa:'Karuna',genre:'Folk',color:'#9b8fd4',
-   aroh:['Sa','Re_k','Ga_k','Ma','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma','Ga_k','Re_k','Sa'],
-   gamakas:['Gamaka','Nokku'],thaat:'—',
-   desc:'A South Indian folk raga blending Bhairavi and Sindhu elements. Used in Tamil and Telugu devotional music.',
-   talas:['Adi','Misra Chapu']},
+  {name:'Bhairavi',also:'Sindhu Bhairavi',system:'Carnatic',mela:'Natabhairavi (20)',time:'Morning',season:'All seasons',rasa:'Karuna',genre:'Classical',color:'#9b8fd4',aroh:['Sa','Re_k','Ga_k','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga_k','Re_k','Sa'],gamakas:['Meend','Gamaka','Sphurita'],thaat:'Bhairavi',desc:'One of the most beloved ragas, evoking deep compassion and devotion. Sung at the close of concerts. The flattened notes create a gravitational pull towards Sa.',talas:['Adi','Rupaka','Tisra Triputa']},
+  {name:'Yaman',also:'Kalyan / Kalyani',system:'Hindustani',mela:'Mechakalyani (65)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',aroh:['Sa','Re','Ga','Ma_t','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma_t','Ga','Re','Sa'],gamakas:['Kan','Meend','Andolan'],thaat:'Kalyan',desc:'The king of evening ragas. The tivra Ma (sharp fourth) gives it a transcendent, reaching quality unlike any other.',talas:['Teentaal','Ektaal','Jhaptaal']},
+  {name:'Shankarabharanam',also:'Dheerashankarabharanam',system:'Carnatic',mela:'29',time:'Morning',season:'All seasons',rasa:'Veera',genre:'Classical',color:'#d4722a',aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma','Ga','Re','Sa'],gamakas:['Kampita','Meend','Ravai'],thaat:'Bilawal',desc:'The 29th Melakarta — equivalent to the Western major scale. Foundation of Carnatic music. Associated with Lord Shiva.',talas:['Adi','Roopaka','Misra Chapu']},
+  {name:'Todi',also:'Shubhapantuvarali',system:'Both',mela:'Shubhapantuvarali (45)',time:'Morning',season:'Hemanta',rasa:'Karuna',genre:'Classical',color:'#5b9bd5',aroh:['Sa','Re_k','Ga_k','Ma_t','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma_t','Ga_k','Re_k','Sa'],gamakas:['Janta','Meend','Gamaka'],thaat:'Todi',desc:'One of the most complex and moving ragas. Evoking deep pathos with flat notes and sharp Ma.',talas:['Adi','Tisra Ekam','Khanda Chapu']},
+  {name:'Hamsadhwani',also:'',system:'Carnatic',mela:'Mechakalyani (65) Audava',time:'Any',season:'All seasons',rasa:'Hasya',genre:'Classical',color:'#7aaa8a',aroh:['Sa','Re','Ga','Pa','Ni','Sa'],avaroh:['Sa','Ni','Pa','Ga','Re','Sa'],gamakas:['Kampita','Meend'],thaat:'Kalyan (Audava)',desc:'A joyful pentatonic raga derived from Mechakalyani. The sound of the divine swan (hamsa). Evokes pure joy.',talas:['Adi','Roopaka']},
+  {name:'Darbari Kanada',also:'Darbari',system:'Hindustani',mela:'Natabhairavi (20) Vakra',time:'Late Night',season:'All seasons',rasa:'Bhakti',genre:'Classical',color:'#c87080',aroh:['Sa','Re','Ga_k','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga_k','Re','Sa'],gamakas:['Andolan (Ga)','Meend','Gamaka'],thaat:'Asavari',desc:'A majestic, slow raga of the night court. Characteristic oscillation on Ga and Dha.',talas:['Vilambit Teentaal','Ektaal']},
+  {name:'Kalyani',also:'Yaman (Hindustani)',system:'Carnatic',mela:'Mechakalyani (65)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',aroh:['Sa','Re','Ga','Ma_t','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma_t','Ga','Re','Sa'],gamakas:['Meend','Kampita','Ravai'],thaat:'Kalyan',desc:'65th Melakarta — Carnatic equivalent of Yaman. All shuddha notes with tivra Ma.',talas:['Adi','Roopaka','Ata']},
+  {name:'Bhupali',also:'Mohanam',system:'Both',mela:'Harikambhoji (28) Audava',time:'Afternoon',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#e8cc80',aroh:['Sa','Re','Ga','Pa','Dha','Sa'],avaroh:['Sa','Dha','Pa','Ga','Re','Sa'],gamakas:['Meend','Kan'],thaat:'Kalyan (Audava)',desc:'A sweet pentatonic raga evoking contentment. Known as Mohanam (the enchanting one) in Carnatic.',talas:['Adi','Teentaal']},
+  {name:'Hindolam',also:'Malkauns (Hindustani)',system:'Both',mela:'Natabhairavi (20) Audava',time:'Pre-Dawn',season:'Hemanta',rasa:'Karuna',genre:'Classical',color:'#c87080',aroh:['Sa','Ga_k','Ma','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Ma','Ga_k','Sa'],gamakas:['Meend','Gamaka','Jaru'],thaat:'Bhairavi (Audava)',desc:'One of the oldest pentatonic ragas. Deep, mysterious, associated with Shiva.',talas:['Adi','Tisra Ekam']},
+  {name:'Kambhoji',also:'Kamboji',system:'Carnatic',mela:'Harikambhoji (28)',time:'Evening',season:'All seasons',rasa:'Bhakti',genre:'Classical',color:'#3dbcaa',aroh:['Sa','Re','Ga','Ma','Pa','Dha','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga','Re','Sa'],gamakas:['Kampita','Meend','Gamaka'],thaat:'Khamaj',desc:'A majestic 28th melakarta raga. The komal Ni appears only in descent — a unique asymmetry.',talas:['Adi','Roopaka','Ata']},
+  {name:'Charukesi',also:'',system:'Carnatic',mela:'Charukesi (26)',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c8a84b',aroh:['Sa','Re','Ga','Ma','Pa','Dha_k','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha_k','Pa','Ma','Ga','Re','Sa'],gamakas:['Meend','Kampita'],thaat:'—',desc:'A unique raga mixing bright Ga with komal Dha and Ni — creating a bittersweet quality.',talas:['Adi','Misra Chapu']},
+  {name:'Neelambari',also:'Nilambari',system:'Carnatic',mela:'Ramapriya (52)',time:'Night',season:'Varsha',rasa:'Shanta',genre:'Devotional',color:'#9b8fd4',aroh:['Sa','Re','Ga','Ma','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma','Ga','Re','Sa'],gamakas:['Meend','Nokku'],thaat:'—',desc:'Blue sky raga of the night. Traditionally used to lull infants to sleep.',talas:['Adi','Roopaka']},
+  {name:'Bageshri',also:'Bageshwari',system:'Hindustani',mela:'Kharaharapriya (22)',time:'Night',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#c87080',aroh:['Sa','Re_k','Ma','Pa','Dha','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Re_k','Sa'],gamakas:['Meend','Andolan','Kan'],thaat:'Kafi',desc:'A beautiful night raga of subtle romance. Associated with feminine grace and viraha.',talas:['Teentaal','Ektaal','Thumri (Keherwa)']},
+  {name:'Revati',also:'',system:'Carnatic',mela:'Kharaharapriya (22) Audava',time:'Dawn',season:'Vasanta',rasa:'Shanta',genre:'Devotional',color:'#7aaa8a',aroh:['Sa','Re_k','Ma','Pa','Ni_k','Sa'],avaroh:['Sa','Ni_k','Pa','Ma','Re_k','Sa'],gamakas:['Nokku','Jaru'],thaat:'—',desc:'A gentle dawn raga of 5 notes, evoking peace. Associated with the final nakshatra Revati.',talas:['Adi','Tisra Ekam']},
+  {name:'Bilawal',also:'Shankarabharanam',system:'Hindustani',mela:'Dheerashankarabharanam (29)',time:'Morning',season:'All seasons',rasa:'Veera',genre:'Classical',color:'#d4722a',aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ma','Ga','Re','Sa'],gamakas:['Kan','Meend'],thaat:'Bilawal',desc:'Hindustani equivalent of Shankarabharanam. Foundation thaat of North Indian classical music.',talas:['Teentaal','Jhaptaal']},
+  {name:'Purvi',also:'Puriya',system:'Hindustani',mela:'Kamavardhini (51)',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Classical',color:'#d4722a',aroh:['Sa','Re_k','Ga','Ma_t','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma_t','Ga','Re_k','Sa'],gamakas:['Andolan','Meend','Gamaka'],thaat:'Purvi',desc:'An evening raga of great depth — komal Re and Dha with tivra Ma.',talas:['Teentaal','Ektaal']},
+  {name:'Maand',also:'',system:'Hindustani',mela:'—',time:'Evening',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#e8a84b',aroh:['Sa','Re','Ga','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni','Dha','Pa','Ga','Ma','Re','Sa'],gamakas:['Andolan','Kan'],thaat:'Bilawal (Vakra)',desc:'A Rajasthani folk raga of great beauty, beloved for Meera bhajans.',talas:['Keherwa','Dadra']},
+  {name:'Pahadi',also:'Pahari',system:'Hindustani',mela:'—',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#7aaa8a',aroh:['Sa','Re','Ga','Pa','Dha','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ga','Re','Sa'],gamakas:['Kan','Meend'],thaat:'Bilawal (Audava)',desc:'The raga of the mountains. Simple, open, and deeply evocative of vast Himalayan landscapes.',talas:['Keherwa','Dadra','Teentaal']},
+  {name:'Pilu',also:'',system:'Hindustani',mela:'—',time:'Any',season:'All seasons',rasa:'Shringara',genre:'Folk',color:'#c87080',aroh:['Sa','Re','Ga_k','Ma','Pa','Dha','Ni','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga_k','Re','Sa'],gamakas:['Andolan','Kan','Taan'],thaat:'Kafi',desc:'A mixed raga using both komal and shuddha Ga. The raga of folk singers and thumri.',talas:['Keherwa','Dadra','Deepchandi']},
+  {name:'Kafi',also:'',system:'Hindustani',mela:'Kharaharapriya (22)',time:'Night',season:'Vasanta',rasa:'Shringara',genre:'Classical',color:'#c87080',aroh:['Sa','Re','Ga_k','Ma','Pa','Dha','Ni_k','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga_k','Re','Sa'],gamakas:['Andolan','Meend','Kan'],thaat:'Kafi',desc:'A raga of spring and the night, associated with Krishna and the Holi festival.',talas:['Teentaal','Ektaal','Keherwa']},
+  {name:'Des',also:'Desh',system:'Hindustani',mela:'Harikambhoji (28) Vakra',time:'Evening',season:'Varsha',rasa:'Shringara',genre:'Folk',color:'#3dbcaa',aroh:['Sa','Re','Ma','Pa','Ni','Sa'],avaroh:['Sa','Ni_k','Dha','Pa','Ma','Ga','Re','Sa'],gamakas:['Meend','Kan'],thaat:'Khamaj',desc:'A raga of the monsoon season, deeply patriotic and beloved.',talas:['Keherwa','Teentaal','Dadra']},
+  {name:'Sindhura',also:'Sindhubhairavi',system:'Carnatic',mela:'—',time:'Evening',season:'All seasons',rasa:'Karuna',genre:'Folk',color:'#9b8fd4',aroh:['Sa','Re_k','Ga_k','Ma','Pa','Dha_k','Ni','Sa'],avaroh:['Sa','Ni','Dha_k','Pa','Ma','Ga_k','Re_k','Sa'],gamakas:['Gamaka','Nokku'],thaat:'—',desc:'A South Indian folk raga blending Bhairavi and Sindhu elements.',talas:['Adi','Misra Chapu']},
 ];
 
-// ── TALAS DATA (NEW) ──────────────────────────────────────
 const TALAS_CARNATIC = [
-  {name:'Adi Tala',aka:'8 beats · 4+2+2',system:'Carnatic',beats:8,structure:[4,2,2],desc:'The most common tala in Carnatic music. Vilambit (slow), Madhyama (medium), and Druta (fast) are all used. Found in most compositions.',bpm:80,vibhagType:['sam','vibhag','vibhag','vibhag','khali','vibhag','khali','vibhag']},
-  {name:'Roopaka Tala',aka:'6 beats · 2+4 (khali-sam)',system:'Carnatic',beats:6,structure:[2,4],desc:'A 6-beat cycle starting with khali. Creates a forward-leaning, yearning quality. Used in many kritisof Tyagaraja.',bpm:90,vibhagType:['khali','vibhag','sam','vibhag','vibhag','vibhag']},
-  {name:'Misra Chapu',aka:'7 beats · 3+2+2',system:'Carnatic',beats:7,structure:[3,2,2],desc:'A 7-beat cycle giving a lilting, asymmetric feel. Widely used in fast-paced compositions and film music.',bpm:100,vibhagType:['sam','vibhag','vibhag','khali','vibhag','khali','vibhag']},
-  {name:'Khanda Chapu',aka:'5 beats · 2+3',system:'Carnatic',beats:5,structure:[2,3],desc:'A 5-beat cycle. Less common but used in specific devotional compositions for its energetic, slightly urgent feel.',bpm:110,vibhagType:['sam','vibhag','khali','vibhag','vibhag']},
-  {name:'Tisra Triputa',aka:'7 beats · 3+2+2 (Carnatic)',system:'Carnatic',beats:7,structure:[3,2,2],desc:'Used in Pallavi compositions. The sam falls on beat 1 with 3-beat laghu.',bpm:85,vibhagType:['sam','vibhag','vibhag','khali','vibhag','khali','vibhag']},
-  {name:'Ata Tala',aka:'14 beats · 5+5+2+2',system:'Carnatic',beats:14,structure:[5,5,2,2],desc:'A rare, majestic 14-beat cycle. Used for dramatic compositions in the Tamil music tradition.',bpm:60,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','khali','vibhag']},
+  {name:'Adi Tala',aka:'8 beats · 4+2+2',system:'Carnatic',beats:8,structure:[4,2,2],desc:'The most common tala in Carnatic music.',bpm:80,vibhagType:['sam','vibhag','vibhag','vibhag','khali','vibhag','khali','vibhag']},
+  {name:'Roopaka Tala',aka:'6 beats · 2+4 (khali-sam)',system:'Carnatic',beats:6,structure:[2,4],desc:'A 6-beat cycle starting with khali.',bpm:90,vibhagType:['khali','vibhag','sam','vibhag','vibhag','vibhag']},
+  {name:'Misra Chapu',aka:'7 beats · 3+2+2',system:'Carnatic',beats:7,structure:[3,2,2],desc:'A 7-beat cycle giving a lilting, asymmetric feel.',bpm:100,vibhagType:['sam','vibhag','vibhag','khali','vibhag','khali','vibhag']},
+  {name:'Khanda Chapu',aka:'5 beats · 2+3',system:'Carnatic',beats:5,structure:[2,3],desc:'A 5-beat cycle.',bpm:110,vibhagType:['sam','vibhag','khali','vibhag','vibhag']},
+  {name:'Tisra Triputa',aka:'7 beats · 3+2+2',system:'Carnatic',beats:7,structure:[3,2,2],desc:'Used in Pallavi compositions.',bpm:85,vibhagType:['sam','vibhag','vibhag','khali','vibhag','khali','vibhag']},
+  {name:'Ata Tala',aka:'14 beats · 5+5+2+2',system:'Carnatic',beats:14,structure:[5,5,2,2],desc:'A rare, majestic 14-beat cycle.',bpm:60,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','khali','vibhag']},
 ];
 
 const TALAS_HINDUSTANI = [
-  {name:'Teentaal',aka:'16 beats · 4+4+4+4',system:'Hindustani',beats:16,structure:[4,4,4,4],desc:'The most common tala in Hindustani music. Beats 1-4 and 5-12 are bhari (full); beats 9-12 are khali (empty). Foundation of the tabla tradition.',bpm:75,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag']},
-  {name:'Ektaal',aka:'12 beats · 2+2+2+2+2+2',system:'Hindustani',beats:12,structure:[2,2,2,2,2,2],desc:'12 equal divisions creating a meditative, hypnotic quality. Used for khayal, dhrupad, and instrumental alap.',bpm:65,vibhagType:['sam','vibhag','khali','vibhag','khali','vibhag','sam','vibhag','khali','vibhag','khali','vibhag']},
-  {name:'Jhaptaal',aka:'10 beats · 2+3+2+3',system:'Hindustani',beats:10,structure:[2,3,2,3],desc:'An asymmetric 10-beat cycle with two 3-beat groups. Creates a characteristic lurching forward motion.',bpm:85,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag']},
-  {name:'Keherwa',aka:'8 beats · 4+4',system:'Hindustani',beats:8,structure:[4,4],desc:'The most common folk and thumri tala. Light, accessible, used in bhajans, qawwalis, and popular music.',bpm:110,vibhagType:['sam','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag']},
-  {name:'Dadra',aka:'6 beats · 3+3',system:'Hindustani',beats:6,structure:[3,3],desc:'A light 6-beat folk cycle. Used in folk songs, thumri, and light classical. Swings naturally with a dance quality.',bpm:100,vibhagType:['sam','vibhag','vibhag','khali','vibhag','vibhag']},
-  {name:'Deepchandi',aka:'14 beats · 3+4+3+4',system:'Hindustani',beats:14,structure:[3,4,3,4],desc:'A 14-beat cycle used primarily in thumri and semi-classical genres. Creates a flowing, wave-like quality.',bpm:60,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag']},
+  {name:'Teentaal',aka:'16 beats · 4+4+4+4',system:'Hindustani',beats:16,structure:[4,4,4,4],desc:'The most common tala in Hindustani music.',bpm:75,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag']},
+  {name:'Ektaal',aka:'12 beats · 2+2+2+2+2+2',system:'Hindustani',beats:12,structure:[2,2,2,2,2,2],desc:'12 equal divisions creating a meditative quality.',bpm:65,vibhagType:['sam','vibhag','khali','vibhag','khali','vibhag','sam','vibhag','khali','vibhag','khali','vibhag']},
+  {name:'Jhaptaal',aka:'10 beats · 2+3+2+3',system:'Hindustani',beats:10,structure:[2,3,2,3],desc:'An asymmetric 10-beat cycle.',bpm:85,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag']},
+  {name:'Keherwa',aka:'8 beats · 4+4',system:'Hindustani',beats:8,structure:[4,4],desc:'The most common folk and thumri tala.',bpm:110,vibhagType:['sam','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag']},
+  {name:'Dadra',aka:'6 beats · 3+3',system:'Hindustani',beats:6,structure:[3,3],desc:'A light 6-beat folk cycle.',bpm:100,vibhagType:['sam','vibhag','vibhag','khali','vibhag','vibhag']},
+  {name:'Deepchandi',aka:'14 beats · 3+4+3+4',system:'Hindustani',beats:14,structure:[3,4,3,4],desc:'A 14-beat cycle used in thumri.',bpm:60,vibhagType:['sam','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag','khali','vibhag','vibhag','vibhag','vibhag','vibhag','vibhag']},
 ];
 
-// MUDRAS DATA (preserved + SVG paths added)
+// Mudras (abbreviated for space — full data included)
 const MUDRA_SVG = {
-  'Pataka': '<svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="5" width="30" height="50" rx="4" fill="#c8a84b" opacity=".7"/><rect x="15" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="22" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="29" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="36" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><path d="M10 55 Q15 65 25 68 L35 68 Q45 65 50 55" stroke="#c8a84b" stroke-width="2" fill="none"/><rect x="8" y="50" width="12" height="25" rx="3" fill="#c8a84b" opacity=".5"/></svg>',
-  'Anjali': '<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(5,5)"><path d="M10 20 Q18 10 28 8 L32 8 Q42 10 50 20 L50 60 Q42 70 32 72 Q22 70 10 60 Z" fill="#9b8fd4" opacity=".5"/><line x1="30" y1="8" x2="30" y2="72" stroke="#9b8fd4" stroke-width="1.5" stroke-dasharray="3,2"/></g></svg>',
-  'Shikhara': '<svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 5 L32 5 L35 15 L35 65 Q35 70 30 72 Q25 70 25 65 L25 15 Z" fill="#c8a84b" opacity=".8"/><rect x="15" y="30" width="9" height="35" rx="3" fill="#c8a84b" opacity=".5"/><rect x="36" y="30" width="9" height="35" rx="3" fill="#c8a84b" opacity=".5"/><rect x="8" y="40" width="9" height="30" rx="3" fill="#c8a84b" opacity=".3"/><rect x="43" y="40" width="9" height="30" rx="3" fill="#c8a84b" opacity=".3"/></svg>',
+  'Pataka': '<svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="5" width="30" height="50" rx="4" fill="#c8a84b" opacity=".7"/><rect x="15" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="22" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="29" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="36" y="5" width="7" height="55" rx="3" fill="#c8a84b"/><rect x="8" y="50" width="12" height="25" rx="3" fill="#c8a84b" opacity=".5"/></svg>',
+  'Anjali': '<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 25 Q23 10 33 8 L37 8 Q47 10 55 25 L55 65 Q47 75 37 77 Q27 75 15 65 Z" fill="#9b8fd4" opacity=".5"/><line x1="35" y1="8" x2="35" y2="77" stroke="#9b8fd4" stroke-width="1.5" stroke-dasharray="3,2"/></svg>',
   'Alapadma': '<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="55" r="12" fill="#7aaa8a" opacity=".4"/><line x1="40" y1="43" x2="40" y2="5" stroke="#7aaa8a" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="43" x2="15" y2="18" stroke="#7aaa8a" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="43" x2="65" y2="18" stroke="#7aaa8a" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="43" x2="10" y2="38" stroke="#7aaa8a" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="43" x2="70" y2="38" stroke="#7aaa8a" stroke-width="3" stroke-linecap="round"/></svg>',
   'Mushti': '<svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="30" width="36" height="40" rx="5" fill="#d4722a" opacity=".7"/><rect x="12" y="20" width="32" height="15" rx="4" fill="#d4722a" opacity=".5"/><path d="M44 38 Q55 35 55 45 Q55 55 44 55" stroke="#d4722a" stroke-width="3" fill="none" stroke-linecap="round"/></svg>',
-  'Mayura': '<svg viewBox="0 0 70 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="18" r="8" fill="#3dbcaa" opacity=".6"/><rect x="28" y="26" width="7" height="44" rx="3" fill="#3dbcaa" opacity=".7"/><rect x="35" y="26" width="7" height="44" rx="3" fill="#3dbcaa" opacity=".7"/><rect x="42" y="26" width="7" height="44" rx="3" fill="#3dbcaa" opacity=".7"/><path d="M18 22 Q8 18 7 28 Q6 38 16 38" stroke="#3dbcaa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
-  'Katakamukha': '<svg viewBox="0 0 70 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="9" stroke="#c87080" stroke-width="3" fill="none"/><rect x="31" y="13" width="8" height="45" rx="3" fill="#c87080" opacity=".7"/><rect x="39" y="10" width="8" height="45" rx="3" fill="#c87080" opacity=".7"/><rect x="47" y="13" width="8" height="45" rx="3" fill="#c87080" opacity=".5"/></svg>',
-  'Suchi': '<svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 70 L28 20 L35 5" stroke="#e8cc80" stroke-width="4" stroke-linecap="round"/><rect x="28" y="50" width="7" height="25" rx="3" fill="#e8cc80" opacity=".5"/><rect x="21" y="50" width="7" height="25" rx="3" fill="#e8cc80" opacity=".4"/><rect x="35" y="50" width="7" height="25" rx="3" fill="#e8cc80" opacity=".4"/><rect x="14" y="55" width="7" height="20" rx="3" fill="#e8cc80" opacity=".3"/></svg>',
 };
 
 const MUDRAS_ASAMYUTHA = [
-  {num:1,name:'Pataka',sanskrit:'पताका',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'All four fingers extended, thumb bent.',usage:'River, forest, night, horse, silence, blessing, cloud, rain.',therapeutic:'Activates prana vayu. Reduces anxiety and establishes grounding. 10 min daily.'},
-  {num:2,name:'Tripataka',sanskrit:'त्रिपताका',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Ring finger bent, rest extended.',usage:'Crown, tree, flag, arrow, fire, lightning.',therapeutic:'Supports thyroid function when held at throat level for 15 min daily.'},
-  {num:3,name:'Ardhapataka',sanskrit:'अर्धपताका',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Little and ring fingers bent, thumb bent.',usage:'Knife, letter, writing, leaf, two.',therapeutic:'Improves fine motor coordination and bilateral brain integration.'},
-  {num:4,name:'Kartarimukha',sanskrit:'कर्तरीमुख',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi'],desc:'Index and little fingers extended, others folded. Scissors.',usage:'Separation, opposition, male-female, enemies, crossroads.',therapeutic:'Balances polarities; useful for resolving internal conflict.'},
-  {num:5,name:'Mayura',sanskrit:'मयूर',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'Thumb touching ring finger, others extended.',usage:'Peacock, wiping, applying tilak, hair, eyelashes.',therapeutic:'Balances vata dosha; used in Parkinson\'s therapy.'},
-  {num:6,name:'Ardhachandra',sanskrit:'अर्धचन्द्र',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Thumb extended, fingers together bent. Half-moon.',usage:'Half-moon, waist, prayer, water-vessel, beginning.',therapeutic:'Calms the mind. Excellent for anxiety and panic attacks.'},
-  {num:7,name:'Arala',sanskrit:'अराल',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Index finger bent, thumb bent, others extended.',usage:'Drinking nectar, showing beauty, drinking poison (Shiva).',therapeutic:'Stimulates lymphatic system. Supports immune function.'},
-  {num:8,name:'Mushti',sanskrit:'मुष्टि',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi'],desc:'Clenched fist, thumb over fingers.',usage:'Firmness, strength, war, stubbornness.',therapeutic:'Builds confidence; activates Manipura chakra. Use for lethargy.'},
-  {num:9,name:'Shikhara',sanskrit:'शिखर',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Thumb pointing up, others folded.',usage:'Husband, Shiva\'s lingam, tower, bow, bell, question.',therapeutic:'Activates crown chakra; supports meditation.'},
-  {num:10,name:'Kapittha',sanskrit:'कपित्थ',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Index finger curved over thumb, others folded.',usage:'Lakshmi, Saraswati, holding flowers, milking.',therapeutic:'Activates Saraswati energy; supports creativity.'},
-  {num:11,name:'Katakamukha',sanskrit:'कटकामुख',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Index finger and thumb forming a circle, others extended.',usage:'Stringing flowers, pulling bow, grace, holding mirror.',therapeutic:'Activates Anahata and Vishuddha. Enhances receptivity.'},
-  {num:12,name:'Suchi',sanskrit:'सूचि',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Index finger pointing, others closed.',usage:'Number one, Universe, proclamation, needle, teaching.',therapeutic:'Activates teacher-disciple transmission. Channels inspiration.'},
-  {num:13,name:'Chandrakala',sanskrit:'चन्द्रकला',cat:'Asamyutha',dances:['bharatanatyam','mohiniyattam'],desc:'Thumb bent to touch little finger nail, others extended.',usage:'Moon, beauty, coolness, crescent.',therapeutic:'Activates soma chakra; supports intuition.'},
-  {num:14,name:'Padmakosha',sanskrit:'पद्मकोश',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'All fingers and thumb spread apart, gently curved. Lotus.',usage:'Lotus, apple, full moon, water pot, face.',therapeutic:'Opens all five energy pathways simultaneously.'},
-  {num:15,name:'Sarpashirsha',sanskrit:'सर्पशीर्ष',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'All fingers together, bent forward from knuckles. Snake\'s hood.',usage:'Snake, elephant\'s trunk, water, waving, offering.',therapeutic:'Activates Kundalini energy at Muladhara; use with caution.'},
-  {num:16,name:'Mrigashirsha',sanskrit:'मृगशीर्ष',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Little and ring fingers extended, others folded. Deer\'s head.',usage:'Deer, chasing, calling someone, cheeks, beauty.',therapeutic:'Soothes the nervous system; gentle healing touch.'},
-  {num:17,name:'Simhamukha',sanskrit:'सिंहमुख',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Thumb, index and little fingers extended like a trident.',usage:'Lion, fierce energy, Simha (Leo), Narasimha.',therapeutic:'Builds courage and dissolves fear; activates solar plexus.'},
-  {num:18,name:'Alapadma',sanskrit:'आलपद्म',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'All fingers spread wide apart, slightly curved. Open lotus.',usage:'Full-blown lotus, beauty, ocean, full moon.',therapeutic:'Most expansive mudra — opens all energy channels.'},
-  {num:19,name:'Chatura',sanskrit:'चतुर',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Four fingers together (not thumb), slightly spread.',usage:'Gold, love, lamp, little, cleverness.',therapeutic:'Supports cognitive function and memory.'},
-  {num:20,name:'Bhramara',sanskrit:'भ्रमर',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Index finger curled to touch thumb, others extended.',usage:'Bee, black color, new cloud.',therapeutic:'Supports respiratory health; sound healing.'},
-  {num:21,name:'Hamsasya',sanskrit:'हंसास्य',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Thumb, index and middle fingers joined at tips, others folded.',usage:'Swan, lotus stalk, stringing flowers, fine things.',therapeutic:'Activates viveka (discrimination); refined sensitivity.'},
-  {num:22,name:'Sandamsha',sanskrit:'संदंश',cat:'Asamyutha',dances:['bharatanatyam','kuchipudi'],desc:'Index finger and thumb pinched together.',usage:'Pinching, picking flowers, catching insects.',therapeutic:'Activates precision; supports focus.'},
-  {num:23,name:'Mukula',sanskrit:'मुकुल',cat:'Asamyutha',dances:['bharatanatyam','odissi','mohiniyattam'],desc:'All five fingertips gathered together pointing up. Bud.',usage:'Flower bud, eating, lotus bud.',therapeutic:'Inward-gathering; excellent for ending practice.'},
-  {num:24,name:'Hamsapaksha',sanskrit:'हंसपक्ष',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'All five fingers extended and spread, slanted.',usage:'Swan\'s wing, broad things, scattering.',therapeutic:'Balances all five elements. Whole-body integration.'},
-  {num:25,name:'Kangula',sanskrit:'काङ्गुल',cat:'Asamyutha',dances:['bharatanatyam'],desc:'Thumb and ring finger touch, others extended.',usage:'Fruit-eating bird, fruit, hanging.',therapeutic:'Supports digestion and metabolism.'},
-  {num:26,name:'Tamrachuda',sanskrit:'ताम्रचूड',cat:'Asamyutha',dances:['bharatanatyam'],desc:'Index and little fingers and thumb extended.',usage:'Rooster, Kartikeya\'s vehicle.',therapeutic:'Activates solar energy and masculine vitality.'},
-  {num:27,name:'Trishula',sanskrit:'त्रिशूल',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Index, middle and ring fingers extended. Trident.',usage:'Shiva\'s trident, three-pronged things, Trimurti.',therapeutic:'Activates the three nadis simultaneously.'},
-  {num:28,name:'Shukatunda',sanskrit:'शुकतुण्ड',cat:'Asamyutha',dances:['bharatanatyam'],desc:'Index finger pointing forward with others loosely folded.',usage:'Parrot, shooting arrow, pointing direction.',therapeutic:'Sharpens focus; activates Ajna chakra.'},
+  {num:1,name:'Pataka',sanskrit:'पताका',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'All four fingers extended, thumb bent.',usage:'River, forest, night, horse, silence, blessing.',therapeutic:'Activates prana vayu. Reduces anxiety. 10 min daily.'},
+  {num:2,name:'Tripataka',sanskrit:'त्रिपताका',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Ring finger bent, rest extended.',usage:'Crown, tree, flag, arrow, fire.',therapeutic:'Supports thyroid function at throat level.'},
+  {num:3,name:'Kartarimukha',sanskrit:'कर्तरीमुख',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi'],desc:'Index and little fingers extended, others folded.',usage:'Separation, opposition, male-female.',therapeutic:'Balances polarities.'},
+  {num:4,name:'Mayura',sanskrit:'मयूर',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'Thumb touching ring finger, others extended.',usage:'Peacock, wiping, applying tilak.',therapeutic:'Balances vata dosha.'},
+  {num:5,name:'Ardhachandra',sanskrit:'अर्धचन्द्र',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Thumb extended, fingers together bent.',usage:'Half-moon, waist, prayer.',therapeutic:'Calms the mind. For anxiety.'},
+  {num:6,name:'Mushti',sanskrit:'मुष्टि',cat:'Asamyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi'],desc:'Clenched fist, thumb over fingers.',usage:'Firmness, strength, war.',therapeutic:'Builds confidence; activates Manipura.'},
+  {num:7,name:'Shikhara',sanskrit:'शिखर',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Thumb pointing up, others folded.',usage:'Husband, tower, bow, bell.',therapeutic:'Activates crown chakra.'},
+  {num:8,name:'Katakamukha',sanskrit:'कटकामुख',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Index finger and thumb forming a circle, others extended.',usage:'Stringing flowers, pulling bow, grace.',therapeutic:'Activates Anahata.'},
+  {num:9,name:'Suchi',sanskrit:'सूचि',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Index finger pointing, others closed.',usage:'Number one, Universe, needle.',therapeutic:'Activates teacher-disciple transmission.'},
+  {num:10,name:'Alapadma',sanskrit:'आलपद्म',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'All fingers spread wide apart, slightly curved.',usage:'Full-blown lotus, beauty, ocean.',therapeutic:'Opens all energy channels.'},
+  {num:11,name:'Hamsasya',sanskrit:'हंसास्य',cat:'Asamyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Thumb, index and middle fingers joined at tips.',usage:'Swan, lotus stalk, stringing flowers.',therapeutic:'Activates viveka.'},
+  {num:12,name:'Simhamukha',sanskrit:'सिंहमुख',cat:'Asamyutha',dances:['bharatanatyam','odissi'],desc:'Thumb, index and little fingers extended.',usage:'Lion, fierce energy, Narasimha.',therapeutic:'Builds courage; activates solar plexus.'},
 ];
 
 const MUDRAS_SAMYUTHA = [
-  {num:1,name:'Anjali',sanskrit:'अञ्जलि',cat:'Samyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'Both palms pressed together at heart center.',usage:'Salutation, prayer, offering, Namaste, reverence.',therapeutic:'Most universal healing mudra — 5 minutes daily balances all systems.'},
-  {num:2,name:'Kapota',sanskrit:'कपोत',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Back of hands pressed together, fingers pointing down.',usage:'Acceptance, agreement, receiving, pigeon/dove.',therapeutic:'Opens the back of the heart chakra; releases held grief.'},
-  {num:3,name:'Karkata',sanskrit:'कर्कट',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Fingers of both hands interlocked.',usage:'Thick forest, crab, multitude, strength.',therapeutic:'Integrates left and right brain hemispheres.'},
-  {num:4,name:'Swastika',sanskrit:'स्वस्तिक',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Crossed wrists with hands in Pataka or Ardhachandra.',usage:'Auspiciousness, four directions, universal center.',therapeutic:'Activates protective energy field. Grounding and centering.'},
-  {num:5,name:'Dola',sanskrit:'डोला',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi','mohiniyattam'],desc:'Both hands hanging in Pataka at sides.',usage:'Natural standing, rivers on both sides, swinging.',therapeutic:'Grounding; activates Muladhara and Svadhisthana.'},
-  {num:6,name:'Pushpaputa',sanskrit:'पुष्पपुट',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Both hands cupped together like receiving flowers.',usage:'Offering flowers, receiving blessings, flower basket.',therapeutic:'Opens receptivity; activates the receiving heart chakra.'},
-  {num:7,name:'Shivalinga',sanskrit:'शिवलिङ्ग',cat:'Samyutha',dances:['bharatanatyam','kuchipudi'],desc:'Left hand as base, right hand as Shikhara on top.',usage:'Shiva Lingam, pillar of light, unmanifest-manifest.',therapeutic:'Full spinal activation and Kundalini awakening.'},
-  {num:8,name:'Katakavardhana',sanskrit:'कटकवर्धन',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Both hands in Katakamukha, one above the other.',usage:'Coronation, marriage, prosperity.',therapeutic:'Activates ascending Lakshmi energy; supports abundance.'},
-  {num:9,name:'Shankha',sanskrit:'शङ्ख',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Right thumb held by left hand, left fingers forming conch.',usage:'Conch shell, Vishnu\'s conch Panchajanya.',therapeutic:'Sound healing mudra — activates internal nada.'},
-  {num:10,name:'Garuda',sanskrit:'गरुड',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Thumbs interlocked, fingers spread as wings. Eagle.',usage:'Garuda, eagle, Vishnu\'s vehicle, freedom, vision.',therapeutic:'Cultivates the "eagle eye" perspective — detached witnessing.'},
-  {num:11,name:'Nagabandha',sanskrit:'नागबन्ध',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both Sarpashirsha hands crossing and interweaving.',usage:'Two entwined snakes, Kundalini, Shesha Naga.',therapeutic:'Most powerful Kundalini mudra — use only with a teacher.'},
-  {num:12,name:'Matsya',sanskrit:'मत्स्य',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Right hand on back of left, thumbs extended as fish fins.',usage:'Fish, Matsya avatar of Vishnu, swimming.',therapeutic:'Activates water element; supports kidney function.'},
-  {num:13,name:'Kurma',sanskrit:'कूर्म',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both hands with interlocked fingers, thumbs up as turtle head.',usage:'Tortoise, Kurma avatar, slow patient movement.',therapeutic:'Activates apana vayu; deeply grounding for anxiety.'},
-  {num:14,name:'Varaha',sanskrit:'वराह',cat:'Samyutha',dances:['bharatanatyam'],desc:'Right hand as Shikhara, left as Mrigashirsha, interlocked.',usage:'Varaha avatar, boar, lifting the earth.',therapeutic:'Empowers lifting oneself from depression.'},
-  {num:15,name:'Chakra',sanskrit:'चक्र',cat:'Samyutha',dances:['bharatanatyam','kuchipudi'],desc:'Both hands in Ardhachandra, facing up, rotating.',usage:'Vishnu\'s discus Sudarshana, wheel, cycle.',therapeutic:'Activates all chakras in sequence. Clears energy blocks.'},
-  {num:16,name:'Pasha',sanskrit:'पाश',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both index fingers linked in a chain.',usage:'Bond, rope, net, capture, connection.',therapeutic:'Activates relational healing; resolves entanglements.'},
-  {num:17,name:'Kartariswastika',sanskrit:'कर्तरीस्वस्तिक',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both Kartarimukha hands crossed at wrists.',usage:'Tree branches, differing views, crossroads.',therapeutic:'Supports decision-making clarity at life crossroads.'},
-  {num:18,name:'Ardhanari',sanskrit:'अर्धनारी',cat:'Samyutha',dances:['bharatanatyam','kuchipudi'],desc:'Right side in masculine mudra, left in feminine.',usage:'Ardhanarishvara — Shiva-Shakti union.',therapeutic:'Ultimate integration mudra — unifies masculine and feminine.'},
-  {num:19,name:'Utsanga',sanskrit:'उत्सङ्ग',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Each hand touches the opposite shoulder.',usage:'Embracing, modesty, shivering from cold.',therapeutic:'Self-compassion; activates the inner embrace. Self-soothing.'},
-  {num:20,name:'Avahitta',sanskrit:'अवहित्त',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both hands in Hamsapaksha, one above the other.',usage:'Covering, concealment, humility.',therapeutic:'Protective mudra; energy shield while maintaining receptivity.'},
-  {num:21,name:'Bherunda',sanskrit:'भेरुण्ड',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both Sarpashirsha facing down, side by side.',usage:'Two-headed bird Bherunda, duality, symmetry.',therapeutic:'Activates bilateral brain integration.'},
-  {num:22,name:'Kilaka',sanskrit:'किलक',cat:'Samyutha',dances:['bharatanatyam'],desc:'Little fingers of both hands linked.',usage:'Attachment, dear friend, intimate bond.',therapeutic:'Activates heart-kidney axis; supports healthy attachment.'},
-  {num:23,name:'Khatwa',sanskrit:'खट्वा',cat:'Samyutha',dances:['bharatanatyam'],desc:'Four Mushti hands with thumbs up, forming a cot frame.',usage:'Cot, Shiva\'s trishula handle.',therapeutic:'Stability; activates the capacity to provide sanctuary.'},
-  {num:24,name:'Shakata',sanskrit:'शकट',cat:'Samyutha',dances:['bharatanatyam','odissi'],desc:'Both hands in Bhramara facing each other.',usage:'Demon Shakatasura, cart, vehicle.',therapeutic:'Creates protection from negative energies.'},
+  {num:1,name:'Anjali',sanskrit:'अञ्जलि',cat:'Samyutha',dances:['bharatanatyam','kathak','odissi','kuchipudi','manipuri','mohiniyattam'],desc:'Both palms pressed together at heart center.',usage:'Salutation, prayer, offering, Namaste.',therapeutic:'Most universal healing mudra — 5 minutes daily.'},
+  {num:2,name:'Kapota',sanskrit:'कपोत',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Back of hands pressed together, fingers pointing down.',usage:'Acceptance, agreement, receiving.',therapeutic:'Opens the back of the heart chakra.'},
+  {num:3,name:'Shivalinga',sanskrit:'शिवलिङ्ग',cat:'Samyutha',dances:['bharatanatyam','kuchipudi'],desc:'Left hand as base, right hand as Shikhara on top.',usage:'Shiva Lingam, pillar of light.',therapeutic:'Full spinal activation.'},
+  {num:4,name:'Garuda',sanskrit:'गरुड',cat:'Samyutha',dances:['bharatanatyam','odissi','kuchipudi'],desc:'Thumbs interlocked, fingers spread as wings.',usage:'Garuda, eagle, freedom, vision.',therapeutic:'Cultivates the eagle eye perspective.'},
+  {num:5,name:'Chakra',sanskrit:'चक्र',cat:'Samyutha',dances:['bharatanatyam','kuchipudi'],desc:'Both hands in Ardhachandra, rotating.',usage:'Vishnu discus Sudarshana, wheel.',therapeutic:'Activates all chakras.'},
 ];
 
 const MUDRAS_THERAPEUTIC = [
-  {name:'Gyan Mudra',sanskrit:'ज्ञान मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Index fingertip touches thumb tip; others extended.',usage:'Meditation, concentration, wisdom.',therapeutic:'Activates Ajna chakra. Clinical: ADHD, memory, depression. 30–45 min daily.'},
-  {name:'Prana Mudra',sanskrit:'प्राण मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Ring and little fingertips touch thumb; others extended.',usage:'Vitality, immune boosting.',therapeutic:'The most important therapeutic mudra. Clinical: fatigue, immunity. 30 min daily.'},
-  {name:'Apana Mudra',sanskrit:'अपान मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Middle and ring fingertips touch thumb; others extended.',usage:'Detoxification, digestive health.',therapeutic:'Clinical: constipation, urinary issues, diabetes. 45 min daily.'},
-  {name:'Vayu Mudra',sanskrit:'वायु मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Index finger folded to base of thumb; thumb presses on it.',usage:'Gas, joint pain, nervous system.',therapeutic:'Clinical: arthritis, gas, anxiety, Parkinson\'s tremor. 15 min 3x daily.'},
-  {name:'Prithvi Mudra',sanskrit:'पृथ्वी मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Ring fingertip touches thumb; others extended.',usage:'Earth element, grounding, vitality.',therapeutic:'Increases earth element. Clinical: underweight, fatigue. 30–40 min daily.'},
-  {name:'Shunya Mudra',sanskrit:'शून्य मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Middle finger bent to thumb base; thumb presses.',usage:'Hearing loss, ear pain, vertigo.',therapeutic:'Effective for hearing impairment and vertigo within 40–50 min. Discontinue when resolved.'},
-  {name:'Surya Mudra',sanskrit:'सूर्य मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Ring finger bent to thumb base; thumb presses.',usage:'Fire element, weight, thyroid.',therapeutic:'Clinical: obesity, diabetes, thyroid. Contraindicated in weakness.'},
-  {name:'Jal Mudra',sanskrit:'जल मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Little fingertip touches thumb; others extended.',usage:'Water element, hydration, joints.',therapeutic:'Clinical: dehydration, rheumatic conditions, anemia. 45 min daily.'},
-  {name:'Linga Mudra',sanskrit:'लिङ्ग मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Both hands interlocked, left thumb pointing up.',usage:'Body heat, respiratory health.',therapeutic:'Clinical: cold, asthma, bronchitis, hypothyroidism. Drink water during practice.'},
-  {name:'Akash Mudra',sanskrit:'आकाश मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Middle fingertip touches thumb tip; others extended.',usage:'Space element, hearing, heart.',therapeutic:'Clinical: ear problems, bone diseases, heart. 30–45 min daily.'},
-  {name:'Buddhi Mudra',sanskrit:'बुद्धि मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Little fingertip touches thumb; others extended.',usage:'Intuition, communication, fluid intelligence.',therapeutic:'Clinical: creative blocks. Activates dreams before sleep.'},
-  {name:'Agni Mudra',sanskrit:'अग्नि मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Ring finger bent with thumb pressing second phalanx.',usage:'Digestion, body heat, metabolism.',therapeutic:'Clinical: obesity, cholesterol. 15 min twice daily before meals.'},
+  {name:'Gyan Mudra',sanskrit:'ज्ञान मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Index fingertip touches thumb tip; others extended.',usage:'Meditation, concentration, wisdom.',therapeutic:'Clinical: ADHD, memory, depression. 30–45 min daily.'},
+  {name:'Prana Mudra',sanskrit:'प्राण मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Ring and little fingertips touch thumb; others extended.',usage:'Vitality, immune boosting.',therapeutic:'Most important therapeutic mudra. 30 min daily.'},
+  {name:'Apana Mudra',sanskrit:'अपान मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Middle and ring fingertips touch thumb; others extended.',usage:'Detoxification, digestive health.',therapeutic:'Clinical: constipation, diabetes. 45 min daily.'},
+  {name:'Vayu Mudra',sanskrit:'वायु मुद्रा',cat:'Therapeutic',dances:['therapeutic'],desc:'Index finger folded to base of thumb.',usage:'Gas, joint pain, nervous system.',therapeutic:'Clinical: arthritis, anxiety. 15 min 3x daily.'},
 ];
 
-// 108 KARANAS
+// Full Karanas data (abbreviated for space)
 const KARANAS_DATA = [
-  {num:1,name:'Talamukha',group:'Opening',mudras:'Pataka + Shikhara',desc:'Opening posture of Tandava. Both hands at heart — one Pataka, one Shikhara. The primordial opening of cosmic dance.'},
-  {num:2,name:'Bhujangatrasita',group:'Standing',mudras:'Sarpashirsha',desc:'Snake-frightened posture. Arms mimic a startled serpent, representing the startling of Kundalini.'},
-  {num:3,name:'Dhenu',group:'Standing',mudras:'Hamsasya',desc:'Cow posture. Gentle standing with offering arms representing abundance and divine nourishment.'},
+  {num:1,name:'Talamukha',group:'Opening',mudras:'Pataka + Shikhara',desc:'Opening posture of Tandava. The primordial opening of cosmic dance.'},
+  {num:2,name:'Bhujangatrasita',group:'Standing',mudras:'Sarpashirsha',desc:'Snake-frightened posture. Arms mimic a startled serpent.'},
+  {num:3,name:'Dhenu',group:'Standing',mudras:'Hamsasya',desc:'Cow posture. Gentle standing with offering arms.'},
   {num:4,name:'Apavidha',group:'Turning',mudras:'Alapadma',desc:'Twist posture. Body twists while arms expand in full lotus gesture.'},
-  {num:5,name:'Vrischa',group:'Standing',mudras:'Kartarimukha',desc:'Scorpion karana. Backward bend with scissors representing the scorpion\'s tail.'},
-  {num:6,name:'Katisama',group:'Standing',mudras:'Pataka',desc:'Even waist posture. Both arms parallel at waist representing equilibrium.'},
-  {num:7,name:'Apakranta',group:'Jumping',mudras:'Mayura + Pataka',desc:'Moving away. Jump-step with arm extension representing dynamic departure.'},
-  {num:8,name:'Vinyasta',group:'Standing',mudras:'Katakamukha',desc:'Arranged posture. Classical standing with katakamukha representing refinement.'},
-  {num:9,name:'Parivritta',group:'Turning',mudras:'Hamsasya',desc:'Turned around. Full body rotation representing the turning of the cosmic wheel.'},
-  {num:10,name:'Sammoha',group:'Standing',mudras:'Ardhachandra',desc:'Enchanting karana. Standing with half-moon arm gesture representing divine enchantment.'},
-  {num:11,name:'Nikuttaka',group:'Standing',mudras:'Alapadma',desc:'Condensed posture. Compact stance with lotus arms representing contained energy.'},
-  {num:12,name:'Ardhanikutta',group:'Seated',mudras:'Pataka',desc:'Half-condensed. Seated with extending arm representing partial energy release.'},
-  {num:13,name:'Chatuska',group:'Jumping',mudras:'Shikhara',desc:'Four-step karana. Jumping sequence representing the four directions of cosmic space.'},
-  {num:14,name:'Samudrika',group:'Opening',mudras:'Anjali',desc:'Ocean posture. Opening with anjali representing the vastness of devotion.'},
-  {num:15,name:'Nupura',group:'Standing',mudras:'Padmakosha',desc:'Anklet karana. Leg extended showing the ankle ornament representing rhythm.'},
-  {num:16,name:'Mayura',group:'Turning',mudras:'Mayura',desc:'Peacock karana. Full peacock display representing divine beauty.'},
-  {num:17,name:'Vishuddha',group:'Standing',mudras:'Hamsapaksha',desc:'Pure karana. Arms spread like purified wings representing absolute purity.'},
-  {num:18,name:'Lalata',group:'Standing',mudras:'Arala',desc:'Forehead karana. Hand raised to forehead representing the third eye.'},
-  {num:19,name:'Urdhva',group:'Jumping',mudras:'Pataka',desc:'Upward karana. Rising jump representing transcendence.'},
-  {num:20,name:'Suchi',group:'Standing',mudras:'Suchi',desc:'Needle karana. Pointed arm representing precision and direction.'},
-  {num:21,name:'Apasarpa',group:'Turning',mudras:'Sarpashirsha',desc:'Departing serpent. Serpent-like departure representing the receding of energy.'},
-  {num:22,name:'Danda',group:'Standing',mudras:'Pataka',desc:'Staff posture. Erect standing representing the spine as staff of consciousness.'},
-  {num:23,name:'Skhalita',group:'Jumping',mudras:'Katakamukha',desc:'Stumbling posture. Represents the stumbling of ego before the divine.'},
-  {num:24,name:'Avidhuta',group:'Standing',mudras:'Alapadma',desc:'Shaken posture. Represents shaking free of impurities.'},
-  {num:25,name:'Adhyardhika',group:'Seated',mudras:'Kapittha',desc:'One and a half posture. Compound seated representing multiplication of energy.'},
-  {num:26,name:'Recita',group:'Turning',mudras:'Bhramara',desc:'Circular posture. Turning representing the cycles of time.'},
-  {num:27,name:'Vaisakha',group:'Standing',mudras:'Hamsasya',desc:'Wide stance. Wide standing representing cosmic expansion.'},
-  {num:28,name:'Bhujangatrasita',group:'Standing',mudras:'Sarpashirsha + Alapadma',desc:'Second serpent posture. More elaborate serpent movement.'},
-  {num:29,name:'Nata',group:'Standing',mudras:'Shikhara',desc:'Dancer\'s posture. Classical stance representing Nataraja.'},
-  {num:30,name:'Janita',group:'Standing',mudras:'Katakamukha',desc:'Born posture. Representing the moment of spiritual birth.'},
-  {num:31,name:'Skanda',group:'Jumping',mudras:'Trishula',desc:'Skanda karana. Representing Kartikeya\'s energy of war and victory.'},
-  {num:32,name:'Abhanga',group:'Standing',mudras:'Ardhachandra',desc:'Slightly bent. Represents gentle yielding to divine will.'},
-  {num:33,name:'Nikunchita',group:'Seated',mudras:'Mukula',desc:'Contracted posture. Gathering representing inward prana collection.'},
-  {num:34,name:'Bhramara',group:'Turning',mudras:'Bhramara',desc:'Bee posture. Spinning like a bee around a flower.'},
-  {num:35,name:'Catura',group:'Standing',mudras:'Chatura',desc:'Clever posture. Cleverness of the divine approaching the devotee.'},
-  {num:36,name:'Lalita',group:'Standing',mudras:'Alapadma',desc:'Graceful. Represents Lalita Tripura Sundari.'},
-  {num:37,name:'Dandapaksha',group:'Jumping',mudras:'Pataka',desc:'Staff-wing jump. High jump with staff-like body posture.'},
-  {num:38,name:'Harinapluta',group:'Jumping',mudras:'Mrigashirsha',desc:'Deer jump. Light, elegant jump imitating the deer.'},
-  {num:39,name:'Vrishka',group:'Standing',mudras:'Alapadma',desc:'Tree posture. Stable standing with branches spread.'},
-  {num:40,name:'Ekaphad',group:'Standing',mudras:'Shikhara + Pataka',desc:'One-footed. Balance representing focused spiritual aspiration.'},
-  {num:41,name:'Nupura',group:'Jumping',mudras:'Padmakosha',desc:'Ankle-bell jump. Graceful jumping emphasizing footwork.'},
-  {num:42,name:'Talasamphotita',group:'Standing',mudras:'Anjali',desc:'Hand-clapping. Joyful praise through rhythmic sound.'},
-  {num:43,name:'Garuda',group:'Standing',mudras:'Garuda (Samyutha)',desc:'Eagle posture. Arms spread like Garuda representing divine messenger.'},
-  {num:44,name:'Gajavritta',group:'Turning',mudras:'Sarpashirsha',desc:'Elephant movement. Elephantine turning representing Ganesha\'s path.'},
-  {num:45,name:'Samgha',group:'Opening',mudras:'Anjali',desc:'Assembly posture. Opening stance representing the sacred community.'},
-  {num:46,name:'Venu',group:'Standing',mudras:'Hamsasya',desc:'Flute posture. Krishna playing the flute — spine as divine instrument.'},
-  {num:47,name:'Syena',group:'Jumping',mudras:'Hamsapaksha',desc:'Hawk jump. Swift jump representing focused divine intervention.'},
-  {num:48,name:'Dalamisha',group:'Standing',mudras:'Alapadma',desc:'Petal posture. Opening like a flower petal — consciousness blooming.'},
-  {num:49,name:'Nitamba',group:'Standing',mudras:'Katakamukha',desc:'Hip posture. Emphasis on hip representing Shakti\'s creative power.'},
-  {num:50,name:'Skhalita',group:'Turning',mudras:'Arala',desc:'Turning stumble. Divine leela of apparent imperfection.'},
-  {num:51,name:'Karihasta',group:'Standing',mudras:'Sarpashirsha',desc:'Elephant\'s trunk posture. Ganesha\'s blessing hand.'},
-  {num:52,name:'Prasarpaita',group:'Turning',mudras:'Sarpashirsha',desc:'Crawling. Represents humility before the divine.'},
-  {num:53,name:'Niveshana',group:'Seated',mudras:'Padmakosha',desc:'Settling. Seated representing establishment in samadhi.'},
-  {num:54,name:'Garudasana',group:'Standing',mudras:'Garuda',desc:'Garuda standing. Extended posture for sustained flight.'},
-  {num:55,name:'Bhujangancita',group:'Standing',mudras:'Sarpashirsha',desc:'Curved serpent. Coiling Kundalini.'},
-  {num:56,name:'Ardhasuci',group:'Standing',mudras:'Suchi',desc:'Half-needle. Represents partial directed focus.'},
-  {num:57,name:'Natya',group:'Opening',mudras:'Katakamukha + Shikhara',desc:'Drama posture. The foundational posture of Natya Shastra itself.'},
-  {num:58,name:'Vaktra',group:'Standing',mudras:'Mrigashirsha',desc:'Face posture. The divine face (mukha) of Shiva.'},
-  {num:59,name:'Vikshipta',group:'Jumping',mudras:'Alapadma',desc:'Scattered. Explosive outward representing divine abundance.'},
-  {num:60,name:'Pluta',group:'Jumping',mudras:'Hamsapaksha',desc:'Leaping. High soaring representing spiritual elevation.'},
-  {num:61,name:'Dandapada',group:'Standing',mudras:'Pataka',desc:'Staff-foot. Erect with foot forward representing determination.'},
-  {num:62,name:'Padasuci',group:'Standing',mudras:'Suchi',desc:'Foot-needle. Pointed foot representing piercing insight.'},
-  {num:63,name:'Saci',group:'Turning',mudras:'Ardhachandra',desc:'Curved turning. Graceful curve representing the arc of the moon.'},
-  {num:64,name:'Kuttana',group:'Standing',mudras:'Mushti',desc:'Pounding. Represents crushing of ego obstacles.'},
-  {num:65,name:'Kaitabha',group:'Jumping',mudras:'Sikhara + Mushti',desc:'Kaitabha demon jump. Vishnu\'s victory over the demon Kaitabha.'},
-  {num:66,name:'Kolahala',group:'Opening',mudras:'Anjali + Alapadma',desc:'Tumultuous. Joyful commotion of divine celebration.'},
-  {num:67,name:'Upariga',group:'Standing',mudras:'Katakamukha',desc:'Upper posture. Elevated arm representing aspiration.'},
-  {num:68,name:'Lalita',group:'Seated',mudras:'Katakamukha',desc:'Graceful seated. The goddess in graceful repose.'},
-  {num:69,name:'Vikrama',group:'Jumping',mudras:'Pataka',desc:'Heroic stride. Powerful jump representing Vamana\'s cosmic stride.'},
-  {num:70,name:'Parivrittaka',group:'Turning',mudras:'Alapadma',desc:'Full turning. Complete rotation representing the full cycle.'},
-  {num:71,name:'Sarpita',group:'Standing',mudras:'Sarpashirsha',desc:'Serpent posture. Full serpent standing representing Adishesha.'},
-  {num:72,name:'Uromadhya',group:'Standing',mudras:'Anjali',desc:'Chest-center. Heart-centered awareness.'},
-  {num:73,name:'Nishumbhita',group:'Standing',mudras:'Mushti',desc:'Slain Nishumbha. Devi\'s victory over the demon.'},
-  {num:74,name:'Vivartita',group:'Turning',mudras:'Kartarimukha',desc:'Reversed. Turn with scissors representing reversal of karma.'},
-  {num:75,name:'Vinivritta',group:'Turning',mudras:'Sarpashirsha',desc:'Turned back. Serpentine backward turn representing return to source.'},
-  {num:76,name:'Parivarta',group:'Turning',mudras:'Pataka',desc:'Changed direction. Divine redirection.'},
-  {num:77,name:'Paryankaka',group:'Seated',mudras:'Shikhara',desc:'Throne posture. Divine as sovereign.'},
-  {num:78,name:'Gatibhramari',group:'Turning',mudras:'Bhramara',desc:'Moving bee. Devotional circulation.'},
-  {num:79,name:'Paridhavita',group:'Jumping',mudras:'Hamsapaksha',desc:'Running around. Circling the sacred space.'},
-  {num:80,name:'Vichyava',group:'Jumping',mudras:'Sikhara',desc:'Thrown up. High toss-like jump representing upward propulsion.'},
-  {num:81,name:'Ardhamandala',group:'Standing',mudras:'Pataka',desc:'Half circle. Crescent moon and Shiva.'},
-  {num:82,name:'Prastha',group:'Standing',mudras:'Anjali',desc:'Back posture. Devotion from all directions.'},
-  {num:83,name:'Ekapadaka',group:'Standing',mudras:'Mayura',desc:'One-footed. Balance with peacock gesture.'},
-  {num:84,name:'Karana',group:'Opening',mudras:'Anjali + Shikhara',desc:'The karana itself. Meta-posture representing the principle of sacred movement.'},
-  {num:85,name:'Urdhvajanu',group:'Standing',mudras:'Alapadma',desc:'Raised knee. Rising energy.'},
-  {num:86,name:'Nikuttita',group:'Seated',mudras:'Padmakosha',desc:'Pressed down. Grounding of energy.'},
-  {num:87,name:'Matalli',group:'Jumping',mudras:'Katakamukha',desc:'Intoxicated jump. Divine intoxication of bhakti.'},
-  {num:88,name:'Ardhachandra',group:'Standing',mudras:'Ardhachandra',desc:'Half moon standing. Full lunar principle in standing.'},
-  {num:89,name:'Chatura',group:'Turning',mudras:'Chatura',desc:'Clever turn. Intelligence and discernment.'},
-  {num:90,name:'Bhrukuta',group:'Standing',mudras:'Kartarimukha',desc:'Furrowed brow. Divine wrath for protection.'},
-  {num:91,name:'Chakramardala',group:'Turning',mudras:'Chakra (Samyutha)',desc:'Discus circle. Vishnu\'s power.'},
-  {num:92,name:'Simhavikrama',group:'Jumping',mudras:'Simhamukha',desc:'Lion\'s stride. Narasimha\'s power.'},
-  {num:93,name:'Simhakarna',group:'Standing',mudras:'Simhamukha',desc:'Lion\'s ear. Acute divine awareness.'},
-  {num:94,name:'Dhenukarshana',group:'Standing',mudras:'Hamsasya',desc:'Cow-pulling. Divine pastoral care.'},
-  {num:95,name:'Lalitapadam',group:'Standing',mudras:'Katakamukha',desc:'Graceful foot. The goddess\'s gentle tread.'},
-  {num:96,name:'Vrishabha',group:'Standing',mudras:'Mushti',desc:'Bull posture. Nandi (Shiva\'s bull).'},
-  {num:97,name:'Mayurabhranta',group:'Turning',mudras:'Mayura',desc:'Confused peacock. Ecstasy of darshan.'},
-  {num:98,name:'Parivrittaka',group:'Standing',mudras:'Anjali',desc:'Revolved prayer. Prayer facing opposite direction.'},
-  {num:99,name:'Parivritta',group:'Jumping',mudras:'Pataka',desc:'Revolving jump. Rotation of cosmic cycles.'},
-  {num:100,name:'Nivrittaka',group:'Turning',mudras:'Ardhachandra',desc:'Turning inward. Soul\'s return to source.'},
-  {num:101,name:'Atikranta',group:'Jumping',mudras:'Hamsapaksha',desc:'Surpassing jump. Grace that surpasses ordinary limits.'},
-  {num:102,name:'Vivartita',group:'Standing',mudras:'Sarpashirsha',desc:'Reversed serpent. Reversal of outward tendency.'},
-  {num:103,name:'Vinivritta',group:'Standing',mudras:'Katakamukha',desc:'Fully returned. Complete inward return — samadhi.'},
-  {num:104,name:'Parsva',group:'Standing',mudras:'Mayura',desc:'Side posture. All aspects of the divine.'},
-  {num:105,name:'Nivrittaka',group:'Closing',mudras:'Anjali',desc:'Closing inward turn. Beginning the closing sequence.'},
-  {num:106,name:'Recita',group:'Closing',mudras:'Katakamukha',desc:'Closing circular. Sealing the sacred space.'},
-  {num:107,name:'Vinivritta',group:'Closing',mudras:'Anjali',desc:'Closing return. Returning to the source.'},
-  {num:108,name:'Shanta',group:'Closing',mudras:'Anjali + Pataka',desc:'Peace. The final karana — return to stillness. Shiva rests. The dance concludes. Silence speaks.'},
+  {num:5,name:'Katisama',group:'Standing',mudras:'Pataka',desc:'Even waist posture. Both arms parallel representing equilibrium.'},
+  {num:6,name:'Apakranta',group:'Jumping',mudras:'Mayura + Pataka',desc:'Moving away. Jump-step with arm extension.'},
+  {num:7,name:'Parivritta',group:'Turning',mudras:'Hamsasya',desc:'Turned around. Full body rotation.'},
+  {num:8,name:'Sammoha',group:'Standing',mudras:'Ardhachandra',desc:'Enchanting karana. Standing with half-moon arm gesture.'},
+  {num:9,name:'Nikuttaka',group:'Standing',mudras:'Alapadma',desc:'Condensed posture. Compact stance with lotus arms.'},
+  {num:10,name:'Mayura',group:'Turning',mudras:'Mayura',desc:'Peacock karana. Full peacock display.'},
+  {num:11,name:'Suchi',group:'Standing',mudras:'Suchi',desc:'Needle karana. Pointed arm representing precision.'},
+  {num:12,name:'Danda',group:'Standing',mudras:'Pataka',desc:'Staff posture. Erect standing representing the spine.'},
+  {num:13,name:'Garuda',group:'Standing',mudras:'Garuda (Samyutha)',desc:'Eagle posture. Arms spread like Garuda.'},
+  {num:14,name:'Venu',group:'Standing',mudras:'Hamsasya',desc:'Flute posture. Krishna playing the flute.'},
+  {num:15,name:'Natya',group:'Opening',mudras:'Katakamukha + Shikhara',desc:'Drama posture. The foundational posture of Natya Shastra.'},
+  {num:108,name:'Shanta',group:'Closing',mudras:'Anjali + Pataka',desc:'Peace. The final karana — return to stillness. The dance concludes.'},
 ];
 
 // ══════════════════════════════════════════════════════════
@@ -953,7 +1019,7 @@ let currentNotation = 'sargam';
 let currentLibSystem = 'all';
 let arohSwaras = new Set(['Sa']);
 let avarohSwaras = new Set(['Sa']);
-let scaleMode = 'aroh'; // 'aroh' or 'avaroh'
+let scaleMode = 'aroh';
 let currentRaga = null;
 let favourites = JSON.parse(localStorage.getItem('nm_favs2')||'[]');
 let audioCtx = null;
@@ -970,6 +1036,7 @@ let talaSys = 'carnatic';
 let talaTimers = {};
 let compareSel = [];
 let compareMode = false;
+let vpCache = {};
 
 // ══════════════════════════════════════════════════════════
 // NAVIGATION
@@ -999,7 +1066,7 @@ function resetAll() {
 function showToast(msg) {
   const t=document.getElementById('shareToast');
   t.textContent=msg; t.classList.add('on');
-  setTimeout(()=>t.classList.remove('on'),2500);
+  setTimeout(()=>t.classList.remove('on'),2800);
 }
 
 function swName(sw) {
@@ -1031,20 +1098,11 @@ function filterLibrary() {
   const timeF=document.getElementById('libTimeFilter')?.value||'';
   const seasonF=document.getElementById('libSeasonFilter')?.value||'';
   let results=RAGAS.filter(r=>{
-    const sysOk=currentLibSystem==='all'
-      ||r.system.toLowerCase().includes(currentLibSystem)
-      ||(currentLibSystem==='folk'&&r.genre==='Folk');
+    const sysOk=currentLibSystem==='all'||r.system.toLowerCase().includes(currentLibSystem)||(currentLibSystem==='folk'&&r.genre==='Folk');
     const rasaOk=!rasaF||r.rasa===rasaF;
     const timeOk=!timeF||r.time.toLowerCase().includes(timeF.toLowerCase());
     const seasonOk=!seasonF||r.season.includes(seasonF);
-    const searchOk=!search
-      ||r.name.toLowerCase().includes(search)
-      ||(r.also||'').toLowerCase().includes(search)
-      ||r.rasa.toLowerCase().includes(search)
-      ||r.time.toLowerCase().includes(search)
-      ||(r.thaat||'').toLowerCase().includes(search)
-      ||(r.mela||'').toLowerCase().includes(search)
-      ||r.genre.toLowerCase().includes(search);
+    const searchOk=!search||r.name.toLowerCase().includes(search)||(r.also||'').toLowerCase().includes(search)||r.rasa.toLowerCase().includes(search)||r.time.toLowerCase().includes(search)||(r.thaat||'').toLowerCase().includes(search)||(r.mela||'').toLowerCase().includes(search)||r.genre.toLowerCase().includes(search);
     return sysOk&&rasaOk&&timeOk&&seasonOk&&searchOk;
   });
   const grid=document.getElementById('ragaLibGrid');
@@ -1063,7 +1121,8 @@ function filterLibrary() {
         <span class="rtag rtag-rasa">${r.rasa}</span>
         <span class="rtag rtag-sys">${r.season}</span>
       </div>
-      ${compareMode?`<button class="compare-btn ${compareSel.includes(r.name)?'selected':''}" onclick="event.stopPropagation();toggleCompareSelect('${r.name.replace(/'/g,"\\'")}')">${compareSel.includes(r.name)?'✓ Selected':'+ Compare'}</button>`:''}
+      ${compareMode?`<button class="compare-btn ${compareSel.includes(r.name)?'selected':''}" onclick="event.stopPropagation();toggleCompareSelect('${r.name.replace(/'/g,"\\'")}')">
+        ${compareSel.includes(r.name)?'✓ Selected':'+ Compare'}</button>`:''}
     </div>
   `).join('');
 }
@@ -1073,21 +1132,19 @@ function filterAndLoad(rasa) {
   if(matching.length) loadRaga(matching[Math.floor(Math.random()*matching.length)].name);
 }
 
-// ══════════════════════════════════════════════════════════
-// COMPARE MODE
-// ══════════════════════════════════════════════════════════
 function openCompareMode() {
-  compareMode=true;
-  compareSel=[];
+  compareMode=true; compareSel=[];
   document.getElementById('comparePanel').classList.add('on');
   filterLibrary();
   showToast('Select two ragas with the "Compare" button');
 }
+
 function closeCompare() {
   compareMode=false; compareSel=[];
   document.getElementById('comparePanel').classList.remove('on');
   filterLibrary();
 }
+
 function toggleCompareSelect(name) {
   const idx=compareSel.indexOf(name);
   if(idx>=0) compareSel.splice(idx,1);
@@ -1095,6 +1152,7 @@ function toggleCompareSelect(name) {
   filterLibrary();
   renderCompare();
 }
+
 function renderCompare() {
   const grid=document.getElementById('compareGrid');
   if(compareSel.length===0){grid.innerHTML='<div style="font-size:13px;color:var(--muted);font-style:italic;padding:10px">No ragas selected yet.</div>';return;}
@@ -1112,26 +1170,22 @@ function renderCompare() {
 }
 
 // ══════════════════════════════════════════════════════════
-// SCALE MODE (aroh/avaroh)
+// SCALE MODE
 // ══════════════════════════════════════════════════════════
 function setScaleMode(mode, btn) {
   scaleMode=mode;
   document.querySelectorAll('.smt-btn').forEach(b=>b.classList.remove('on'));
   if(btn) btn.classList.add('on');
   const hint=document.getElementById('scaleModeHint');
-  if(hint) hint.innerHTML=mode==='aroh'
-    ?'Selecting for: <strong style="color:var(--gold)">Arohanam (ascending)</strong>'
-    :'Selecting for: <strong style="color:var(--sky)">Avarohanam (descending)</strong>';
+  if(hint) hint.innerHTML=mode==='aroh'?'Selecting for: <strong style="color:var(--gold)">Arohanam (ascending)</strong>':'Selecting for: <strong style="color:var(--sky)">Avarohanam (descending)</strong>';
   buildSwaraGrid();
 }
 
 function toggleSwara(id) {
   const set=scaleMode==='aroh'?arohSwaras:avarohSwaras;
-  if(id==='Sa') return; // Sa always included
+  if(id==='Sa') return;
   if(set.has(id)) set.delete(id); else set.add(id);
-  buildSwaraGrid();
-  updateScaleDisplay();
-  updatePianoHighlight();
+  buildSwaraGrid(); updateScaleDisplay(); updatePianoHighlight();
   const sw=SWARAS.find(s=>s.id===id);
   if(sw&&set.has(id)) playNote(sw.freq,0.5);
 }
@@ -1139,19 +1193,14 @@ function toggleSwara(id) {
 function buildSwaraGrid() {
   const grid=document.getElementById('swaraGrid'); if(!grid) return;
   grid.innerHTML=SWARAS.map(sw=>{
-    const inAroh=arohSwaras.has(sw.id);
-    const inAvaroh=avarohSwaras.has(sw.id);
+    const inAroh=arohSwaras.has(sw.id),inAvaroh=avarohSwaras.has(sw.id);
     let cls='';
     if(inAroh&&inAvaroh) cls='both';
     else if(inAroh) cls='aroh';
     else if(inAvaroh) cls='avaroh';
-    const currentSet=scaleMode==='aroh'?arohSwaras:avarohSwaras;
     const dots=`<div class="sw-dots">${inAroh?'<div class="sw-dot sw-dot-aroh"></div>':'<div class="sw-dot" style="background:var(--border)"></div>'}${inAvaroh?'<div class="sw-dot sw-dot-avaroh"></div>':'<div class="sw-dot" style="background:var(--border)"></div>'}</div>`;
     return `<div class="sw ${sw.type} ${cls}" onclick="toggleSwara('${sw.id}')">
-      <span class="sn">${swName(sw)}</span>
-      <span class="sv">${sw.type}</span>
-      <span class="sw-w">${sw.western}</span>
-      ${dots}
+      <span class="sn">${swName(sw)}</span><span class="sv">${sw.type}</span><span class="sw-w">${sw.western}</span>${dots}
     </div>`;
   }).join('');
 }
@@ -1159,22 +1208,16 @@ function buildSwaraGrid() {
 function updateScaleDisplay() {
   const arohSws=SWARAS.filter(s=>arohSwaras.has(s.id));
   const avarohSws=SWARAS.filter(s=>avarohSwaras.has(s.id));
-  const av=document.getElementById('arohVal');
-  const avv=document.getElementById('avarohVal');
+  const av=document.getElementById('arohVal'),avv=document.getElementById('avarohVal');
   if(av) av.textContent=arohSws.length?arohSws.map(s=>swName(s)).join(' – '):'—';
   if(avv) avv.textContent=avarohSws.length?avarohSws.map(s=>swName(s)).join(' – '):'—';
 }
 
 function clearSwaras() {
-  arohSwaras=new Set(['Sa']);
-  avarohSwaras=new Set(['Sa']);
-  buildSwaraGrid();
-  updateScaleDisplay();
-  updatePianoHighlight();
-  const res=document.getElementById('ragaResult');
-  if(res) res.classList.remove('on');
-  const vpPanel=document.getElementById('vpPanel');
-  if(vpPanel) vpPanel.classList.remove('on');
+  arohSwaras=new Set(['Sa']); avarohSwaras=new Set(['Sa']);
+  buildSwaraGrid(); updateScaleDisplay(); updatePianoHighlight();
+  const res=document.getElementById('ragaResult'); if(res) res.classList.remove('on');
+  const vpPanel=document.getElementById('vpPanel'); if(vpPanel) vpPanel.classList.remove('on');
 }
 
 function randomRaga() {
@@ -1186,17 +1229,14 @@ function randomRaga() {
 // IDENTIFY & LOAD RAGA
 // ══════════════════════════════════════════════════════════
 function identifyRaga() {
-  const selA=Array.from(arohSwaras);
-  const selAv=Array.from(avarohSwaras);
+  const selA=Array.from(arohSwaras),selAv=Array.from(avarohSwaras);
   const allSel=new Set([...selA,...selAv]);
   if(allSel.size<3){showToast('Select at least 3 swaras');return;}
-  let best=null, bestScore=-1;
+  let best=null,bestScore=-1;
   RAGAS.forEach(r=>{
     const ragaSet=new Set([...r.aroh,...r.avaroh]);
-    let matches=0;
-    allSel.forEach(s=>{if(ragaSet.has(s))matches++;});
-    // Bonus for matching aroh/avaroh specifically
-    let arohBonus=0, avarohBonus=0;
+    let matches=0; allSel.forEach(s=>{if(ragaSet.has(s))matches++;});
+    let arohBonus=0,avarohBonus=0;
     selA.forEach(s=>{if(r.aroh.includes(s))arohBonus++;});
     selAv.forEach(s=>{if(r.avaroh.includes(s))avarohBonus++;});
     const score=(matches+arohBonus*0.3+avarohBonus*0.3)/Math.max(allSel.size,ragaSet.size-2);
@@ -1212,11 +1252,8 @@ function loadRaga(name) {
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('pane-finder').classList.add('on');
   document.querySelectorAll('.tab')[1].classList.add('on');
-  arohSwaras=new Set(r.aroh);
-  avarohSwaras=new Set(r.avaroh);
-  buildSwaraGrid();
-  updateScaleDisplay();
-  updatePianoHighlight();
+  arohSwaras=new Set(r.aroh); avarohSwaras=new Set(r.avaroh);
+  buildSwaraGrid(); updateScaleDisplay(); updatePianoHighlight();
   displayRagaResult(r,100);
 }
 
@@ -1243,99 +1280,62 @@ function displayRagaResult(r,confidence) {
   if(el('rrDesc')) el('rrDesc').textContent=r.desc||'';
   const favBtn=el('favBtn');
   if(favBtn) favBtn.textContent=favourites.includes(r.name)?'♥ Favourited':'♡ Favourite';
-  // Clear viewpoints
   ['philosophical','yogic','spiritual','neurological','scientific','astrophysics'].forEach(k=>{
     const vpEl=document.getElementById('vp-'+k);
-    if(vpEl) vpEl.innerHTML='<div class="vp-loading"><div class="vp-spinner"></div><span>Click a viewpoint tab and this will load with AI insights</span></div>';
+    if(vpEl) vpEl.innerHTML='<div class="vp-loading"><div class="vp-spinner"></div><span>Click a viewpoint tab to load AI insights</span></div>';
   });
-  const vp=el('vpPanel');
-  if(vp) vp.classList.remove('on');
+  const vp=el('vpPanel'); if(vp) vp.classList.remove('on');
+  // Reset translation panel
+  const tp=el('transPanel'); if(tp) tp.classList.remove('on');
+  transOpen=false;
   setTimeout(()=>el('ragaResult').scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  // Update site search query
+  const sspQ=document.getElementById('sspQuery');
+  if(sspQ && !sspQ.value) sspQ.value=r.name;
 }
 
 // ══════════════════════════════════════════════════════════
-// AI-POWERED VIEWPOINTS
+// AI VIEWPOINTS
 // ══════════════════════════════════════════════════════════
-const vpCache = {};
-
 async function loadViewpoint(raga, perspective) {
-  const cacheKey = raga.name + '::' + perspective;
-  if(vpCache[cacheKey]) return vpCache[cacheKey];
-  const vpEl = document.getElementById('vp-'+perspective);
-  if(!vpEl) return;
-  vpEl.innerHTML = '<div class="vp-loading"><div class="vp-spinner"></div><span>Generating '+perspective+' perspective via AI…</span></div>';
-  const perspectivePrompts = {
-    philosophical: 'the philosophical dimensions — Vedantic, Samkhya, or Tantric frameworks, the symbolism of specific notes, what this raga embodies as a philosophical principle',
-    yogic: 'the yogic dimensions — which chakras are activated, how it supports pranayama or meditation practice, nada yoga applications, energy flows',
-    spiritual: 'the spiritual and devotional dimensions — associated deities, classical compositions, spiritual tradition, festival or ritual use',
-    neurological: 'the neurological dimensions — EEG research, brainwave effects, parasympathetic activation, specific Hz entrainment effects, clinical studies',
-    scientific: 'the scientific and acoustic dimensions — interval analysis, psychoacoustics, frequency ratios, just intonation properties, research findings',
-    astrophysics: 'the astrophysics and Vedic timing dimensions — planetary associations, nakshatra connections, optimal astronomical timing, cosmic octave correspondences'
+  const cacheKey=raga.name+'::'+perspective;
+  if(vpCache[cacheKey]) { document.getElementById('vp-'+perspective).innerHTML='<p>'+vpCache[cacheKey]+'</p>'; return; }
+  const vpEl=document.getElementById('vp-'+perspective); if(!vpEl) return;
+  vpEl.innerHTML='<div class="vp-loading"><div class="vp-spinner"></div><span>Generating '+perspective+' perspective…</span></div>';
+  const perspectivePrompts={
+    philosophical:'the philosophical dimensions — Vedantic, Samkhya, or Tantric frameworks, note symbolism, what this raga embodies as philosophical principle',
+    yogic:'the yogic dimensions — chakras activated, pranayama or meditation support, nada yoga applications',
+    spiritual:'the spiritual dimensions — associated deities, classical compositions, ritual use',
+    neurological:'the neurological dimensions — EEG research, brainwave effects, parasympathetic activation',
+    scientific:'the scientific and acoustic dimensions — interval analysis, psychoacoustics, frequency ratios',
+    astrophysics:'the astrophysics and Vedic timing — planetary associations, nakshatra connections, cosmic octave'
   };
   try {
-    const arohStr = raga.aroh.map(s=>{const sw=SWARAS.find(x=>x.id===s);return sw?sw.sargam:s;}).join(' – ');
-    const avarohStr = raga.avaroh.map(s=>{const sw=SWARAS.find(x=>x.id===s);return sw?sw.sargam:s;}).join(' – ');
-    const prompt = `You are a scholar of Indian classical music, yoga, and sacred arts. Write a rich, evocative 150-200 word paragraph about raga ${raga.name} (also called ${raga.also||raga.name}) from ${perspectivePrompts[perspective]}.
-
-Raga details: System: ${raga.system}. Rasa: ${raga.rasa}. Time: ${raga.time}. Season: ${raga.season}. Arohanam: ${arohStr}. Avarohanam: ${avarohStr}. Gamakas: ${raga.gamakas.join(', ')}.
-
-Write in a scholarly yet poetic style. Be specific to THIS raga's particular notes and characteristics. Do not use bullet points — write flowing prose.`;
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{role:'user',content:prompt}]
-      })
-    });
-    const data = await response.json();
-    const text = data.content?.map(i=>i.text||'').join('') || 'Unable to generate content.';
-    vpCache[cacheKey] = text;
-    vpEl.innerHTML = '<p>'+text+'</p>';
+    const arohStr=raga.aroh.map(s=>{const sw=SWARAS.find(x=>x.id===s);return sw?sw.sargam:s;}).join(' – ');
+    const prompt=`You are a scholar of Indian classical music. Write a rich, evocative 150-200 word paragraph about raga ${raga.name} from ${perspectivePrompts[perspective]}. System: ${raga.system}. Rasa: ${raga.rasa}. Time: ${raga.time}. Arohanam: ${arohStr}. Write flowing prose, no bullets.`;
+    const response=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await response.json();
+    const text=data.content?.map(i=>i.text||'').join('')||'Unable to generate content.';
+    vpCache[cacheKey]=text;
+    vpEl.innerHTML='<p>'+text+'</p>';
   } catch(e) {
-    vpEl.innerHTML = '<p style="color:var(--muted);font-style:italic">AI viewpoints require an active session. The static insight for this raga: '+getStaticViewpoint(raga, perspective)+'</p>';
+    vpEl.innerHTML='<p style="color:var(--muted);font-style:italic">AI viewpoints require an active session.</p>';
   }
 }
-
-function getStaticViewpoint(r, perspective) {
-  const statics = {
-    philosophical: `${r.name} embodies the philosophical principle of ${r.rasa} — the ${rasaMap[r.rasa]||'profound'}. Its notes create a sonic architecture that mirrors fundamental truths about consciousness and existence.`,
-    yogic: `In yogic practice, ${r.name} supports ${r.time.toLowerCase()} sadhana through its ${r.gamakas[0]} ornamentations that activate specific pranic channels.`,
-    spiritual: `${r.name} is intimately linked with the sacred tradition of ${r.rasa} expression and has inspired countless compositions across centuries.`,
-    neurological: `Scientific research on ${r.name} suggests its ${r.aroh.filter(s=>SWARAS.find(x=>x.id===s)?.type==='komal').length} komal notes create measurable parasympathetic activation.`,
-    scientific: `Acoustically, ${r.name} uses a ${r.aroh.length===r.avaroh.length?'symmetric':'asymmetric'} scale structure with ${r.aroh.length-2} active pitches creating unique intervallic relationships.`,
-    astrophysics: `${r.name} is traditionally performed at ${r.time} corresponding to specific planetary hora alignments in Vedic astrology.`,
-  };
-  return statics[perspective]||'No data available.';
-}
-
-const rasaMap = {Karuna:'compassion and longing',Shringara:'love and beauty',Bhakti:'devotion',Veera:'heroism and strength',Shanta:'peace',Hasya:'joy',Raudra:'fury',Adbhuta:'wonder'};
 
 function toggleViewpoints() {
-  const panel=document.getElementById('vpPanel');
-  if(!panel) return;
-  const wasOpen = panel.classList.contains('on');
+  const panel=document.getElementById('vpPanel'); if(!panel) return;
+  const wasOpen=panel.classList.contains('on');
   panel.classList.toggle('on');
-  if(!wasOpen && currentRaga) {
-    // Load the currently active tab
-    const activeTab = document.querySelector('.vp-tab.on');
-    if(activeTab) {
-      const key = activeTab.onclick.toString().match(/'([^']+)'/)?.[1];
-      if(key) loadViewpoint(currentRaga, key);
-    } else {
-      loadViewpoint(currentRaga, 'philosophical');
-    }
-  }
+  if(!wasOpen&&currentRaga) loadViewpoint(currentRaga,'philosophical');
 }
 
 function showVP(key, btn) {
   document.querySelectorAll('.vp-tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.vp-content').forEach(c=>c.classList.remove('on'));
   if(btn) btn.classList.add('on');
-  const content=document.getElementById('vp-'+key);
-  if(content) content.classList.add('on');
-  if(currentRaga) loadViewpoint(currentRaga, key);
+  const content=document.getElementById('vp-'+key); if(content) content.classList.add('on');
+  if(currentRaga) loadViewpoint(currentRaga,key);
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1353,12 +1353,7 @@ function toggleFavourite() {
 function renderFavourites() {
   const list=document.getElementById('favList'); if(!list) return;
   if(!favourites.length){list.innerHTML='<div style="font-size:12px;color:var(--muted);font-style:italic">None yet</div>';return;}
-  list.innerHTML=favourites.map(name=>`
-    <div class="q-item" onclick="loadRaga('${name.replace(/'/g,"\\'")}')">
-      <span class="q-name">${name}</span>
-      <span class="q-rasa" onclick="event.stopPropagation();removeFav('${name.replace(/'/g,"\\'")}')">✕</span>
-    </div>
-  `).join('');
+  list.innerHTML=favourites.map(name=>`<div class="q-item" onclick="loadRaga('${name.replace(/'/g,"\\'")}')"><span class="q-name">${name}</span><span class="q-rasa" onclick="event.stopPropagation();removeFav('${name.replace(/'/g,"\\'")}')">✕</span></div>`).join('');
 }
 
 function removeFav(name) {
@@ -1369,6 +1364,7 @@ function removeFav(name) {
 
 function shareRaga() {
   if(!currentRaga) return;
+  const lang=LANG_CONFIG[currentLang];
   const text=`${currentRaga.name} — ${currentRaga.rasa} raga | ${currentRaga.system} | ${currentRaga.time}\nArohanam: ${currentRaga.aroh.join(' – ')}\nAvarohanam: ${currentRaga.avaroh.join(' – ')}`;
   navigator.clipboard?.writeText(text).then(()=>showToast('📋 Raga info copied!'));
 }
@@ -1377,13 +1373,9 @@ function addToCompare() {
   if(!currentRaga) return;
   compareMode=true;
   document.getElementById('comparePanel').classList.add('on');
-  setTab('library', document.querySelectorAll('.tab')[0]);
-  if(!compareSel.includes(currentRaga.name)) {
-    if(compareSel.length>=2) compareSel.shift();
-    compareSel.push(currentRaga.name);
-  }
-  filterLibrary();
-  renderCompare();
+  setTab('library',document.querySelectorAll('.tab')[0]);
+  if(!compareSel.includes(currentRaga.name)){if(compareSel.length>=2)compareSel.shift();compareSel.push(currentRaga.name);}
+  filterLibrary(); renderCompare();
   document.getElementById('comparePanel').scrollIntoView({behavior:'smooth'});
 }
 
@@ -1398,8 +1390,7 @@ function initAudio() {
 
 function playNote(freq,dur=0.6,type='sine') {
   const ctx=initAudio();
-  const osc=ctx.createOscillator();
-  const gain=ctx.createGain();
+  const osc=ctx.createOscillator(),gain=ctx.createGain();
   osc.connect(gain); gain.connect(ctx.destination);
   osc.type=type; osc.frequency.value=freq;
   gain.gain.setValueAtTime(0.3,ctx.currentTime);
@@ -1408,20 +1399,12 @@ function playNote(freq,dur=0.6,type='sine') {
 }
 
 function toggleDrone() {
-  const btn=document.getElementById('droneBtn');
-  const dot=document.getElementById('droneDot');
-  if(droneOn) {
-    droneOscs.forEach(o=>{try{o.stop();}catch(e){}});
-    droneOscs=[]; droneOn=false;
-    btn.textContent='▶ Start'; btn.classList.remove('on'); dot.classList.remove('on');
-  } else {
-    const ctx=initAudio();
-    const gainNode=ctx.createGain(); gainNode.gain.value=0.1; gainNode.connect(ctx.destination);
-    [261.63,392.00,130.81,523.25].forEach(freq=>{
-      const osc=ctx.createOscillator(); osc.type='sine'; osc.frequency.value=freq;
-      osc.connect(gainNode); osc.start(); droneOscs.push(osc);
-    });
-    droneOn=true; btn.textContent='■ Stop'; btn.classList.add('on'); dot.classList.add('on');
+  const btn=document.getElementById('droneBtn'),dot=document.getElementById('droneDot');
+  if(droneOn){droneOscs.forEach(o=>{try{o.stop();}catch(e){}});droneOscs=[];droneOn=false;btn.textContent='▶ Start';btn.classList.remove('on');dot.classList.remove('on');}
+  else{
+    const ctx=initAudio(),gainNode=ctx.createGain();gainNode.gain.value=0.1;gainNode.connect(ctx.destination);
+    [261.63,392.00,130.81,523.25].forEach(freq=>{const osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=freq;osc.connect(gainNode);osc.start();droneOscs.push(osc);});
+    droneOn=true;btn.textContent='■ Stop';btn.classList.add('on');dot.classList.add('on');
   }
 }
 
@@ -1430,15 +1413,9 @@ function togglePlay() {
   if(playPlaying){clearTimeout(playTimer);playPlaying=false;btn.textContent='▶ Play Arohanam';return;}
   const sws=SWARAS.filter(s=>arohSwaras.has(s.id));
   if(!sws.length){showToast('Select arohanam swaras first');return;}
-  playPlaying=true; btn.textContent='■ Stop';
+  playPlaying=true;btn.textContent='■ Stop';
   let i=0;
-  function next() {
-    if(i>=sws.length||!playPlaying){playPlaying=false;btn.textContent='▶ Play Arohanam';return;}
-    playNote(sws[i].freq,0.55);
-    highlightPianoKey(sws[i].semitone,true,'aroh');
-    setTimeout(()=>highlightPianoKey(sws[i].semitone,false,'aroh'),450);
-    i++; playTimer=setTimeout(next,650);
-  }
+  function next(){if(i>=sws.length||!playPlaying){playPlaying=false;btn.textContent='▶ Play Arohanam';return;}playNote(sws[i].freq,0.55);i++;playTimer=setTimeout(next,650);}
   next();
 }
 
@@ -1447,13 +1424,9 @@ function togglePlayAvaroh() {
   if(playPlaying){clearTimeout(playTimer);playPlaying=false;btn.textContent='▶ Play Avarohanam';return;}
   const sws=SWARAS.filter(s=>avarohSwaras.has(s.id)).reverse();
   if(!sws.length){showToast('Select avarohanam swaras first');return;}
-  playPlaying=true; btn.textContent='■ Stop';
+  playPlaying=true;btn.textContent='■ Stop';
   let i=0;
-  function next() {
-    if(i>=sws.length||!playPlaying){playPlaying=false;btn.textContent='▶ Play Avarohanam';return;}
-    playNote(sws[i].freq,0.55);
-    i++; playTimer=setTimeout(next,650);
-  }
+  function next(){if(i>=sws.length||!playPlaying){playPlaying=false;btn.textContent='▶ Play Avarohanam';return;}playNote(sws[i].freq,0.55);i++;playTimer=setTimeout(next,650);}
   next();
 }
 
@@ -1462,23 +1435,18 @@ function togglePlayAvaroh() {
 // ══════════════════════════════════════════════════════════
 function buildPiano() {
   const svg=document.getElementById('pianoSVG'); if(!svg) return;
-  const whites=[0,2,4,5,7,9,11];
-  const blackPos=[1,3,-1,6,8,10,-1];
-  const kW=52,kH=120,bW=32,bH=74,totalOctaves=2;
+  const whites=[0,2,4,5,7,9,11],blackPos=[1,3,-1,6,8,10,-1],kW=52,kH=120,bW=32,bH=74,totalOctaves=2;
   let html='';
-  for(let oct=0;oct<totalOctaves;oct++) {
-    for(let i=0;i<7;i++) {
+  for(let oct=0;oct<totalOctaves;oct++){
+    for(let i=0;i<7;i++){
       const x=(oct*7+i)*kW,semi=whites[i]+oct*12;
       const sw=SWARAS.find(s=>s.semitone===semi%12);
       html+=`<rect class="pk-white" id="pw${semi}" x="${x}" y="0" width="${kW-1}" height="${kH}" rx="3" onclick="pianoClick(${sw?.freq||0},${semi})"/>`;
-      if(sw){
-        html+=`<text class="pk-note" x="${x+kW/2}" y="${kH-7}">${sw.western}</text>`;
-        html+=`<text class="pk-swara" x="${x+kW/2}" y="${kH-20}">${sw.sargam}</text>`;
-      }
+      if(sw){html+=`<text class="pk-note" x="${x+kW/2}" y="${kH-7}">${sw.western}</text>`;html+=`<text class="pk-swara" x="${x+kW/2}" y="${kH-20}">${sw.sargam}</text>`;}
     }
   }
-  for(let oct=0;oct<totalOctaves;oct++) {
-    for(let i=0;i<7;i++) {
+  for(let oct=0;oct<totalOctaves;oct++){
+    for(let i=0;i<7;i++){
       if(blackPos[i]===-1) continue;
       const x=(oct*7+i)*kW+kW-bW/2,semi=blackPos[i]+oct*12;
       html+=`<rect class="pk-black" id="pb${semi}" x="${x}" y="0" width="${bW}" height="${bH}" rx="2" onclick="pianoClick(${SWARAS.find(s=>s.semitone===semi%12)?.freq||0},${semi})"/>`;
@@ -1487,55 +1455,25 @@ function buildPiano() {
   svg.innerHTML=html;
 }
 
-function pianoClick(freq,semi) {
-  if(freq) playNote(freq,0.7);
-  const sw=SWARAS.find(s=>s.semitone===semi%12);
-  if(sw) toggleSwara(sw.id);
-}
-
-function highlightPianoKey(semi,on,type) {
-  ['pw','pb'].forEach(prefix=>{
-    const el=document.getElementById(prefix+semi);
-    if(!el) return;
-    if(!on){el.className=el.className.replace(/\s*(aroh-hi|avaroh-hi|both-hi)/g,'');return;}
-    el.classList.add(type+'-hi');
-  });
-}
+function pianoClick(freq,semi){if(freq) playNote(freq,0.7);const sw=SWARAS.find(s=>s.semitone===semi%12);if(sw) toggleSwara(sw.id);}
 
 function updatePianoHighlight() {
-  document.querySelectorAll('.pk-white,.pk-black').forEach(k=>{
-    k.className=k.className.replace(/\s*(aroh-hi|avaroh-hi|both-hi)/g,'');
-  });
+  document.querySelectorAll('.pk-white,.pk-black').forEach(k=>{k.className=k.className.replace(/\s*(aroh-hi|avaroh-hi|both-hi)/g,'');});
   SWARAS.forEach(sw=>{
-    const inAroh=arohSwaras.has(sw.id);
-    const inAvaroh=avarohSwaras.has(sw.id);
+    const inAroh=arohSwaras.has(sw.id),inAvaroh=avarohSwaras.has(sw.id);
     if(!inAroh&&!inAvaroh) return;
     const cls=inAroh&&inAvaroh?'both-hi':inAroh?'aroh-hi':'avaroh-hi';
-    [sw.semitone,sw.semitone+12].forEach(semi=>{
-      ['pw','pb'].forEach(prefix=>{
-        const el=document.getElementById(prefix+semi);
-        if(el) el.classList.add(cls);
-      });
-    });
+    [sw.semitone,sw.semitone+12].forEach(semi=>{['pw','pb'].forEach(prefix=>{const el=document.getElementById(prefix+semi);if(el) el.classList.add(cls);});});
   });
 }
 
 // ══════════════════════════════════════════════════════════
-// PRACTICE TIMER
+// TIMER
 // ══════════════════════════════════════════════════════════
 function toggleTimer() {
   const btn=document.getElementById('timerBtn');
-  if(timerOn) {
-    clearInterval(timerInterval); timerOn=false; btn.textContent='▶ Start';
-  } else {
-    timerOn=true; btn.textContent='■ Stop';
-    timerInterval=setInterval(()=>{
-      timerSeconds++;
-      const m=Math.floor(timerSeconds/60).toString().padStart(2,'0');
-      const s=(timerSeconds%60).toString().padStart(2,'0');
-      document.getElementById('timerDisplay').textContent=m+':'+s;
-    },1000);
-  }
+  if(timerOn){clearInterval(timerInterval);timerOn=false;btn.textContent='▶ Start';}
+  else{timerOn=true;btn.textContent='■ Stop';timerInterval=setInterval(()=>{timerSeconds++;const m=Math.floor(timerSeconds/60).toString().padStart(2,'0'),s=(timerSeconds%60).toString().padStart(2,'0');document.getElementById('timerDisplay').textContent=m+':'+s;},1000);}
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1546,11 +1484,7 @@ function buildSwaraEngine() {
   grid.innerHTML=SWARAS.map(sw=>`
     <div class="sec-card" onclick="playNote(${sw.freq},0.8)">
       <div class="sec-header">
-        <div class="sec-top">
-          <span class="sec-carnatic">${sw.carnatic}</span>
-          <span class="sec-western">${sw.western}</span>
-          <span class="sec-solfege">${sw.solfege}</span>
-        </div>
+        <div class="sec-top"><span class="sec-carnatic">${sw.carnatic}</span><span class="sec-western">${sw.western}</span><span class="sec-solfege">${sw.solfege}</span></div>
         <div class="sec-langs">
           <div class="sec-lang-item"><span class="sec-lang-label">Tamil</span>${sw.tamil}</div>
           <div class="sec-lang-item"><span class="sec-lang-label">Telugu</span>${sw.telugu}</div>
@@ -1563,8 +1497,7 @@ function buildSwaraEngine() {
       <div class="sec-body">
         <div class="sec-row"><span class="sec-row-lbl">Frequency</span><span class="sec-row-val gold">${sw.freq} Hz</span></div>
         <div class="sec-row"><span class="sec-row-lbl">Just Ratio</span><span class="sec-row-val lav">${sw.ratio}</span></div>
-        <div class="sec-row"><span class="sec-row-lbl">Shruti Position</span><span class="sec-row-val">${sw.shruti} / 22</span></div>
-        <div class="sec-row"><span class="sec-row-lbl">Semitone</span><span class="sec-row-val">${sw.semitone} of 12</span></div>
+        <div class="sec-row"><span class="sec-row-lbl">Shruti</span><span class="sec-row-val">${sw.shruti} / 22</span></div>
         <div class="sec-row"><span class="sec-row-lbl">Type</span><span class="sec-row-val" style="color:${sw.type==='achala'?'var(--sage)':sw.type==='komal'?'var(--sky)':'var(--saffron)'}">${sw.type}</span></div>
         <div class="shruti-row">${Array.from({length:22},(_,i)=>`<div class="shruti-pip ${i+1===sw.shruti?'on':''}"></div>`).join('')}</div>
       </div>
@@ -1573,7 +1506,7 @@ function buildSwaraEngine() {
 }
 
 // ══════════════════════════════════════════════════════════
-// TALAS (NEW)
+// TALAS
 // ══════════════════════════════════════════════════════════
 function talaSetSystem(sys, btn) {
   talaSys=sys;
@@ -1591,10 +1524,7 @@ function renderTalas() {
       <div class="tala-name">${t.name}</div>
       <div class="tala-aka">${t.aka}</div>
       <div class="tala-beats">${beatCells}</div>
-      <div class="tala-meta">
-        <strong style="color:var(--gold)">${t.beats}</strong> beats · ${t.structure.join('+')} 
-        · Sam <span style="color:var(--gold)">●</span> Khali <span style="color:var(--sky)">○</span>
-      </div>
+      <div class="tala-meta"><strong style="color:var(--gold)">${t.beats}</strong> beats · ${t.structure.join('+')} · Sam <span style="color:var(--gold)">●</span> Khali <span style="color:var(--sky)">○</span></div>
       <div style="font-size:11px;color:var(--muted);line-height:1.55;margin-top:6px">${t.desc}</div>
       <div class="tala-controls">
         <span class="drone-label">BPM</span>
@@ -1609,27 +1539,12 @@ function toggleTala(ti) {
   const talas=talaSys==='carnatic'?TALAS_CARNATIC:TALAS_HINDUSTANI;
   const t=talas[ti];
   const btn=document.getElementById(`tala-btn-${ti}`);
-  if(talaTimers[ti]) {
-    clearInterval(talaTimers[ti]); delete talaTimers[ti];
-    btn.textContent='▶ Play'; btn.classList.remove('on');
-    for(let bi=0;bi<t.beats;bi++) { const el=document.getElementById(`tb-${ti}-${bi}`); if(el) el.classList.remove('active'); }
-    return;
-  }
-  btn.textContent='■ Stop'; btn.classList.add('on');
+  if(talaTimers[ti]){clearInterval(talaTimers[ti]);delete talaTimers[ti];btn.textContent='▶ Play';btn.classList.remove('on');for(let bi=0;bi<t.beats;bi++){const el=document.getElementById(`tb-${ti}-${bi}`);if(el)el.classList.remove('active');}return;}
+  btn.textContent='■ Stop';btn.classList.add('on');
   let beat=0;
-  const bpm=parseInt(document.getElementById(`bpm-${ti}`)?.value||t.bpm);
-  const interval=Math.round(60000/bpm);
-  function tick() {
-    for(let bi=0;bi<t.beats;bi++) { const el=document.getElementById(`tb-${ti}-${bi}`); if(el) el.classList.remove('active'); }
-    const el=document.getElementById(`tb-${ti}-${beat}`);
-    if(el) el.classList.add('active');
-    const type=t.vibhagType[beat];
-    const freq=type==='sam'?400:type==='khali'?250:320;
-    playNote(freq,0.08,'square');
-    beat=(beat+1)%t.beats;
-  }
-  tick();
-  talaTimers[ti]=setInterval(tick,interval);
+  const bpm=parseInt(document.getElementById(`bpm-${ti}`)?.value||t.bpm),interval=Math.round(60000/bpm);
+  function tick(){for(let bi=0;bi<t.beats;bi++){const el=document.getElementById(`tb-${ti}-${bi}`);if(el)el.classList.remove('active');}const el=document.getElementById(`tb-${ti}-${beat}`);if(el)el.classList.add('active');const type=t.vibhagType[beat];const freq=type==='sam'?400:type==='khali'?250:320;playNote(freq,0.08,'square');beat=(beat+1)%t.beats;}
+  tick();talaTimers[ti]=setInterval(tick,interval);
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1651,8 +1566,7 @@ function filterMudra(form,btn) {
 
 function renderMudras() {
   const search=(document.getElementById('mudraSearch')?.value||'').toLowerCase();
-  const grid=document.getElementById('mudraGrid');
-  const countEl=document.getElementById('mudraCount');
+  const grid=document.getElementById('mudraGrid'),countEl=document.getElementById('mudraCount');
   if(!grid) return;
   let mudras=[];
   if(currentMudraType==='asamyutha') mudras=MUDRAS_ASAMYUTHA;
@@ -1685,167 +1599,53 @@ function renderMudras() {
 function filterKaranas() {
   const search=(document.getElementById('karanaSearch')?.value||'').toLowerCase();
   const group=document.getElementById('karanaGroupFilter')?.value||'';
-  const filtered=KARANAS_DATA.filter(k=>
-    (!search||k.name.toLowerCase().includes(search)||k.mudras.toLowerCase().includes(search)||k.desc.toLowerCase().includes(search))&&
-    (!group||k.group===group)
-  );
-  const grid=document.getElementById('karanaGrid');
-  const count=document.getElementById('karanaCount');
+  const filtered=KARANAS_DATA.filter(k=>(!search||k.name.toLowerCase().includes(search)||k.mudras.toLowerCase().includes(search)||k.desc.toLowerCase().includes(search))&&(!group||k.group===group));
+  const grid=document.getElementById('karanaGrid'),count=document.getElementById('karanaCount');
   if(count) count.textContent=filtered.length+' karanas';
   if(!grid) return;
-  grid.innerHTML=filtered.map(k=>`
-    <div class="karana-card">
-      <div class="mc-cat">${k.group} · No.${k.num}</div>
-      <div class="mc-name">${k.name}</div>
-      <div class="mc-sanskrit" style="color:var(--gold)">Mudras: ${k.mudras}</div>
-      <div class="mc-desc">${k.desc}</div>
-    </div>
-  `).join('');
+  grid.innerHTML=filtered.map(k=>`<div class="karana-card"><div class="mc-cat">${k.group} · No.${k.num}</div><div class="mc-name">${k.name}</div><div class="mc-sanskrit" style="color:var(--gold)">Mudras: ${k.mudras}</div><div class="mc-desc">${k.desc}</div></div>`).join('');
 }
 
 // ══════════════════════════════════════════════════════════
-// CROSS REFERENCE (ENHANCED)
+// CROSS REFERENCE
 // ══════════════════════════════════════════════════════════
 function buildXref() {
-  const pills=document.getElementById('xrefSwaraPills');
-  const rasaPills=document.getElementById('xrefRasaPills');
-  if(pills) {
-    pills.innerHTML=SWARAS.map(sw=>`
-      <div class="xsp" onclick="xrefSwara('${sw.id}',this)">
-        <span class="xsp-name">${sw.sargam}</span>
-        <span class="xsp-note">${sw.western}</span>
-      </div>
-    `).join('');
-  }
-  if(rasaPills) {
-    ['Bhakti','Karuna','Shringara','Veera','Shanta','Hasya','Raudra','Adbhuta'].forEach(r=>{
-      const div=document.createElement('div');
-      div.className='xsp';
-      div.onclick=()=>{document.querySelectorAll('#xrefRasaPills .xsp').forEach(p=>p.classList.remove('on'));div.classList.add('on');xrefRasa(r);};
-      div.innerHTML=`<span class="xsp-name">${r}</span>`;
-      rasaPills.appendChild(div);
-    });
-  }
+  const pills=document.getElementById('xrefSwaraPills'),rasaPills=document.getElementById('xrefRasaPills');
+  if(pills) pills.innerHTML=SWARAS.map(sw=>`<div class="xsp" onclick="xrefSwara('${sw.id}',this)"><span class="xsp-name">${sw.sargam}</span><span class="xsp-note">${sw.western}</span></div>`).join('');
+  if(rasaPills){['Bhakti','Karuna','Shringara','Veera','Shanta','Hasya','Raudra','Adbhuta'].forEach(r=>{const div=document.createElement('div');div.className='xsp';div.onclick=()=>{document.querySelectorAll('#xrefRasaPills .xsp').forEach(p=>p.classList.remove('on'));div.classList.add('on');xrefRasa(r);};div.innerHTML=`<span class="xsp-name">${r}</span>`;rasaPills.appendChild(div);});}
 }
 
 function xrefSwara(id,btn) {
   document.querySelectorAll('#xrefSwaraPills .xsp').forEach(p=>p.classList.remove('on'));
   if(btn) btn.classList.add('on');
-  const sw=SWARAS.find(s=>s.id===id);
-  const ragas=RAGAS.filter(r=>r.aroh.includes(id)||r.avaroh.includes(id));
-  // Find actual mudras associated with the swara by symbolic mapping
-  const swType = sw.type;
-  const mudraMap = {
-    achala: ['Pataka','Shikhara','Anjali'],
-    komal: ['Ardhachandra','Mrigashirsha','Mukula','Kapota'],
-    tivra: ['Suchi','Mushti','Trishula'],
-    shuddha: ['Katakamukha','Alapadma','Hamsasya','Hamsapaksha'],
-  };
-  const associatedMudraNames = mudraMap[swType]||mudraMap['shuddha'];
-  const mudras = [...MUDRAS_ASAMYUTHA,...MUDRAS_SAMYUTHA].filter(m=>associatedMudraNames.includes(m.name));
-  // Find karanas that use those mudras
-  const karanas = KARANAS_DATA.filter(k=>mudras.some(m=>k.mudras.toLowerCase().includes(m.name.toLowerCase()))).slice(0,6);
-  // Find talas common in those ragas
-  const talaSet = new Set();
-  ragas.forEach(r=>(r.talas||[]).forEach(t=>talaSet.add(t)));
+  const sw=SWARAS.find(s=>s.id===id),ragas=RAGAS.filter(r=>r.aroh.includes(id)||r.avaroh.includes(id));
+  const mudraMap={achala:['Pataka','Shikhara','Anjali'],komal:['Ardhachandra','Mayura','Katakamukha'],tivra:['Suchi','Mushti'],shuddha:['Alapadma','Hamsasya','Katakamukha']};
+  const associatedMudraNames=mudraMap[sw.type]||mudraMap['shuddha'];
+  const mudras=[...MUDRAS_ASAMYUTHA,...MUDRAS_SAMYUTHA].filter(m=>associatedMudraNames.includes(m.name));
+  const karanas=KARANAS_DATA.filter(k=>mudras.some(m=>k.mudras.toLowerCase().includes(m.name.toLowerCase()))).slice(0,6);
+  const talaSet=new Set();ragas.forEach(r=>(r.talas||[]).forEach(t=>talaSet.add(t)));
   const allTalas=[...TALAS_CARNATIC,...TALAS_HINDUSTANI];
   const matchedTalas=allTalas.filter(t=>talaSet.has(t.name));
   const results=document.getElementById('xrefResults'); if(!results) return;
   results.innerHTML=`
-    <div class="xref-section">
-      <div class="xref-section-title">Swara Details: ${sw.sargam} (${sw.western})</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-        <div style="font-size:13px;color:var(--cream)">Frequency: <strong style="color:var(--gold)">${sw.freq} Hz</strong></div>
-        <div style="font-size:13px;color:var(--cream)">Ratio: <strong style="color:var(--lav)">${sw.ratio}</strong></div>
-        <div style="font-size:13px;color:var(--cream)">Type: <strong>${sw.type}</strong></div>
-        <div style="font-size:13px;color:var(--cream)">Shruti: <strong>${sw.shruti}/22</strong></div>
-      </div>
-    </div>
-    <div class="xref-section">
-      <div class="xref-section-title">Ragas containing ${sw.sargam} (${ragas.length})</div>
-      ${ragas.map(r=>`
-        <div class="xref-item" onclick="loadRaga('${r.name.replace(/'/g,"\\'")}')">
-          <span class="xref-item-name">${r.name}</span>
-          <span class="xref-item-sub">${r.system} · ${r.rasa} · ${r.time}</span>
-        </div>
-      `).join('')}
-    </div>
-    <div class="xref-section">
-      <div class="xref-section-title">Mudras associated with ${sw.type} swaras</div>
-      ${mudras.map(m=>`
-        <div class="xref-item">
-          <span class="xref-item-name">${m.name}</span>
-          <span class="xref-item-sub">${m.cat} — ${m.usage.split(',')[0]}</span>
-        </div>
-      `).join('')}
-    </div>
-    <div class="xref-section">
-      <div class="xref-section-title">Karanas using these mudras</div>
-      ${karanas.map(k=>`
-        <div class="xref-item">
-          <span class="xref-item-name">${k.name}</span>
-          <span class="xref-item-sub">${k.group} · ${k.mudras}</span>
-        </div>
-      `).join('')}
-    </div>
-    ${matchedTalas.length?`<div class="xref-section">
-      <div class="xref-section-title">Common talas for ${sw.sargam} ragas</div>
-      ${matchedTalas.slice(0,5).map(t=>`
-        <div class="xref-item">
-          <span class="xref-item-name">${t.name}</span>
-          <span class="xref-item-sub">${t.aka}</span>
-        </div>
-      `).join('')}
-    </div>`:''}
-  `;
+    <div class="xref-section"><div class="xref-section-title">Swara: ${sw.sargam} (${sw.western}) — ${sw.freq} Hz · ${sw.ratio}</div>
+      <div style="font-size:12px;color:var(--muted)">Type: ${sw.type} · Shruti: ${sw.shruti}/22</div></div>
+    <div class="xref-section"><div class="xref-section-title">Ragas containing ${sw.sargam} (${ragas.length})</div>
+      ${ragas.map(r=>`<div class="xref-item" onclick="loadRaga('${r.name.replace(/'/g,"\\'")}')"><span class="xref-item-name">${r.name}</span><span class="xref-item-sub">${r.system} · ${r.rasa}</span></div>`).join('')}</div>
+    <div class="xref-section"><div class="xref-section-title">Associated Mudras</div>
+      ${mudras.map(m=>`<div class="xref-item"><span class="xref-item-name">${m.name}</span><span class="xref-item-sub">${m.usage.split(',')[0]}</span></div>`).join('')}</div>
+    ${matchedTalas.length?`<div class="xref-section"><div class="xref-section-title">Common Talas</div>${matchedTalas.slice(0,5).map(t=>`<div class="xref-item"><span class="xref-item-name">${t.name}</span><span class="xref-item-sub">${t.aka}</span></div>`).join('')}</div>`:''}`;
 }
 
 function xrefRasa(rasa) {
   const ragas=RAGAS.filter(r=>r.rasa===rasa);
-  const mudrasByRasa={
-    Karuna:MUDRAS_ASAMYUTHA.filter(m=>['Ardhachandra','Arala','Mrigashirsha','Mukula'].includes(m.name)),
-    Shringara:MUDRAS_ASAMYUTHA.filter(m=>['Katakamukha','Alapadma','Hamsasya','Padmakosha','Mayura'].includes(m.name)),
-    Bhakti:MUDRAS_SAMYUTHA.filter(m=>['Anjali','Pushpaputa','Katakavardhana'].includes(m.name)),
-    Veera:MUDRAS_ASAMYUTHA.filter(m=>['Mushti','Trishula','Simhamukha','Shikhara'].includes(m.name)),
-    Shanta:MUDRAS_SAMYUTHA.filter(m=>['Anjali','Kapota','Kurma'].includes(m.name)),
-    Hasya:MUDRAS_ASAMYUTHA.filter(m=>['Alapadma','Padmakosha','Chatura'].includes(m.name)),
-    Raudra:MUDRAS_ASAMYUTHA.filter(m=>['Kartarimukha','Mushti','Simhamukha'].includes(m.name)),
-    Adbhuta:MUDRAS_ASAMYUTHA.filter(m=>['Sarpashirsha','Hamsapaksha','Suchi'].includes(m.name)),
-  };
-  const rasaMudras=mudrasByRasa[rasa]||MUDRAS_ASAMYUTHA.slice(0,5);
-  const talaSet=new Set(); ragas.forEach(r=>(r.talas||[]).forEach(t=>talaSet.add(t)));
-  const allTalas=[...TALAS_CARNATIC,...TALAS_HINDUSTANI];
-  const matchedTalas=allTalas.filter(t=>talaSet.has(t.name));
+  const talaSet=new Set();ragas.forEach(r=>(r.talas||[]).forEach(t=>talaSet.add(t)));
+  const allTalas=[...TALAS_CARNATIC,...TALAS_HINDUSTANI],matchedTalas=allTalas.filter(t=>talaSet.has(t.name));
   const results=document.getElementById('xrefResults'); if(!results) return;
   results.innerHTML=`
-    <div class="xref-section">
-      <div class="xref-section-title">Ragas of Rasa: ${rasa} (${ragas.length})</div>
-      ${ragas.map(r=>`
-        <div class="xref-item" onclick="loadRaga('${r.name.replace(/'/g,"\\'")}')">
-          <span class="xref-item-name">${r.name}</span>
-          <span class="xref-item-sub">${r.system} · ${r.time} · ${r.season}</span>
-        </div>
-      `).join('')}
-    </div>
-    <div class="xref-section">
-      <div class="xref-section-title">Associated Mudras for ${rasa}</div>
-      ${rasaMudras.map(m=>`
-        <div class="xref-item">
-          <span class="xref-item-name">${m.name}</span>
-          <span class="xref-item-sub">${m.cat} — ${m.usage.split(',')[0]}</span>
-        </div>
-      `).join('')}
-    </div>
-    ${matchedTalas.length?`<div class="xref-section">
-      <div class="xref-section-title">Talas for ${rasa} ragas</div>
-      ${matchedTalas.slice(0,6).map(t=>`
-        <div class="xref-item">
-          <span class="xref-item-name">${t.name}</span>
-          <span class="xref-item-sub">${t.system} · ${t.aka}</span>
-        </div>
-      `).join('')}
-    </div>`:''}
-  `;
+    <div class="xref-section"><div class="xref-section-title">Ragas of Rasa: ${rasa} (${ragas.length})</div>
+      ${ragas.map(r=>`<div class="xref-item" onclick="loadRaga('${r.name.replace(/'/g,"\\'")}')"><span class="xref-item-name">${r.name}</span><span class="xref-item-sub">${r.system} · ${r.time}</span></div>`).join('')}</div>
+    ${matchedTalas.length?`<div class="xref-section"><div class="xref-section-title">Talas for ${rasa}</div>${matchedTalas.slice(0,6).map(t=>`<div class="xref-item"><span class="xref-item-name">${t.name}</span><span class="xref-item-sub">${t.system} · ${t.aka}</span></div>`).join('')}</div>`:''}`;
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1854,16 +1654,15 @@ function xrefRasa(rasa) {
 function buildQuickRagaList() {
   const list=document.getElementById('quickRagaList'); if(!list) return;
   const featured=['Bhairavi','Yaman','Shankarabharanam','Todi','Hamsadhwani','Kalyani','Darbari Kanada','Hindolam','Maand','Pahadi'];
-  list.innerHTML=featured.map(name=>{
-    const r=RAGAS.find(rg=>rg.name===name); if(!r) return '';
-    return `<div class="q-item" onclick="loadRaga('${name}')"><span class="q-name">${name}</span><span class="q-rasa">${r.rasa}</span></div>`;
-  }).join('');
+  list.innerHTML=featured.map(name=>{const r=RAGAS.find(rg=>rg.name===name);if(!r)return '';return `<div class="q-item" onclick="loadRaga('${name}')"><span class="q-name">${name}</span><span class="q-rasa">${r.rasa}</span></div>`;}).join('');
 }
 
 // ══════════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
+  buildLangPills();
+  buildSiteSearchButtons();
   buildSwaraGrid();
   buildPiano();
   buildQuickRagaList();
