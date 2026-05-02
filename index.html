@@ -495,6 +495,78 @@ main { position:relative; z-index:1; max-width:1400px; margin:0 auto; padding:24
 .lc-title { font-size:15px; color:var(--gold2); margin-bottom:5px; }
 .lc-desc { font-size:11px; color:var(--muted); line-height:1.5; }
 .lc-url  { font-size:9px; color:var(--teal); margin-top:6px; font-family:'DM Mono',monospace; }
+/* NOTE & DISCLAIMER PANEL */
+.nd-panel {
+  position:fixed; bottom:0; left:0; right:0; z-index:500;
+  background:rgba(6,6,14,.97); border-top:1px solid var(--border);
+  backdrop-filter:blur(16px); transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  max-height:85vh; overflow-y:auto;
+}
+.nd-panel.open { transform:translateY(0); }
+.nd-inner { max-width:900px; margin:0 auto; padding:24px 28px 32px; }
+.nd-tabs { display:flex; gap:6px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:10px; }
+.nd-tab {
+  padding:5px 14px; border-radius:5px; border:1px solid var(--border);
+  background:none; color:var(--muted); font-size:11px; font-family:'Outfit',sans-serif;
+  cursor:pointer; transition:all .14s;
+}
+.nd-tab.on { background:rgba(200,168,75,.1); color:var(--gold2); border-color:rgba(200,168,75,.3); }
+.nd-content { display:none; }
+.nd-content.on { display:block; animation:fadeUp .2s ease; }
+.nd-title {
+  font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold2);
+  font-weight:300; margin-bottom:6px;
+}
+.nd-subtitle { font-size:11px; color:var(--muted); margin-bottom:18px; letter-spacing:.04em; }
+.nd-block { margin-bottom:18px; }
+.nd-block-title {
+  font-size:10px; text-transform:uppercase; letter-spacing:.12em;
+  color:var(--gold); margin-bottom:8px;
+  display:flex; align-items:center; gap:8px;
+}
+.nd-block-title::after { content:""; flex:1; height:1px; background:var(--border); }
+.nd-text {
+  font-family:'Cormorant Garamond',serif; font-size:14px; line-height:1.85;
+  color:var(--cream); opacity:.88;
+}
+.nd-text strong { color:var(--gold2); font-weight:600; }
+.nd-modes { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.nd-mode-card {
+  padding:12px 14px; border-radius:8px; border:1px solid var(--border);
+  background:rgba(0,0,0,.2);
+}
+.nd-mode-label { font-size:9px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+.nd-mode-label.non-api { color:var(--sage); }
+.nd-mode-label.api { color:var(--sky); }
+.nd-mode-text { font-size:12px; color:var(--cream); line-height:1.6; }
+.nd-vp-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.nd-vp-pill {
+  font-size:10px; padding:3px 10px; border-radius:10px;
+  border:1px solid var(--border); color:var(--muted);
+}
+.nd-close-bar {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-bottom:16px; margin-bottom:16px; border-bottom:1px solid var(--border);
+}
+.nd-close-btn {
+  padding:4px 12px; border:1px solid var(--border); border-radius:5px;
+  background:none; color:var(--muted); font-size:10px; font-family:'Outfit',sans-serif;
+  cursor:pointer; transition:all .14s;
+}
+.nd-close-btn:hover { border-color:var(--gold); color:var(--gold2); }
+/* Trigger button */
+.nd-trigger {
+  position:fixed; bottom:82px; left:24px; z-index:399;
+  padding:5px 12px; border:1px solid var(--border2); border-radius:20px;
+  background:rgba(6,6,14,.92); backdrop-filter:blur(10px);
+  color:var(--muted); font-size:10px; font-family:'Outfit',sans-serif;
+  cursor:pointer; transition:all .15s; letter-spacing:.04em;
+}
+.nd-trigger:hover { color:var(--gold2); border-color:var(--gold); }
+@media print {
+  .nd-panel,.nd-trigger { display:none !important; }
+}
 /* TOAST */
 #shareToast {
   position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
@@ -595,12 +667,19 @@ body.light-theme .swara-strip { background:rgba(245,240,232,.97); }
   <div class="header-right">
     <select class="lang-sel" id="globalLang" onchange="applyGlobalLang(this.value)" title="Interface Language">
       <option value="en">🌐 English</option>
-      <option value="hi">हिंदी</option>
-      <option value="te">తెలుగు</option>
-      <option value="ta">தமிழ்</option>
-      <option value="ml">മലയാളം</option>
-      <option value="kn">ಕನ್ನಡ</option>
-      <option value="sa">संस्कृत</option>
+      <option value="hi">हिंदी Hindi</option>
+      <option value="te">తెలుగు Telugu</option>
+      <option value="ta">தமிழ் Tamil</option>
+      <option value="ml">മലയാളം Malayalam</option>
+      <option value="kn">ಕನ್ನಡ Kannada</option>
+      <option value="tu">ತುಳು Tulu</option>
+      <option value="sa">संस्कृत Sanskrit</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="es">Español</option>
+      <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+      <option value="ar">العربية</option>
     </select>
     <button class="hdr-btn" onclick="openCompareMode()">⇄ Compare</button>
     <button class="hdr-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
@@ -787,6 +866,8 @@ body.light-theme .swara-strip { background:rgba(245,240,232,.97); }
               <button class="ltab" onclick="showRagaLang('ta',this)">தமிழ்</button>
               <button class="ltab" onclick="showRagaLang('ml',this)">മലയാളം</button>
               <button class="ltab" onclick="showRagaLang('kn',this)">ಕನ್ನಡ</button>
+              <button class="ltab" onclick="showRagaLang('tu',this)">ತುಳು</button>
+              <button class="ltab" onclick="showRagaLang('sa',this)">संस्कृत</button>
             </div>
             <div id="ragaLangDisplay" style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold2);padding:8px 12px;background:var(--bg3);border-radius:6px;min-height:36px"></div>
           </div>
@@ -1134,6 +1215,157 @@ body.light-theme .swara-strip { background:rgba(245,240,232,.97); }
 </div>
 
 </main>
+
+<!-- NOTE & DISCLAIMER TRIGGER -->
+<button class="nd-trigger" onclick="toggleNDPanel()">📋 Note &amp; Disclaimer</button>
+
+<!-- NOTE & DISCLAIMER PANEL -->
+<div class="nd-panel" id="ndPanel">
+  <div class="nd-inner">
+    <div class="nd-close-bar">
+      <span style="font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase">Platform Note &amp; Disclaimer</span>
+      <button class="nd-close-btn" onclick="toggleNDPanel()">✕ Close</button>
+    </div>
+    <div class="nd-tabs">
+      <button class="nd-tab on" onclick="showNDTab('note',this)">📋 Platform Note</button>
+      <button class="nd-tab" onclick="showNDTab('viewpoints',this)">🔬 Interpretive Viewpoints</button>
+      <button class="nd-tab" onclick="showNDTab('disclaimer',this)">⚖ Disclaimer</button>
+      <button class="nd-tab" onclick="showNDTab('print',this)">🖨 Print &amp; Export</button>
+    </div>
+
+    <!-- PLATFORM NOTE -->
+    <div class="nd-content on" id="nd-note">
+      <div class="nd-title">Platform Note</div>
+      <div class="nd-subtitle">How this application generates and presents knowledge</div>
+      <div class="nd-block">
+        <div class="nd-block-title">Dual Knowledge System</div>
+        <div class="nd-text">This application provides results using two complementary modes depending on how it is deployed and configured.</div>
+      </div>
+      <div class="nd-modes">
+        <div class="nd-mode-card">
+          <div class="nd-mode-label non-api">⬡ Non-API Mode — Active by default</div>
+          <div class="nd-mode-text">Powered by <strong>curated internal databases</strong>, indexed reference sources, structured content mapping, and self-hosted or offline language tools. All raga data, mantra texts, mudra descriptions, viewpoint analyses, and cross-references are drawn from pre-curated content organized by our research team.<br><br>Translation and summarization in Non-API mode uses <strong>offline or self-hosted tools</strong> — no external data is sent to third-party services.</div>
+        </div>
+        <div class="nd-mode-card">
+          <div class="nd-mode-label api">◈ API Mode — When enabled</div>
+          <div class="nd-mode-text">Powered by <strong>external AI, translation, and search services</strong> for expanded interpretation, multilingual rendering, and deeper contextual responses. When API mode is active, relevant <strong>source links</strong> are displayed so users can visit original websites for further study and verification. API mode is opt-in and clearly indicated in the interface.</div>
+        </div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Source Groups</div>
+        <div class="nd-text">Content is drawn from the <strong>Cultural Musings network</strong> as the primary first-party knowledge backend, supplemented by curated external reference sources including Raga Junglism, Melakarta, RagaMath, Vedadhara, Sanskrit Documents, Wisdom Library, Mahakatha, ExoticIndiaArt, and the 108 Karanas PDF archive, among others.<br><br>For user convenience, the platform may display <strong>source links</strong> so readers can visit the original websites for further study and independent verification.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Languages Supported</div>
+        <div class="nd-text">Multilingual output is provided for <strong>English, Hindi, Telugu, Tamil, Malayalam, Tulu, Kannada, and Sanskrit</strong>, with additional global language support where available. Translations are for accessibility and convenience — see the Disclaimer tab for important notes on translation accuracy.</div>
+      </div>
+    </div>
+
+    <!-- INTERPRETIVE VIEWPOINTS -->
+    <div class="nd-content" id="nd-viewpoints">
+      <div class="nd-title">Interpretive Viewpoints</div>
+      <div class="nd-subtitle">Six lenses through which ragas, mantras, mudras, and karanas are explored</div>
+      <div class="nd-block">
+        <div class="nd-block-title">About the Viewpoint System</div>
+        <div class="nd-text">The meanings, explanations, and analytical outputs in this application are expressed through <strong>six interpretive lenses</strong>. These perspectives help users explore the deeper symbolic, experiential, cultural, contemplative, and research-based dimensions of ragas, mantras, mudras, karanas, lyrics, and related sacred knowledge systems. From a research viewpoint, all six lenses are treated as complementary rather than competing — each reveals a different layer of the same subject.</div>
+      </div>
+      <div class="nd-vp-row">
+        <span class="nd-vp-pill" style="color:var(--lav);border-color:rgba(155,143,212,.4)">🔮 Philosophical</span>
+        <span class="nd-vp-pill" style="color:var(--sage);border-color:rgba(122,170,138,.4)">🧘 Yogic</span>
+        <span class="nd-vp-pill" style="color:var(--gold);border-color:rgba(200,168,75,.4)">🕉 Spiritual</span>
+        <span class="nd-vp-pill" style="color:var(--sky);border-color:rgba(91,155,213,.4)">🧠 Neurological</span>
+        <span class="nd-vp-pill" style="color:var(--teal);border-color:rgba(61,188,170,.4)">⚗ Scientific</span>
+        <span class="nd-vp-pill" style="color:var(--rose);border-color:rgba(200,112,128,.4)">🌌 Astrophysical</span>
+      </div>
+      <div class="nd-block" style="margin-top:16px">
+        <div class="nd-block-title">Philosophical</div>
+        <div class="nd-text">Explores Vedantic, Advaitic, and cosmological significance — how a raga, mantra, or movement relates to consciousness, maya, dharma, and the nature of existence in classical Indian philosophical traditions.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Yogic</div>
+        <div class="nd-text">Examines connections to chakras, nadis, prana, the subtle body, and yogic practices — how sound, gesture, and rhythm interact with energetic anatomy described in tantric and yogic texts.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Spiritual</div>
+        <div class="nd-text">Places each element within its devotional, ritual, and traditional context — deity associations, festival usage, lineage traditions, and the living practice across Shaiva, Vaishnava, Shakta, and other traditions.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Neurological</div>
+        <div class="nd-text">Draws on research into how music, mantra, and movement affect the brain and nervous system — brainwave entrainment, cortisol response, oxytocin production, parasympathetic activation, and mood regulation studies.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Scientific</div>
+        <div class="nd-text">Analyses mathematical and acoustic properties — frequency ratios, interval relationships, harmonic overtone series, psychoacoustic effects, and connections to physics and information theory.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Astrophysical</div>
+        <div class="nd-text">Explores correspondences between musical elements and astronomical phenomena — time-of-day alignments, seasonal cycles, celestial events, pulsar rhythms, stellar spectra, and galactic geometry as structural analogues.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Viewpoint Disclaimer</div>
+        <div class="nd-text">These interpretations are provided for <strong>study, reflection, creative inspiration, and comparative understanding</strong>. They should not be treated as universally final, medically authoritative, scientifically conclusive, or spiritually exclusive. Some explanations may be traditional, symbolic, interdisciplinary, speculative, interpretive, translated, or synthesized from multiple sources. Users are encouraged to consult original texts, teachers, scholars, scientists, or practitioners and to refer to cited source links for deeper study.</div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="nd-content" id="nd-disclaimer">
+      <div class="nd-title">Disclaimer</div>
+      <div class="nd-subtitle">Please read before using this platform for research, practice, or publication</div>
+      <div class="nd-block">
+        <div class="nd-block-title">Purpose</div>
+        <div class="nd-text">The information provided is intended for <strong>educational, cultural, research, and creative reference purposes only</strong>. This platform does not claim exclusive authority, scriptural finality, or scholarly conclusiveness on ragas, mantras, mudras, karanas, shlokas, tantra, philosophy, lyrics, or heritage traditions.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Content Accuracy</div>
+        <div class="nd-text">While every effort is made to organize, interpret, and present information accurately, content may be drawn from <strong>multiple public, curated, translated, or generated sources</strong> and may contain differences in interpretation, lineage, language rendering, or traditional classification. Users are encouraged to consult original source websites, teachers, scholars, or traditional practitioners for deeper validation.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Translation &amp; Multilingual Output</div>
+        <div class="nd-text">Automatic translations and generated summaries in English, Hindi, Telugu, Tamil, Malayalam, Tulu, Kannada, Sanskrit, and other global languages are provided for <strong>accessibility and convenience</strong> and may not always preserve the full nuance, grammar, or sacred register of the original language. Translations of mantras, Sanskrit shlokas, and classical lyric poetry should be treated as <strong>approximate renderings</strong> rather than authoritative translations.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Medical &amp; Therapeutic Claims</div>
+        <div class="nd-text">References to neurological, therapeutic, or health-related effects of ragas, mantras, mudras, or practices are based on published research and traditional texts and are presented for <strong>informational purposes only</strong>. They are not medical advice and should not replace professional medical, psychological, or therapeutic consultation.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Contact &amp; Corrections</div>
+        <div class="nd-text">For clarification, corrections, collaborations, or special research requests, use the <strong>chatbot or enquiry form</strong> in the application, or contact us at <a href="mailto:smith123846@gmail.com" style="color:var(--teal)">smith123846@gmail.com</a> or <a href="tel:+919121379100" style="color:var(--teal)">+91 91213 79100</a>. We welcome feedback from scholars, practitioners, and communities whose traditions are represented here.</div>
+      </div>
+    </div>
+
+    <!-- PRINT & EXPORT -->
+    <div class="nd-content" id="nd-print">
+      <div class="nd-title">Print &amp; Export</div>
+      <div class="nd-subtitle">How to save, print, and share content from this application</div>
+      <div class="nd-block">
+        <div class="nd-block-title">Print Current View</div>
+        <div class="nd-text">Use the <strong>🖨 Print</strong> button in the action bar at the top of any pane, or the Print button inside the Rāga Finder result card. The print stylesheet automatically hides navigation, chatbot, swara strip, and action bar — leaving only content for a clean printed page.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Download HTML</div>
+        <div class="nd-text">The <strong>⬇ Download HTML</strong> button saves the entire application as a single self-contained HTML file to your device. This file works fully offline — all data, styles, and logic are embedded. You can share this file with others without any internet connection required.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Share</div>
+        <div class="nd-text">The <strong>⤴ Share</strong> button copies the current page URL to your clipboard. The Share button inside the raga result card copies the raga name and scale for quick sharing via any messaging platform.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Export Created Ragas</div>
+        <div class="nd-text">In the <strong>Rāga Creator</strong> tab, your saved raga combinations can be exported as a <strong>JSON file</strong> using the Export JSON button — shareable with collaborators or archived for future reference.</div>
+      </div>
+      <div class="nd-block">
+        <div class="nd-block-title">Actions</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn prime" onclick="window.print()">🖨 Print Current Page</button>
+          <button class="btn" onclick="downloadPageHTML()">⬇ Download Full HTML</button>
+          <button class="btn" onclick="sharePage()">⤴ Copy Share Link</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
 // ══════════════════════════════════════
 // DATA
@@ -1732,9 +1964,13 @@ function renderActionBar(name){
     <button class="ab-btn" onclick="sharePage()">⤴ Share</button>
     <div class="ab-sep"></div>
     <select class="ab-lang" onchange="applyGlobalLang(this.value)">
-      <option value="en">🌐 English</option><option value="hi">हिंदी</option>
-      <option value="te">తెలుగు</option><option value="ta">தமிழ்</option>
-      <option value="ml">മലയാളം</option><option value="kn">ಕನ್ನಡ</option>
+      <option value="en">🌐 English</option><option value="hi">हिंदी Hindi</option>
+      <option value="te">తెలుగు Telugu</option><option value="ta">தமிழ் Tamil</option>
+      <option value="ml">മലയാളം Malayalam</option><option value="kn">ಕನ್ನಡ Kannada</option>
+      <option value="tu">ತುಳು Tulu</option><option value="sa">संस्कृत Sanskrit</option>
+      <option value="fr">Français</option><option value="de">Deutsch</option>
+      <option value="es">Español</option><option value="ja">日本語</option>
+      <option value="zh">中文</option><option value="ar">العربية</option>
     </select></div>`;
   const el=document.getElementById('ab-'+name);if(el)el.innerHTML=tpl;
 }
@@ -2442,7 +2678,15 @@ const LANG_UI={
   te:{library:'రాగ గ్రంథాలయం',finder:'రాగ కనుగొనేది',creator:'రాగ సృష్టికర్త',mantra:'మంత్రాలు',beeja:'బీజాక్షరాలు',swara:'స్వర ఇంజన్',tala:'తాళం',mudra:'ముద్రలు',karanas:'108 కరణాలు',xref:'క్రాస్ రెఫ్',links:'పవిత్ర లింకులు',deepstudy:'లోతైన అధ్యయనం'},
   ta:{library:'ராக நூலகம்',finder:'ராக கண்டுபிடிப்பு',creator:'ராக உருவாக்கி',mantra:'மந்திரங்கள்',beeja:'பீஜாக்ஷரங்கள்',swara:'ஸ்வர இயந்திரம்',tala:'தாளம்',mudra:'முத்திரைகள்',karanas:'108 கரணங்கள்',xref:'குறுக்கு குறிப்பு',links:'புனித இணைப்புகள்',deepstudy:'ஆழமான ஆய்வு'},
   ml:{library:'രാഗ ലൈബ്രറി',finder:'രാഗ ഫൈൻഡർ',creator:'രാഗ ക്രിയേറ്റർ',mantra:'മന്ത്രങ്ങൾ',beeja:'ബീജാക്ഷരങ്ങൾ',swara:'സ്വര എഞ്ചിൻ',tala:'താളം',mudra:'മുദ്രകൾ',karanas:'108 കരണങ്ങൾ',xref:'ക്രോസ് റെഫ',links:'പവിത്ര ലിങ്കുകൾ',deepstudy:'ആഴത്തിലുള്ള പഠനം'},
-  kn:{library:'ರಾಗ ಗ್ರಂಥಾಲಯ',finder:'ರಾಗ ಹುಡುಕಾಟ',creator:'ರಾಗ ನಿರ್ಮಾಣ',mantra:'ಮಂತ್ರಗಳು',beeja:'ಬೀಜಾಕ್ಷರಗಳು',swara:'ಸ್ವರ ಎಂಜಿನ್',tala:'ತಾಳ',mudra:'ಮುದ್ರೆಗಳು',karanas:'108 ಕರಣಗಳು',xref:'ಕ್ರಾಸ್ ರೆಫ್',links:'ಪವಿತ್ರ ಲಿಂಕ್ಗಳು',deepstudy:'ಆಳವಾದ ಅಧ್ಯಯನ'}
+  kn:{library:'ರಾಗ ಗ್ರಂಥಾಲಯ',finder:'ರಾಗ ಹುಡುಕಾಟ',creator:'ರಾಗ ನಿರ್ಮಾಣ',mantra:'ಮಂತ್ರಗಳು',beeja:'ಬೀಜಾಕ್ಷರಗಳು',swara:'ಸ್ವರ ಎಂಜಿನ್',tala:'ತಾಳ',mudra:'ಮುದ್ರೆಗಳು',karanas:'108 ಕರಣಗಳು',xref:'ಕ್ರಾಸ್ ರೆಫ್',links:'ಪವಿತ್ರ ಲಿಂಕ್ಗಳು',deepstudy:'ಆಳವಾದ ಅಧ್ಯಯನ'},
+  tu:{library:'ರಾಗ ಬೊಕ್ಕ',finder:'ರಾಗ ತೂಕಾರ',creator:'ರಾಗ ಸೃಷ್ಟಿ',mantra:'ಮಂತ್ರೊಲು',beeja:'ಬೀಜಾಕ್ಷರೊಲು',swara:'ಸ್ವರ ಇಂಜಿನ್',tala:'ತಾಳ',mudra:'ಮುದ್ರೆಲು',karanas:'108 ಕರಣೊಲು',xref:'ಕ್ರಾಸ್ ರೆಫ್',links:'ಪವಿತ್ರ ಲಿಂಕ್ಲು',deepstudy:'ಆಳಡ್ ಪಠನ'},
+  sa:{library:'रागसंग्रहः',finder:'रागान्वेषणम्',creator:'रागनिर्माणम्',mantra:'मन्त्राः',beeja:'बीजाक्षराणि',swara:'स्वरयन्त्रम्',tala:'तालः',mudra:'मुद्राः',karanas:'१०८ करणानि',xref:'परस्परसंदर्भः',links:'पवित्रसूत्राणि',deepstudy:'गहनाध्ययनम्'},
+  fr:{library:'Bibliothèque de Rāga',finder:'Chercheur de Rāga',creator:'Créateur de Rāga',mantra:'Mantras',beeja:'Beejāksharas',swara:'Moteur Swara',tala:'Tāla',mudra:'Mudrās',karanas:'108 Karanas',xref:'Référence croisée',links:'Liens sacrés',deepstudy:'Étude approfondie'},
+  de:{library:'Rāga Bibliothek',finder:'Rāga Finder',creator:'Rāga Ersteller',mantra:'Mantras',beeja:'Beejāksharas',swara:'Swara Engine',tala:'Tāla',mudra:'Mudrās',karanas:'108 Karanas',xref:'Querverweise',links:'Heilige Links',deepstudy:'Tiefenstudie'},
+  es:{library:'Biblioteca de Rāga',finder:'Buscador de Rāga',creator:'Creador de Rāga',mantra:'Mantras',beeja:'Beejāksharas',swara:'Motor Swara',tala:'Tāla',mudra:'Mudrās',karanas:'108 Karanas',xref:'Referencia cruzada',links:'Enlaces sagrados',deepstudy:'Estudio profundo'},
+  ja:{library:'ラーガ図書館',finder:'ラーガ検索',creator:'ラーガ作成',mantra:'マントラ',beeja:'ビージャ',swara:'スワラエンジン',tala:'ターラ',mudra:'ムドラー',karanas:'108カラナ',xref:'クロスリファレンス',links:'聖なるリンク',deepstudy:'深い研究'},
+  zh:{library:'拉格图书馆',finder:'拉格查找器',creator:'拉格创作',mantra:'曼陀罗',beeja:'种子音节',swara:'音律引擎',tala:'节拍',mudra:'手印',karanas:'108卡拉那',xref:'交叉引用',links:'神圣链接',deepstudy:'深度学习'},
+  ar:{library:'مكتبة راغا',finder:'باحث راغا',creator:'منشئ راغا',mantra:'المانترا',beeja:'البيجاكشارا',swara:'محرك سوارا',tala:'إيقاع',mudra:'الإيماءات',karanas:'108 كارانا',xref:'مرجع مشترك',links:'روابط مقدسة',deepstudy:'دراسة عميقة'}
 };
 function applyGlobalLang(lang){
   const ui=LANG_UI[lang]||LANG_UI['en'];
@@ -2454,7 +2698,14 @@ function applyGlobalLang(lang){
       t.textContent=(emoji?emoji+' ':'')+ui[keys[i]];
     }
   });
-  document.getElementById('globalLang').value=lang;
+  // Sync both language selectors
+  document.querySelectorAll('#globalLang,.ab-lang').forEach(el=>el.value=lang);
+  // RTL support for Arabic
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  // Update raga lang display if a raga is loaded
+  if(currentRaga&&currentRaga.names&&currentRaga.names[lang]){
+    document.getElementById('ragaLangDisplay').textContent=currentRaga.names[lang];
+  }
 }
 
 // ══════════════════════════════════════
@@ -2480,6 +2731,19 @@ function resetAll(){
 function downloadPageHTML(){
   const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nada_mudra_v4.1.html';a.click();
+}
+
+// ══════════════════════════════════════
+// NOTE & DISCLAIMER PANEL
+// ══════════════════════════════════════
+function toggleNDPanel(){
+  document.getElementById('ndPanel').classList.toggle('open');
+}
+function showNDTab(tab,btn){
+  document.querySelectorAll('.nd-tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.nd-content').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('nd-'+tab).classList.add('on');
 }
 
 // ══════════════════════════════════════
